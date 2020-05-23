@@ -1,0 +1,14 @@
+.pto {
+
+    background: linear-gradient(to bottom, #d1d6da, #9fa4a8);
+
+    &__img {
+        border-radius: 50%;
+        width: 12%;
+    }
+
+    &__heading {
+        border-bottom:2px solid $color-orange;
+        display: inline-block;
+    }
+}
