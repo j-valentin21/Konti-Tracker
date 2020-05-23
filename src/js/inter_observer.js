@@ -7,6 +7,7 @@ const navbar = document.querySelector("#navbar__bg");
 const home = document.querySelector(".homepage__bg");
 const cardLeft = document.querySelectorAll(".card-animation__left");
 const cardRight = document.querySelectorAll(".card-animation__right");
+const ptoImg = document.querySelector(".pto__img");
 
 //Options for new observer object
 const options = {
@@ -22,12 +23,14 @@ observer = new IntersectionObserver((entries) => {
         nav.classList.add("navbar__alt");
         home.classList.add("homepage__bgcolor");
         navbar.classList.add("navbar__bg");
+        ptoImg.style.animation = 'pulse 2.5s infinite';
        
     
     } else {
         nav.classList.remove("navbar__alt");
         home.classList.remove("homepage__bgcolor");
         navbar.classList.remove("navbar__bg");
+        ptoImg.style.animation = 'none';
     }
   });
 },options);
