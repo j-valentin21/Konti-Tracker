@@ -11,10 +11,9 @@
     }
 
     &__link {
-        width: 100%;
         text-align: center;
         margin: 4rem 0rem 5rem 0rem;
-
+        
         @include respond(tab-port) {
             height: 2vh;
         }

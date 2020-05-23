@@ -11,7 +11,7 @@ const cardRight = document.querySelectorAll(".card-animation__right");
 //Options for new observer object
 const options = {
     root: null,
-    rootMargin: '-475px 0px 0px 0px',
+    rootMargin: '-425px 0px 0px 0px',
     threshold: 0
 };
 
@@ -44,8 +44,6 @@ const option = {
 observe = new IntersectionObserver((entries) => {
   
   entries.forEach((entry) => {
-    console.log(entry.target);
-    console.log(entry);
     if (entry.isIntersecting) {
       entry.target.style.animation = `slideInLeft 1.75s ease, gradient 7.5s ease infinite`;
       entry.target.style.visibility = "visible";
@@ -66,8 +64,6 @@ cardLeft.forEach(image => {
 observeRight = new IntersectionObserver((entries) => {
   
   entries.forEach((entry) => {
-    console.log(entry.target);
-    console.log(entry);
     if (entry.isIntersecting) {
       entry.target.style.animation = `slideInRight 1.75s ease, gradient 7.5s ease infinite`;
       entry.target.style.visibility = "visible";
