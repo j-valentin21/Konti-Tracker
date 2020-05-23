@@ -8,15 +8,6 @@
     &__primary {
         display: inline-block;
         border-bottom:2px solid $color-orange;
-        // margin: 0rem 0rem 0rem 1rem;
-
-        // @include respond(tab-land) {
-        //     margin: 0rem;
-        // }
-
-        // @include respond(tab-port) {
-        //     margin: 0rem;
-        // }
     }
 
     &__link {
