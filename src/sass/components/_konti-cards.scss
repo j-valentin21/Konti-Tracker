@@ -9,7 +9,6 @@
 	visibility: hidden;
 	margin-bottom: 5rem;
 
-
 	@include respond(tab-port) {
 		.w-25 {
 			width: 15%!important;

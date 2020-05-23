@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,aAAa,CAAC;EACb,QAAQ,EAAE,QAAQ;EAClB,UAAU,EAAE,GAAG;EACf,MAAM,EAAC,KAAK;EACZ,WAAW,EAAE,IAAI;EACd,YAAY,EAAE,IAAI;EAClB,UAAU,EAAE,yCAAyC;CAGxD",
-    "sources": [
-        "../components/konti-cards.scss"
-    ],
-    "names": [],
-    "file": "konti-cards.css"
-}
