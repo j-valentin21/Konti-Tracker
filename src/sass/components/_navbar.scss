@@ -1,0 +1,90 @@
+.navbar__logo {
+    position: absolute;
+    top: 0; 
+    background-color: $color-black;   
+    margin: 0rem;
+    z-index: 10;
+    color: $color-orange;
+    margin-left: 10rem;
+    transition: all .5s ease-in;
+    height: auto;
+
+        @include respond(laptop) {
+            margin-left: 8rem; 
+    
+    
+        }
+
+        @include respond(tab-land) {
+            height: 20vh;
+            &--img {
+                height: 20vh;
+            }
+        }
+
+        @include respond(tab-port) {
+            height: 15vh;
+            &--img {
+                height: 15vh;
+            }
+
+            margin-left: 6rem;
+        }
+}
+
+.navbar__alt {
+    transition: all .75s ease-in;
+    transform: scale(.5);
+    margin-left: 0rem;
+    top: -4.1rem;
+    padding: 0rem 5rem;
+    left: 0rem;
+    height: 21.5vh;
+
+        @include respond(laptop) {
+            padding: 0rem 4rem;
+            height: 10rem;
+            &--img {
+                height: 100%;        
+            } 
+        }
+
+        @include respond(tab-land) {
+            padding: 0rem 3.5rem;
+            height: 16.5vh;
+            margin-top: 1rem;
+        }
+
+        @include respond(tab-port) {
+            transform: scale(.7);
+            height: 7.5rem;
+            margin-top: 1.5rem;
+        }
+
+        @include respond(mobile-land) {
+            transform: scale(.7);
+            margin-top: 1.3rem;
+        }
+
+        @include respond(mobile-port) {
+            transform: scale(.65);
+            margin-top: 2rem;
+            padding: 0rem 2rem;
+            height: 6.75rem;
+        }
+
+
+}
+
+.navbar__bg {
+    background-color: $color-orange !important;
+    color: $color-black !important;
+    transition: all .75s ease-out;
+}
+
+.navbar__link {
+    color: $color-black;
+    padding: 0rem auto;
+    margin: 0rem 1.75rem;
+}
+

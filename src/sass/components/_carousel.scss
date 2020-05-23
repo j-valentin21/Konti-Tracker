@@ -1,0 +1,56 @@
+.carousel__height {
+   
+    
+    @include respond(tab-port) {
+       height: 65vh;    
+    }
+
+    @include respond(mobile-land) {
+        height: 55vh;    
+     }
+
+     @include respond(mobile-land-bp2) {
+        height: 45vh;    
+     }
+
+     @include respond(mobile-port) {
+        height: 35vh;    
+     }
+ 
+
+    &--img {
+        max-height: 70vh;
+        object-fit: cover;
+        border-bottom:5px solid $color-orange; 
+
+        @include respond(mobile-land-bp2) {
+           margin-top: 1.5rem;
+        }
+
+    }    
+}
+
+.carousel__heading {
+    color: $color-orange;
+    font-size: 3rem;
+    font-weight: 700;
+    
+    @include respond(mobile-land-bp2) {
+           font-size: 2.5rem;
+    }
+
+    @include respond(mobile-port) {
+        font-size: 2rem;
+    }
+
+}
+
+.carousel__text {
+    color: $color-white;
+    font-size: 1.5rem;
+    font-weight: 400;
+
+    @include respond(mobile-port) {
+        font-size: 1rem;
+    }
+}

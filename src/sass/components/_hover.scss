@@ -1,0 +1,49 @@
+.hover__black {
+    color: $color-black;
+    overflow: hidden;
+    position: relative;
+    transition: all .3s ease-in;
+   
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: $color-black;
+        transition: all .5s ease-in;
+    }
+
+    &::before {
+        transform: translateY(-110%);
+    }
+
+    &::after {
+        transform: translateY(110%);
+    }
+
+
+    &:hover {
+        color: $color-orange;
+        z-index: 1;
+        text-decoration: none;
+        transition: all .5s ease-in;
+        
+        &::before {
+            transform: translateY(-45%);
+            
+            
+        }
+
+        &::after {
+            transform: translateY(45%);
+            
+        }
+
+
+    }
+
+}
