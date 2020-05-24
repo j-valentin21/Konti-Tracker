@@ -1,0 +1,18 @@
+.modal__header {
+    background-color: $color-orange;
+}
+
+.modal__body {
+    background: linear-gradient(to bottom, #d1d6da, #9fa4a8);
+}
+
+.modal__button {
+    background-color: $color-black;
+    color: $color-orange;
+
+    &:hover {
+       color: $color-orange; 
+       font-weight: 800;
+       background-color: $color-black;
+    }
+}
