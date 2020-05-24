@@ -443,4 +443,24 @@ body {
   border-bottom: 2px solid #eba72b;
   display: inline-block;
 }
+
+.modal__header {
+  background-color: #eba72b;
+}
+
+.modal__body {
+  background: -webkit-gradient(linear, left top, left bottom, from(#d1d6da), to(#9fa4a8));
+  background: linear-gradient(to bottom, #d1d6da, #9fa4a8);
+}
+
+.modal__button {
+  background-color: #000000;
+  color: #eba72b;
+}
+
+.modal__button:hover {
+  color: #eba72b;
+  font-weight: 800;
+  background-color: #000000;
+}
 /*# sourceMappingURL=main.css.map */
