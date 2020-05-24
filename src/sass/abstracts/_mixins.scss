@@ -4,6 +4,7 @@
 800px-1000px Tablet, portrait
 1000px - Tablet, landscape */
 
+//WIDTH
 @mixin respond($breakpoint) {
     @if $breakpoint == mobile-port {
         @media only screen and (max-width: 25em) {@content}; //400px
@@ -28,5 +29,16 @@
     @if $breakpoint == laptop {
         @media only screen and (max-width: 75em) {@content};  //1200px
     }
+    //HEIGHT
+    @if $breakpoint == laptop-touch {
+        @media only screen and (min-height: 59.25em) and (min-width: 80em) {@content};  //1280px x 950px
+    }
 
+    @if $breakpoint == pixel2 {
+        @media only screen and (min-height: 45.5em) and (max-width: 25.7em) {@content};  //410px x 725px
+    }
+
+    @if $breakpoint == ipad {
+        @media only screen and (min-height: 63.75em) and (min-width: 47.8em) {@content};  //765px x 1020px
+    }
 }

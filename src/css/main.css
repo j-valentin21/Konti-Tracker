@@ -175,6 +175,16 @@ body {
     margin-left: 6rem;
   }
   .navbar__logo--img {
+    height: 13vh;
+  }
+}
+
+@media only screen and (min-height: 63.75em) and (min-width: 47.8em) {
+  .navbar__logo {
+    height: 15vh;
+    margin-left: 6rem;
+  }
+  .navbar__logo--img {
     height: 15vh;
   }
 }
@@ -236,6 +246,28 @@ body {
   }
 }
 
+@media only screen and (min-height: 59.25em) and (min-width: 80em) {
+  .navbar__alt {
+    height: 17vh;
+  }
+}
+
+@media only screen and (min-height: 45.5em) and (max-width: 25.7em) {
+  .navbar__alt {
+    margin-top: 1.6rem;
+  }
+}
+
+@media only screen and (min-height: 63.75em) and (min-width: 47.8em) {
+  .navbar__alt {
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+    margin-top: 1rem;
+    padding: 0rem 3rem;
+    height: 12vh;
+  }
+}
+
 .navbar__bg {
   background-color: #eba72b !important;
   color: #000000 !important;
@@ -257,7 +289,7 @@ body {
 
 @media only screen and (max-width: 36.5em) {
   .carousel__height {
-    height: 55vh;
+    height: 50vh;
   }
 }
 
@@ -269,7 +301,7 @@ body {
 
 @media only screen and (max-width: 25em) {
   .carousel__height {
-    height: 40vh;
+    height: 35vh;
   }
 }
 

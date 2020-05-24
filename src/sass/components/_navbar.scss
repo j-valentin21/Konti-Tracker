@@ -25,10 +25,18 @@
         @include respond(tab-port) {
             height: 15vh;
             &--img {
-                height: 15vh;
+                height: 13vh;
             }
 
             margin-left: 6rem;
+        }
+
+        @include respond(ipad) {
+            &--img {
+                height: 15vh;
+            }
+            height: 15vh;
+            margin-left:6rem;
         }
 }
 
@@ -71,6 +79,21 @@
             margin-top: 2rem;
             padding: 0rem 2rem;
             height: 6.75rem;
+        }
+
+        @include respond(laptop-touch) {
+            height: 17vh;
+        }
+
+        @include respond(pixel2) {
+           margin-top: 1.6rem;
+        }
+
+        @include respond(ipad) {
+            transform: scale(.5);
+            margin-top: 1rem;
+            padding: 0rem 3rem;
+            height: 12vh;
         }
 
 
