@@ -497,9 +497,11 @@ body {
 }
 
 .registration {
-  width: 100%;
+  width: 100vw;
   height: 100%;
   background-image: url("../img/car-garage.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .registration__container {
@@ -508,6 +510,86 @@ body {
   padding: 5rem;
   background: -webkit-gradient(linear, left top, left bottom, from(rgba(235, 167, 43, 0.9)), to(rgba(235, 167, 43, 0.9)));
   background: linear-gradient(to bottom, rgba(235, 167, 43, 0.9), rgba(235, 167, 43, 0.9));
-  z-index: 1000;
+}
+
+.registration__title {
+  margin: 0rem;
+  padding: 0rem;
+  font-weight: 900;
+  color: #222;
+  font-family: 'Roboto', sans-serif;
+  font-size: 2rem;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.registration__input {
+  width: 30vw;
+  border: 1px solid #ebebeb;
+  border-radius: 3px;
+  padding: .5rem 1rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #222;
+  -webkit-box-shadow: 5px 5px 10px;
+          box-shadow: 5px 5px 10px;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+
+.registration__label {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-left: 1rem;
+  margin-top: .5rem;
+  display: block;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+
+.registration__input:placeholder-shown + .registration__label {
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transform: translateY(-4rem);
+          transform: translateY(-4rem);
+}
+
+.registration__signup {
+  background-image: -webkit-gradient(linear, left top, right top, from(#000000), to(#222));
+  background-image: linear-gradient(to right, #000000, #222);
+  width: 100%;
+  border-radius: 5px;
+  padding: 1rem 1.5rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+  text-transform: uppercase;
+  border: none;
+  -webkit-box-shadow: 1px 1px 1px;
+          box-shadow: 1px 1px 1px;
+  -webkit-transition: all .2s;
+  transition: all .2s;
+}
+
+.registration__signup:hover {
+  -webkit-transform: translateY(-0.3rem);
+          transform: translateY(-0.3rem);
+  -webkit-box-shadow: 0px 1.5rem 4rem rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 1.5rem 4rem rgba(0, 0, 0, 0.2);
+  background-image: -webkit-gradient(linear, right top, left top, from(#000000), to(#222));
+  background-image: linear-gradient(to left, #000000, #222);
+}
+
+.registration__login {
+  color: #555;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 2.5rem;
+  margin-bottom: .25rem;
 }
 /*# sourceMappingURL=main.css.map */
