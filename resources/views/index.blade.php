@@ -1,19 +1,9 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- REQUIRED META TAGS -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- BOOTSTRAP CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;700&display=swap" rel="stylesheet">
-    <!-- CSS -->
-    <link rel="shortcut icon" type="img/png" href="img/logo-icon.png">
-    <link rel="stylesheet" href="css/main.css">
+@extends('layouts.app')
+
+
     <!-- TITLE -->
     <title>Konti-Tracker</title>
-  </head>
+
   <body class="homepage__bg">
      <!-- NAVBAR -->
     <nav id="navbar__bg" class="navbar navbar-expand navbar sticky-top bg-white pl-5">
@@ -31,7 +21,7 @@
                 </li>
             </ul>
         </div>
-    </nav> 
+    </nav>
     <!-- MODAL -->
     <section class="modal" id="exampleModalCentered" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenteredLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -71,7 +61,7 @@
                         <figure class="carousel-item active">
                             <img src="img/car.jpg" class="d-block w-100 carousel__height--img" alt="car">
                             <figcaption class="carousel-caption mb-5">
-                                <h1 class="carousel__heading text-center">Konti tracker is now availible.</h1>
+                                <h1 class="carousel__heading text-center">Konti tracker is now available.</h1>
                                 <p class="carousel__text lead">Keep track of all your PTO usage</p>
                             </figcaption>
                         </figure>
@@ -128,7 +118,7 @@
                                     <p class="card-text">
                                         Put a <span class="font-weight-bolder">stop</span> on tracking everything on paper. Let the Konti-Tracker do all the work.
                                     </p>
-                                </div>                                       
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-5 my-5 my-sm-1 ">
@@ -149,33 +139,31 @@
                                         Your attendance, years of service, scheduled/unschduled time all tracked in one location.
                                     </p>
                                 </div>
-                            </div>    
+                            </div>
                         </div>
                     </div>
                 </section>
                 <!-- FOOTER -->
                 <footer class="footer d-flex flex-wrap align-content-end">
                     <div class="container">
-                        <h2 class="footer__primary text-center mt-4">SITE LINKS</h2> 
+                        <h2 class="footer__primary text-center mt-4">SITE LINKS</h2>
                         <div class="d-flex justify-content-around">
                             <a class="footer__link hover__black" href="#">HOME</a>
-                            <a class="footer__link hover__black" href="#">SIGNUP/REGISTER</a> 
-                            <a class="footer__link hover__black" href="#">SIGN IN</a>  
-                            <a class="footer__link hover__black" href="#">CONTACT US</a>  
-                        </div> 
+                            <a class="footer__link hover__black" href="#">SIGNUP/REGISTER</a>
+                            <a class="footer__link hover__black" href="#">SIGN IN</a>
+                            <a class="footer__link hover__black" href="#">CONTACT US</a>
+                        </div>
                         <div class="d-flex justify-content-end">
                             <p class="footer__copyright">
                                 &copy; Copyright 2020 by Konti-tracking systems.
                             </p>
                         </div>
-                    </div> 
+                    </div>
                 </footer>
             </div>
         </div>
     </div>
     <!-- SCRIPTS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="js/inter_observer.js"></script>
+     <script src="{{ asset('js/scripts/intersection_observer/index.js') }}"></script>
   </body>
-</html>
+
