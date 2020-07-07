@@ -1,4 +1,4 @@
-//INTERSECTION OBSERVER-HOME PAGE(index.html)
+//INTERSECTION OBSERVER-HOME PAGE
 
 //DOM selection
 const caraImg = document.querySelector(".carousel-inner");
@@ -16,7 +16,7 @@ const options = {
     threshold: 0
 };
 
-//Observer for navagation logo
+//Observer for navigation logo
 observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (!entry.intersectionRatio > 0 ) {
@@ -24,8 +24,8 @@ observer = new IntersectionObserver((entries) => {
         home.classList.add("homepage__bgcolor");
         navbar.classList.add("navbar__bg");
         ptoImg.style.animation = 'pulse 2.5s infinite';
-       
-    
+
+
     } else {
         nav.classList.remove("navbar__alt");
         home.classList.remove("homepage__bgcolor");
@@ -45,12 +45,12 @@ const option = {
   threshold: 0
 };
 observe = new IntersectionObserver((entries) => {
-  
+
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
       entry.target.style.animation = `slideInLeft 1.75s ease, gradient 7.5s ease infinite`;
       entry.target.style.visibility = "visible";
-    
+
     } else {
       entry.target.style.animation = `none`;
       entry.target.style.visibility = "hidden";
@@ -65,12 +65,12 @@ cardLeft.forEach(image => {
 //Observer for card-tracker
 //Options for new observer object
 observeRight = new IntersectionObserver((entries) => {
-  
+
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
       entry.target.style.animation = `slideInRight 1.75s ease, gradient 7.5s ease infinite`;
       entry.target.style.visibility = "visible";
-    
+
     } else {
       entry.target.style.animation = `none`;
       entry.target.style.visibility = "hidden";
