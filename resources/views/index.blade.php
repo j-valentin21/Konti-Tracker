@@ -2,7 +2,7 @@
 
 
     <!-- TITLE -->
-    <title>Konti-Tracker</title>
+  <title>Konti-Tracker</title>
 
   <body class="homepage__bg">
      <!-- NAVBAR -->
