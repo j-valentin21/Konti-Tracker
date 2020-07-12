@@ -33,4 +33,28 @@ class UserTest extends TestCase
         $this->assertAuthenticatedAs($user);
 
     }
+
+    /** @test */
+    public function register_creates_and_authenticates_a_user()
+    {
+        $this->withoutExceptionHandling();
+
+        $user = factory(User::class)->create();
+
+        $response = $this->post('/register', [
+            'name' => $user->name,
+            'email' => $user->email,
+            'password' => $user->password,
+        ]);
+
+        $this->assertDatabaseHas('users', [
+            'name' => $user->name,
+            'email' => $user->email
+        ]);
+        $this->assertAuthenticatedAs($user);
+        $response->assertRedirect(route('home'));
+
+    }
 }
+
+
