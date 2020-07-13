@@ -15,7 +15,7 @@ class UserTest extends TestCase
     use RefreshDatabase;
 
     /**
-     * The user gets authenticated when logged in and redirected back to home route.
+     * The user gets authenticated when logged in and redirected back to dashboard.
      *
      * @return void
      */

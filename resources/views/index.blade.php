@@ -8,17 +8,36 @@
      <!-- NAVBAR -->
     <nav id="navbar__bg" class="navbar navbar-expand navbar sticky-top bg-white pl-5">
         <a class="navbar-brand navbar__logo" href="#"><img class="navbar__logo--img" src="img/konti_logo.png" alt="Konti-Tracker logo"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
+                @guest
                 <li class="nav-item active">
-                    <a class="nav-link navbar__link hover__black text-center" href="#">Register <span class="sr-only">(current)</span></a>
+                    <a class="nav-link navbar__link hover__black" data-toggle="modal" href="#exampleModalCentered">Login</a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link navbar__link hover__black" data-toggle="modal" href="#exampleModalCentered">Sign In</a>
-                </li>
+                    @if (Route::has('register'))
+                        <li class="nav-item active">
+                            <a class="nav-link navbar__link hover__black text-center" href="/register">Register <span class="sr-only">(current)</span></a>
+                        </li>
+                    @endif
+                @else
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::user()->name }} <span class="caret"></span>
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
+                @endguest
             </ul>
         </div>
     </nav>
@@ -33,19 +52,34 @@
                     </button>
                 </div>
                 <div class="modal-body modal__body">
-                    <form>
+                    <form method="POST" action="{{ route('login') }}">
+                        @csrf
                         <div class="form-group">
-                            <label for="formGroupExampleInput">Username</label>
-                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="username">
+                            <label for="email">{{ __('E-Mail Address') }}</label>
+                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+
+                            @error('email')
+                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                            @enderror
                         </div>
                         <div class="form-group">
-                            <label for="formGroupExampleInput2">Password</label>
-                            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="password">
+                            <label for="password">Password</label>
+                            <input id="password" type="password" class="form-control" @error('password') is-invalid @enderror name="password" required autocomplete="current-password">
+
+                            @error('password')
+                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                            @enderror
                         </div>
                         <a href="#">Forgot password/username?</a>
                         <div class="mt-2 d-flex justify-content-end">
                             <button type="button" class="btn btn-secondary mr-2 modal__button" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary modal__button">Submit</button>
+                            <button type="submit" class="btn btn-primary modal__button">
+                                {{ __('Login') }}
+                            </button>
                         </div>
                     </form>
                 </div>
