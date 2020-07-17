@@ -1,4 +1,4 @@
-//INTERSECTION OBSERVER-HOME PAGE
+//INTERSECTION OBSERVER-index
 
 //DOM selection
 const caraImg = document.querySelector(".carousel-inner");
@@ -9,14 +9,14 @@ const cardLeft = document.querySelectorAll(".card-animation__left");
 const cardRight = document.querySelectorAll(".card-animation__right");
 const ptoImg = document.querySelector(".pto__img");
 
-//Options for new observer object
+//options for new observer object
 const options = {
     root: null,
     rootMargin: '-425px 0px 0px 0px',
     threshold: 0
 };
 
-//Observer for navigation logo
+//observer for navigation logo
 observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (!entry.intersectionRatio > 0 ) {
@@ -37,8 +37,8 @@ observer = new IntersectionObserver((entries) => {
 
 observer.observe(caraImg);
 
-//Observer for card-tracker
-//Options for new observer object
+//observer for konti-tracker(left)
+//options for new observer object
 const option = {
   root: null,
   rootMargin: '-100px 0px -200px 0px',
@@ -62,8 +62,8 @@ observe = new IntersectionObserver((entries) => {
 cardLeft.forEach(image => {
   observe.observe(image)
 })
-//Observer for card-tracker
-//Options for new observer object
+//observer for konti-card(right)
+//options for new observer object
 observeRight = new IntersectionObserver((entries) => {
 
   entries.forEach((entry) => {
