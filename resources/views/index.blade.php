@@ -8,7 +8,7 @@
     @include("layouts.navbar.index")
 @stop
 
-@section('body-content');
+@section('body-content')
 
     <x-loginmodal></x-loginmodal>
 

@@ -11425,6 +11425,12 @@ body {
   background: linear-gradient(to bottom, rgba(235, 167, 43, 0.9), rgba(235, 167, 43, 0.9));
 }
 
+@media only screen and (max-width: 47.9em) {
+  .registration__container {
+    width: 100%;
+  }
+}
+
 .registration__title {
   margin: 0rem;
   padding: 0rem;
@@ -11435,6 +11441,12 @@ body {
   text-transform: uppercase;
   text-align: center;
   margin-bottom: 2.5rem;
+}
+
+@media only screen and (max-width: 47.9em) {
+  .registration__title {
+    padding: 3rem;
+  }
 }
 
 .registration__input {
@@ -11448,6 +11460,18 @@ body {
   color: #222;
   box-shadow: 5px 5px 10px;
   transition: all 0.3s;
+}
+
+@media only screen and (max-width: 47.9em) {
+  .registration__input {
+    width: 50vw;
+  }
+}
+
+@media only screen and (max-width: 31.25em) {
+  .registration__input {
+    width: 75vw;
+  }
 }
 
 .registration__label {
@@ -11496,6 +11520,11 @@ body {
   transform: translateY(-0.3rem);
   box-shadow: 0px 1.5rem 4rem rgba(0, 0, 0, 0.2);
   background-image: linear-gradient(to left, #000000, #222);
+}
+
+.registration__signup:active {
+  transform: translateY(-0.5rem);
+  box-shadow: 0rem 0.5rem 1rem rgba(0, 0, 0, 0.2);
 }
 
 .registration__login {

@@ -34,28 +34,28 @@ class UserTest extends TestCase
 
     }
 
-//    /** @test */
-//    public function register_creates_and_authenticates_a_user()
-//    {
-//        $this->withoutExceptionHandling();
-//
-//        $user = factory(User::class)->create();
-//
-//        $response = $this->post('register', [
-//            'name' => $user->name,
-//            'email' => 'jack@gmail.com',
-//            'password' => 'gjgosdfldsfds',
-//            'password_confirmation' => 'gjgosdfldsfds'
-//        ]);
-//
-//        $this->assertDatabaseHas('users', [
-//            'name' => $user->name,
-//            'email' => 'jack@gmail.com'
-//        ]);
-//        $this->assertAuthenticatedAs($user);
-//        $response->assertRedirect(route('home'));
-//
-//    }
+    /** @test */
+    public function register_creates_and_authenticates_a_user()
+    {
+
+        $user = factory(User::class)->create();
+
+        $response = $this->actingAs($user = factory(User::class)->create())
+            ->post('register', [
+            'name' => $user->name,
+            'email' => $user->email,
+            'password' => 'dsfdfsd',
+            'password_confirmation' => $user->password
+        ]);
+
+        $this->assertDatabaseHas('users', [
+            'name' => $user->name,
+            'email' => $user->email
+        ]);
+        $this->assertAuthenticatedAs($user);
+        $response->assertRedirect(route('home'));
+
+    }
 }
 
 
