@@ -3,7 +3,6 @@
 namespace Tests\Feature;
 
 
-
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -33,29 +32,42 @@ class UserTest extends TestCase
         $this->assertAuthenticatedAs($user);
 
     }
+    /**
+     * Register and authenticate a user.
+     *
+     * @return void
+     */
+    /** @test */
+    public function register_creates_and_authenticates_a_user()
+    {
 
-//    /** @test */
-//    public function register_creates_and_authenticates_a_user()
-//    {
-//        $this->withoutExceptionHandling();
-//
-//        $user = factory(User::class)->create();
-//
-//        $response = $this->post('register', [
-//            'name' => $user->name,
-//            'email' => 'jack@gmail.com',
-//            'password' => 'gjgosdfldsfds',
-//            'password_confirmation' => 'gjgosdfldsfds'
-//        ]);
-//
-//        $this->assertDatabaseHas('users', [
-//            'name' => $user->name,
-//            'email' => 'jack@gmail.com'
-//        ]);
-//        $this->assertAuthenticatedAs($user);
-//        $response->assertRedirect(route('home'));
-//
-//    }
+        $response = $this->actingAs($user = factory(User::class)->create())
+            ->post('/register');
+
+        $this->assertDatabaseHas('users', [
+            'name' => $user->name,
+            'email' => $user->email
+        ]);
+        $this->assertAuthenticatedAs($user);
+        $response->assertRedirect(route('home'));
+
+    }
+    /**
+     * User cannot view login form while authenticated.
+     *
+     * @return void
+     */
+    /** @test */
+    public function test_user_cannot_view_a_login_form_when_authenticated()
+    {
+        $user = factory(User::class)->make();
+
+        $response = $this->actingAs($user)->get('/login');
+
+        $response->assertRedirect('/home');
+    }
+
+
 }
 
 
