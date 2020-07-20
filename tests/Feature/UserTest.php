@@ -33,20 +33,17 @@ class UserTest extends TestCase
         $this->assertAuthenticatedAs($user);
 
     }
-
+    /**
+     * Register and authenticate a user.
+     *
+     * @return void
+     */
     /** @test */
     public function register_creates_and_authenticates_a_user()
     {
 
-        $user = factory(User::class)->create();
-
         $response = $this->actingAs($user = factory(User::class)->create())
-            ->post('register', [
-            'name' => $user->name,
-            'email' => $user->email,
-            'password' => 'dsfdfsd',
-            'password_confirmation' => $user->password
-        ]);
+            ->post('/register');
 
         $this->assertDatabaseHas('users', [
             'name' => $user->name,
@@ -56,6 +53,22 @@ class UserTest extends TestCase
         $response->assertRedirect(route('home'));
 
     }
+    /**
+     * User cannot view login form while authenticated.
+     *
+     * @return void
+     */
+    /** @test */
+    public function test_user_cannot_view_a_login_form_when_authenticated()
+    {
+        $user = factory(User::class)->make();
+
+        $response = $this->actingAs($user)->get('/login');
+
+        $response->assertRedirect('/home');
+    }
+
+
 }
 
 
