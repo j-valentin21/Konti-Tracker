@@ -1950,10 +1950,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 //
 //
 //
-//
-//
-//
-//
 
 /**
  * Keeps track of all of laravel's validation errors that come from axios.
@@ -1970,13 +1966,24 @@ var Errors = /*#__PURE__*/function () {
     this.errors = {};
   }
   /**
-   * Get error(field) name to display correct error.
+   * Checks to see if this.errors has a 'field' property.
    *
-   * @return object
+   * @return boolean
    */
 
 
   _createClass(Errors, [{
+    key: "has",
+    value: function has(field) {
+      return this.errors.hasOwnProperty(field);
+    }
+    /**
+     * Get error(field) name to display correct error.
+     *
+     * @return object
+     */
+
+  }, {
     key: "get",
     value: function get(field) {
       if (this.errors[field]) {
@@ -2023,7 +2030,7 @@ var Errors = /*#__PURE__*/function () {
       var _this = this;
 
       axios.post("/login", this.$data).then(function (response) {
-        return alert('success');
+        window.location.href = '/home';
       })["catch"](function (error) {
         return _this.errors.record(error.response.data.errors);
       });
@@ -37585,6 +37592,9 @@ var render = function() {
           submit: function($event) {
             $event.preventDefault()
             return _vm.submitForm($event)
+          },
+          keydown: function($event) {
+            return _vm.errors.clear($event.target.name)
           }
         }
       },
@@ -37611,9 +37621,6 @@ var render = function() {
             },
             domProps: { value: _vm.email },
             on: {
-              keydown: function($event) {
-                return _vm.errors.clear("email")
-              },
               input: function($event) {
                 if ($event.target.composing) {
                   return
@@ -37623,10 +37630,12 @@ var render = function() {
             }
           }),
           _vm._v(" "),
-          _c("strong", {
-            staticClass: "help is-danger",
-            domProps: { textContent: _vm._s(_vm.errors.get("email")) }
-          })
+          _vm.errors.has("email")
+            ? _c("strong", {
+                staticClass: "help is-danger",
+                domProps: { textContent: _vm._s(_vm.errors.get("email")) }
+              })
+            : _vm._e()
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "form-group" }, [
@@ -37651,9 +37660,6 @@ var render = function() {
             },
             domProps: { value: _vm.password },
             on: {
-              keydown: function($event) {
-                return _vm.errors.clear("password")
-              },
               input: function($event) {
                 if ($event.target.composing) {
                   return
@@ -37663,10 +37669,12 @@ var render = function() {
             }
           }),
           _vm._v(" "),
-          _c("strong", {
-            staticClass: "help is-danger",
-            domProps: { textContent: _vm._s(_vm.errors.get("password")) }
-          })
+          _vm.errors.has("password")
+            ? _c("strong", {
+                staticClass: "help is-danger",
+                domProps: { textContent: _vm._s(_vm.errors.get("password")) }
+              })
+            : _vm._e()
         ]),
         _vm._v(" "),
         _c("a", { attrs: { href: "#" } }, [

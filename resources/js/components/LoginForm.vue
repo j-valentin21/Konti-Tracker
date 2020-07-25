@@ -1,7 +1,6 @@
-
 <template>
     <div>
-        <form method="POST" @submit.prevent = 'submitForm'>
+        <form method="POST" @submit.prevent = 'submitForm' @keydown="errors.clear($event.target.name)">
             <div class="form-group">
                 <label for="email">Email Address</label>
                 <input id="email"
@@ -9,10 +8,8 @@
                        type="email"
                        class="form-control"
                        name="email"
-                       autocomplete="email"
-                       autofocus
-                       @keydown="errors.clear('email')">
-                <strong v-text="errors.get('email')" class="help is-danger"></strong>
+                       autocomplete="email" autofocus>
+                <strong v-if="errors.has('email')" v-text="errors.get('email')" class="help is-danger"></strong>
             </div>
 
             <div class="form-group">
@@ -23,9 +20,8 @@
                        class="form-control"
                        name="password"
                        required
-                       autocomplete="current-password"
-                       @keydown="errors.clear('password')">
-                <strong v-text="errors.get('password')" class="help is-danger"></strong>
+                       autocomplete="current-password">
+                <strong v-if="errors.has('password')" v-text="errors.get('password')" class="help is-danger"></strong>
             </div>
 
             <a href="#">Forgot password/username?</a>
@@ -50,6 +46,14 @@
          */
         constructor() {
             this.errors = {};
+        }
+        /**
+         * Checks to see if this.errors has a 'field' property.
+         *
+         * @return boolean
+         */
+        has(field) {
+            return this.errors.hasOwnProperty(field);
         }
 
         /**
@@ -93,7 +97,9 @@
         methods: {
             submitForm() {
                 axios.post("/login", this.$data)
-                    .then(response => alert('success'))
+                    .then( response => {
+                       window.location.href = '/home';
+                    })
                     .catch(error => this.errors.record(error.response.data.errors))
             }
         }
