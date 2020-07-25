@@ -2030,7 +2030,7 @@ var Errors = /*#__PURE__*/function () {
       var _this = this;
 
       axios.post("/login", this.$data).then(function (response) {
-        return alert('success');
+        window.location.href = '/home';
       })["catch"](function (error) {
         return _this.errors.record(error.response.data.errors);
       });
