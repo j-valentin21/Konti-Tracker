@@ -1,7 +1,6 @@
-
 <template>
     <div>
-        <form method="POST" @submit.prevent = 'submitForm'>
+        <form method="POST" @submit.prevent = 'submitForm' @keydown="errors.clear($event.target.name)">
             <div class="form-group">
                 <label for="email">Email Address</label>
                 <input id="email"
@@ -9,9 +8,7 @@
                        type="email"
                        class="form-control"
                        name="email"
-                       autocomplete="email"
-                       autofocus
-                       @keydown="errors.clear('email')">
+                       autocomplete="email" autofocus>
                 <strong v-text="errors.get('email')" class="help is-danger"></strong>
             </div>
 
@@ -23,8 +20,7 @@
                        class="form-control"
                        name="password"
                        required
-                       autocomplete="current-password"
-                       @keydown="errors.clear('password')">
+                       autocomplete="current-password">
                 <strong v-text="errors.get('password')" class="help is-danger"></strong>
             </div>
 

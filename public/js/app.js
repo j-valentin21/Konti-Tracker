@@ -1950,10 +1950,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 //
 //
 //
-//
-//
-//
-//
 
 /**
  * Keeps track of all of laravel's validation errors that come from axios.
@@ -37585,6 +37581,9 @@ var render = function() {
           submit: function($event) {
             $event.preventDefault()
             return _vm.submitForm($event)
+          },
+          keydown: function($event) {
+            return _vm.errors.clear($event.target.name)
           }
         }
       },
@@ -37611,9 +37610,6 @@ var render = function() {
             },
             domProps: { value: _vm.email },
             on: {
-              keydown: function($event) {
-                return _vm.errors.clear("email")
-              },
               input: function($event) {
                 if ($event.target.composing) {
                   return
@@ -37651,9 +37647,6 @@ var render = function() {
             },
             domProps: { value: _vm.password },
             on: {
-              keydown: function($event) {
-                return _vm.errors.clear("password")
-              },
               input: function($event) {
                 if ($event.target.composing) {
                   return
