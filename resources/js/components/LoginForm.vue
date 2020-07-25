@@ -9,7 +9,7 @@
                        class="form-control"
                        name="email"
                        autocomplete="email" autofocus>
-                <strong v-text="errors.get('email')" class="help is-danger"></strong>
+                <strong v-if="errors.has('email')" v-text="errors.get('email')" class="help is-danger"></strong>
             </div>
 
             <div class="form-group">
@@ -21,7 +21,7 @@
                        name="password"
                        required
                        autocomplete="current-password">
-                <strong v-text="errors.get('password')" class="help is-danger"></strong>
+                <strong v-if="errors.has('password')" v-text="errors.get('password')" class="help is-danger"></strong>
             </div>
 
             <a href="#">Forgot password/username?</a>
@@ -46,6 +46,14 @@
          */
         constructor() {
             this.errors = {};
+        }
+        /**
+         * Checks to see if this.errors has a 'field' property.
+         *
+         * @return boolean
+         */
+        has(field) {
+            return this.errors.hasOwnProperty(field);
         }
 
         /**
