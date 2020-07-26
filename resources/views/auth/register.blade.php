@@ -56,7 +56,6 @@
                        required autocomplete="new-password"/>
                 <label for="password" class="registration__label">{{ __('Password') }}</label>
 
-
                 @error('password')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -74,15 +73,16 @@
                 <label for="password-confirm" class="registration__label">{{ __('Confirm Password') }}</label>
             </div>
             {{--SIGN UP BUTTON--}}
-
                 <button type="submit" class="form-submit registration__signup" >
                     {{ __('Sign up') }}
                 </button>
-
-
+            {{--LOGIN LINK--}}
             <p class="registration__login">
-                Have already an account? <a href="#" class="loginhere-link">Login here</a>
+                Have already an account? <a data-toggle="modal" href="#exampleModalCentered" class="loginhere-link">Login here</a>
             </p>
+
+            <x-login_modal></x-login_modal>
+
         </form>
     </section>
 </div>

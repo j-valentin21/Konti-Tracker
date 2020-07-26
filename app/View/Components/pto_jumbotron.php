@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class PTO_jumbotron extends Component
+class pto_jumbotron extends Component
 {
     /**
      * Create a new component instance.
