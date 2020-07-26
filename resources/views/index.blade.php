@@ -10,7 +10,7 @@
 
 @section('body-content')
 
-    <x-loginmodal></x-loginmodal>
+    <x-login_modal></x-login_modal>
 
     <div class="container-fluid">
         <div class="row">
