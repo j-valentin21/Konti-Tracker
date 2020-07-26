@@ -66,11 +66,17 @@
             <div class="form-group mb-4">
                 <input id="password-confirm"
                        type="password"
-                       class="form-input registration__input"
+                       class="form-input registration__input @error('password_confirmation') is-invalid @enderror"
                        name="password_confirmation"
                        placeholder="Confirm Password"
                        required autocomplete="new-password"/>
                 <label for="password-confirm" class="registration__label">{{ __('Confirm Password') }}</label>
+
+                @error('password_confirmation')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
             </div>
             {{--SIGN UP BUTTON--}}
                 <button type="submit" class="form-submit registration__signup" >
