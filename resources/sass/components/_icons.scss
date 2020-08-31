@@ -1,0 +1,21 @@
+.icons {
+    height: 2rem;
+    fill: $color-dark-grey;
+    width: 30%;
+
+    &--sidebar{
+        width: 20%;
+    }
+}
+
+.icon__menu {
+    height: 2rem;
+    fill: $color-dark-grey;
+    width: 10vw;
+    display: none;
+
+    @include respond(tab-land) {
+        display: inline;
+    }
+}
+
