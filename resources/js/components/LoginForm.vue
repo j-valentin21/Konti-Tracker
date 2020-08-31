@@ -98,7 +98,7 @@
             submitForm() {
                 axios.post("/login", this.$data)
                     .then( response => {
-                       window.location.href = '/home';
+                       window.location.href = '/dashboard';
                     })
                     .catch(error => this.errors.record(error.response.data.errors))
             }
