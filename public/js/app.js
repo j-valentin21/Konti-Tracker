@@ -22676,7 +22676,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/*Classes that turn the menu into an \"X\"*/\n.navbar__top_click[data-v-3caba362] {\n        -webkit-backface-visibility: hidden;\n                backface-visibility: hidden;\n        top:3px;\n        transform: rotate(50deg);\n        transition: 0.55s 0.5s;\n        margin-top: 2rem;\n}\n.navbar__middle_click[data-v-3caba362] {\n         opacity: 0;\n}\n.navbar__bottom_click[data-v-3caba362] {\n         -webkit-backface-visibility: hidden;\n                 backface-visibility: hidden;\n         top: 3px;\n         transform: rotate(-410deg);\n         transition: 0.55s 0.5s;\n         margin-top: 2rem;\n}\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/*Classes that turn the menu into an \"X\"*/\n.navbar__top_click[data-v-3caba362] {\r\n        -webkit-backface-visibility: hidden;\r\n                backface-visibility: hidden;\r\n        top:3px;\r\n        transform: rotate(50deg);\r\n        transition: 0.55s 0.5s;\r\n        margin-top: 2rem;\n}\n.navbar__middle_click[data-v-3caba362] {\r\n         opacity: 0;\n}\n.navbar__bottom_click[data-v-3caba362] {\r\n         -webkit-backface-visibility: hidden;\r\n                 backface-visibility: hidden;\r\n         top: 3px;\r\n         transform: rotate(-410deg);\r\n         transition: 0.55s 0.5s;\r\n         margin-top: 2rem;\n}\r\n", ""]);
 
 // exports
 

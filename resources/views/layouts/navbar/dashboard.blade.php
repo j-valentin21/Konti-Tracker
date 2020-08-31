@@ -30,7 +30,7 @@
             </div>
             <!-- LOGO/MENU -->
             <div class="ml-4">
-                <a class="navbar__dash__logo"  href="index.html">
+                <a class="navbar__dash__logo"  href="/">
                     <img src="{{ asset('img/konti_logo.png') }}" alt="Konti-Tracker logo" height="80">
                 </a>
 
