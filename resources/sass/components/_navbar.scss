@@ -1,7 +1,7 @@
 .navbar__logo {
     position: absolute;
-    top: 0; 
-    background-color: $color-black;   
+    top: 0;
+    background-color: $color-black;
     margin: 0rem;
     z-index: 10;
     color: $color-orange;
@@ -9,35 +9,33 @@
     transition: all .5s ease-in;
     height: auto;
 
-        @include respond(laptop) {
-            margin-left: 8rem; 
-    
-    
-        }
+    @include respond(laptop) {
+        margin-left: 8rem;
+    }
 
-        @include respond(tab-land) {
+    @include respond(tab-land) {
+        height: 20vh;
+        &--img {
             height: 20vh;
-            &--img {
-                height: 20vh;
-            }
+        }
+    }
+
+    @include respond(tab-port) {
+        height: 15vh;
+        &--img {
+            height: 13vh;
         }
 
-        @include respond(tab-port) {
+        margin-left: 6rem;
+    }
+
+    @include respond(ipad) {
+        &--img {
             height: 15vh;
-            &--img {
-                height: 13vh;
-            }
-
-            margin-left: 6rem;
         }
-
-        @include respond(ipad) {
-            &--img {
-                height: 15vh;
-            }
-            height: 15vh;
-            margin-left:6rem;
-        }
+        height: 15vh;
+        margin-left:6rem;
+    }
 }
 
 .navbar__alt {
@@ -49,54 +47,52 @@
     left: 0rem;
     height: 21.5vh;
 
-        @include respond(laptop) {
-            padding: 0rem 4rem;
-            height: 10rem;
-            &--img {
-                height: 100%;        
-            } 
+    @include respond(laptop) {
+        padding: 0rem 4rem;
+        height: 10rem;
+        &--img {
+            height: 100%;
         }
+    }
 
-        @include respond(tab-land) {
-            padding: 0rem 3.5rem;
-            height: 16.5vh;
-            margin-top: 1rem;
-        }
+    @include respond(tab-land) {
+        padding: 0rem 3.5rem;
+        height: 16.5vh;
+        margin-top: 1rem;
+    }
 
-        @include respond(tab-port) {
-            transform: scale(.7);
-            height: 7.5rem;
-            margin-top: 1.5rem;
-        }
+    @include respond(tab-port) {
+        transform: scale(.7);
+        height: 7.5rem;
+        margin-top: 1.5rem;
+    }
 
-        @include respond(mobile-land) {
-            transform: scale(.7);
-            margin-top: 1.3rem;
-        }
+    @include respond(mobile-land) {
+        transform: scale(.7);
+        margin-top: 1.3rem;
+    }
 
-        @include respond(mobile-port) {
-            transform: scale(.65);
-            margin-top: 2rem;
-            padding: 0rem 2rem;
-            height: 6.75rem;
-        }
+    @include respond(mobile-port) {
+        transform: scale(.65);
+        margin-top: 2rem;
+        padding: 0rem 2rem;
+        height: 6.75rem;
+    }
 
-        @include respond(laptop-touch) {
-            height: 17vh;
-        }
+    @include respond(laptop-touch) {
+        height: 17vh;
+    }
 
-        @include respond(pixel2) {
-           margin-top: 1.6rem;
-        }
+    @include respond(pixel2) {
+        margin-top: 1.6rem;
+    }
 
-        @include respond(ipad) {
-            transform: scale(.5);
-            margin-top: 1rem;
-            padding: 0rem 3rem;
-            height: 12vh;
-        }
-
-
+    @include respond(ipad) {
+        transform: scale(.5);
+        margin-top: 1rem;
+        padding: 0rem 3rem;
+        height: 12vh;
+    }
 }
 
 .navbar__bg {
@@ -109,5 +105,85 @@
     color: $color-black;
     padding: 0rem auto;
     margin: 0rem 1.75rem;
+}
+
+
+//*******************
+//DASHBOARD
+//********************
+
+.navbar__dash {
+    background-color: rgba(0, 0, 0, 0.4);
+    height: 11vh;
+
+    &__logo {
+        @include respond(mobile-port) {
+            display: none;
+        }
+    }
+}
+
+.navbar__img {
+    height: 3rem;
+    width: 3rem;
+    padding: 3px;
+}
+
+.navbar__title{
+    margin-top: 3rem;
+    width: 55%;
+}
+
+.navbar__menu {
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    width: 2.3rem;
+    height: 1.75rem;
+    margin: 0rem 0rem .5rem 2rem;
+
+    @include respond(mobile-port) {
+        margin: 0rem;
+        margin-top: 1.25rem;
+    }
+
+    &__global {
+        backface-visibility: hidden;
+        position: absolute;
+        left: 0;
+        border-top: 3px solid $color-dark-grey;
+        width: 100%;
+        transition: 0.55s;
+
+        &--top {
+            top: 1.4rem;
+        }
+
+        &--middle {
+            top: 2.25rem;
+        }
+
+        &--bottom {
+            top: 3rem;
+        }
+    }
+
+    &__top-click {
+        backface-visibility: hidden;
+        top:3px;
+        transform: rotate(50deg);
+        transition: 0.55s 0.5s;
+        margin-top: 2rem;
+    }
+    &__middle-click {
+        opacity: 0;
+    }
+    &__bottom-click {
+        backface-visibility: hidden;
+        top: 3px;
+        transform: rotate(-410deg);
+        transition: 0.55s 0.5s;
+        margin-top: 2rem;
+    }
 }
 
