@@ -167,23 +167,5 @@
             top: 3rem;
         }
     }
-
-    &__top-click {
-        backface-visibility: hidden;
-        top:3px;
-        transform: rotate(50deg);
-        transition: 0.55s 0.5s;
-        margin-top: 2rem;
-    }
-    &__middle-click {
-        opacity: 0;
-    }
-    &__bottom-click {
-        backface-visibility: hidden;
-        top: 3px;
-        transform: rotate(-410deg);
-        transition: 0.55s 0.5s;
-        margin-top: 2rem;
-    }
 }
 

@@ -33,11 +33,8 @@
                 <a class="navbar__dash__logo"  href="index.html">
                     <img src="{{ asset('img/konti_logo.png') }}" alt="Konti-Tracker logo" height="80">
                 </a>
-                <div class="navbar__menu d-lg-none" data-toggle="collapse" data-target="#sidebar-menu">
-                    <span class="navbar__menu__global navbar__menu__global--top"></span>
-                    <span class="navbar__menu__global navbar__menu__global--middle"></span>
-                    <span class="navbar__menu__global navbar__menu__global--bottom"></span>
-                </div>
+
+                <menu-btn></menu-btn>
             </div>
         </div>
     </div>
