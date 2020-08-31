@@ -23,6 +23,7 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('login-form', require('./components/LoginForm.vue').default);
+Vue.component('menu-btn', require('./components/MenuBtn.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

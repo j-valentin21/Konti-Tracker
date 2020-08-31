@@ -4,6 +4,8 @@
 
 @section('class', 'dashboard')
 
+@section('id', 'app')
+
 @section('body-header')
     @include("layouts.navbar.dashboard")
 @endsection
@@ -152,7 +154,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- ========== START ROW/NOTIFICATIONS ========== -->
+                    <!-- ========== ROW START/NOTIFICATIONS ========== -->
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-lg-4 mb-4">
@@ -273,10 +275,11 @@
                             </div>
                         </div><!-- END ROW -->
                     </div> <!-- END OF CONTAINER-FLUID -->
-                </div> <!-- END OF DASHBOARD MAIN-CONTENT -->
-            </div> <!-- END OF DASHBOARD MAIN -->
-        </div> <!-- END OF PAGE CONTENT -->
-    @endsection
+                </div> <!-- END OF ROW -->
+            </div> <!-- END OF DASHBOARD MAIN-CONTENT -->
+        </div> <!-- END OF DASHBOARD-MAIN -->
+    </div><!-- END OF MAIN CONTAINER-FLUID -->
+@endsection
     <!-- SCRIPTS -->
 @section('body-scripts')
     <script src="{{ asset('js/scripts/chart.js') }}"></script>

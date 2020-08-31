@@ -30,28 +30,28 @@
     @yield('head-extra')
 </head>
 <body class= @yield("class")>
-{{-- Part: something at start of body --}}
-@yield('body-start')
+    <div id= @yield("id")>
+        {{-- Part: something at start of body --}}
+        @yield('body-start')
 
-{{-- Part: header of body --}}
-@section('body-header')
+        {{-- Part: header of body --}}
+        @section('body-header')
 
-@show
+        @show
 
-{{-- Part: create main content of the page --}}
-@yield('body-content')
+        {{-- Part: create main content of the page --}}
+        @yield('body-content')
 
-{{-- Part: footer --}}
-@section('body-footer')
-    {{-- Part: footer is probably shared across many pages --}}
-@show
-
-{{-- Part: load scripts --}}
-@yield('body-scripts')
-{{-- Part: something else to do --}}
-@yield('body-others')
-{{-- Part: finalize stuffs if there is --}}
-@yield('body-end')
-
+        {{-- Part: footer --}}
+        @section('body-footer')
+            {{-- Part: footer is probably shared across many pages --}}
+        @show
+    </div>
+        {{-- Part: load scripts --}}
+        @yield('body-scripts')
+        {{-- Part: something else to do --}}
+        @yield('body-others')
+        {{-- Part: finalize stuffs if there is --}}
+        @yield('body-end')
 </body>
 </html>
