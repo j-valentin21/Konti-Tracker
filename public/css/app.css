@@ -11286,7 +11286,7 @@ body {
 }
 
 .footer {
-  background: linear-gradient(to right, rgba(227, 227, 227, 0.8), #d3cce3), url(/images/highway.jpg?b956281f13da0b6dd6516187817afe48);
+  background: linear-gradient(to right, rgba(227, 227, 227, 0.8), #d3cce3), url("/img/highway.jpg");
   background-size: cover;
   max-width: 100vw;
   margin-top: 3rem;
