@@ -1,0 +1,28 @@
+.dashboard {
+    background-color: #17212f;
+
+    &__nav {
+        background-color: rgba($color-black, 0.05);
+        z-index: 1002;
+
+        box-shadow: 0 1px 2px rgba(0,0,0,.075);
+        width: 100%;
+        height: 180px;
+        background-size: cover;
+        background-image:linear-gradient(to right bottom, rgba($color-black, .8), $color-orange), url("/img/highway.jpg");
+    }
+
+    &__main {
+       margin-left:15%;
+       overflow: hidden;
+
+          @include respond(tab-land) {
+                 margin-left:0%;
+            }
+    }
+
+    &__main-content {
+        padding-left: 7%;
+        padding-top: 1.5rem;
+    }
+}
