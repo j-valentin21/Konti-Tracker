@@ -6,7 +6,7 @@
 
 @section('body-header')
     @include("layouts.navbar.index")
-@stop
+@endsection
 
 @section('body-content')
 
@@ -22,18 +22,17 @@
 
                 <x-konti-cards></x-konti-cards>
 
-            @section('body-footer')
-                @include("layouts.footer.index")
-            @endsection
-
+                @section('body-footer')
+                    @include("layouts.footer.index")
+                @endsection
             </div>
         </div>
     </div>
-@stop
+@endsection
 <!-- SCRIPTS -->
 @section('body-scripts')
     <script src="{{ asset('js/scripts/intersection_observer/index.js') }}"></script>
-@stop
+@endsection
 
 
 
