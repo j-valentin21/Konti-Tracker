@@ -1,0 +1,43 @@
+.btn__step {
+    color: #494949;
+    width: 2rem;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 90%;
+    background: #ffffff;
+    border: 3px solid #494949;
+    display: inline-block;
+    transition: all 0.4s ease 0s;
+
+    &:hover {
+        color: #212529;
+        text-decoration: none;
+        background: #f6b93b;
+        border-color: #f6b93b;
+        transition: all 0.4s ease 0s;
+        font-weight: 700;
+        text-align: center;
+    }
+}
+
+.btn__submit {
+    color: #494949;
+    width: 6rem;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 2%;
+    background: #ffffff;
+    border: 3px solid #494949;
+    display: inline-block;
+    transition: all 0.4s ease 0s;
+    margin: 0 auto;
+
+    &:hover {
+        color: #212529;
+        text-decoration: none;
+        background: #f6b93b;
+        border-color: #f6b93b;
+        transition: all 0.4s ease 0s;
+        font-weight: 900;
+    }
+}
