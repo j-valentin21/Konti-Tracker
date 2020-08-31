@@ -12,11 +12,13 @@
 
 //Base
 @import "base/base";
-
 @import "base/animations";
+@import "base/utilities";
+
 
 //Layout
 @import "layout/homepage";
+@import "layout/dashboard";
 
 //Components
 @import "components/navbar";
@@ -36,3 +38,15 @@
 @import "components/modal";
 
 @import "components/registration";
+
+@import "components/icons";
+
+@import "components/sidebar";
+
+@import "components/dashboard_card";
+
+@import "components/button";
+
+@import "components/pagination";
+
+
