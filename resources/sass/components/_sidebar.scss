@@ -1,0 +1,63 @@
+.sidebar {
+    min-width: 225px;
+    max-width: 225px;
+    z-index: 1001;
+    background: #1e2938;
+    bottom: 0;
+    margin-top: 0;
+    position: absolute;
+    top: 7.5rem;
+    box-shadow: 0 0.75rem 1.5rem rgba(18, 38, 63, 0.03);
+    height: 75%;
+
+    @include respond(laptop) {
+        min-width: 190px;
+        max-width: 190px;
+    }
+
+    @include respond(tab-land) {
+        height: 60%;
+    }
+
+
+    &__img {
+        padding: .5rem;
+    }
+
+    &__avatar {
+        height: 4.5rem;
+        width: 4.5rem;
+        border: 2px dashed $color-orange;
+    }
+
+    &__text {
+        color:$color-dark-grey;
+        font-size: 1rem;
+    }
+
+    &__name {
+        font-weight: 500;
+        font-size: 1.25rem;
+    }
+
+    &__menu {
+        padding: .75rem 1rem ;
+        letter-spacing: .05em;
+        pointer-events: none;
+        cursor: default;
+        font-size: .75rem;
+        text-transform: uppercase;
+        color: $color-dark-grey;
+        font-weight: 600;
+    }
+
+    &__link {
+        display: block;
+        padding: .625rem 1.5rem;
+        color: #7f879c;
+        position: relative;
+        font-size: .9rem;
+        transition: all .4s;
+    }
+}
+

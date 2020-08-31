@@ -1,0 +1,19 @@
+.dashboard__card {
+    background-color: #1e2938;
+
+    &__title {
+        color: $color-white;
+    }
+
+    &__text {
+        color: #7f879c;
+    }
+
+    &__chart {
+        height: 50vh;
+
+        @include respond(tab-land) {
+            height:35vh;
+        }
+    }
+}

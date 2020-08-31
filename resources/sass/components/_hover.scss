@@ -3,7 +3,7 @@
     overflow: hidden;
     position: relative;
     transition: all .3s ease-in;
-   
+
     &::before,
     &::after {
         content: '';
@@ -25,26 +25,19 @@
         transform: translateY(110%);
     }
 
-
     &:hover {
         color: $color-orange;
         z-index: 1;
         text-decoration: none;
         transition: all .5s ease-in;
-        text-transform: uppercase;
-        
+        font-weight: 700;
+
         &::before {
             transform: translateY(-45%);
-            
-            
         }
 
         &::after {
             transform: translateY(45%);
-            
         }
-
-
     }
-
 }
