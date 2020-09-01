@@ -4,10 +4,16 @@
         <div class="container">
             <h2 class="footer__primary text-center mt-4">SITE LINKS</h2>
             <div class="d-flex justify-content-around">
-                <a class="footer__link hover__black" href="#">HOME</a>
-                <a class="footer__link hover__black" href="#">SIGNUP/REGISTER</a>
-                <a class="footer__link hover__black" href="#">SIGN IN</a>
-                <a class="footer__link hover__black" href="#">CONTACT US</a>
+                @guest
+                    <a class="footer__link hover__black" href="#">HOME</a>
+                    <a class="footer__link hover__black" href="{{ route('register') }}">SIGNUP/REGISTER</a>
+                    <a class="footer__link hover__black" data-toggle="modal" data-target="#loginmodal">SIGN IN</a>
+                    <a class="footer__link hover__black" href="#">CONTACT US</a>
+                @else
+                    <a class="footer__link hover__black" href="#">HOME</a>
+                    <a class="footer__link hover__black" href="{{ route('dashboard.index') }}">DASHBOARD</a>
+                    <a class="footer__link hover__black" href="#">CONTACT US</a>
+                @endguest
             </div>
             <div class="d-flex justify-content-end">
                 <p class="footer__copyright">

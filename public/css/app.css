@@ -11456,7 +11456,7 @@ body {
 }
 
 .hover__black:hover {
-  color: #eba72b;
+  color: #eba72b !important;
   z-index: 1;
   text-decoration: none;
   transition: all 0.5s ease-in;
