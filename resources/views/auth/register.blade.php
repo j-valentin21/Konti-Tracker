@@ -84,11 +84,10 @@
                 </button>
             {{--LOGIN LINK--}}
             <p class="registration__login">
-                Have already an account? <a data-toggle="modal" href="#exampleModalCentered" class="loginhere-link">Login here</a>
+                Have already an account? <a data-toggle="modal" data-target="#loginmodal" class="text-primary" role="button">Login here</a>
             </p>
 
             <x-login_modal></x-login_modal>
-
         </form>
     </section>
 </div>
