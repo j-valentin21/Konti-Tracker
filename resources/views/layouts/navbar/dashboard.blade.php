@@ -20,10 +20,16 @@
                                 <use href="svg/sprite.svg#icon-cog"></use>
                             </svg> Settings
                         </a>
-                        <a class="dropdown-item dashboard__card__text hover__black" href="#">
+                        <a class="dropdown-item dashboard__card__text hover__black"
+                           href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                           document.getElementById('logout-form').submit();">
                             <svg class="icons">
                                 <use href="svg/sprite.svg#icon-switch"></use>
-                            </svg> Logout
+                            </svg> {{ __('Logout') }}
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
                         </a>
                     </div>
                 </div>
