@@ -26,7 +26,7 @@
     }
 
     &:hover {
-        color: $color-orange;
+        color: $color-orange !important;
         z-index: 1;
         text-decoration: none;
         transition: all .5s ease-in;
