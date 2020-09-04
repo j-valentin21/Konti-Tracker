@@ -19,7 +19,7 @@ class UserTest extends TestCase
      * @return void
      */
     /** @test */
-    public function login_authenticates_and_redirects_user()
+    public function test_Login_Authenticates_And_Redirects_User()
     {
 
        $response = $this->actingAs($user = factory(User::class)->create())
@@ -28,7 +28,7 @@ class UserTest extends TestCase
                 'password' => $user->password
             ]);
 
-        $response->assertRedirect('/home');
+        $response->assertRedirect('/dashboard');
         $this->assertAuthenticatedAs($user);
 
     }
@@ -38,7 +38,7 @@ class UserTest extends TestCase
      * @return void
      */
     /** @test */
-    public function register_creates_and_authenticates_a_user()
+    public function test_Register_Creates_And_Authenticates_A_User()
     {
 
         $response = $this->actingAs($user = factory(User::class)->create())
@@ -49,7 +49,7 @@ class UserTest extends TestCase
             'email' => $user->email
         ]);
         $this->assertAuthenticatedAs($user);
-        $response->assertRedirect(route('home'));
+        $response->assertRedirect(route('dashboard.index'));
 
     }
     /**
@@ -58,15 +58,28 @@ class UserTest extends TestCase
      * @return void
      */
     /** @test */
-    public function test_user_cannot_view_a_login_form_when_authenticated()
+    public function test_User_Cannot_View_A_Login_Form_When_Authenticated()
     {
         $user = factory(User::class)->make();
 
         $response = $this->actingAs($user)->get('/login');
 
-        $response->assertRedirect('/home');
+        $response->assertRedirect('/dashboard');
     }
 
+    /**
+     * Guess cannot access dashboard without being authenticated.
+     *
+     * @return void
+     */
+    /** @test */
+    public function test_Guess_Cannot_Access_Dashboard()
+    {
+
+        $response = $this->get('/dashboard');
+
+        $response->assertRedirect('/');
+    }
 
 }
 
