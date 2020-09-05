@@ -20,3 +20,4 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard.index');
+Route::get('/register/build-your-profile', 'ProfileController@index')->name('profile');
