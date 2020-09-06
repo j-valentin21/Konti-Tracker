@@ -23,6 +23,6 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return view('registration.build-your-profile');
+        return view('auth.profile.build-your-profile');
     }
 }

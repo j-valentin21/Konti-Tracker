@@ -2,7 +2,7 @@
 
 @section('title', "Registration")
 
-@section('class', 'registration d-flex justify-content-end')
+@section('class', 'registration')
 
 @section('body-content')
 

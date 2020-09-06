@@ -37,7 +37,7 @@ class FirstTimeRegistrationTest extends TestCase
         $response = $this->actingAs($user = factory(User::class)->create())
             ->get('/register/build-your-profile');
 
-        $response->assertRedirect('/');
+        $response->assertRedirect('/dashboard');
         $this->assertAuthenticatedAs($user);
     }
 }
