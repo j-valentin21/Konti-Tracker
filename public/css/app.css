@@ -11103,6 +11103,10 @@ body {
   padding-top: 1.5rem;
 }
 
+.profile {
+  background: linear-gradient(to top, #000000, #434343) !important;
+}
+
 .navbar__logo {
   position: absolute;
   top: 0;
