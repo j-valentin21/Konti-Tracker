@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class FirstTimeUser
+class NotFirstTimeUser
 {
     /**
      * Handle an incoming request.
@@ -15,10 +15,11 @@ class FirstTimeUser
      */
     public function handle($request, Closure $next)
     {
-        if(auth()->user()->firstTimeUser == 1){
+        if(auth()->user()->firstTimeUser == 0){
             return $next($request);
         }
 
-        return redirect('/dashboard');
+        return redirect('/');
+
     }
 }
