@@ -77,16 +77,15 @@
                     <strong>{{ $message }}</strong>
                 </span>
                 @enderror
-            </div>
-            {{--SIGN UP BUTTON--}}
+                {{--SIGN UP BUTTON--}}
                 <button type="submit" class="form-submit registration__signup" >
                     {{ __('Sign up') }}
                 </button>
-            {{--LOGIN LINK--}}
-            <p class="registration__login">
-                Have already an account? <a data-toggle="modal" data-target="#loginmodal" class="text-primary" role="button">Login here</a>
-            </p>
-
+                {{--LOGIN LINK--}}
+                <p class="registration__login">
+                    Have already an account? <a data-toggle="modal" data-target="#loginmodal" class="text-primary" role="button">Login here</a>
+                </p>
+            </div>
             <x-login_modal></x-login_modal>
         </form>
     </section>

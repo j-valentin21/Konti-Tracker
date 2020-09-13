@@ -11,7 +11,6 @@
 @endsection
 
 @section('body-content')
-    <x-form_wizard></x-form_wizard>
     <div class="container-fluid">
         <!-- ========== SIDEBAR START ========== -->
         <div class="sidebar d-lg-block collapse" id="sidebar-menu">

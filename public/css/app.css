@@ -11519,7 +11519,7 @@ body {
 .registration__container {
   width: 40%;
   height: 100vh;
-  padding: 5rem;
+  padding: 2rem;
   background: linear-gradient(to bottom, rgba(235, 167, 43, 0.9), rgba(235, 167, 43, 0.9));
 }
 
