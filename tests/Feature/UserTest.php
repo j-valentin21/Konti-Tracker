@@ -13,15 +13,13 @@ class UserTest extends TestCase
 
     use RefreshDatabase;
 
-
-
     /**
      * The user gets authenticated when logged in and redirected back to dashboard.
      *
      * @return void
      */
     /** @test */
-    public function test_Login_Authenticates_And_Redirects_User()
+    public function test_Login_Authenticates_And_Redirects_User_Dashboard()
     {
 
        $response = $this->actingAs($user = factory(User::class)->create())
@@ -67,20 +65,6 @@ class UserTest extends TestCase
         $response = $this->actingAs($user)->get('/login');
 
         $response->assertRedirect('/dashboard');
-    }
-
-    /**
-     * Guess cannot access dashboard without being authenticated.
-     *
-     * @return void
-     */
-    /** @test */
-    public function test_Guess_Cannot_Access_Dashboard()
-    {
-
-        $response = $this->get('/dashboard');
-
-        $response->assertRedirect('/');
     }
 
 }
