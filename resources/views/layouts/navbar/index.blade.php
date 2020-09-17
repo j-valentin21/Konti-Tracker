@@ -23,8 +23,12 @@
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right " aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item hover__black" href="{{ route('dashboard.index') }}">Dashboard</a>
-                        <x-logout></x-logout>
+                        @if(Auth::user()->firstTimeUser === 1)
+                            <a class="dropdown-item hover__black bg-warning" href="{{ route('profile') }}">Finish your profile</a>
+                        @else
+                            <a class="dropdown-item hover__black" href="{{ route('dashboard.index') }}">Dashboard</a>
+                        @endif
+                            <x-logout></x-logout>
                     </div>
                 </li>
             @endguest
