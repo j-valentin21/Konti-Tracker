@@ -33,7 +33,7 @@ class DashboardTest extends TestCase
      *
      * @return void
      */
-    /** @test */
+
     public function test_Only_Authenticated_Non_First_Time_User_Can_Access_Dashboard()
     {
         $this->actingAs($user = factory(User::class)->make([
@@ -47,5 +47,6 @@ class DashboardTest extends TestCase
             $this->assertEquals('0', $user->FirstTimeUser);
             $this->assertAuthenticatedAs($user);
     }
+
 }
 
