@@ -44,5 +44,27 @@ class FirstTimeRegistrationTest extends TestCase
         $this->assertEquals('1', $user->FirstTimeUser);
         $this->assertAuthenticatedAs($user);
     }
+
+    /**
+     * User can post input to build-your profile page.
+     *
+     * @return void
+     */
+    /** @test */
+    public function test_User_Can_Post_To_Build_Your_Profile_Page()
+    {
+        $profile = factory(Profile::class)->create()
+            ->post(route('login'), [
+                'position' => $profile->position ,
+                'image' => $profile->image
+            ]);
+
+        $this->assertDatabaseHas('profile', [
+            'position' => 'Material Handler',
+            'image' => 'car.jpg',
+        ]);
+
+
+    }
 }
 
