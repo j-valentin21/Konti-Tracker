@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\User;
+use App\Profile;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Route;
@@ -54,14 +55,14 @@ class FirstTimeRegistrationTest extends TestCase
     public function test_User_Can_Post_To_Build_Your_Profile_Page()
     {
         $profile = factory(Profile::class)->create()
-            ->post(route('login'), [
-                'position' => $profile->position ,
+            ->post(route('profile'), [
+                'position' => $profile->position,
                 'image' => $profile->image
             ]);
 
         $this->assertDatabaseHas('profile', [
-            'position' => 'Material Handler',
-            'image' => 'car.jpg',
+            'position' => $profile->position,
+            'image' => $profile->image,
         ]);
 
 
