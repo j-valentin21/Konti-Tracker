@@ -19,7 +19,6 @@ class FirstTimeRegistrationTest extends TestCase
      *
      * @return void
      */
-    /** @test */
     public function test_Guest_Cannot_Access_Build_Your_Profile_Page()
     {
 
@@ -33,7 +32,7 @@ class FirstTimeRegistrationTest extends TestCase
      *
      * @return void
      */
-    /** @test */
+
     public function test_Only_Authenticated_First_Time_User_Can_Access_Build_Your_Profile_Page()
     {
         $this->actingAs($user = factory(User::class)->make());
@@ -51,16 +50,15 @@ class FirstTimeRegistrationTest extends TestCase
      *
      * @return void
      */
-    /** @test */
     public function test_User_Can_Post_To_Build_Your_Profile_Page()
     {
-        $profile = factory(Profile::class)->create()
-            ->post(route('profile'), [
+        $profile = factory(Profile::class)->create();
+            $this->post(route('register'), [
                 'position' => $profile->position,
                 'image' => $profile->image
             ]);
 
-        $this->assertDatabaseHas('profile', [
+        $this->assertDatabaseHas('profiles', [
             'position' => $profile->position,
             'image' => $profile->image,
         ]);

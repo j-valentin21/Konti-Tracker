@@ -8,7 +8,7 @@ use Faker\Generator as Faker;
 $factory->define(Profile::class, function (Faker $faker) {
     return [
         'position' => $faker->text,
-        'image' => $faker->image('images',400,300),
+        'image' => $faker->image('public/images',400,300),
         'pto' => $faker->randomNumber(),
         'points'=> $faker->randomNumber()
     ];

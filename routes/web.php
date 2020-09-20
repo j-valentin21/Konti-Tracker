@@ -20,6 +20,7 @@ Route::get('/', function () {
 Auth::routes();
 Route::middleware(['auth', 'firstTimeUser'])->group(function () {
     Route::get('/register/build-your-profile', 'ProfileController@index')->name('profile');
+    Route::post('/register', 'ProfileController@index')->name('profile');
 
 });
 
