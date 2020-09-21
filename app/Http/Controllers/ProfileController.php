@@ -2,28 +2,46 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
+use App\Profile;
+use App\Http\Requests\FirstTimeRegistrationValidation;
 
 class ProfileController extends Controller
 {
-    /**
-     * middleware added to route before sending response.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-        $this->middleware('firstTimeUser');
-    }
 
     /**
      * Show build-your-profile page.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @param Request $request
+     * @return Renderable
      */
-    public function index()
+    public function create(Request $request)
     {
-        return view('auth.profile.build-your-profile');
+        $profile = $request->session()->get('profile');
+        return view('auth.profile.build-your-profile',compact('profile', $profile));
+
+    }
+
+    /**
+     * Post Request to store step 1 info in session
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function post(FirstTimeRegistrationValidation $request)
+    {
+
+        if (empty($request->session()->get('profile'))) {
+            $profile = new Profile();
+            $profile->fill();
+            $request->session()->put('profile', $profile);
+        } else {
+            $profile = $request->session()->get('profile');
+            $profile->fill();
+            $request->session()->put('profile', $profile);
+        }
+
+        return redirect('/register/pto');
     }
 }
