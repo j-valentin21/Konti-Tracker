@@ -31,18 +31,18 @@ class ProfileController extends Controller
      */
     public function post(FirstTimeRegistrationValidation $request)
     {
-        $validated =
+        $validated = $request->validated();
 
         if (empty($request->session()->get('profile'))) {
             $profile = new Profile();
-            $profile->fill();
+            $profile->fill($validated);
             $request->session()->put('profile', $profile);
         } else {
             $profile = $request->session()->get('profile');
-            $profile->fill();
+            $profile->fill($validated);
             $request->session()->put('profile', $profile);
         }
 
-        return redirect('/register/pto');
+        return redirect('/register/pto_points');
     }
 }
