@@ -31,6 +31,7 @@ class ProfileController extends Controller
      */
     public function post(FirstTimeRegistrationValidation $request)
     {
+        $validated =
 
         if (empty($request->session()->get('profile'))) {
             $profile = new Profile();
