@@ -4,7 +4,7 @@
 
 @section('body-content')
     @csrf
-    <form action="">
+    <form action="{{ route('pto_points') }}">
         <div class="container-fluid">
             <div class="modal fade bd-example-modal-lg profile" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg modal-dialog-centered">
@@ -32,7 +32,7 @@
                                            class="form-input registration__input @error('position') is-invalid @enderror"
                                            name="position"
                                            placeholder="What is your position?"
-                                           value="{{ old('position') }}"
+                                           value="{{ $profile->position ?? ""}}"
                                            required autocomplete="position"/>
                                     <label for="position" class="registration__label">{{ __('What is your position?') }}</label>
 
