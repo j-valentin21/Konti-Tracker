@@ -1,16 +1,17 @@
 @extends('layouts.master')
 
-@section('title', "Build-Your-Profile")
+@section('title', "PTO/Points")
 
 @section('body-content')
-    <form method="POST" action="{{ route('profile') }}">
+    <form method="POST" action="{{ route('pto_points') }}">
         @csrf
+
         <div class="container-fluid">
             <div class="modal fade bd-example-modal-lg profile" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg modal-dialog-centered">
                     <div class="modal-content">
                         <div class="row">
-                            <!-- ========== HEADER ========== -->
+                            <!-- ========== HEADER========== -->
                             <div class="col-12">
                                 <section class="form__wizard">
                                     <img class="form__wizard__img img-fluid" src="{{ asset('img/limo_car.jpg') }}" alt="">
@@ -19,8 +20,8 @@
                             </div>
                         </div>
                         <div class="row p-5">
+                            <!-- ========== STEPS ========== -->
                             <div class="col-4">
-                                <!-- ========== STEPS ========== -->
                                 <ol class="form__wizard__steps ">
                                     <li class="mb-4 form__wizard__steps--active">Build Your Profile</li>
                                     <li class="mb-4">PTO/Points</li>
@@ -28,29 +29,39 @@
                                 </ol>
                             </div>
                             <div class="col-8">
-                                <!-- ========== POSITION ========== -->
+                                <!-- ========== POINTS ========== -->
                                 <div class="form-group mb-4">
-                                    <input id="position"
+                                    <input id="points"
                                            type="text"
-                                           class="form-input registration__input @error('position') is-invalid @enderror"
-                                           name="position"
-                                           placeholder="What is your position?"
-                                           value="{{ $profile->position ?? ""}}"
-                                           required autocomplete="position"/>
-                                    <label for="position" class="registration__label">{{ __('What is your position?') }}</label>
+                                           class="form-input registration__input @error('points') is-invalid @enderror"
+                                           name="points"
+                                           placeholder="Points"
+                                           value="{{ $profile->points ?? ""}}"
+                                           required/>
+                                    <label for="position" class="registration__label">{{ __('How many points do you have?') }}</label>
 
-                                    @error('position')
+                                    @error('points')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <!-- ========== PTO ========== -->
+                                <div class="form-group mb-4">
+                                    <input id="pto"
+                                           type="text"
+                                           class="form-input registration__input @error('pto') is-invalid @enderror"
+                                           name="pto"
+                                           placeholder="PTO"
+                                           value="{{ $profile->pto ?? ""}}"
+                                           required/>
+                                    <label for="position" class="registration__label">{{ __('How many PTO days do you have available?') }}</label>
+
+                                    @error('pto')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
-                                </div>
-
-                                <!-- ========== AVATAR ========== -->
-                                <div class="form-group">
-                                    <label class="form__wizard__label" for="img" class="text-break">{{ __('Upload Image') }}</label>
-                                    <input type="file"  class="form-control-file" name="img" id="img" aria-describedby="fileHelp">
-                                    <small id="fileHelp" class="form-text text-muted">Please upload a valid image file. Size of image should not be more than 2MB.</small>
                                 </div>
                                 <!-- ========== BUTTON ========== -->
                                 <div class="text-right">
@@ -74,9 +85,3 @@
     </script>
     <script src="{{ asset('jquery/modal.js') }}"></script>
 @endsection
-
-
-
-
-
-

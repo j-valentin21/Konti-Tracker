@@ -22,7 +22,6 @@ Route::middleware(['auth', 'firstTimeUser'])->group(function () {
     Route::get('/register/build-your-profile', 'ProfileController@create')->name('profile');
     Route::post('/register/build-your-profile', 'ProfileController@post')->name('profile.post');
     Route::get('/register/pto_points', 'PtoPointsController@create')->name('pto_points');
-
 });
 
 
