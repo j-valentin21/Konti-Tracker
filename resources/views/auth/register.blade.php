@@ -11,8 +11,7 @@
         <form method="POST" action="{{ route('register') }}">
             @csrf
             <h2 class="registration__title">{{ __('Register') }}</h2>
-            {{-- NAME --}}
-
+            <!-- ========== NAME ========== -->
             <div class="form-group mb-4">
                 <input id="name"
                        type="text"
@@ -29,7 +28,7 @@
                 </span>
                 @enderror
             </div>
-            {{-- EMAIL --}}
+            <!-- ========== EMAIL ========== -->
             <div class="form-group mb-4">
                 <input id="email"
                        type="email"
@@ -46,7 +45,7 @@
                 </span>
                 @enderror
             </div>
-            {{-- PASSWORD --}}
+            <!-- ========== PASSWORD ========== -->
             <div class="form-group mb-4">
                 <input id="password"
                        type="password"
@@ -62,7 +61,7 @@
                 </span>
                 @enderror
             </div>
-            {{--CONFIRM PASSWORD--}}
+            <!-- ========== CONFIRM PASSWORD ========== -->
             <div class="form-group mb-4">
                 <input id="password-confirm"
                        type="password"
@@ -77,7 +76,7 @@
                     <strong>{{ $message }}</strong>
                 </span>
                 @enderror
-                {{--SIGN UP BUTTON--}}
+                <!-- ========== SIGN UP BUTTON ========== -->
                 <button type="submit" class="form-submit registration__signup" >
                     {{ __('Sign up') }}
                 </button>
