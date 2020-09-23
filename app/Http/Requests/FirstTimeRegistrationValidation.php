@@ -24,7 +24,7 @@ class FirstTimeRegistrationValidation extends FormRequest
     public function rules()
     {
         return [
-            'position' => 'required| max=50',
+            'position' => 'required| max:50',
             'image' => 'image|mimes:jpeg,bmp,png|file|max:1000'
         ];
     }

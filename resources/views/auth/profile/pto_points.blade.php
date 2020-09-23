@@ -3,7 +3,7 @@
 @section('title', "PTO/Points")
 
 @section('body-content')
-    <form action="{{ route('pto_points.blade.php') }}">
+    <form method="POST" action="{{ route('pto_points') }}">
         @csrf
 
         <div class="container-fluid">
