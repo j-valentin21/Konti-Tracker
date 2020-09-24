@@ -43,6 +43,6 @@ class ProfileController extends Controller
             $request->session()->put('profile', $profile);
         }
 
-        return redirect('/register/pto_points');
+        return redirect('/register/avatar');
     }
 }
