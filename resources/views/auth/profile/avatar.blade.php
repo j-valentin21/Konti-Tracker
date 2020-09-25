@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', "Image")
+@section('title', "Avatar")
 
 @section('body-content')
     <form method="POST" action="{{ route('avatar') }}">
@@ -24,7 +24,7 @@
                             <div class="col-4">
                                 <ol class="form__wizard__steps ">
                                     <li class="mb-4">Build Your Profile</li>
-                                    <li class="mb-4 form__wizard__steps--active">Avatar</li>
+                                    <li class="mb-4 form__wizard__steps--active-middle">Avatar</li>
                                     <li class="mb-4">Confirmation</li>
                                 </ol>
                             </div>

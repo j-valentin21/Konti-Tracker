@@ -1,8 +1,7 @@
 .form__wizard {
-background-color: $color-grey;
-box-sizing: border-box;
-position: relative;
-
+    background-color: $color-grey;
+    box-sizing: border-box;
+    position: relative;
 
     &__img {
 
@@ -31,14 +30,13 @@ position: relative;
         font-weight: 500;
         position: relative;
 
-        &--active {
+        &--active-top {
             color: $color-orange;
             font-weight: 800;
 
             &::before {
                 content: "";
-                width: 3px;
-                height: 31px;
+                height: 2.5rem;
                 position: absolute;
                 left: -3px;
                 top: 0;
@@ -47,6 +45,35 @@ position: relative;
             }
         }
 
+        &--active-middle {
+            color: $color-orange;
+            font-weight: 800;
+
+            &::before {
+                content: "";
+                height: 2.5rem;
+                position: absolute;
+                left: -3px;
+                bottom: 3rem;
+                border-left: 3px solid $color-orange;
+                font-weight: 800;
+            }
+        }
+
+        &--active-bottom {
+            color: $color-orange;
+            font-weight: 800;
+
+            &::before {
+                content: "";
+                height: 2.5rem;
+                position: absolute;
+                left: -3px;
+                bottom: 1px;
+                border-left: 3px solid $color-orange;
+                font-weight: 800;
+            }
+        }
     }
 
     &__btn {

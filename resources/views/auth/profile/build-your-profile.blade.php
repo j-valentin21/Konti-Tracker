@@ -22,7 +22,7 @@
                             <div class="col-4">
                                 <!-- ========== STEPS ========== -->
                                 <ol class="form__wizard__steps ">
-                                    <li class="mb-4 form__wizard__steps--active">Build Your Profile</li>
+                                    <li class="mb-4 form__wizard__steps--active-top">Build Your Profile</li>
                                     <li class="mb-4">Avatar</li>
                                     <li class="mb-4">Confirmation</li>
                                 </ol>
