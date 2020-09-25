@@ -16,7 +16,12 @@ class AvatarController extends Controller
     public function create(Request $request)
     {
         $profile = $request->session()->get('profile');
-        return view('auth.profile.avatar',compact('profile', $profile));
 
+        return view('auth.profile.avatar',compact('profile', $profile));
+    }
+
+    public function post(Request $request)
+    {
+        $path = $request->file('img')->store('images','s3');
     }
 }

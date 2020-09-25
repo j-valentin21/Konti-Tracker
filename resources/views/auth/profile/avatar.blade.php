@@ -3,7 +3,7 @@
 @section('title', "Avatar")
 
 @section('body-content')
-    <form method="POST" action="{{ route('avatar') }}">
+    <form method="POST" action="{{ route('avatar.post') }}" enctype="multipart/form-data">
         @csrf
 
         <div class="container-fluid">

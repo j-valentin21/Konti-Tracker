@@ -22,6 +22,7 @@ Route::middleware(['auth', 'firstTimeUser'])->group(function () {
     Route::get('/register/build-your-profile', 'ProfileController@create')->name('profile');
     Route::post('/register/build-your-profile', 'ProfileController@post')->name('profile.post');
     Route::get('/register/avatar', 'AvatarController@create')->name('avatar');
+    Route::post('/register/avatar', 'AvatarController@post')->name('avatar.post');
 });
 
 
