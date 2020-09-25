@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Storage;
 
 class AvatarController extends Controller
 {
     /**
-     * Show pto_points view.
+     * Show Avatar view.
      *
      * @param Request $request
      * @return Renderable
@@ -21,11 +22,31 @@ class AvatarController extends Controller
         return view('auth.profile.avatar',compact('profile', $profile));
     }
 
+    /**
+     * Post Request to store step 2 info in session
+     *
+     *
+     * @param Request $request
+     * @return Redirector
+     */
     public function post(Request $request)
     {
 
-        $path = $request->file('img')->store('images','s3');
+        $profile = $request->session()->get('profile');
 
-        Storage::disk('s3')->setVisibility($path, 'public');
+        if(!isset($profile->image)) {
+
+            $profile = $request->session()->get('profile');
+
+            $url = $request->file('img')->store('images','s3');
+
+            Storage::disk('s3')->setVisibility($url, 'public');
+
+            $profile->image = $url;
+
+            $request->session()->put('profile', $profile);
+        }
+
+        return redirect('/register/confirmation');
     }
 }
