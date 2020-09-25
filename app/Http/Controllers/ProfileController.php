@@ -6,6 +6,8 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use App\Profile;
 use App\Http\Requests\FirstTimeRegistrationValidation;
+use Illuminate\Http\Response;
+use Illuminate\Routing\Redirector;
 
 class ProfileController extends Controller
 {
@@ -27,7 +29,7 @@ class ProfileController extends Controller
      * Post Request to store step 1 info in session
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return Redirector
      */
     public function post(FirstTimeRegistrationValidation $request)
     {
@@ -43,6 +45,6 @@ class ProfileController extends Controller
             $request->session()->put('profile', $profile);
         }
 
-        return redirect('/register/pto_points');
+        return redirect('/register/avatar');
     }
 }

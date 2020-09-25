@@ -3,7 +3,7 @@
 @section('title', "Build-Your-Profile")
 
 @section('body-content')
-    <form method="POST" action="{{ route('profile') }}">
+    <form method="POST" action="{{ route('profile.post') }}">
         @csrf
         <div class="container-fluid">
             <div class="modal fade bd-example-modal-lg profile" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -22,8 +22,8 @@
                             <div class="col-4">
                                 <!-- ========== STEPS ========== -->
                                 <ol class="form__wizard__steps ">
-                                    <li class="mb-4 form__wizard__steps--active">Build Your Profile</li>
-                                    <li class="mb-4">PTO/Points</li>
+                                    <li class="mb-4 form__wizard__steps--active-top">Build Your Profile</li>
+                                    <li class="mb-4">Avatar</li>
                                     <li class="mb-4">Confirmation</li>
                                 </ol>
                             </div>
@@ -46,11 +46,40 @@
                                     @enderror
                                 </div>
 
-                                <!-- ========== AVATAR ========== -->
-                                <div class="form-group">
-                                    <label class="form__wizard__label" for="img" class="text-break">{{ __('Upload Image') }}</label>
-                                    <input type="file"  class="form-control-file" name="img" id="img" aria-describedby="fileHelp">
-                                    <small id="fileHelp" class="form-text text-muted">Please upload a valid image file. Size of image should not be more than 2MB.</small>
+                                <!-- ========== PTO ========== -->
+                                <div class="form-group mb-4">
+                                    <input id="pto"
+                                           type="text"
+                                           class="form-input registration__input @error('pto') is-invalid @enderror"
+                                           name="pto"
+                                           placeholder="PTO"
+                                           value="{{ $profile->pto ?? ""}}"
+                                           required/>
+                                    <label for="position" class="registration__label">{{ __('How many PTO days do you have available?') }}</label>
+
+                                    @error('pto')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+
+                                <!-- ========== POINTS ========== -->
+                                <div class="form-group mb-4">
+                                    <input id="points"
+                                           type="text"
+                                           class="form-input registration__input @error('points') is-invalid @enderror"
+                                           name="points"
+                                           placeholder="Points"
+                                           value="{{ $profile->points ?? ""}}"
+                                           required/>
+                                    <label for="position" class="registration__label">{{ __('How many points do you have?') }}</label>
+
+                                    @error('points')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                                 <!-- ========== BUTTON ========== -->
                                 <div class="text-right">

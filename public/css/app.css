@@ -11511,7 +11511,7 @@ body {
 .registration {
   width: 100vw;
   height: 100%;
-  background-image: url(/images/car-garage.jpg?ceaa630f83580be04294d6b18925e2eb);
+  background-image: url("/img/car-garage.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -11841,18 +11841,47 @@ body {
   position: relative;
 }
 
-.form__wizard__steps--active {
+.form__wizard__steps--active-top {
   color: #eba72b;
   font-weight: 800;
 }
 
-.form__wizard__steps--active::before {
+.form__wizard__steps--active-top::before {
   content: "";
-  width: 3px;
-  height: 31px;
+  height: 2.5rem;
   position: absolute;
   left: -3px;
   top: 0;
+  border-left: 3px solid #eba72b;
+  font-weight: 800;
+}
+
+.form__wizard__steps--active-middle {
+  color: #eba72b;
+  font-weight: 800;
+}
+
+.form__wizard__steps--active-middle::before {
+  content: "";
+  height: 2.5rem;
+  position: absolute;
+  left: -3px;
+  bottom: 3rem;
+  border-left: 3px solid #eba72b;
+  font-weight: 800;
+}
+
+.form__wizard__steps--active-bottom {
+  color: #eba72b;
+  font-weight: 800;
+}
+
+.form__wizard__steps--active-bottom::before {
+  content: "";
+  height: 2.5rem;
+  position: absolute;
+  left: -3px;
+  bottom: 1px;
   border-left: 3px solid #eba72b;
   font-weight: 800;
 }
