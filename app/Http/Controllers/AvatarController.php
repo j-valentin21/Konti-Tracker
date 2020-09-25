@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AvatarController extends Controller
 {
@@ -22,6 +23,9 @@ class AvatarController extends Controller
 
     public function post(Request $request)
     {
+
         $path = $request->file('img')->store('images','s3');
+
+        Storage::disk('s3')->setVisibility($path, 'public');
     }
 }
