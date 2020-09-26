@@ -45,8 +45,23 @@ class AvatarController extends Controller
             $profile->image = $url;
 
             $request->session()->put('profile', $profile);
+            dd($profile);
         }
 
-        return redirect('/register/confirmation');
+        return redirect('/register/avatar');
+    }
+
+    /**
+     * Show the Product Review page
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function delete(Request $request)
+    {
+        $profile = $request->session()->get('profile');
+        $profile->image = null;
+        dd($profile);
+        return view('auth.profile.avatar',compact('profile', $profile));
     }
 }

@@ -21,8 +21,8 @@ class ProfileController extends Controller
     public function create(Request $request)
     {
         $profile = $request->session()->get('profile');
-        return view('auth.profile.build-your-profile',compact('profile', $profile));
 
+        return view('auth.profile.build-your-profile',compact('profile', $profile));
     }
 
     /**
