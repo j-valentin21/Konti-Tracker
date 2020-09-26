@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\FirstTimeRegistrationValidation;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
@@ -29,7 +30,7 @@ class AvatarController extends Controller
      * @param Request $request
      * @return Redirector
      */
-    public function post(Request $request)
+    public function post(request $request)
     {
 
         $profile = $request->session()->get('profile');
@@ -45,7 +46,6 @@ class AvatarController extends Controller
             $profile->image = $url;
 
             $request->session()->put('profile', $profile);
-            dd($profile);
         }
 
         return redirect('/register/avatar');
@@ -59,9 +59,11 @@ class AvatarController extends Controller
      */
     public function delete(Request $request)
     {
+
         $profile = $request->session()->get('profile');
+
         $profile->image = null;
-        dd($profile);
-        return view('auth.profile.avatar',compact('profile', $profile));
+
+        return view('auth.profile.',compact('profile', $profile));
     }
 }

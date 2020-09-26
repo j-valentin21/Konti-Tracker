@@ -14,7 +14,7 @@
                             <!-- ========== HEADER========== -->
                             <div class="col-12">
                                 <section class="form__wizard">
-                                    <img class="form__wizard__img img-fluid" src="{{ asset('img/limo_car.jpg') }}" alt="">
+                                    <img class="form__wizard__img img-fluid" src="{{ asset('img/limo_car.jpg') }}" alt="limo">
                                     <h3 class="form__wizard__header">Welcome to Konti-Tracker</h3>
                                 </section>
                             </div>
@@ -22,22 +22,47 @@
                         <div class="row p-5">
                             <!-- ========== STEPS ========== -->
                             <div class="col-4">
-                                <ol class="form__wizard__steps ">
+                                <ol class="form__wizard__steps">
                                     <li class="mb-4">Build Your Profile</li>
                                     <li class="mb-4 form__wizard__steps--active-middle">Avatar</li>
                                     <li class="mb-4">Confirmation</li>
                                 </ol>
                             </div>
                             <div class="col-8">
-                                  <!-- ========== AVATAR ========== -->
+                                <!-- ========== AVATAR ========== -->
+                                @if(isset($profile->image))
+                                    <h6 class="form__wizard__label">Avatar</h6>
+                                    <img class="img-fluid my-3 w-75" alt="Avatar" src="{{ Storage::disk('s3')->url($profile->image) }}"/>
+                                @endif
+                                  <!-- ========== UPLOAD IMAGE ========== -->
                                 <div class="form-group">
                                     <label class="form__wizard__label" for="img" class="text-break">{{ __('Upload Image') }}</label>
-                                    <input type="file"  class="form-control-file" name="img" id="img" aria-describedby="fileHelp">
-                                    <small id="fileHelp" class="form-text text-muted">Please upload a valid image file. Size of image should not be more than 2MB.</small>
+                                    <input
+                                        type="file" {{ (!empty($profile->image)) ? "disabled" : ''}}
+                                        class="form-control-file @error('image') is-invalid @enderror"
+                                        name="img"
+                                        id="img"
+                                        aria-describedby="fileHelp">
+                                    <small
+                                        id="fileHelp"
+                                        class="form-text text-muted">
+                                        Please upload a valid image file. Size of image should not be more than 2MB.
+                                    </small>
+                                    @error('image')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                                 <!-- ========== BUTTON ========== -->
                                 <div class="text-right">
-                                    <button type="submit" class="form__wizard__btn">
+                                    @if(isset($profile->image))
+                                        <form action="{{ route('avatar.delete') }}" method="post">
+                                            {{ csrf_field() }}
+                                            <button type="submit" class="form__wizard__btn form__wizard__btn--red mr-3 ">Remove Avatar</button>
+                                        </form>
+                                    @endif
+                                    <button type="submit" class="form__wizard__btn form__wizard__btn--orange ">
                                         {{ __('Next') }}
                                     </button>
                                 </div>
