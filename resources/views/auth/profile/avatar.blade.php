@@ -57,7 +57,7 @@
                                 <!-- ========== BUTTON ========== -->
                                 <div class="text-right">
                                     @if(isset($profile->image))
-                                        <form action="{{ route('avatar.delete') }}" method="post">
+                                        <form action="{{ route('avatar.delete') }}" method="POST">
                                             {{ csrf_field() }}
                                             <button type="submit" class="form__wizard__btn form__wizard__btn--red mr-3 ">Remove Avatar</button>
                                         </form>
