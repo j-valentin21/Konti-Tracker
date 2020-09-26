@@ -11,7 +11,6 @@ use Illuminate\Routing\Redirector;
 
 class ProfileController extends Controller
 {
-
     /**
      * Show build-your-profile page.
      *
@@ -22,7 +21,6 @@ class ProfileController extends Controller
     {
         $profile = $request->session()->get('profile');
         return view('auth.profile.build-your-profile',compact('profile', $profile));
-
     }
 
     /**
