@@ -3,7 +3,7 @@
 @section('title', "Avatar")
 
 @section('body-content')
-    <form method="POST" action="{{ route('avatar.post') }}" enctype="multipart/form-data">
+
         @csrf
 
         <div class="container-fluid">
@@ -35,7 +35,9 @@
                                     <img class="img-fluid my-3 w-75" alt="Avatar" src="{{ Storage::disk('s3')->url($profile->image) }}"/>
                                 @endif
                                   <!-- ========== UPLOAD IMAGE ========== -->
-                                <div class="form-group">
+                                <form method="POST" action="{{ route('avatar.post') }}" enctype="multipart/form-data">
+                                    @csrf
+
                                     <label class="form__wizard__label" for="img" class="text-break">{{ __('Upload Image') }}</label>
                                     <input
                                         type="file" {{ (!empty($profile->image)) ? "disabled" : ''}}
@@ -53,26 +55,34 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
-                                </div>
-                                <!-- ========== BUTTON ========== -->
-                                <div class="text-right">
-                                    @if(isset($profile->image))
-                                        <form action="{{ route('avatar.delete') }}" method="POST">
-                                            {{ csrf_field() }}
-                                            <button type="submit" class="form__wizard__btn form__wizard__btn--red mr-3 ">Remove Avatar</button>
-                                        </form>
-                                    @endif
-                                    <button type="submit" class="form__wizard__btn form__wizard__btn--orange ">
-                                        {{ __('Next') }}
-                                    </button>
-                                </div>
+                                    <!-- ========== NEXT BUTTON ========== -->
+                                    <div class="text-right">
+                                        <button type="submit" class="form__wizard__btn form__wizard__btn--orange ">
+                                            {{ __('Next') }}
+                                        </button>
+                                    </div>
+                                </form>
+                                @if(isset($profile->image))
+                                    <form method="POST" action="{{ route('avatar.destroy') }}">
+                                        @method('DELETE')
+                                        @csrf
+
+                                        <button type="submit" class="form__wizard__btn form__wizard__btn--red mr-3 ">Remove Avatar</button>
+                                    </form>
+                                @endif
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </form>
+    @if(isset($profile->image))
+        <form method="POST" action="/register/remove-avatar">
+            @method('DELETE')
+            @csrf
+            <button type="submit" class="form__wizard__btn form__wizard__btn--red mr-3 ">Remove Avatar</button>
+        </form>
+    @endif
 @stop
 @section('body-scripts')
     <script

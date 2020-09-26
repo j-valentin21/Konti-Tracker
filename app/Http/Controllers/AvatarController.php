@@ -19,7 +19,6 @@ class AvatarController extends Controller
     public function create(Request $request)
     {
         $profile = $request->session()->get('profile');
-
         return view('auth.profile.avatar',compact('profile', $profile));
     }
 
@@ -32,38 +31,31 @@ class AvatarController extends Controller
      */
     public function post(request $request)
     {
-
         $profile = $request->session()->get('profile');
 
         if(!isset($profile->image)) {
-
-            $profile = $request->session()->get('profile');
-
-            $url = $request->file('img')->store('images','s3');
-
-            Storage::disk('s3')->setVisibility($url, 'public');
-
-            $profile->image = $url;
-
-            $request->session()->put('profile', $profile);
+            if($request->file('img')) {
+                $profile = $request->session()->get('profile');
+                $url = $request->file('img')->store('images','s3');
+                Storage::disk('s3')->setVisibility($url, 'public');
+                $profile->image = $url;
+                $request->session()->put('profile', $profile);
+            }
         }
 
         return redirect('/register/confirmation');
     }
 
     /**
-     * Show the Product Review page
+     * Destroy image in session
      *
      * @param Request $request
-     * @return \Illuminate\Http\Response
+     * @return Redirector
      */
-    public function delete(Request $request)
+    public function destroy(Request $request)
     {
-
         $profile = $request->session()->get('profile');
-
         $profile->image = null;
-
-        return view('auth.profile.avatar',compact('profile', $profile));
+        return redirect('/register/avatar');
     }
 }

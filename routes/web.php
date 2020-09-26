@@ -23,7 +23,7 @@ Route::middleware(['auth', 'firstTimeUser'])->group(function () {
     Route::post('/register/build-your-profile', 'ProfileController@post')->name('profile.post');
     Route::get('/register/avatar', 'AvatarController@create')->name('avatar');
     Route::post('/register/avatar', 'AvatarController@post')->name('avatar.post');
-    Route::post('/register/remove-avatar', 'AvatarController@delete')->name('avatar.delete');
+    Route::delete('/register/remove-avatar', 'AvatarController@destroy')->name('avatar.destroy');
     Route::get('/register/confirmation', 'ConfirmationController@create')->name('confirmation');
 });
 
