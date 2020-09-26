@@ -29,7 +29,7 @@ class AvatarController extends Controller
      * @param Request $request
      * @return Redirector
      */
-    public function post(request $request)
+    public function post(Request $request)
     {
         $profile = $request->session()->get('profile');
 
