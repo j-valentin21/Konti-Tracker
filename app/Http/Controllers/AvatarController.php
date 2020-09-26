@@ -48,7 +48,7 @@ class AvatarController extends Controller
             $request->session()->put('profile', $profile);
         }
 
-        return redirect('/register/avatar');
+        return redirect('/register/confirmation');
     }
 
     /**
@@ -64,6 +64,6 @@ class AvatarController extends Controller
 
         $profile->image = null;
 
-        return view('auth.profile.',compact('profile', $profile));
+        return view('auth.profile.avatar',compact('profile', $profile));
     }
 }
