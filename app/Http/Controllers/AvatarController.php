@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\FirstTimeRegistrationValidation;
+use App\Http\Requests\FormUploadRequest;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
@@ -23,20 +23,20 @@ class AvatarController extends Controller
     }
 
     /**
-     * Post Request to store step 2 info in session
+     * Post Request to store image in session
      *
      *
      * @param Request $request
      * @return Redirector
      */
-    public function post(request $request)
+    public function post(FormUploadRequest $request)
     {
         $profile = $request->session()->get('profile');
 
         if(!isset($profile->image)) {
-            if($request->file('img')) {
+            if($request->file('image')) {
                 $profile = $request->session()->get('profile');
-                $url = $request->file('img')->store('images','s3');
+                $url = $request->file('image')->store('images','s3');
                 Storage::disk('s3')->setVisibility($url, 'public');
                 $profile->image = $url;
                 $request->session()->put('profile', $profile);

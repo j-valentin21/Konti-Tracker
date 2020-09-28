@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use App\Profile;
-use App\Http\Requests\FirstTimeRegistrationValidation;
+use App\Http\Requests\FirstTimeRegistrationRequest;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Redirector;
 
@@ -29,7 +29,7 @@ class ProfileController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return Redirector
      */
-    public function post(FirstTimeRegistrationValidation $request)
+    public function post(FirstTimeRegistrationRequest $request)
     {
         $validated = $request->validated();
 

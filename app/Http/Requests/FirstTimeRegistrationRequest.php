@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class FirstTimeRegistrationValidation extends FormRequest
+class FirstTimeRegistrationRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,9 +25,8 @@ class FirstTimeRegistrationValidation extends FormRequest
     {
         return [
             'position' => 'required| max:50',
-            'image' => 'image|mimes:jpeg,bmp,png|file|max:1000',
             'pto' => 'required|integer|between:0,40',
-            'points' => 'required|integer|between:0,15'
+            'points' => 'required|integer|between:0,15',
         ];
     }
 }
