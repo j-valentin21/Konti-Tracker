@@ -38,7 +38,7 @@
                                 <label class="form__wizard__label" for="image" class="text-break">{{ __('Upload Image') }}</label>
                                 <input
                                     type="file" {{ (!empty($profile->image)) ? "disabled" : ''}}
-{{--                                    accept="image/x-png,image/gif,image/jpeg, image/svg image/gif"--}}
+                                    accept="image/x-png,image/gif,image/jpeg, image/svg image/jpg"
                                     class="form-control-file @error('image') is-invalid @enderror"
                                     name="image"
                                     id="image"
