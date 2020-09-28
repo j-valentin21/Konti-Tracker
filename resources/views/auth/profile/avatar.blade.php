@@ -35,12 +35,13 @@
                             <form method="POST" action="{{ route('avatar.post') }}" enctype="multipart/form-data">
                                 @csrf
 
-                                <label class="form__wizard__label" for="img" class="text-break">{{ __('Upload Image') }}</label>
+                                <label class="form__wizard__label" for="image" class="text-break">{{ __('Upload Image') }}</label>
                                 <input
                                     type="file" {{ (!empty($profile->image)) ? "disabled" : ''}}
+{{--                                    accept="image/x-png,image/gif,image/jpeg, image/svg image/gif"--}}
                                     class="form-control-file @error('image') is-invalid @enderror"
-                                    name="img"
-                                    id="img"
+                                    name="image"
+                                    id="image"
                                     aria-describedby="fileHelp">
                                 <small
                                     id="fileHelp"
