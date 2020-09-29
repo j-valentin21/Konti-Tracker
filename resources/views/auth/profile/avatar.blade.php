@@ -11,7 +11,7 @@
                         <!-- ========== HEADER========== -->
                         <div class="col-12">
                             <section class="form__wizard">
-                                <img class="form__wizard__img img-fluid" src="{{ asset('img/limo_car.jpg') }}" alt="limo">
+                                <img class="form__wizard__img img-fluid" src="{{ asset('img/luxury_car.jpg') }}" alt="limo">
                                 <h3 class="form__wizard__header">Welcome to Konti-Tracker</h3>
                             </section>
                         </div>

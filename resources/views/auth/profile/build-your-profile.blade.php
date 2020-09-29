@@ -3,30 +3,19 @@
 @section('title', "Build-Your-Profile")
 
 @section('body-content')
-    <form method="POST" action="{{ route('profile.post') }}">
-        @csrf
-        <div class="container-fluid">
-            <div class="modal fade bd-example-modal-lg profile" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="row">
-                            <!-- ========== HEADER ========== -->
-                            <div class="col-12">
-                                <section class="form__wizard">
-                                    <img class="form__wizard__img img-fluid" src="{{ asset('img/limo_car.jpg') }}" alt="">
-                                    <h3 class="form__wizard__header">Welcome to Konti-Tracker</h3>
-                                </section>
-                            </div>
+
+
+                    <div class="row p-5">
+                        <div class="col-4">
+                            <!-- ========== STEPS ========== -->
+                            <ol class="form__wizard__steps ">
+                                <li class="mb-4 form__wizard__steps--active-top">Build Your Profile</li>
+                                <li class="mb-4">Avatar</li>
+                                <li class="mb-4">Confirmation</li>
+                            </ol>
                         </div>
-                        <div class="row p-5">
-                            <div class="col-4">
-                                <!-- ========== STEPS ========== -->
-                                <ol class="form__wizard__steps ">
-                                    <li class="mb-4 form__wizard__steps--active-top">Build Your Profile</li>
-                                    <li class="mb-4">Avatar</li>
-                                    <li class="mb-4">Confirmation</li>
-                                </ol>
-                            </div>
+                        <form method="POST" action="{{ route('profile.post') }}">
+                            @csrf
                             <div class="col-8">
                                 <!-- ========== POSITION ========== -->
                                 <div class="form-group mb-4">
@@ -88,12 +77,13 @@
                                     </button>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
-                </div>
-            </div>
-        </div>
-    </form>
+
+
+
+
+
 @stop
 @section('body-scripts')
     <script
