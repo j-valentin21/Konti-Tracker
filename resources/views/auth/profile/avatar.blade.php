@@ -61,8 +61,11 @@
                                     </button>
                                 </div>
                             @else
-                                <div class="text-right">
-                                    <button type="submit" class="form__wizard__btn form__wizard__btn--orange ">
+                                <div class="text-right mt-4 ">
+                                    <a href="{{ route('profile') }}">
+                                        <button type="button" class="form__wizard__btn form__wizard__btn--orange mr-2">{{ __('Back') }}</button>
+                                    </a>
+                                    <button type="submit" class="form__wizard__btn form__wizard__btn--orange">
                                         {{ __('Next') }}
                                     </button>
                                 </div>
