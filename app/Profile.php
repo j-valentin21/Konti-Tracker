@@ -12,6 +12,11 @@ class Profile extends Model
      * @var array
      */
     protected $fillable = [
-        'position', 'image', 'pto', 'points'
+        'position','pto', 'points','avatar','user_id'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

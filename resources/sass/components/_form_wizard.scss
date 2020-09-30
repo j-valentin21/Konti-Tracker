@@ -121,6 +121,23 @@
 
         }
 
+        &--black {
+            background-image: linear-gradient(to right,$color-black, #222);
+            color: $color-white;
+
+            &:hover {
+                transform: translateY(-0.1rem);
+                box-shadow: 0px 1rem 3rem rgba(0, 0, 0, 0.2);
+                background-image: linear-gradient(to left, $color-black, #222);
+                color: $color-orange;
+            }
+
+            &:active {
+                transform: translateY(-0.3rem);
+                box-shadow: 0rem .5rem 1rem rgba($color-black, .2);
+            }
+        }
+
     }
 
     &__label {

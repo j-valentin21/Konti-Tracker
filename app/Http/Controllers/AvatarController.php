@@ -34,11 +34,11 @@ class AvatarController extends Controller
         $profile = $request->session()->get('profile');
 
         if(!isset($profile->image)) {
-            if($request->file('image')) {
+            if($request->file('avatar')) {
                 $profile = $request->session()->get('profile');
-                $url = $request->file('image')->store('images','s3');
+                $url = $request->file('avatar')->store('avatar','s3');
                 Storage::disk('s3')->setVisibility($url, 'public');
-                $profile->image = $url;
+                $profile->avatar = $url;
                 $request->session()->put('profile', $profile);
             }
         }
@@ -55,9 +55,9 @@ class AvatarController extends Controller
     public function destroy(Request $request)
     {
         $profile = $request->session()->get('profile');
-        $imageName = $profile->image;
+        $imageName = $profile->avatar;
         Storage::disk('s3')->delete($imageName);
-        $profile->image = null;
+        $profile->avatar = null;
         return redirect('/register/avatar');
     }
 }

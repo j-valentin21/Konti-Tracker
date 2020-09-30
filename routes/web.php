@@ -25,6 +25,7 @@ Route::middleware(['auth', 'firstTimeUser'])->group(function () {
     Route::post('/register/avatar', 'AvatarController@post')->name('avatar.post');
     Route::delete('/register/remove-avatar', 'AvatarController@destroy')->name('avatar.destroy');
     Route::get('/register/confirmation', 'ConfirmationController@create')->name('confirmation');
+    Route::post('/register/store', 'ConfirmationController@store')->name('confirmation.store');
 });
 
 

@@ -27,9 +27,9 @@
                         </div>
                         <div class="col-8">
                             <!-- ========== AVATAR ========== -->
-                            @if(isset($profile->image))
+                            @if(isset($profile->avatar))
                                 <h6 class="form__wizard__label">Avatar</h6>
-                                <img class="img-fluid my-3 w-75" alt="Avatar" src="{{ Storage::disk('s3')->url($profile->image) }}"/>
+                                <img class="img-fluid my-3 w-75" alt="Avatar" src="{{ Storage::disk('s3')->url($profile->avatar) }}"/>
                             @endif
                               <!-- ========== UPLOAD IMAGE ========== -->
                             <form method="POST" action="{{ route('avatar.post') }}" enctype="multipart/form-data">
@@ -37,25 +37,26 @@
 
                                 <label class="form__wizard__label" for="image" class="text-break">{{ __('Upload Image') }}</label>
                                 <input
-                                    type="file" {{ (!empty($profile->image)) ? "disabled" : ''}}
+                                    type="file" {{ (!empty($profile->avatar)) ? "disabled" : ''}}
                                     accept="image/x-png,image/gif,image/jpeg, image/svg image/jpg"
-                                    class="form-control-file @error('image') is-invalid @enderror"
-                                    name="image"
-                                    id="image"
+                                    class="form-control-file @error('avatar') is-invalid @enderror"
+                                    name="avatar"
+                                    id="avatar"
                                     aria-describedby="fileHelp">
-                                <small
-                                    id="fileHelp"
-                                    class="form-text text-muted">
-                                    Please upload a valid image file. Size of image should not be more than 2MB.
-                                </small>
-                                @error('image')
-                                    <span class="invalid-feedback" role="alert">
+
+                                @error('avatar')
+                                <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+                                <small
+                                    id="fileHelp"
+                                    class="form-text text-muted mb-4">
+                                    Please upload a valid image file. Size of image should not be more than 2MB.
+                                </small>
                                 <!-- ========== NEXT BUTTON ========== -->
-                            @if(isset($profile->image))
-                                <div class="my-3">
+                            @if(isset($profile->avatar))
+                                <div class="my-2">
                                     <button type="submit" class="form__wizard__btn form__wizard__btn--orange ">
                                         {{ __('Next') }}
                                     </button>
@@ -72,7 +73,10 @@
                             @endif
                             </form>
                             <!-- ========== REMOVE AVATAR BTN ========== -->
-                            @if(isset($profile->image))
+                            @if(isset($profile->avatar))
+                                <a href="{{ route('profile') }}">
+                                    <button type="button" class="form__wizard__btn form__wizard__btn--orange mr-2 mb-2">{{ __('Back') }}</button>
+                                </a>
                                 <form method="POST" action="{{ route('avatar.destroy') }}">
                                     @method('DELETE')
                                     @csrf

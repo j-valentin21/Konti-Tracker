@@ -10,7 +10,7 @@ use Illuminate\Http\Response;
 class ConfirmationController extends Controller
 {
     /**
-     * Show the Product Review page
+     * Show confirmation view
      *
      * @param Request $request
      * @return Renderable
@@ -19,5 +19,19 @@ class ConfirmationController extends Controller
     {
         $profile = $request->session()->get('profile');
         return view('auth.profile.confirmation',compact('profile',$profile));
+    }
+
+    /**
+     * Store profile
+     *
+     * @param Request $request
+     * @return \Illuminate\Routing\Redirector
+     */
+    public function store(Request $request)
+    {
+        $profile = $request->session()->get('profile');
+        $profile->user_id = auth()->id();
+        $profile->save();
+        return redirect('/');
     }
 }
