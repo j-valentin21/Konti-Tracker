@@ -30,6 +30,7 @@ class ConfirmationController extends Controller
     public function store(Request $request)
     {
         $profile = $request->session()->get('profile');
+        $profile->user_id = auth()->id();
         $profile->save();
         return redirect('/');
     }
