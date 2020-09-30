@@ -11931,6 +11931,23 @@ body {
   box-shadow: 0rem 0.5rem 1rem rgba(0, 0, 0, 0.2);
 }
 
+.form__wizard__btn--black {
+  background-image: linear-gradient(to right, #000000, #222);
+  color: #ffffff;
+}
+
+.form__wizard__btn--black:hover {
+  transform: translateY(-0.1rem);
+  box-shadow: 0px 1rem 3rem rgba(0, 0, 0, 0.2);
+  background-image: linear-gradient(to left, #000000, #222);
+  color: #eba72b;
+}
+
+.form__wizard__btn--black:active {
+  transform: translateY(-0.3rem);
+  box-shadow: 0rem 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+
 .form__wizard__label {
   color: #000000;
   font-weight: 700;

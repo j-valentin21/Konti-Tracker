@@ -53,11 +53,11 @@
                                 <a href="{{ route('profile') }}">
                                     <button type="button" class="form__wizard__btn form__wizard__btn--orange mr-2 mb-2">Back to Profile</button>
                                 </a>
-                                <a href="{{ route('avatar') }}">
-                                    <button type="button" class="form__wizard__btn form__wizard__btn--orange mr-2 mb-2">Back to Avatar</button>
+                                <a href="{{ route('confirmation.store') }}">
+                                    <button type="submit" class="form__wizard__btn form__wizard__btn--black mr-2 mb-2">Create Profile</button>
                                 </a>
                                 <a href="{{ route('avatar') }}">
-                                    <button type="submit" class="form__wizard__btn form__wizard__btn--orange mr-2 mb-2">Create Profile</button>
+                                    <button type="button" class="form__wizard__btn form__wizard__btn--orange mr-2 mb-2">Back to Avatar</button>
                                 </a>
                             </form>
                         </div>
