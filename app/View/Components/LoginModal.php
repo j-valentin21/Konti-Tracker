@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class pto_jumbotron extends Component
+class LoginModal extends Component
 {
     /**
      * Create a new component instance.
@@ -23,6 +23,6 @@ class pto_jumbotron extends Component
      */
     public function render()
     {
-        return view('components.p-t-o_jumbotron');
+        return view('components.login-modal');
     }
 }

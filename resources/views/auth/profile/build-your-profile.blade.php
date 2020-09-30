@@ -3,8 +3,18 @@
 @section('title', "Build-Your-Profile")
 
 @section('body-content')
-
-
+    <div class="container-fluid">
+        <div class="modal fade bd-example-modal-lg profile" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="row">
+                        <div class="col-12">
+                            <section class="form__wizard">
+                                <img class="form__wizard__img img-fluid" src="{{ asset('img/luxury_car.jpg') }}" alt="luxury car">
+                                <h3 class="form__wizard__header">Welcome to Konti-Tracker</h3>
+                            </section>
+                        </div>
+                    </div>
                     <div class="row p-5">
                         <div class="col-4">
                             <!-- ========== STEPS ========== -->
@@ -14,9 +24,9 @@
                                 <li class="mb-4">Confirmation</li>
                             </ol>
                         </div>
-                        <form method="POST" action="{{ route('profile.post') }}">
-                            @csrf
-                            <div class="col-8">
+                        <div class="col-8">
+                            <form method="POST" action="{{ route('profile.post') }}">
+                                @csrf
                                 <!-- ========== POSITION ========== -->
                                 <div class="form-group mb-4">
                                     <input id="position"
@@ -34,7 +44,6 @@
                                     </span>
                                     @enderror
                                 </div>
-
                                 <!-- ========== PTO ========== -->
                                 <div class="form-group mb-4">
                                     <input id="pto"
@@ -52,7 +61,6 @@
                                     </span>
                                     @enderror
                                 </div>
-
                                 <!-- ========== POINTS ========== -->
                                 <div class="form-group mb-4">
                                     <input id="points"
@@ -76,14 +84,13 @@
                                         {{ __('Next') }}
                                     </button>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
-
-
-
-
-
+                </div>
+            </div>
+        </div>
+    </div>
 @stop
 @section('body-scripts')
     <script

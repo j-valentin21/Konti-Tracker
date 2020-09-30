@@ -7,11 +7,11 @@
         <div class="modal fade bd-example-modal-lg profile" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg modal-dialog-centered">
                 <div class="modal-content">
+                    <!-- ========== HEADER========== -->
                     <div class="row">
-                        <!-- ========== HEADER========== -->
                         <div class="col-12">
                             <section class="form__wizard">
-                                <img class="form__wizard__img img-fluid" src="{{ asset('img/luxury_car.jpg') }}" alt="limo">
+                                <img class="form__wizard__img img-fluid" src="{{ asset('img/luxury_car.jpg') }}" alt="luxury car">
                                 <h3 class="form__wizard__header">Welcome to Konti-Tracker</h3>
                             </section>
                         </div>

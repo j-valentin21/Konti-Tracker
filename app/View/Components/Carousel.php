@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class loginmodal extends Component
+class Carousel extends Component
 {
     /**
      * Create a new component instance.
@@ -23,6 +23,6 @@ class loginmodal extends Component
      */
     public function render()
     {
-        return view('components.loginmodal');
+        return view('components.carousel');
     }
 }
