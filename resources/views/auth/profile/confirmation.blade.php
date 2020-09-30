@@ -45,7 +45,7 @@
                                         <td>Avatar:</td>
                                         <td>
                                             <strong>
-                                                <img class="img-fluid my-3 " alt="Avatar" src="{{ Storage::disk('s3')->url($profile->image) }}"/>
+                                                <img class="img-fluid my-3 " alt="avatar" src="{{ Storage::disk('s3')->url($profile->avatar) }}"/>
                                             </strong>
                                         </td>
                                     </tr>
