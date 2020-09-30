@@ -45,7 +45,7 @@
                                     aria-describedby="fileHelp">
                                 <small
                                     id="fileHelp"
-                                    class="form-text text-muted">
+                                    class="form-text text-muted mb-4">
                                     Please upload a valid image file. Size of image should not be more than 2MB.
                                 </small>
                                 @error('image')
@@ -55,7 +55,7 @@
                                 @enderror
                                 <!-- ========== NEXT BUTTON ========== -->
                             @if(isset($profile->image))
-                                <div class="my-3">
+                                <div class="my-2">
                                     <button type="submit" class="form__wizard__btn form__wizard__btn--orange ">
                                         {{ __('Next') }}
                                     </button>
@@ -73,6 +73,9 @@
                             </form>
                             <!-- ========== REMOVE AVATAR BTN ========== -->
                             @if(isset($profile->image))
+                                <a href="{{ route('profile') }}">
+                                    <button type="button" class="form__wizard__btn form__wizard__btn--orange mr-2 mb-2">{{ __('Back') }}</button>
+                                </a>
                                 <form method="POST" action="{{ route('avatar.destroy') }}">
                                     @method('DELETE')
                                     @csrf
