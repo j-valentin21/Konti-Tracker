@@ -55,6 +55,8 @@ class AvatarController extends Controller
     public function destroy(Request $request)
     {
         $profile = $request->session()->get('profile');
+        $imageName = $profile->image;
+        Storage::disk('s3')->delete($imageName);
         $profile->image = null;
         return redirect('/register/avatar');
     }

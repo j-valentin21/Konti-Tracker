@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class konti-cards extends Component
+class KontiCards extends Component
 {
     /**
      * Create a new component instance.

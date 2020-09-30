@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class carousel_index extends Component
+class PTOJumbotron extends Component
 {
     /**
      * Create a new component instance.
@@ -23,6 +23,6 @@ class carousel_index extends Component
      */
     public function render()
     {
-        return view('components.carousel_index');
+        return view('components.pto-jumbotron');
     }
 }

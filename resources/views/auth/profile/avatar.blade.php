@@ -7,11 +7,11 @@
         <div class="modal fade bd-example-modal-lg profile" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg modal-dialog-centered">
                 <div class="modal-content">
+                    <!-- ========== HEADER========== -->
                     <div class="row">
-                        <!-- ========== HEADER========== -->
                         <div class="col-12">
                             <section class="form__wizard">
-                                <img class="form__wizard__img img-fluid" src="{{ asset('img/limo_car.jpg') }}" alt="limo">
+                                <img class="form__wizard__img img-fluid" src="{{ asset('img/luxury_car.jpg') }}" alt="luxury car">
                                 <h3 class="form__wizard__header">Welcome to Konti-Tracker</h3>
                             </section>
                         </div>
@@ -61,8 +61,11 @@
                                     </button>
                                 </div>
                             @else
-                                <div class="text-right">
-                                    <button type="submit" class="form__wizard__btn form__wizard__btn--orange ">
+                                <div class="text-right mt-4 ">
+                                    <a href="{{ route('profile') }}">
+                                        <button type="button" class="form__wizard__btn form__wizard__btn--orange mr-2">{{ __('Back') }}</button>
+                                    </a>
+                                    <button type="submit" class="form__wizard__btn form__wizard__btn--orange">
                                         {{ __('Next') }}
                                     </button>
                                 </div>
