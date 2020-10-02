@@ -29,7 +29,9 @@ class ConfirmationController extends Controller
     {
         $profile = $request->session()->get('profile');
         $profile->user_id = auth()->id();
+        $profile->user->firstTimeUser = 0;
+        $profile->user->save();
         $profile->save();
-        return redirect('/');
+        return redirect('/dashboard');
     }
 }
