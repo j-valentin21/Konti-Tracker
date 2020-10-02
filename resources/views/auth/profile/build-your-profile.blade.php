@@ -83,7 +83,7 @@
                                 </div>
                                 <!-- ========== BUTTON ========== -->
                                 <div class="text-right">
-                                    <button type="submit" class="form__wizard__btn">
+                                    <button type="submit" class="form__wizard__btn form__wizard__btn--orange">
                                         {{ __('Next') }}
                                     </button>
                                 </div>
