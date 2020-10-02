@@ -36,13 +36,14 @@
                                            placeholder="What is your position?"
                                            value="{{ $profile->position ?? ""}}"
                                            required autocomplete="position"/>
-                                    <label for="position" class="registration__label">{{ __('What is your position?') }}</label>
-
                                     @error('position')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                            <strong>{{ $message }}</strong>
+                                        </span>
                                     @enderror
+                                    @if (!$errors->has('position'))
+                                        <label for="position" class="registration__label">{{ __('What is your position?') }}</label>
+                                    @endif
                                 </div>
                                 <!-- ========== PTO ========== -->
                                 <div class="form-group mb-4">
@@ -53,13 +54,14 @@
                                            placeholder="PTO"
                                            value="{{ $profile->pto ?? ""}}"
                                            required/>
-                                    <label for="position" class="registration__label">{{ __('How many PTO days do you have available?') }}</label>
-
                                     @error('pto')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
+                                    @if (!$errors->has('pto'))
+                                        <label for="position" class="registration__label">{{ __('How many PTO days do you have available?') }}</label>
+                                    @endif
                                 </div>
                                 <!-- ========== POINTS ========== -->
                                 <div class="form-group mb-4">
@@ -70,13 +72,14 @@
                                            placeholder="Points"
                                            value="{{ $profile->points ?? ""}}"
                                            required/>
-                                    <label for="position" class="registration__label">{{ __('How many points do you have?') }}</label>
-
                                     @error('points')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
+                                    @if (!$errors->has('points'))
+                                        <label for="position" class="registration__label">{{ __('How many points do you have?') }}</label>
+                                    @endif
                                 </div>
                                 <!-- ========== BUTTON ========== -->
                                 <div class="text-right">
