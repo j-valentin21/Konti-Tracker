@@ -5,18 +5,18 @@
 @section('body-content')
     <div class="container-fluid">
         <div class="modal fade bd-example-modal-lg profile" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-dialog modal-lg modal-dialog-centered form__wizard__modal">
                 <div class="modal-content">
                     <div class="row">
                         <div class="col-12">
                             <section class="form__wizard">
-                                <img class="form__wizard__img img-fluid" src="{{ asset('img/luxury_car.jpg') }}" alt="luxury car">
+                                <img class="form__wizard__header-img" src="{{ asset('img/luxury_car.jpg') }}" alt="luxury car">
                                 <h3 class="form__wizard__header">Welcome to Konti-Tracker</h3>
                             </section>
                         </div>
                     </div>
                     <div class="row p-5">
-                        <div class="col-4">
+                        <div class="col-sm-6 col-md-4 col-lg-4">
                             <!-- ========== STEPS ========== -->
                             <ol class="form__wizard__steps ">
                                 <li class="mb-4 form__wizard__steps--active-top">Build Your Profile</li>
@@ -24,7 +24,7 @@
                                 <li class="mb-4">Confirmation</li>
                             </ol>
                         </div>
-                        <div class="col-8">
+                        <div class="col-sm-6 col-md-8 col-lg-8">
                             <form method="POST" action="{{ route('profile.post') }}">
                                 @csrf
                                 <!-- ========== POSITION ========== -->
