@@ -3,6 +3,14 @@
     box-sizing: border-box;
     position: relative;
 
+    &__modal {
+        max-width: 80%;
+
+
+        @include respond(tab-land) {
+            max-width: 95%;
+        }
+    }
     &__img {
         width: 100%;
         height: 25vw;
@@ -22,8 +30,15 @@
         font-weight: 400;
         letter-spacing: 0.3px;
         background-color: rgba($color-black, 0.4);
+
+        @include respond(tab-port) {
+            font-size: 18px;
+        }
     }
 
+    &__header-img {
+        width: 100%;
+    }
     &__steps {
         border-left: 3px solid rgba($color-orange, 0.5);
         padding-left: 2.25rem;

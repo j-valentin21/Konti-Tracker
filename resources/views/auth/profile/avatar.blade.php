@@ -77,11 +77,9 @@
                             </form>
                             <!-- ========== REMOVE AVATAR BTN ========== -->
                             @if(isset($profile->avatar))
-
                                 <form method="POST" action="{{ route('avatar.destroy') }}">
                                     @method('DELETE')
                                     @csrf
-
                                     <button type="submit" class="form__wizard__btn form__wizard__btn--red mr-3 ">Remove Avatar</button>
                                 </form>
                             @endif

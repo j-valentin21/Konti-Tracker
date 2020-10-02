@@ -11817,6 +11817,16 @@ body {
   position: relative;
 }
 
+.form__wizard__modal {
+  max-width: 80%;
+}
+
+@media only screen and (max-width: 62.5em) {
+  .form__wizard__modal {
+    max-width: 95%;
+  }
+}
+
 .form__wizard__img {
   width: 100%;
   height: 25vw;
@@ -11837,6 +11847,16 @@ body {
   font-weight: 400;
   letter-spacing: 0.3px;
   background-color: rgba(0, 0, 0, 0.4);
+}
+
+@media only screen and (max-width: 47.9em) {
+  .form__wizard__header {
+    font-size: 18px;
+  }
+}
+
+.form__wizard__header-img {
+  width: 100%;
 }
 
 .form__wizard__steps {
