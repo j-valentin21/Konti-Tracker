@@ -11817,6 +11817,13 @@ body {
   position: relative;
 }
 
+.form__wizard__img {
+  width: 100%;
+  height: 25vw;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 .form__wizard__header {
   position: absolute;
   top: 50%;

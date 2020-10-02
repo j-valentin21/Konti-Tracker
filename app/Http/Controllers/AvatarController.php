@@ -33,10 +33,12 @@ class AvatarController extends Controller
     {
         $profile = $request->session()->get('profile');
 
-        if(!isset($profile->image)) {
-            if($request->file('avatar')) {
+        if(!isset($profile->avatar)) {
+            if ($request->file('avatar') === null) {
+                return redirect('/register/confirmation');
+            } else {
                 $profile = $request->session()->get('profile');
-                $url = $request->file('avatar')->store('avatar','s3');
+                $url = $request->file('avatar')->store('avatar', 's3');
                 Storage::disk('s3')->setVisibility($url, 'public');
                 $profile->avatar = $url;
                 $request->session()->put('profile', $profile);

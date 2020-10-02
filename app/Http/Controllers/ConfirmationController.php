@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
-
 
 class ConfirmationController extends Controller
 {

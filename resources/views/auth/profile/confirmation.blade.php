@@ -41,14 +41,16 @@
                                         <td>Points:</td>
                                         <td><strong>{{$profile->points}}</strong></td>
                                     </tr>
-                                    <tr>
-                                        <td>Avatar:</td>
-                                        <td>
-                                            <strong>
-                                                <img class="img-fluid my-3 " alt="avatar" src="{{ Storage::disk('s3')->url($profile->avatar) }}"/>
-                                            </strong>
-                                        </td>
-                                    </tr>
+                                    @if(isset($profile->avatar))
+                                        <tr>
+                                            <td>Avatar:</td>
+                                            <td>
+                                                <strong>
+                                                    <img class="img-fluid form__wizard__img my-3" alt="avatar" src="{{ Storage::disk('s3')->url($profile->avatar) }}"/>
+                                                </strong>
+                                            </td>
+                                        </tr>
+                                    @endif
                                 </table>
                                 <a href="{{ route('profile') }}">
                                     <button type="button" class="form__wizard__btn form__wizard__btn--orange mr-2 mb-2">Back to Profile</button>

@@ -4,7 +4,9 @@
     position: relative;
 
     &__img {
-
+        width: 100%;
+        height: 25vw;
+        object-fit: cover;
     }
 
     &__header {

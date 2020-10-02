@@ -29,7 +29,7 @@
                             <!-- ========== AVATAR ========== -->
                             @if(isset($profile->avatar))
                                 <h6 class="form__wizard__label">Avatar</h6>
-                                <img class="img-fluid my-3 w-75" alt="Avatar" src="{{ Storage::disk('s3')->url($profile->avatar) }}"/>
+                                <img class="img-fluid my-3 form__wizard__img" alt="Avatar" src="{{ Storage::disk('s3')->url($profile->avatar) }}"/>
                             @endif
                               <!-- ========== UPLOAD IMAGE ========== -->
                             <form method="POST" action="{{ route('avatar.post') }}" enctype="multipart/form-data">
