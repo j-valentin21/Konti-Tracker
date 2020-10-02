@@ -8,7 +8,7 @@
 
 <div class="d-flex justify-content-end">
     <section class="registration__container d-flex justify-content-center">
-        <form method="POST" action="{{ route('register') }}">
+        <form class="my-auto" method="POST" action="{{ route('register') }}">
             @csrf
             <h2 class="registration__title">{{ __('Register') }}</h2>
             <!-- ========== NAME ========== -->
