@@ -57,6 +57,9 @@
                                 <!-- ========== NEXT BUTTON ========== -->
                             @if(isset($profile->avatar))
                                 <div class="my-2">
+                                    <a href="{{ route('profile') }}">
+                                        <button type="button" class="form__wizard__btn form__wizard__btn--orange mr-2">{{ __('Back') }}</button>
+                                    </a>
                                     <button type="submit" class="form__wizard__btn form__wizard__btn--orange ">
                                         {{ __('Next') }}
                                     </button>
@@ -74,9 +77,7 @@
                             </form>
                             <!-- ========== REMOVE AVATAR BTN ========== -->
                             @if(isset($profile->avatar))
-                                <a href="{{ route('profile') }}">
-                                    <button type="button" class="form__wizard__btn form__wizard__btn--orange mr-2 mb-2">{{ __('Back') }}</button>
-                                </a>
+
                                 <form method="POST" action="{{ route('avatar.destroy') }}">
                                     @method('DELETE')
                                     @csrf
