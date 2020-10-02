@@ -20,13 +20,14 @@
                        placeholder="Name"
                        value="{{ old('name') }}"
                        required autocomplete="name" autofocus />
-                <label for="name" class="registration__label">{{ __('Name') }}</label>
-
                 @error('name')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
                 @enderror
+                @if (!$errors->has('name'))
+                    <label for="name" class="registration__label">{{ __('Name') }}</label>
+                @endif
             </div>
             <!-- ========== EMAIL ========== -->
             <div class="form-group mb-4">
@@ -37,13 +38,14 @@
                        placeholder="Email"
                        value="{{ old('email') }}"
                        required autocomplete="email"/>
-                <label for="email" class="registration__label">{{ __('Email') }}</label>
-
                 @error('email')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
                 @enderror
+                @if (!$errors->has('email'))
+                    <label for="email" class="registration__label">{{ __('email') }}</label>
+                @endif
             </div>
             <!-- ========== PASSWORD ========== -->
             <div class="form-group mb-4">
@@ -53,13 +55,14 @@
                        name="password"
                        placeholder="Password"
                        required autocomplete="new-password"/>
-                <label for="password" class="registration__label">{{ __('Password') }}</label>
-
                 @error('password')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
                 @enderror
+                @if (!$errors->has('password'))
+                    <label for="password" class="registration__label">{{ __('Password') }}</label>
+                @endif
             </div>
             <!-- ========== CONFIRM PASSWORD ========== -->
             <div class="form-group mb-4">
@@ -69,13 +72,14 @@
                        name="password_confirmation"
                        placeholder="Confirm Password"
                        required autocomplete="new-password"/>
-                <label for="password-confirm" class="registration__label">{{ __('Confirm Password') }}</label>
-
                 @error('password_confirmation')
-                <span class="invalid-feedback" role="alert">
+                <span class="invalid-feedback mb-3" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
                 @enderror
+                @if (!$errors->has('password_confirmation'))
+                    <label for="password_confirmation" class="registration__label mb-3">{{ __('Confirm Password') }}</label>
+                @endif
                 <!-- ========== SIGN UP BUTTON ========== -->
                 <button type="submit" class="form-submit registration__signup" >
                     {{ __('Sign up') }}
