@@ -10,6 +10,10 @@
         @include respond(tab-land) {
             max-width: 95%;
         }
+
+        @include respond(mobile-land) {
+            align-items: normal;
+        }
     }
     &__img {
         width: 100%;
@@ -31,8 +35,22 @@
         letter-spacing: 0.3px;
         background-color: rgba($color-black, 0.4);
 
+        @include respond(tab-land) {
+            font-size: 20px;
+        }
+
         @include respond(tab-port) {
-            font-size: 18px;
+            font-size: 16px;
+        }
+
+        @include respond(mobile-land) {
+            font-size: 12px;
+        }
+
+        @include respond(mobile-land-bp2) {
+            padding: 5px 10px;
+            font-size: 12px;
+            border: 2px solid rgba($color-orange, 1);
         }
     }
 
@@ -46,6 +64,7 @@
         font-size: 1.2rem;
         font-weight: 500;
         position: relative;
+        margin-bottom: 5rem;
 
         &--active-top {
             color: $color-orange;
@@ -106,6 +125,11 @@
         border: none;
         box-shadow: 1px 1px 1px;
         transition: all .2s;
+
+        @include respond(mobile-land) {
+            margin-top: 5rem;
+            width: 50%;
+        }
 
         &--orange {
             background-image: linear-gradient(to right, $color-orange, #eeb345);
