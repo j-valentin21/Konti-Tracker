@@ -11840,6 +11840,22 @@ body {
      object-fit: cover;
 }
 
+@media only screen and (max-width: 62.5em) {
+  .form__wizard__img {
+    height: 40vh;
+  }
+}
+
+.form__wizard__img-text {
+  margin-bottom: 5rem;
+}
+
+@media only screen and (max-width: 36.5em) {
+  .form__wizard__img-text {
+    margin-bottom: 8rem;
+  }
+}
+
 .form__wizard__header {
   position: absolute;
   top: 50%;
@@ -11942,7 +11958,7 @@ body {
 
 .form__wizard__btn {
   background-image: linear-gradient(to right, #eba72b, #eeb345);
-  width: 40%;
+  width: 35%;
   border-radius: 5%;
   padding: 0.5rem 1rem;
   box-sizing: border-box;
@@ -11957,8 +11973,8 @@ body {
 
 @media only screen and (max-width: 36.5em) {
   .form__wizard__btn {
-    margin-top: 5rem;
     width: 50%;
+    margin-top: 2rem;
   }
 }
 

@@ -19,6 +19,19 @@
         width: 100%;
         height: 25vw;
         object-fit: cover;
+
+        @include respond(tab-land) {
+            height: 40vh;
+        }
+
+    }
+
+    &__img-text {
+        margin-bottom: 5rem;
+
+        @include respond(mobile-land) {
+            margin-bottom: 8rem;
+        }
     }
 
     &__header {
@@ -114,7 +127,7 @@
 
     &__btn {
         background-image: linear-gradient(to right, $color-orange, #eeb345);
-        width: 40%;
+        width: 35%;
         border-radius: 5%;
         padding: .5rem 1rem;
         box-sizing: border-box;
@@ -127,8 +140,8 @@
         transition: all .2s;
 
         @include respond(mobile-land) {
-            margin-top: 5rem;
             width: 50%;
+            margin-top: 2rem;
         }
 
         &--orange {
@@ -185,4 +198,6 @@
         color: $color-black;
         font-weight: 700;
     }
+
+
 }
