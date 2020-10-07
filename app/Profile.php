@@ -12,7 +12,7 @@ class Profile extends Model
      * @var array
      */
     protected $fillable = [
-        'position','pto', 'points','avatar','user_id'
+        'position','pto', 'points','avatar','user_id,'
     ];
 
     public function user()

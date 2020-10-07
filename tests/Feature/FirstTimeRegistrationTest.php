@@ -21,9 +21,7 @@ class FirstTimeRegistrationTest extends TestCase
      */
     public function test_Guest_Cannot_Access_Build_Your_Profile_Page()
     {
-
         $response = $this->get('/register/build-your-profile');
-
         $response->assertRedirect('/');
     }
 
@@ -46,22 +44,12 @@ class FirstTimeRegistrationTest extends TestCase
     }
 
     /**
-     * User can post input to build-your profile page.
+     * User can pass session data to avatar page.
      *
      * @return void
      */
-    public function test_User_Can_Post_To_Build_Your_Profile_Page()
+    public function test_User_Can_Pass_Sessions_To_Avatar_Page()
     {
-        $profile = factory(Profile::class)->create();
-            $this->post(route('register'), [
-                'position' => $profile->position,
-                'image' => $profile->image
-            ]);
-
-        $this->assertDatabaseHas('profiles', [
-            'position' => $profile->position,
-            'image' => $profile->image,
-        ]);
 
 
     }
