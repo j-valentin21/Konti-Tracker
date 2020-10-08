@@ -20,8 +20,8 @@ class CreateProfilesTable extends Migration
             $table->tinyInteger('pto')->nullable();
             $table->tinyInteger('points')->nullable();
             $table->string('avatar')->nullable();
-            $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
+            $table->timestamps();
         });
     }
 
