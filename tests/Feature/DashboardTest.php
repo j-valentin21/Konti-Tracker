@@ -11,7 +11,6 @@ use Tests\TestCase;
 
 class DashboardTest extends TestCase
 {
-
     use RefreshDatabase;
 
     /**

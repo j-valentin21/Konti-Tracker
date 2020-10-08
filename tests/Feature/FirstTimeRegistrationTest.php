@@ -2,10 +2,10 @@
 
 namespace Tests\Feature;
 
+use App\Http\Middleware\FirstTimeUser;
 use App\User;
 use App\Profile;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Route;
 use Tests\TestCase;
 
@@ -31,7 +31,7 @@ class FirstTimeRegistrationTest extends TestCase
      * @return void
      */
 
-    public function test_Only_Authenticated_First_Time_User_Can_Access_Build_Your_Profile_Page()
+    public function test_Only_First_Time_User_Can_Access_Build_Your_Profile_Page()
     {
         $this->actingAs($user = factory(User::class)->make());
 
@@ -50,8 +50,20 @@ class FirstTimeRegistrationTest extends TestCase
      */
     public function test_User_Can_Pass_Sessions_To_Avatar_Page()
     {
+        $this->withoutMiddleware([FirstTimeUser::class]);
 
+        $profile = factory(Profile::class)->make();
+        $user = factory(User::class)->make();
 
+        $response = $this->actingAs($user)
+        ->withSession([
+            'position' => $profile->position,
+            'pto'=> $profile->pto,
+            'points'=> $profile->points
+        ])->get('/register/avatar');
+
+        $response->assertSessionHasAll(['position', 'pto', 'points']);
+        $response->assertStatus( 200);
     }
 }
 
