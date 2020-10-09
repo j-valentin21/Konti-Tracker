@@ -31,15 +31,15 @@
                                 <table class="table">
                                     <tr>
                                         <td>Position:</td>
-                                        <td><strong>{{$profile->position}}</strong></td>
+                                        <td><strong>{{$profile->position ?? ""}}</strong></td>
                                     </tr>
                                     <tr>
                                         <td>PTO:</td>
-                                        <td><strong>{{$profile->pto}}</strong></td>
+                                        <td><strong>{{$profile->pto ?? ""}}</strong></td>
                                     </tr>
                                     <tr>
                                         <td>Points:</td>
-                                        <td><strong>{{$profile->points}}</strong></td>
+                                        <td><strong>{{$profile->points ?? ""}}</strong></td>
                                     </tr>
                                     @if(isset($profile->avatar))
                                         <tr>
