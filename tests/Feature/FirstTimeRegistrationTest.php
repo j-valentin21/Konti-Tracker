@@ -44,6 +44,20 @@ class FirstTimeRegistrationTest extends TestCase
     }
 
     /**
+     * Check if route to avatar is working properly.
+     *
+     * @return void
+     */
+    public function test_Confirmation_For_Status_Code_200()
+    {
+        $this->withoutMiddleware([FirstTimeUser::class, Authenticate::class]);
+
+        $response = $this->get('/register/confirmation');
+
+        $response->assertStatus(200);
+    }
+
+    /**
      * Guest cannot access build your profile page without being authenticated.
      *
      * @return void
