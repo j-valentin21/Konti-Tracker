@@ -11,11 +11,8 @@ class ProfileTest extends TestCase
      *
      * @return void
      */
-    public function test ()
+    public function profile ()
     {
-        $this->withoutExceptionHandling();
-
-        //executes the factory created in the factory folder Book class
         $profile = factory(profile::class)->create();
 
 
