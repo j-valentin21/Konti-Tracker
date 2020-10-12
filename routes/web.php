@@ -28,5 +28,4 @@ Route::middleware(['auth', 'firstTimeUser'])->group(function () {
     Route::post('/register/store', 'ConfirmationController@store')->name('confirmation.store');
 });
 
-
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard.index');
