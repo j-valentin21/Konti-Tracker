@@ -14,7 +14,5 @@ class ProfileTest extends TestCase
     public function profile ()
     {
         $profile = factory(profile::class)->create();
-
-
     }
 }
