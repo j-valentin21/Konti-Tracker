@@ -6,8 +6,8 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use App\Profile;
 use App\Http\Requests\FirstTimeRegistrationRequest;
-use Illuminate\Http\Response;
 use Illuminate\Routing\Redirector;
+use Illuminate\Support\Facades\Redis;
 
 class ProfileController extends Controller
 {
@@ -19,28 +19,31 @@ class ProfileController extends Controller
      */
     public function create(Request $request)
     {
-        $profile = $request->session()->get('profile');
+        $redis = Redis::connection();
+        $profile = unserialize($redis->get('profile_' . auth()->id()));
         return view('auth.profile.build-your-profile',compact('profile', $profile));
     }
 
     /**
-     * Post Request to store step 1 info in session
+     * Post Request to store build-your-profile info in redis session
      *
      * @param  \Illuminate\Http\Request  $request
      * @return Redirector
      */
     public function post(FirstTimeRegistrationRequest $request)
     {
+        $redis = Redis::connection();
+
         $validated = $request->validated();
 
-        if (empty($request->session()->get('profile'))) {
+        if (empty($redis->get('profile_' . auth()->id()))) {
             $profile = new Profile();
             $profile->fill($validated);
-            $request->session()->put('profile', $profile);
+            $redis->set('profile_'. auth()->id(), serialize($profile));
         } else {
-            $profile = $request->session()->get('profile');
+            $profile = unserialize($redis->get('profile_' . auth()->id()));
             $profile->fill($validated);
-            $request->session()->put('profile', $profile);
+            $redis->set('profile_'. auth()->id(), serialize($profile));
         }
 
         return redirect('/register/avatar');
