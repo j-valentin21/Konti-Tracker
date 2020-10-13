@@ -6,6 +6,7 @@ use App\Http\Requests\FormUploadRequest;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
+use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Storage;
 
 class AvatarController extends Controller
@@ -18,7 +19,8 @@ class AvatarController extends Controller
      */
     public function create(Request $request)
     {
-        $profile = $request->session()->get('profile');
+        $redis = Redis::connection();
+        $profile = unserialize($redis->get('profile_' . auth()->id()));
         return view('auth.profile.avatar',compact('profile', $profile));
     }
 
@@ -31,17 +33,18 @@ class AvatarController extends Controller
      */
     public function post(FormUploadRequest $request)
     {
-        $profile = $request->session()->get('profile');
+        $redis = Redis::connection();
+        $profile = unserialize($redis->get('profile_' . auth()->id()));
 
         if(!isset($profile->avatar)) {
             if ($request->file('avatar') === null) {
                 return redirect('/register/confirmation');
             } else {
-                $profile = $request->session()->get('profile');
+                $profile = unserialize($redis->get('profile_' . auth()->id()));
                 $url = $request->file('avatar')->store('avatar', 's3');
                 Storage::disk('s3')->setVisibility($url, 'public');
                 $profile->avatar = $url;
-                $request->session()->put('profile', $profile);
+                $redis->set('profile_'. auth()->id(), serialize($profile));
             }
         }
 
@@ -56,10 +59,11 @@ class AvatarController extends Controller
      */
     public function destroy(Request $request)
     {
-        $profile = $request->session()->get('profile');
+        $redis = Redis::connection();
+        $profile = unserialize($redis->get('profile_' . auth()->id()));
         $imageName = $profile->avatar;
         Storage::disk('s3')->delete($imageName);
-        $profile->avatar = null;
+        unset($profile->avatar);
         return redirect('/register/avatar');
     }
 }
