@@ -63,7 +63,8 @@ class AvatarController extends Controller
         $profile = unserialize($redis->get('profile_' . auth()->id()));
         $imageName = $profile->avatar;
         Storage::disk('s3')->delete($imageName);
-        unset($profile->avatar);
+        $profile->avatar = null;
+        $redis->set('profile_'. auth()->id(), serialize($profile));
         return redirect('/register/avatar');
     }
 }
