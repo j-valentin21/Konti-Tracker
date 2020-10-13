@@ -12030,3 +12030,37 @@ body {
   font-weight: 700;
 }
 
+.auth {
+  background: linear-gradient(to bottom, #ff8008, #ffc837) no-repeat;
+  height: 100vh;
+}
+
+.auth__container {
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+
+.auth__nav {
+  background-color: #000000;
+}
+
+.auth__links {
+  color: #eba72b;
+  margin-top: 2rem;
+  font-size: 1.25rem;
+}
+
+.auth__header {
+  background-color: #000000;
+  color: #eba72b;
+  font-size: 1.5rem;
+}
+
+.auth__body {
+  background-color: #e3e3e3;
+}
+
