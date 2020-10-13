@@ -40,10 +40,12 @@ class ProfileController extends Controller
             $profile = new Profile();
             $profile->fill($validated);
             $redis->set('profile_'. auth()->id(), serialize($profile));
+            $redis->expire('profile_' . auth()->id(), $profile->expireDate());
         } else {
             $profile = unserialize($redis->get('profile_' . auth()->id()));
             $profile->fill($validated);
             $redis->set('profile_'. auth()->id(), serialize($profile));
+            $redis->expire('profile_' . auth()->id(), $profile->expireDate());
         }
 
         return redirect('/register/avatar');
