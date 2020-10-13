@@ -17,8 +17,9 @@ Route::get('/', function () {
     return view('index');
 })->name('index');
 
-Auth::routes();
-Route::middleware(['auth', 'firstTimeUser'])->group(function () {
+Auth::routes(['verify' => true]);
+
+Route::middleware(['auth', 'firstTimeUser', 'verified'])->group(function () {
     Route::get('/register/build-your-profile', 'ProfileController@create')->name('profile');
     Route::post('/register/build-your-profile', 'ProfileController@post')->name('profile.post');
     Route::get('/register/avatar', 'AvatarController@create')->name('avatar');
@@ -28,4 +29,7 @@ Route::middleware(['auth', 'firstTimeUser'])->group(function () {
     Route::post('/register/store', 'ConfirmationController@store')->name('confirmation.store');
 });
 
-Route::get('/dashboard', 'DashboardController@index')->name('dashboard.index');
+Route::middleware(['auth', 'NotFirstTimeUser', 'verified'])->group(function () {
+    Route::get('/dashboard', 'DashboardController@index')->name('dashboard.index');
+
+});

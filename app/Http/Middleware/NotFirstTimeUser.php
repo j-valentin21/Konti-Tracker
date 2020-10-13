@@ -20,6 +20,5 @@ class NotFirstTimeUser
         }
 
         return redirect('/');
-
     }
 }

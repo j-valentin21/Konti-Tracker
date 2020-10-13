@@ -1,6 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
-@section('content')
+@section('title', "Email Verification")
+
+@section('body-content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
