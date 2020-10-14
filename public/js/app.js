@@ -1950,6 +1950,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 //
 //
 //
+//
+//
 
 /**
  * Keeps track of all of laravel's validation errors that come from axios.
@@ -75708,9 +75710,11 @@ var render = function() {
             : _vm._e()
         ]),
         _vm._v(" "),
-        _c("a", { attrs: { href: "#" } }, [
-          _vm._v("Forgot password/username?")
-        ]),
+        _c(
+          "a",
+          { staticClass: "btn btn-link", attrs: { href: "/password/reset" } },
+          [_vm._v("\n            Forgot your password?\n        ")]
+        ),
         _vm._v(" "),
         _vm._m(0)
       ]

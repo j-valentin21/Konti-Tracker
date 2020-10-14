@@ -24,7 +24,9 @@
                 <strong v-if="errors.has('password')" v-text="errors.get('password')" class="help is-danger"></strong>
             </div>
 
-            <a href="#">Forgot password/username?</a>
+            <a class="btn btn-link" href="/password/reset">
+                Forgot your password?
+            </a>
 
             <div class="mt-2 d-flex justify-content-end">
                 <button type="button" class="btn btn-secondary mr-2 modal__button" data-dismiss="modal">Close</button>

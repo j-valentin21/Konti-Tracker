@@ -5,7 +5,7 @@
 @section('class', 'auth')
 
 @section('body-header')
-    @include("layouts.navbar.auth")
+    @include("layouts.navbar.verify")
 @endsection
 
 @section('body-content')

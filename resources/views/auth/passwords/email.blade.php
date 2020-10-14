@@ -1,13 +1,21 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
-@section('content')
+@section('title', "Password Reset")
+
+@section('class', 'auth')
+
+@section('body-header')
+    @include("layouts.navbar.auth")
+@endsection
+
+@section('body-content')
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center auth__container">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+                <div class="card-header auth__header">{{ __('Reset Password') }}</div>
 
-                <div class="card-body">
+                <div class="card-body auth__body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
@@ -33,7 +41,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn auth__button">
                                     {{ __('Send Password Reset Link') }}
                                 </button>
                             </div>
