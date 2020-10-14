@@ -12064,3 +12064,14 @@ body {
   background-color: #e3e3e3;
 }
 
+.auth__button {
+  background-color: #000000;
+  color: #eba72b;
+  transition: all 0.25s ease-in;
+}
+
+.auth__button:hover {
+  color: #eba72b;
+  font-weight: bolder;
+}
+

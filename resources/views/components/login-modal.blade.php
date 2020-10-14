@@ -10,10 +10,7 @@
                     </button>
                 </div>
                 <div class="modal-body modal__body">
-                    @csrf
-
                    <login-form></login-form>
-
                 </div>
             </div>
         </div>

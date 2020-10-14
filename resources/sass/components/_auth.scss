@@ -31,4 +31,15 @@
     &__body {
         background-color: $color-grey;
     }
+
+    &__button {
+        background-color: $color-black;
+        color: $color-orange;
+        transition: all .25s ease-in;
+
+        &:hover {
+            color: $color-orange;
+            font-weight: bolder;
+        }
+    }
 }
