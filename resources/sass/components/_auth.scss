@@ -1,0 +1,34 @@
+.auth {
+    background: linear-gradient(to bottom, #ff8008, #ffc837) no-repeat;
+    height: 100vh;
+
+    &__container {
+        height: 80vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        margin: 0;
+    }
+
+    &__nav {
+        background-color: $color-black;
+    }
+
+    &__links {
+        color:$color-orange;
+        margin-top: 2rem;
+        font-size: 1.25rem;
+    }
+
+    &__header {
+        background-color: $color-black;
+        color: $color-orange;
+        font-size: 1.5rem;
+
+    }
+
+    &__body {
+        background-color: $color-grey;
+    }
+}
