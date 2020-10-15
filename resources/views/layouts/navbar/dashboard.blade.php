@@ -6,11 +6,19 @@
                 <!-- ========== NAVBAR IMAGE DROPDOWN ========== -->
                 <div class="dropdown d-inline-block mr-4">
                     <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img class="rounded-circle navbar__img d-xl-inline-block" src="{{ asset('img/vacation.jpg') }}" alt="user image">
-                        <span class="text-white d-none d-xl-inline-block ml-1">Joel</span>
+                    @if(isset(auth()->user()->profile->avatar))
+                        <img class="rounded-circle navbar__img d-xl-inline-block"
+                             src="{{ Storage::disk('s3')->url(auth()->user()->profile->avatar) }}"
+                             alt="user image">
+                    @else
+                        <img class="rounded-circle navbar__img d-xl-inline-block"
+                             src="{{ asset('img/user_placeholder.jpg')}}"
+                             alt="user image">
+                    @endif
+                        <span class="text-white d-none d-xl-inline-block ml-1">{{ auth()->user()->name }}</span>
                     </button>
                     <div class="dropdown-menu dropdown-menu-right dashboard__card">
-                        <a class="dropdown-item dashboard__card__text hover__black" href="#">
+                        <a class="dropdown-item dashboard__card__text hover__black" href="{{ route('dashboard.profile') }}">
                             <svg class="icons">
                                 <use href="svg/sprite.svg#icon-user"></use>
                             </svg> Profile
