@@ -18,11 +18,19 @@
                 <!-- ========== SIDEBAR HEADER ========== -->
                 <div class="text-center py-4">
                     <div class="sidebar__img">
-                        <img src="{{ asset('img/vacation.jpg') }}" alt="vacation" class="sidebar__avatar mx-auto rounded-circle">
+                    @if(isset(auth()->user()->profile->avatar))
+                        <img src="{{ Storage::disk('s3')->url(auth()->user()->profile->avatar) }} ?? {{ asset('img/user_placeholder.jpg') }}"
+                             alt="user image"
+                             class="sidebar__avatar mx-auto rounded-circle">
+                    @else
+                        <img src="{{ asset('img/user_placeholder.jpg') }}"
+                             alt="user image"
+                             class="sidebar__avatar mx-auto rounded-circle">
                     </div>
+                    @endif
                     <div class="mt-3">
-                        <a href="#" class=" text-white sidebar__name">Joel</a>
-                        <p class="sidebar__text mb-0 ">Water Spider</p>
+                        <a href="#" class=" text-white sidebar__name">{{ auth()->user()->name }}</a>
+                        <p class="sidebar__text mb-0 ">{{ auth()->user()->profile->position }}</p>
                     </div>
                 </div>
                 <!-- ========== SIDEBAR MENU ========== -->
@@ -38,7 +46,6 @@
                                 <span>Home</span>
                             </a>
                         </li>
-
                         <li>
                             <a href="calendar.html" class=" sidebar__link hover__black">
                                 <svg class="icons icons--sidebar">
@@ -47,7 +54,6 @@
                                 <span>Calendar</span>
                             </a>
                         </li>
-
                         <li>
                             <a href="notifications.html" class=" sidebar__link hover__black">
                                 <svg class="icons icons--sidebar">
@@ -56,7 +62,6 @@
                                 <span>Notifications</span>
                             </a>
                         </li>
-
                         <li>
                             <a href="pto.html" class=" sidebar__link hover__black">
                                 <svg class="icons icons--sidebar">
@@ -84,7 +89,7 @@
                                     <div class="row align-items-center">
                                         <div class="col-8">
                                             <p class="mb-2 dashboard__card__text ">PTO</p>
-                                            <h4 class="my-3 text-white">19</h4>
+                                            <h4 class="my-3 text-white">{{ auth()->user()->profile->pto }}</h4>
                                         </div>
                                         <div class="col-4">
                                             <div class="text-right">
@@ -101,7 +106,7 @@
                                     <div class="row align-items-center">
                                         <div class="col-8">
                                             <p class="mb-2 dashboard__card__text">Points</p>
-                                            <h4 class="my-3 text-white">4</h4>
+                                            <h4 class="my-3 text-white">{{ auth()->user()->profile->points }}</h4>
                                         </div>
                                         <div class="col-4">
                                             <div class="text-right">
@@ -169,39 +174,38 @@
                                 <div class="card dashboard__card">
                                     <div class="card-body">
                                         <h4 class="card-title dashboard__card__title mb-4">Notifications</h4>
-
-                                        <ul>
-                                            <li>
-                                                <a href="#">
-                                                    <div class="media">
-                                                        <div class="media-body overflow-hidden">
-                                                            <h5 class=" mb-1 text-white">Paul</h5>
-                                                            <p class="text-truncate mb-0 dashboard__card__text border__bottom--grey mb-2">Hey! there I'm available</p>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <div class="media">
-                                                        <div class="media-body overflow-hidden">
-                                                            <h5 class=" mb-1 text-white">Brody</h5>
-                                                            <p class="text-truncate mb-0 dashboard__card__text border__bottom--grey mb-4">This day is available</p>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <div class="media">
-                                                        <div class="media-body overflow-hidden">
-                                                            <h5 class=" mb-1 text-white">Isaiah</h5>
-                                                            <p class="text-truncate mb-0 dashboard__card__text border__bottom--grey mb-4">This day is available</p>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                        </ul>
+{{--                                        <ul>--}}
+{{--                                            <li>--}}
+{{--                                                <a href="#">--}}
+{{--                                                    <div class="media">--}}
+{{--                                                        <div class="media-body overflow-hidden">--}}
+{{--                                                            <h5 class=" mb-1 text-white">Paul</h5>--}}
+{{--                                                            <p class="text-truncate mb-0 dashboard__card__text border__bottom--grey mb-2">Hey! there I'm available</p>--}}
+{{--                                                        </div>--}}
+{{--                                                    </div>--}}
+{{--                                                </a>--}}
+{{--                                            </li>--}}
+{{--                                            <li>--}}
+{{--                                                <a href="#">--}}
+{{--                                                    <div class="media">--}}
+{{--                                                        <div class="media-body overflow-hidden">--}}
+{{--                                                            <h5 class=" mb-1 text-white">Brody</h5>--}}
+{{--                                                            <p class="text-truncate mb-0 dashboard__card__text border__bottom--grey mb-4">This day is available</p>--}}
+{{--                                                        </div>--}}
+{{--                                                    </div>--}}
+{{--                                                </a>--}}
+{{--                                            </li>--}}
+{{--                                            <li>--}}
+{{--                                                <a href="#">--}}
+{{--                                                    <div class="media">--}}
+{{--                                                        <div class="media-body overflow-hidden">--}}
+{{--                                                            <h5 class=" mb-1 text-white">Isaiah</h5>--}}
+{{--                                                            <p class="text-truncate mb-0 dashboard__card__text border__bottom--grey mb-4">This day is available</p>--}}
+{{--                                                        </div>--}}
+{{--                                                    </div>--}}
+{{--                                                </a>--}}
+{{--                                            </li>--}}
+{{--                                        </ul>--}}
 
                                         <div class="text-center">
                                             <a href="#" class="btn__submit">Load More</a>
@@ -214,58 +218,57 @@
                                 <div class="card dashboard__card mb-5">
                                     <div class="card-body">
                                         <h4 class="card-title dashboard__card__title mb-4">PTO/Points activity</h4>
-
-                                        <div class="table-responsive">
-                                            <table class="table table-centered">
-                                                <thead>
-                                                <tr class="dashboard__card__title">
-                                                    <th scope="col">Date</th>
-                                                    <th scope="col">Time</th>
-                                                    <th scope="col">Supervisor name</th>
-                                                    <th scope="col">PTO time requested</th>
-                                                    <th scope="col" colspan="2">Status</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody class="dashboard__card__text">
-                                                <tr>
-                                                    <td>08/26/2020</td>
-                                                    <td>
-                                                        <a href="#" class="dashboard__card__text">8:20AM</a>
-                                                    </td>
-                                                    <td>Werner Berlin</td>
-                                                    <td>$ 125</td>
-                                                    <td><span class="badge">Paid</span></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>08/24/2020</td>
-                                                    <td>
-                                                        <a href="#" class="dashboard__card__text">3:30PM</a>
-                                                    </td>
-                                                    <td>Robert Jordan</td>
-                                                    <td>$ 118</td>
-                                                    <td><span class="badge">Chargeback</span></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>08/15/2020</td>
-                                                    <td>
-                                                        <a href="#" class="dashboard__card__text">10:20AM</a>
-                                                    </td>
-                                                    <td>Daniel Finch</td>
-                                                    <td>$ 115</td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>08/15/2020</td>
-                                                    <td>
-                                                        <a href="#" class="dashboard__card__text">2:45PM</a>
-                                                    </td>
-                                                    <td>James Hawkins</td>
-                                                    <td>$ 121</td>
-                                                    <td><span class="badge">Refund</span></td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
+{{--                                        <div class="table-responsive">--}}
+{{--                                            <table class="table table-centered">--}}
+{{--                                                <thead>--}}
+{{--                                                <tr class="dashboard__card__title">--}}
+{{--                                                    <th scope="col">Date</th>--}}
+{{--                                                    <th scope="col">Time</th>--}}
+{{--                                                    <th scope="col">Supervisor name</th>--}}
+{{--                                                    <th scope="col">PTO time requested</th>--}}
+{{--                                                    <th scope="col" colspan="2">Status</th>--}}
+{{--                                                </tr>--}}
+{{--                                                </thead>--}}
+{{--                                                <tbody class="dashboard__card__text">--}}
+{{--                                                <tr>--}}
+{{--                                                    <td>08/26/2020</td>--}}
+{{--                                                    <td>--}}
+{{--                                                        <a href="#" class="dashboard__card__text">8:20AM</a>--}}
+{{--                                                    </td>--}}
+{{--                                                    <td>Werner Berlin</td>--}}
+{{--                                                    <td>$ 125</td>--}}
+{{--                                                    <td><span class="badge">Paid</span></td>--}}
+{{--                                                </tr>--}}
+{{--                                                <tr>--}}
+{{--                                                    <td>08/24/2020</td>--}}
+{{--                                                    <td>--}}
+{{--                                                        <a href="#" class="dashboard__card__text">3:30PM</a>--}}
+{{--                                                    </td>--}}
+{{--                                                    <td>Robert Jordan</td>--}}
+{{--                                                    <td>$ 118</td>--}}
+{{--                                                    <td><span class="badge">Chargeback</span></td>--}}
+{{--                                                </tr>--}}
+{{--                                                <tr>--}}
+{{--                                                    <td>08/15/2020</td>--}}
+{{--                                                    <td>--}}
+{{--                                                        <a href="#" class="dashboard__card__text">10:20AM</a>--}}
+{{--                                                    </td>--}}
+{{--                                                    <td>Daniel Finch</td>--}}
+{{--                                                    <td>$ 115</td>--}}
+{{--                                                    <td></td>--}}
+{{--                                                </tr>--}}
+{{--                                                <tr>--}}
+{{--                                                    <td>08/15/2020</td>--}}
+{{--                                                    <td>--}}
+{{--                                                        <a href="#" class="dashboard__card__text">2:45PM</a>--}}
+{{--                                                    </td>--}}
+{{--                                                    <td>James Hawkins</td>--}}
+{{--                                                    <td>$ 121</td>--}}
+{{--                                                    <td><span class="badge">Refund</span></td>--}}
+{{--                                                </tr>--}}
+{{--                                                </tbody>--}}
+{{--                                            </table>--}}
+{{--                                        </div>--}}
                                         <!-- ========== PAGINATION ========== -->
                                         <div class="mb-3">
                                             <ul class="pagination pagination-rounded justify-content-center mb-0">

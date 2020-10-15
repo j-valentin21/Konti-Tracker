@@ -105,6 +105,5 @@
                     .catch(error => this.errors.record(error.response.data.errors))
             }
         }
-
     }
 </script>
