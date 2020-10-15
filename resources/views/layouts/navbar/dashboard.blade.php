@@ -18,7 +18,7 @@
                         <span class="text-white d-none d-xl-inline-block ml-1">{{ auth()->user()->name }}</span>
                     </button>
                     <div class="dropdown-menu dropdown-menu-right dashboard__card">
-                        <a class="dropdown-item dashboard__card__text hover__black" href="#">
+                        <a class="dropdown-item dashboard__card__text hover__black" href="{{ route('dashboard.profile') }}">
                             <svg class="icons">
                                 <use href="svg/sprite.svg#icon-user"></use>
                             </svg> Profile

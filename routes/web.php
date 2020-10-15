@@ -30,6 +30,7 @@ Route::middleware(['auth', 'firstTimeUser', 'verified'])->group(function () {
 });
 
 Route::middleware(['auth', 'NotFirstTimeUser', 'verified'])->group(function () {
-    Route::get('/dashboard', 'DashboardController@index')->name('dashboard.index');
+    Route::get('/dashboard', 'dashboard\DashboardController@index')->name('dashboard.index');
+    Route::get('/dashboard/profile', 'dashboard\DashboardProfileController@index')->name('dashboard.profile');
 
 });
