@@ -26,7 +26,7 @@
                 <li>
                     <a href="{{ route('dashboard.index') }}" class=" sidebar__link hover__black">
                         <svg class="icons icons--sidebar">
-                            <use href="{{ asset('svg/sprite.svg#icon-home') }}"></use>
+                            <use href="{{ asset('svg/sprite.svg#icon-home3') }}"></use>
                         </svg>
                         <span>Home</span>
                     </a>
