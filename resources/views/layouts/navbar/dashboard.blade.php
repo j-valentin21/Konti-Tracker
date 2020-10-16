@@ -20,20 +20,15 @@
                     <div class="dropdown-menu dropdown-menu-right dashboard__card">
                         <a class="dropdown-item dashboard__card__text hover__black" href="{{ route('dashboard.profile') }}">
                             <svg class="icons">
-                                <use href="svg/sprite.svg#icon-user"></use>
+                                <use href="{{ asset('svg/sprite.svg#icon-user') }}"></use>
                             </svg> Profile
-                        </a>
-                        <a class="dropdown-item d-block dashboard__card__text hover__black" href="#">
-                            <svg class="icons">
-                                <use href="svg/sprite.svg#icon-cog"></use>
-                            </svg> Settings
                         </a>
                         <a class="dropdown-item dashboard__card__text hover__black"
                            href="{{ route('logout') }}"
                            onclick="event.preventDefault();
                            document.getElementById('logout-form').submit();">
                             <svg class="icons">
-                                <use href="svg/sprite.svg#icon-switch"></use>
+                                <use href="{{ asset('svg/sprite.svg#icon-switch') }}"></use>
                             </svg> {{ __('Logout') }}
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
@@ -54,7 +49,7 @@
     <!-- NAVBAR TITLE -->
     <div class="navbar__title">
         <div class="d-flex justify-content-lg-center justify-content-start">
-            <h4 class="ml-4 text-white">DASHBOARD</h4>
+            <h4 class="ml-4 text-white">@yield('content')</h4>
         </div>
     </div>
 </nav>

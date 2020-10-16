@@ -11103,6 +11103,10 @@ body {
   padding-top: 1.5rem;
 }
 
+.dashboard__main-content--grey {
+  background-color: darkgrey;
+}
+
 .profile {
   background: linear-gradient(to top, #000000, #434343) !important;
 }
