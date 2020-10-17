@@ -31,6 +31,6 @@ Route::middleware(['auth', 'firstTimeUser', 'verified'])->group(function () {
 
 Route::middleware(['auth', 'NotFirstTimeUser', 'verified'])->group(function () {
     Route::get('/dashboard', 'dashboard\DashboardController@index')->name('dashboard.index');
-    Route::get('/dashboard/profile', 'dashboard\DashboardProfileController@index')->name('dashboard.profile');
-
+    Route::get('/dashboard/profile', 'dashboard\DashboardProfileController@index')->name('dashboard.profile.index');
+    Route::put('/dashboard/profile', 'dashboard\DashboardProfileController@update')->name('dashboard.profile.update');
 });

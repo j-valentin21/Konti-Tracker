@@ -51,6 +51,14 @@
         @include respond(mobile-land-bp2) {
             width: 75vw;
         }
+
+        &--profile {
+            width: 50vw;
+
+            @include respond(mobile-land-bp2) {
+                width: 50vw;
+            }
+        }
     }
 
     &__label {
