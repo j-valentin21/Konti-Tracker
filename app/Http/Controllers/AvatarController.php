@@ -38,6 +38,8 @@ class AvatarController extends Controller
 
         if(!isset($profile->avatar)) {
             if ($request->file('avatar') === null) {
+                $redis->set('profile_'. auth()->id(), serialize($profile));
+                $redis->expire('profile_' . auth()->id(), $profile->expireDate());
                 return redirect('/register/confirmation');
             } else {
                 $profile = unserialize($redis->get('profile_' . auth()->id()));
@@ -45,6 +47,7 @@ class AvatarController extends Controller
                 Storage::disk('s3')->setVisibility($url, 'public');
                 $profile->avatar = $url;
                 $redis->set('profile_'. auth()->id(), serialize($profile));
+                $redis->expire('profile_' . auth()->id(), $profile->expireDate());
             }
         }
 

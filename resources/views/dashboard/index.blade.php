@@ -60,7 +60,7 @@
                                 <div class="row align-items-center">
                                     <div class="col-8">
                                         <p class="my-4 dashboard__card__text">Pending</p>
-                                        <h4 class="my-3 text-white">3</h4>
+                                        <h4 class="my-3 text-white">{{ auth()->user()->profile->pending }}</h4>
                                     </div>
                                     <div class="col-4">
                                         <div class="text-right">

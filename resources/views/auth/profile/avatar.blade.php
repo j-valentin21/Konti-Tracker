@@ -34,7 +34,7 @@
                               <!-- ========== UPLOAD IMAGE ========== -->
                             <form method="POST" action="{{ route('avatar.post') }}" enctype="multipart/form-data">
                                 @csrf
-
+                            @if(!isset($profile->avatar))
                                 <label class="form__wizard__label" for="image" class="text-break">{{ __('Upload Image') }}</label>
                                 <input
                                     type="file" {{ (!empty($profile->avatar)) ? "disabled" : ''}}
@@ -54,9 +54,10 @@
                                     class="form-text text-muted form form__wizard__img-text">
                                     Please upload a valid image file. Size of image should not be more than 2MB.
                                 </small>
+                            @endif
                                 <!-- ========== NEXT/BACK BUTTON ========== -->
                             @if(isset($profile->avatar))
-                                <div class="my-2 text-center text-sm-right">
+                                <div class="my-3 text-center text-sm-right">
                                     <a href="{{ route('profile') }}">
                                         <button type="button" class="form__wizard__btn form__wizard__btn--orange mr-2">{{ __('Back') }}</button>
                                     </a>
