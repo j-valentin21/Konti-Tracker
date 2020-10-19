@@ -119,27 +119,27 @@
                                 <h6 class="form__wizard__label">Avatar</h6>
                                 <img class=" my-3  form__wizard__img w-55" alt="Avatar" src="{{ Storage::disk('s3')->url(auth()->user()->profile->avatar) }}">
                             </div>
-                        @endif
+                        @else
+                            <label class="form__wizard__label" for="image" class="text-break">{{ __('Upload Avatar') }}</label>
+                            <input
+                                type="file" {{ (!empty(auth()->user()->profile->avatar)) ? "disabled" : ''}}
+                                accept="image/x-png,image/gif,image/jpeg, image/svg image/jpg"
+                                class="form-control-file @error('avatar') is-invalid @enderror"
+                                name="avatar"
+                                id="avatar"
+                                aria-describedby="fileHelp">
 
-                        <label class="form__wizard__label" for="image" class="text-break">{{ __('Upload Avatar') }}</label>
-                        <input
-                            type="file" {{ (!empty(auth()->user()->profile->avatar)) ? "disabled" : ''}}
-                            accept="image/x-png,image/gif,image/jpeg, image/svg image/jpg"
-                            class="form-control-file @error('avatar') is-invalid @enderror"
-                            name="avatar"
-                            id="avatar"
-                            aria-describedby="fileHelp">
-
-                        @error('avatar')
-                        <span class="invalid-feedback" role="alert">
+                            @error('avatar')
+                            <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
-                        @enderror
-                        <small
-                            id="fileHelp"
-                            class="form-text text-muted form form__wizard__img-text">
-                            Please upload a valid image file. Size of image should not be more than 2MB.
-                        </small>
+                            @enderror
+                            <small
+                                id="fileHelp"
+                                class="form-text text-muted form form__wizard__img-text">
+                                Please upload a valid image file. Size of image should not be more than 2MB.
+                            </small>
+                        @endif
                         <!-- ========== BUTTON ========== -->
                         <div class="text-center">
                             <button type="submit" class="form__wizard__btn form__wizard__btn--orange mb-5">
