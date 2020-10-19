@@ -35,6 +35,7 @@ class ConfirmationController extends Controller
         $profile->user->firstTimeUser = 0;
         $profile->user->save();
         $profile->save();
+        $redis->unlink('profile_' . auth()->id());
         return redirect('/dashboard');
     }
 }
