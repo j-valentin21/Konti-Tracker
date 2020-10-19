@@ -19,8 +19,9 @@
         <div class="dashboard__main">
             <div class="dashboard__main-content  dashboard__main-content--grey m-5">
                 <form method="POST" action="{{ route('dashboard.profile.update') }}" enctype="multipart/form-data">
+                @method('PUT')
                 @csrf
-                    <div class="mx-5 mx-sm-5 ">
+                    <div class="mx-5 mx-sm-5 container">
                         <!-- ========== NAME ========== -->
                         <div class="form-group my-4">
                             <input id="name"
@@ -43,7 +44,7 @@
                         <!-- ========== EMAIL ========== -->
                         <div class="form-group my-4">
                             <input id="email"
-                                   type="text"
+                                   type="email"
                                    class="form-input registration__input registration__input--profile  @error('email') is-invalid @enderror"
                                    name="email"
                                    placeholder= "email"
@@ -84,7 +85,7 @@
                                    class="form-input registration__input registration__input--profile @error('pto') is-invalid @enderror"
                                    name="pto"
                                    placeholder="PTO"
-                                   value="{{ auth()->user()->profile->position ?? ""}}"
+                                   value="{{ auth()->user()->profile->pto  ?? ""}}"
                                    required/>
                             @error('pto')
                             <span class="invalid-feedback" role="alert">
@@ -114,12 +115,7 @@
                             @endif
                         </div>
                         <!-- ========== AVATAR ========== -->
-                        @if(isset(auth()->user()->profile->avatar))
-                            <div class="my-3 mr-5">
-                                <h6 class="form__wizard__label">Avatar</h6>
-                                <img class=" my-3  form__wizard__img w-55" alt="Avatar" src="{{ Storage::disk('s3')->url(auth()->user()->profile->avatar) }}">
-                            </div>
-                        @else
+                        @if(!isset(auth()->user()->profile->avatar))
                             <label class="form__wizard__label" for="image" class="text-break">{{ __('Upload Avatar') }}</label>
                             <input
                                 type="file" {{ (!empty(auth()->user()->profile->avatar)) ? "disabled" : ''}}
@@ -141,13 +137,30 @@
                             </small>
                         @endif
                         <!-- ========== BUTTON ========== -->
-                        <div class="text-center">
-                            <button type="submit" class="form__wizard__btn form__wizard__btn--orange mb-5">
-                                {{ __('Submit') }}
-                            </button>
-                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="form__wizard__btn form__wizard__btn--orange mb-5">
+                            {{ __('Submit') }}
+                        </button>
                     </div>
                 </form>
+
+                <!-- ========== REMOVE AVATAR  ========== -->
+                @if(isset(auth()->user()->profile->avatar))
+
+                    <div class="my-3 mr-5">
+                        <h6 class="form__wizard__label">Avatar</h6>
+                        <img class=" my-3  form__wizard__img w-55" alt="Avatar" src="{{ Storage::disk('s3')->url(auth()->user()->profile->avatar) }}">
+                    </div>
+
+                    <form method="POST" action="{{ route('dashboard.profile.destroy') }}">
+                        @method('DELETE')
+                        @csrf
+                        <div class="text-center w-20">
+                            <button type="submit" class="form__wizard__btn form__wizard__btn--red mb-5">Remove Avatar</button>
+                        </div>
+                    </form>
+                @endif
             </div>
         </div>
     </div>

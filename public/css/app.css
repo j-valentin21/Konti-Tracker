@@ -11987,7 +11987,6 @@ body {
 
 .form__wizard__btn {
   background-image: linear-gradient(to right, #eba72b, #eeb345);
-  width: 35%;
   border-radius: 5%;
   padding: 0.5rem 1rem;
   box-sizing: border-box;
