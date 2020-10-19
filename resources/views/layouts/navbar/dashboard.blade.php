@@ -2,7 +2,7 @@
 <nav class="dashboard__nav">
     <div class="navbar__dash">
         <div class="container-fluid">
-            <div class="float-right mt-3">
+            <div class="float-right mt-3 mt-sm-2">
                 <!-- ========== NAVBAR IMAGE DROPDOWN ========== -->
                 <div class="dropdown d-inline-block mr-4">
                     <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
