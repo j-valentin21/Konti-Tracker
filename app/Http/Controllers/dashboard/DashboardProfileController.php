@@ -7,6 +7,7 @@ use App\Http\Requests\ProfileRequest;
 use App\Profile;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Storage;
 
 class DashboardProfileController extends Controller
@@ -31,6 +32,7 @@ class DashboardProfileController extends Controller
      */
     public function update(ProfileRequest $request)
     {
+        $redis = Redis::connection();
         $profile = Profile::find(auth()->user()->id);
         $user = User::find(auth()->user()->id);
 
@@ -51,6 +53,7 @@ class DashboardProfileController extends Controller
                 $user->save();
                 $profile->save();
         }
+        $redis->set('message_' .  auth()->id(), 'Your profile was successfully updated!');
 
         return redirect('/dashboard');
     }

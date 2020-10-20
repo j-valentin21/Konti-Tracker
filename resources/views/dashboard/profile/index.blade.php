@@ -144,15 +144,12 @@
                         </button>
                     </div>
                 </form>
-
                 <!-- ========== REMOVE AVATAR  ========== -->
                 @if(isset(auth()->user()->profile->avatar))
-
                     <div class="my-3 mr-5">
                         <h6 class="form__wizard__label">Avatar</h6>
                         <img class=" my-3  form__wizard__img w-55" alt="Avatar" src="{{ Storage::disk('s3')->url(auth()->user()->profile->avatar) }}">
                     </div>
-
                     <form method="POST" action="{{ route('dashboard.profile.destroy') }}">
                         @method('DELETE')
                         @csrf

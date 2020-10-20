@@ -22,7 +22,6 @@
         <div>
             <ul class=" list-unstyled">
                 <li class="sidebar__menu">Menu</li>
-
                 <li>
                     <a href="{{ route('dashboard.index') }}" class=" sidebar__link hover__black">
                         <svg class="icons icons--sidebar">
