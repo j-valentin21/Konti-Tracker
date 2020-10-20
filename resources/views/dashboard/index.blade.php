@@ -4,6 +4,8 @@
 
 @section('class', 'dashboard')
 
+@section('content', "DASHBOARD")
+
 @section('id', 'app')
 
 @section('body-header')
@@ -17,6 +19,9 @@
         <div class="dashboard__main">
             <div class="dashboard__main-content">
                 <!-- ========== ROW START/OVERVIEW ========== -->
+            @if($message)
+                <x-alert-success/>
+            @endif
                 <div class="row mb-3">
                     <div class="col-xl-3">
                         <div class="card dashboard__card mb-4">
