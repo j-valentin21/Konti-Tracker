@@ -13,7 +13,7 @@
                          class="sidebar__avatar mx-auto rounded-circle">
                 @endif
             </div>
-            <div class="mt-3">
+            <div class="mt-3 break-word">
                 <a href="#" class=" text-white sidebar__name">{{ auth()->user()->name }}</a>
                 <p class="sidebar__text mb-0 ">{{ auth()->user()->profile->position }}</p>
             </div>

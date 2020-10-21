@@ -17,7 +17,7 @@
                     @endif
                         <span class="text-white d-none d-xl-inline-block ml-1">{{ auth()->user()->name }}</span>
                     </button>
-                    <div class="dropdown-menu dropdown-menu-right dashboard__card">
+                    <div class="dropdown-menu dropdown-menu-right dashboard__card w-25">
                         <a class="dropdown-item dashboard__card__text hover__black" href="{{ route('dashboard.profile.index') }}">
                             <svg class="icons">
                                 <use href="{{ asset('svg/sprite.svg#icon-user') }}"></use>
