@@ -1,3 +1,13 @@
 .border__bottom--grey {
     border-bottom: 1px solid #364458;
 }
+
+.break-word {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+.width__25 {
+    width: 25% !important;
+}

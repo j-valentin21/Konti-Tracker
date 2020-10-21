@@ -139,7 +139,7 @@
                         <!-- ========== BUTTON ========== -->
                     </div>
                     <div class="text-center">
-                        <button type="submit" class="form__wizard__btn form__wizard__btn--orange mb-5">
+                        <button type="submit" class="form__wizard__btn form__wizard__btn--orange mb-5 width__25">
                             {{ __('Submit') }}
                         </button>
                     </div>
@@ -153,8 +153,8 @@
                     <form method="POST" action="{{ route('dashboard.profile.destroy') }}">
                         @method('DELETE')
                         @csrf
-                        <div class="text-center w-20">
-                            <button type="submit" class="form__wizard__btn form__wizard__btn--red mb-5">Remove Avatar</button>
+                        <div class="text-center">
+                            <button type="submit" class="form__wizard__btn form__wizard__btn--red mb-5 width__25">Remove Avatar</button>
                         </div>
                     </form>
                 @endif

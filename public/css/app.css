@@ -11124,6 +11124,18 @@ body {
   border-bottom: 1px solid #364458;
 }
 
+.break-word {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+          hyphens: auto;
+}
+
+.width__25 {
+  width: 25% !important;
+}
+
 .homepage__bgcolor {
   background-color: #000000;
   transition: all 0.3s ease-in;
@@ -11157,6 +11169,7 @@ body {
 .dashboard__main-content {
   padding-left: 7%;
   padding-top: 1.5rem;
+  overflow-wrap: break-word;
 }
 
 .dashboard__main-content--grey {
@@ -12044,6 +12057,7 @@ body {
 .form__wizard__btn {
   background-image: linear-gradient(to right, #eba72b, #eeb345);
   border-radius: 5%;
+  width: 35%;
   padding: 0.5rem 1rem;
   box-sizing: border-box;
   font-size: 12px;

@@ -24,6 +24,7 @@
     &__main-content {
         padding-left: 7%;
         padding-top: 1.5rem;
+        overflow-wrap: break-word;
 
         &--grey {
             background-color: darkgrey;
