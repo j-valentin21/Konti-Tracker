@@ -11132,6 +11132,10 @@ body {
           hyphens: auto;
 }
 
+.width__25 {
+  width: 25% !important;
+}
+
 .homepage__bgcolor {
   background-color: #000000;
   transition: all 0.3s ease-in;
@@ -12053,6 +12057,7 @@ body {
 .form__wizard__btn {
   background-image: linear-gradient(to right, #eba72b, #eeb345);
   border-radius: 5%;
+  width: 35%;
   padding: 0.5rem 1rem;
   box-sizing: border-box;
   font-size: 12px;
