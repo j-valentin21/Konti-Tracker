@@ -41,21 +41,20 @@ class DashboardProfileController extends Controller
         $user->fill($validated);
         $profile->fill($validated);
 
-        if(isset($profile->avatar)) {
-            if ($request->file('avatar') === null) {
-                $user->save();
-                $profile->save();
-                return redirect('/dashboard');
-            } else
-                $url = $request->file('avatar')->store('avatar', 's3');
-                Storage::disk('s3')->setVisibility($url, 'public');
-                $profile->update(['avatar'=>$url]);
-                $user->save();
-                $profile->save();
+        if(!isset($request->avatar)) {
+            $user->save();
+            $profile->save();
+            $redis->set('message_' .  auth()->id(), 'Your profile was successfully updated!');
+            return redirect('/dashboard');
+        } else {
+            $url = $request->file('avatar')->store('avatar', 's3');
+            Storage::disk('s3')->setVisibility($url, 'public');
+            $profile->update(['avatar'=>$url]);
+            $user->save();
+            $profile->save();
+            $redis->set('message_' .  auth()->id(), 'Your profile was successfully updated!');
+            return redirect('/dashboard');
         }
-        $redis->set('message_' .  auth()->id(), 'Your profile was successfully updated!');
-
-        return redirect('/dashboard');
     }
 
     /**
