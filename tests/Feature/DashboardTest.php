@@ -41,7 +41,7 @@ class DashboardTest extends TestCase
 
             $this->assertEquals(
                 Route::getRoutes()->getByName('dashboard.index')->gatherMiddleware(),
-                ['web','auth','NotFirstTimeUser']
+                ['web','auth','NotFirstTimeUser', 'verified']
             );
             $this->assertEquals('0', $user->FirstTimeUser);
             $this->assertAuthenticatedAs($user);

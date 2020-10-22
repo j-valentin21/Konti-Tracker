@@ -6,6 +6,7 @@ use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\FirstTimeUser;
 use App\User;
 use App\Profile;
+use Illuminate\Auth\Middleware\EnsureEmailIsVerified;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Route;
 use Tests\TestCase;
@@ -20,9 +21,9 @@ class FirstTimeRegistrationTest extends TestCase
      *
      * @return void
      */
-    public function test_Build_Your_Profile_Page_For_Status_Code_200()
+    public function test_Build_Your_Profile_View_Is_Working_Properly()
     {
-        $this->withoutMiddleware([FirstTimeUser::class, Authenticate::class]);
+        $this->withoutMiddleware([FirstTimeUser::class, Authenticate::class, EnsureEmailIsVerified::class,]);
 
         $response = $this->get('/register/build-your-profile');
 
@@ -34,9 +35,9 @@ class FirstTimeRegistrationTest extends TestCase
      *
      * @return void
      */
-    public function test_Avatar_For_Status_Code_200()
+    public function test_Avatar_View_Is_Working_Properly()
     {
-        $this->withoutMiddleware([FirstTimeUser::class, Authenticate::class]);
+        $this->withoutMiddleware([FirstTimeUser::class, Authenticate::class, EnsureEmailIsVerified::class]);
 
         $response = $this->get('/register/avatar');
 
@@ -48,9 +49,9 @@ class FirstTimeRegistrationTest extends TestCase
      *
      * @return void
      */
-    public function test_Confirmation_For_Status_Code_200()
+    public function test_Confirmation_View_Is_Working_Properly()
     {
-        $this->withoutMiddleware([FirstTimeUser::class, Authenticate::class]);
+        $this->withoutMiddleware([FirstTimeUser::class, Authenticate::class, EnsureEmailIsVerified::class]);
 
         $response = $this->get('/register/confirmation');
 
@@ -62,7 +63,7 @@ class FirstTimeRegistrationTest extends TestCase
      *
      * @return void
      */
-    public function test_Guest_Cannot_Access_Build_Your_Profile_Page()
+    public function test_Guest_Cannot_Access_Build_Your_Profile_View()
     {
         $response = $this->get('/register/build-your-profile');
 
@@ -105,7 +106,7 @@ class FirstTimeRegistrationTest extends TestCase
 
         $this->assertEquals(
             Route::getRoutes()->getByName('profile')->gatherMiddleware(),
-            ['web','auth','firstTimeUser']
+            ['web','auth','firstTimeUser','verified']
         );
         $this->assertEquals('1', $user->FirstTimeUser);
         $this->assertAuthenticatedAs($user);
@@ -117,7 +118,7 @@ class FirstTimeRegistrationTest extends TestCase
 
         $this->assertEquals(
             Route::getRoutes()->getByName('avatar')->gatherMiddleware(),
-            ['web','auth','firstTimeUser']
+            ['web','auth','firstTimeUser', 'verified']
         );
         $this->assertEquals('1', $user->FirstTimeUser);
         $this->assertAuthenticatedAs($user);
@@ -129,7 +130,7 @@ class FirstTimeRegistrationTest extends TestCase
 
         $this->assertEquals(
             Route::getRoutes()->getByName('confirmation')->gatherMiddleware(),
-            ['web','auth','firstTimeUser']
+            ['web','auth','firstTimeUser', 'verified']
         );
         $this->assertEquals('1', $user->FirstTimeUser);
         $this->assertAuthenticatedAs($user);
