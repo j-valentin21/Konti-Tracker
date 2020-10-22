@@ -172,10 +172,10 @@ class FirstTimeRegistrationTest extends TestCase
 
         $input = [
             'position' => $profile->position,
+            'avatar' => $profile->avatar,
             'pto' => $profile->pto,
             'points' => $profile->points,
-            'avatar' => $profile->avatar,
-            'user_id' => $user->id
+            'user_id' => $profile->user_id
         ];
         $response = $this->actingAs($user)
             ->post('/register/store', $input);
