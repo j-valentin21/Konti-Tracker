@@ -21,7 +21,7 @@ class FirstTimeRegistrationTest extends TestCase
      *
      * @return void
      */
-    public function test_Build_Your_Profile_Page_For_Status_Code_200()
+    public function test_Build_Your_Profile_View_Is_Working_Properly()
     {
         $this->withoutMiddleware([FirstTimeUser::class, Authenticate::class, EnsureEmailIsVerified::class,]);
 
@@ -35,7 +35,7 @@ class FirstTimeRegistrationTest extends TestCase
      *
      * @return void
      */
-    public function test_Avatar_For_Status_Code_200()
+    public function test_Avatar_View_Is_Working_Properly()
     {
         $this->withoutMiddleware([FirstTimeUser::class, Authenticate::class, EnsureEmailIsVerified::class]);
 
@@ -49,7 +49,7 @@ class FirstTimeRegistrationTest extends TestCase
      *
      * @return void
      */
-    public function test_Confirmation_For_Status_Code_200()
+    public function test_Confirmation_View_Is_Working_Properly()
     {
         $this->withoutMiddleware([FirstTimeUser::class, Authenticate::class, EnsureEmailIsVerified::class]);
 
@@ -63,7 +63,7 @@ class FirstTimeRegistrationTest extends TestCase
      *
      * @return void
      */
-    public function test_Guest_Cannot_Access_Build_Your_Profile_Page()
+    public function test_Guest_Cannot_Access_Build_Your_Profile_View()
     {
         $response = $this->get('/register/build-your-profile');
 

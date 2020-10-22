@@ -5,7 +5,7 @@
 @section('body-content')
     <div class="container-fluid">
         <div class="modal fade bd-example-modal-lg profile" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg modal-dialog-centered form__wizard__modal"">
+            <div class="modal-dialog modal-lg modal-dialog-centered form__wizard__modal">
                 <div class="modal-content">
                     <div class="row">
                         <div class="col-12">
@@ -24,7 +24,7 @@
                                 <li class="mb-4 form__wizard__steps--active-bottom">Confirmation</li>
                             </ol>
                         </div>
-                        <div class="col-sm-8">
+                        <section class="col-sm-8">
                             <h1>Review Profile Details</h1>
                             <form action="{{ route('confirmation.store') }}" method="POST" >
                                 @csrf
@@ -64,7 +64,7 @@
                                     </a>
                                 </div>
                             </form>
-                        </div>
+                        </section>
                     </div>
                 </div>
             </div>
