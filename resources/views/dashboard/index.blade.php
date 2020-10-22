@@ -27,40 +27,9 @@
                         <div class="card dashboard__card mb-4">
                             <div class="card-body">
                                 <h4 class="card-title dashboard__card__title  mb-4">Overview</h4>
-                                <div class="pb-3 border__bottom--grey">
-                                    <div class="row align-items-center">
-                                        <div class="col-8">
-                                            <p class="mb-2 dashboard__card__text ">PTO</p>
-                                            <h4 class="my-3 text-white">{{ auth()->user()->profile->pto }}</h4>
-                                        </div>
-                                        <div class="col-4">
-                                            <div class="text-right">
-                                                <a class="btn__step mb-2" href="add-website-here">+</a>
-                                                <a class="btn__step" href="add-website-here">-</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="text-center">
-                                        <button class="btn__submit">Submit</button>
-                                    </div>
-                                </div>
-                                <div class="py-3 border__bottom--grey">
-                                    <div class="row align-items-center">
-                                        <div class="col-8">
-                                            <p class="mb-2 dashboard__card__text">Points</p>
-                                            <h4 class="my-3 text-white">{{ auth()->user()->profile->points }}</h4>
-                                        </div>
-                                        <div class="col-4">
-                                            <div class="text-right">
-                                                <a class="btn__step mb-2" href="add-website-here">+</a>
-                                                <a class="btn__step" href="add-website-here">-</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="text-center">
-                                        <button class="btn__submit">Submit</button>
-                                    </div>
-                                </div>
+                                <incrementers :points="{{ auth()->user()->profile->points }}"
+                                              :pto="{{ auth()->user()->profile->pto }}">
+                                </incrementers>
 
                                 <div class="row align-items-center">
                                     <div class="col-8">
