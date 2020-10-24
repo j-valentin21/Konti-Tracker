@@ -1975,17 +1975,17 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     submitPTO: function submitPTO() {
-      var _this = this;
-
-      axios.put("/dashboard", this.$props)["catch"](function (error) {
-        return _this.errors.record(error.response.data.errors);
+      axios.put("/dashboard", this.$props).then(function (response) {
+        console.log('successful request.');
+      })["catch"](function (error) {
+        console.log(error);
       });
     },
     submitPoints: function submitPoints() {
-      var _this2 = this;
-
-      axios.put("/dashboard", this.$props)["catch"](function (error) {
-        return _this2.errors.record(error.response.data.errors);
+      axios.put("/dashboard", this.$props).then(function (response) {
+        console.log('successful request.');
+      })["catch"](function (error) {
+        console.log(error);
       });
     }
   }
@@ -75830,7 +75830,9 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "text-center" }, [
-      _c("button", { staticClass: "btn__submit" }, [_vm._v("Submit")])
+      _c("button", { staticClass: "btn__submit", attrs: { type: "submit" } }, [
+        _vm._v("Submit")
+      ])
     ])
   }
 ]
