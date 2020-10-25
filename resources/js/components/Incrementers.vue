@@ -13,7 +13,7 @@
                     </div>
                 </div>
             </div>
-            <form method="POST" @submit.prevent = 'submitPTO'>
+            <form method="POST" @submit.prevent = 'submitCount'>
                 <div class="text-center">
                     <button class="btn__submit">Submit</button>
                 </div>
@@ -32,7 +32,7 @@
                     </div>
                 </div>
             </div>
-            <form method="POST" @submit.prevent = 'submitPoints'>
+            <form method="POST" @submit.prevent = 'submitCount'>
                 <div class="text-center">
                     <button type="submit" class="btn__submit">Submit</button>
                 </div>
@@ -65,7 +65,7 @@ export default {
                 this.points--;
             }
         },
-        submitPTO() {
+        submitCount() {
             axios.put("/dashboard",this.$props)
             .then( response => {
                console.log('successful request.')
@@ -75,15 +75,6 @@ export default {
             })
 
         },
-        submitPoints() {
-            axios.put("/dashboard", this.$props)
-                .then( response => {
-                    console.log('successful request.')
-                })
-                .catch(function (error) {
-                    console.log(error);
-                })
-        }
     }
 }
 </script>

@@ -1974,14 +1974,7 @@ __webpack_require__.r(__webpack_exports__);
         this.points--;
       }
     },
-    submitPTO: function submitPTO() {
-      axios.put("/dashboard", this.$props).then(function (response) {
-        console.log('successful request.');
-      })["catch"](function (error) {
-        console.log(error);
-      });
-    },
-    submitPoints: function submitPoints() {
+    submitCount: function submitCount() {
       axios.put("/dashboard", this.$props).then(function (response) {
         console.log('successful request.');
       })["catch"](function (error) {
@@ -75755,7 +75748,7 @@ var render = function() {
           on: {
             submit: function($event) {
               $event.preventDefault()
-              return _vm.submitPTO($event)
+              return _vm.submitCount($event)
             }
           }
         },
@@ -75807,7 +75800,7 @@ var render = function() {
           on: {
             submit: function($event) {
               $event.preventDefault()
-              return _vm.submitPoints($event)
+              return _vm.submitCount($event)
             }
           }
         },

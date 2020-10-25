@@ -24,17 +24,21 @@ class DashboardController extends Controller
     }
 
     /**
-     * Show the dashboard view.
+     * Update PTO or points on the dashboard view.
      *
      * @param Request $request
      * @return void
      */
-    public function updatePTO(Request $request)
+    public function update(Request $request)
     {
-        $redis = Redis::connection();
         $profile = Profile::find(auth()->user()->id);
-        $pto = $request->pto;
-        $profile->pto = $pto;
-        $profile->save();
+        if($profile->pto !== $request->pto || $profile->points !== $request->points) {
+            if ($profile->pto !== $request) {
+                $profile->pto = $request->pto;
+            } if($profile->points !== $request->points) {
+                $profile->points = $request->points;
+            }
+            $profile->save();
+        }
     }
 }
