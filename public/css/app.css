@@ -11855,6 +11855,8 @@ body {
 }
 
 .btn__step:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(235, 167, 43, 0.25);
   color: #212529;
   text-decoration: none;
   background: #f6b93b;
@@ -11862,6 +11864,11 @@ body {
   transition: all 0.4s ease 0s;
   font-weight: 700;
   text-align: center;
+}
+
+.btn__step:active {
+  transform: translateY(1px);
+  box-shadow: 0px 10px 20px rgba(235, 167, 43, 0.15);
 }
 
 .btn__submit {
@@ -11878,12 +11885,19 @@ body {
 }
 
 .btn__submit:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(235, 167, 43, 0.25);
   color: #212529;
   text-decoration: none;
   background: #f6b93b;
   border-color: #f6b93b;
   transition: all 0.4s ease 0s;
   font-weight: 900;
+}
+
+.btn__submit:active {
+  transform: translateY(1px);
+  box-shadow: 0px 10px 20px rgba(235, 167, 43, 0.15);
 }
 
 .pagination__item {
