@@ -1,10 +1,11 @@
 <template>
     <div>
+        <success-flash v-if="success" :success="success"/>
         <div class="pb-3 border__bottom--grey">
             <div class="row align-items-center">
                 <div class="col-8">
                     <p class="mb-2 dashboard__card__text ">PTO</p>
-                    <h4 class="my-3 text-white">{{ pto }}</h4>
+                    <h4  class="my-3 text-white">{{ pto_value }}</h4>
                 </div>
                 <div class="col-4">
                     <div class="text-right">
@@ -23,7 +24,7 @@
             <div class="row align-items-center">
                 <div class="col-8">
                     <p class="mb-2 dashboard__card__text">Points</p>
-                    <h4 class="my-3 text-white">{{ points }}</h4>
+                    <h4 class="my-3 text-white">{{ points_value }}</h4>
                 </div>
                 <div class="col-4">
                     <div class="text-right">
@@ -42,38 +43,58 @@
 </template>
 
 <script>
+import SuccessFlash from './SuccessFlash.vue';
 export default {
+    components: {
+        SuccessFlash
+    },
     props : ['pto', 'points'],
+    data() {
+        return {
+            pto_value: this.pto,
+            points_value: this.points,
+            failure: false,
+            success: false
+        }
+    },
     methods: {
         increasePTO: function() {
-            if(this.pto < 40) {
-                this.pto++;
+            if(this.pto_value < 40) {
+                this.pto_value++;
             }
         },
         decreasePTO:  function() {
-            if(this.pto > 0) {
-                this.pto--;
+            if(this.pto_value > 0) {
+                this.pto_value--;
             }
         },
         increasePoints: function() {
-            if(this.points < 15) {
-                this.points++;
+            if(this.points_value < 15) {
+                this.points_value++;
             }
         },
         decreasePoints:  function() {
-            if(this.points > 0) {
-                this.points--;
+            if(this.points_value > 0) {
+                this.points_value--;
             }
         },
+       changeSuccess: function() {
+            return new Promise(function(resolve, reject) {
+            setTimeout(resolve, 8000);
+            }).then( response => {
+            this.success = false;
+            });
+        },
         submitCount() {
-            axios.put("/dashboard",this.$props)
+            axios.put("/dashboard",this.$data)
             .then( response => {
-               console.log('successful request.')
-            })
-            .catch(function (error) {
-                console.log(error);
+               this.success = true
+                this.changeSuccess()
             })
 
+            .catch((err) => {
+                this.failure = true
+            })
         },
     }
 }

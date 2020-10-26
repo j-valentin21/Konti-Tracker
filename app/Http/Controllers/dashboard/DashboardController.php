@@ -32,12 +32,12 @@ class DashboardController extends Controller
     public function update(Request $request)
     {
         $profile = Profile::find(auth()->user()->id);
-        if($profile->pto !== $request->pto || $profile->points !== $request->points) {
-            if ($profile->pto !== $request) {
-                $profile->pto = $request->pto;
+        if($profile->pto !== $request->pto_value || $profile->points !== $request->points_value) {
+            if ($profile->pto !== $request->pto_value) {
+                $profile->pto = $request->pto_value;
             }
-            if($profile->points !== $request->points) {
-                $profile->points = $request->points;
+            if($profile->points !== $request->points_value) {
+                $profile->points = $request->points_value;
             }
             $profile->save();
         }
