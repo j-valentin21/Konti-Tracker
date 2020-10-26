@@ -11855,6 +11855,8 @@ body {
 }
 
 .btn__step:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(235, 167, 43, 0.25);
   color: #212529;
   text-decoration: none;
   background: #f6b93b;
@@ -11864,6 +11866,11 @@ body {
   text-align: center;
 }
 
+.btn__step:active {
+  transform: translateY(1px);
+  box-shadow: 0px 10px 20px rgba(235, 167, 43, 0.15);
+}
+
 .btn__submit {
   color: #494949;
   width: 6rem;
@@ -11871,19 +11878,25 @@ body {
   text-align: center;
   border-radius: 2%;
   background: #ffffff;
-  border: 3px solid #494949;
   display: inline-block;
-  transition: all 0.4s ease 0s;
+  transition: all 0.25s ease 0s;
   margin: 0 auto;
 }
 
 .btn__submit:hover {
+  border: 1px solid #494949;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(235, 167, 43, 0.25);
   color: #212529;
   text-decoration: none;
   background: #f6b93b;
-  border-color: #f6b93b;
   transition: all 0.4s ease 0s;
   font-weight: 900;
+}
+
+.btn__submit:active {
+  transform: translateY(1px);
+  box-shadow: 0px 10px 20px rgba(235, 167, 43, 0.15);
 }
 
 .pagination__item {
