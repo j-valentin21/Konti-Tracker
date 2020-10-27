@@ -1899,6 +1899,48 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/FailureFlash.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/FailureFlash.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "FailureFlash",
+  props: ['failure'],
+  data: function data() {
+    return {
+      failure_Check: this.failure
+    };
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Incrementers.vue?vue&type=script&lang=js&":
 /*!***********************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Incrementers.vue?vue&type=script&lang=js& ***!
@@ -1909,6 +1951,8 @@ module.exports = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _SuccessFlash_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SuccessFlash.vue */ "./resources/js/components/SuccessFlash.vue");
+//
+//
 //
 //
 //
@@ -1997,15 +2041,26 @@ __webpack_require__.r(__webpack_exports__);
         _this.success = false;
       });
     },
-    submitCount: function submitCount() {
+    changeFailure: function changeFailure() {
       var _this2 = this;
 
-      axios.put("/dashboard", this.$data).then(function (response) {
-        _this2.success = true;
+      return new Promise(function (resolve, reject) {
+        setTimeout(resolve, 8000);
+      }).then(function (response) {
+        _this2.failure = false;
+      });
+    },
+    submitCount: function submitCount() {
+      var _this3 = this;
 
-        _this2.changeSuccess();
+      axios.put("/dashboard", this.$data).then(function (response) {
+        _this3.success = true;
+
+        _this3.changeSuccess();
       })["catch"](function (err) {
-        _this2.failure = true;
+        _this3.failure = true;
+
+        _this3.changeFailure();
       });
     }
   }
@@ -75757,6 +75812,79 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/FailureFlash.vue?vue&type=template&id=005df571&scoped=true&":
+/*!***************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/FailureFlash.vue?vue&type=template&id=005df571&scoped=true& ***!
+  \***************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm.failure_Check
+    ? _c("div", { staticClass: "col-sm-12" }, [
+        _c(
+          "div",
+          {
+            staticClass:
+              "alert fade alert__danger alert-dismissible text-left brk-library-rendered rendered show"
+          },
+          [
+            _c(
+              "button",
+              {
+                staticClass: "close",
+                attrs: { type: "button", "data-dismiss": "alert" }
+              },
+              [
+                _c(
+                  "span",
+                  { staticClass: "mb-5", attrs: { "aria-hidden": "true" } },
+                  [
+                    _c(
+                      "svg",
+                      { staticClass: "alert__icon alert__icon--x_red" },
+                      [
+                        _c("use", {
+                          attrs: { href: "svg/sprite.svg#icon-times" }
+                        })
+                      ]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c("span", { staticClass: "sr-only" }, [_vm._v("Close")])
+              ]
+            ),
+            _vm._v(" "),
+            _c("span", { staticClass: "alert__start" }, [
+              _c("svg", { staticClass: "alert__icon alert__icon--danger" }, [
+                _c("use", { attrs: { href: "svg/sprite.svg#icon-dangerous" } })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("strong", { staticClass: "font__weight-semibold" }, [
+              _vm._v("Please try again at a later time.")
+            ]),
+            _vm._v(".\n    ")
+          ]
+        )
+      ])
+    : _vm._e()
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Incrementers.vue?vue&type=template&id=59bf6402&":
 /*!***************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Incrementers.vue?vue&type=template&id=59bf6402& ***!
@@ -75778,6 +75906,14 @@ var render = function() {
       _vm.success
         ? _c("success-flash", { attrs: { success: _vm.success } })
         : _vm._e(),
+      _vm._v(" "),
+      _vm.failure
+        ? _c("failure-flash", { attrs: { failure: _vm.failure } })
+        : _vm._e(),
+      _vm._v(" "),
+      _c("h4", { staticClass: "card-title dashboard__card__title  mb-4" }, [
+        _vm._v("Overview")
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "pb-3 border__bottom--grey" }, [
         _c("div", { staticClass: "row align-items-center" }, [
@@ -88379,6 +88515,7 @@ Vue.component('login-form', __webpack_require__(/*! ./components/LoginForm.vue *
 Vue.component('menu-btn', __webpack_require__(/*! ./components/MenuBtn.vue */ "./resources/js/components/MenuBtn.vue")["default"]);
 Vue.component('incrementers', __webpack_require__(/*! ./components/Incrementers.vue */ "./resources/js/components/Incrementers.vue")["default"]);
 Vue.component('success-flash', __webpack_require__(/*! ./components/SuccessFlash.vue */ "./resources/js/components/SuccessFlash.vue")["default"]);
+Vue.component('failure-flash', __webpack_require__(/*! ./components/FailureFlash.vue */ "./resources/js/components/FailureFlash.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -88433,6 +88570,75 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/components/FailureFlash.vue":
+/*!**************************************************!*\
+  !*** ./resources/js/components/FailureFlash.vue ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _FailureFlash_vue_vue_type_template_id_005df571_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FailureFlash.vue?vue&type=template&id=005df571&scoped=true& */ "./resources/js/components/FailureFlash.vue?vue&type=template&id=005df571&scoped=true&");
+/* harmony import */ var _FailureFlash_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FailureFlash.vue?vue&type=script&lang=js& */ "./resources/js/components/FailureFlash.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _FailureFlash_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _FailureFlash_vue_vue_type_template_id_005df571_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _FailureFlash_vue_vue_type_template_id_005df571_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "005df571",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/FailureFlash.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/FailureFlash.vue?vue&type=script&lang=js&":
+/*!***************************************************************************!*\
+  !*** ./resources/js/components/FailureFlash.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FailureFlash_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./FailureFlash.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/FailureFlash.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FailureFlash_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/FailureFlash.vue?vue&type=template&id=005df571&scoped=true&":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/components/FailureFlash.vue?vue&type=template&id=005df571&scoped=true& ***!
+  \*********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FailureFlash_vue_vue_type_template_id_005df571_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./FailureFlash.vue?vue&type=template&id=005df571&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/FailureFlash.vue?vue&type=template&id=005df571&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FailureFlash_vue_vue_type_template_id_005df571_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FailureFlash_vue_vue_type_template_id_005df571_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
 
 /***/ }),
 

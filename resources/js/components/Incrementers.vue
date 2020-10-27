@@ -1,6 +1,8 @@
 <template>
     <div>
         <success-flash v-if="success" :success="success"/>
+        <failure-flash v-if="failure" :failure="failure"/>
+        <h4 class="card-title dashboard__card__title  mb-4">Overview</h4>
         <div class="pb-3 border__bottom--grey">
             <div class="row align-items-center">
                 <div class="col-8">
@@ -85,6 +87,13 @@ export default {
             this.success = false;
             });
         },
+        changeFailure: function() {
+            return new Promise(function(resolve, reject) {
+                setTimeout(resolve, 8000);
+            }).then( response => {
+                this.failure = false;
+            });
+        },
         submitCount() {
             axios.put("/dashboard",this.$data)
             .then( response => {
@@ -94,6 +103,7 @@ export default {
 
             .catch((err) => {
                 this.failure = true
+                this.changeFailure()
             })
         },
     }

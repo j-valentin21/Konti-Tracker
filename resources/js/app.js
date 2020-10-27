@@ -26,6 +26,7 @@ Vue.component('login-form', require('./components/LoginForm.vue').default);
 Vue.component('menu-btn', require('./components/MenuBtn.vue').default);
 Vue.component('incrementers', require('./components/Incrementers.vue').default);
 Vue.component('success-flash', require('./components/SuccessFlash.vue').default);
+Vue.component('failure-flash', require('./components/FailureFlash.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
