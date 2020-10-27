@@ -11036,6 +11036,28 @@ body {
   }
 }
 
+@-webkit-keyframes slideInUp {
+  from {
+    transform: translate3d(0, 100%, 0);
+    visibility: visible;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translate3d(0, 100%, 0);
+    visibility: visible;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
 @-webkit-keyframes pulse {
   from {
     transform: scale3d(1, 1, 1);
@@ -11909,6 +11931,8 @@ body {
   display: inline-block;
   transition: all 0.25s ease 0s;
   margin: 0 auto;
+  -webkit-animation: slideInUp 1s ease-out;
+          animation: slideInUp 1s ease-out;
 }
 
 .btn__submit:hover {

@@ -16,7 +16,7 @@
                     </div>
                 </div>
             </div>
-            <form method="POST" @submit.prevent = 'submitCount'>
+            <form v-if="showPTOButton" method="POST" @submit.prevent = 'submitCount'>
                 <div class="text-center">
                     <button class="btn__submit">Submit</button>
                 </div>
@@ -35,7 +35,7 @@
                     </div>
                 </div>
             </div>
-            <form method="POST" @submit.prevent = 'submitCount'>
+            <form v-if="showPointsButton" method="POST" @submit.prevent = 'submitCount'>
                 <div class="text-center">
                     <button type="submit" class="btn__submit">Submit</button>
                 </div>
@@ -56,27 +56,33 @@ export default {
             pto_value: this.pto,
             points_value: this.points,
             failure: false,
-            success: false
+            success: false,
+            showPTOButton:false,
+            showPointsButton:false
         }
     },
     methods: {
         increasePTO: function() {
             if(this.pto_value < 40) {
+                this.showPTOButton = true
                 this.pto_value++;
             }
         },
         decreasePTO:  function() {
             if(this.pto_value > 0) {
+                this.showPTOButton = true
                 this.pto_value--;
             }
         },
         increasePoints: function() {
             if(this.points_value < 15) {
+                this.showPointsButton = true
                 this.points_value++;
             }
         },
         decreasePoints:  function() {
             if(this.points_value > 0) {
+                this.showPointsButton = true
                 this.points_value--;
             }
         },

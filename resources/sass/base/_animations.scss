@@ -32,6 +32,17 @@
     }
 }
 
+@keyframes slideInUp {
+    from {
+        transform: translate3d(0, 100%, 0);
+        visibility: visible;
+    }
+
+    to {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
 @keyframes pulse {
       from {
           transform: scale3d(1, 1, 1);

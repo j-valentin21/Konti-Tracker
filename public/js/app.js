@@ -2008,27 +2008,33 @@ __webpack_require__.r(__webpack_exports__);
       pto_value: this.pto,
       points_value: this.points,
       failure: false,
-      success: false
+      success: false,
+      showPTOButton: false,
+      showPointsButton: false
     };
   },
   methods: {
     increasePTO: function increasePTO() {
       if (this.pto_value < 40) {
+        this.showPTOButton = true;
         this.pto_value++;
       }
     },
     decreasePTO: function decreasePTO() {
       if (this.pto_value > 0) {
+        this.showPTOButton = true;
         this.pto_value--;
       }
     },
     increasePoints: function increasePoints() {
       if (this.points_value < 15) {
+        this.showPointsButton = true;
         this.points_value++;
       }
     },
     decreasePoints: function decreasePoints() {
       if (this.points_value > 0) {
+        this.showPointsButton = true;
         this.points_value--;
       }
     },
@@ -75952,19 +75958,21 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _c(
-          "form",
-          {
-            attrs: { method: "POST" },
-            on: {
-              submit: function($event) {
-                $event.preventDefault()
-                return _vm.submitCount($event)
-              }
-            }
-          },
-          [_vm._m(0)]
-        )
+        _vm.showPTOButton
+          ? _c(
+              "form",
+              {
+                attrs: { method: "POST" },
+                on: {
+                  submit: function($event) {
+                    $event.preventDefault()
+                    return _vm.submitCount($event)
+                  }
+                }
+              },
+              [_vm._m(0)]
+            )
+          : _vm._e()
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "py-3 border__bottom--grey" }, [
@@ -76004,19 +76012,21 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _c(
-          "form",
-          {
-            attrs: { method: "POST" },
-            on: {
-              submit: function($event) {
-                $event.preventDefault()
-                return _vm.submitCount($event)
-              }
-            }
-          },
-          [_vm._m(1)]
-        )
+        _vm.showPointsButton
+          ? _c(
+              "form",
+              {
+                attrs: { method: "POST" },
+                on: {
+                  submit: function($event) {
+                    $event.preventDefault()
+                    return _vm.submitCount($event)
+                  }
+                }
+              },
+              [_vm._m(1)]
+            )
+          : _vm._e()
       ])
     ],
     1
