@@ -10,6 +10,8 @@ let Chart = require('chart.js');
 
 window.Vue = require('vue');
 
+import {Bar} from 'vue-chartjs';
+
 
 /**
  * The following block of code may be used to automatically register your
@@ -27,6 +29,7 @@ Vue.component('menu-btn', require('./components/MenuBtn.vue').default);
 Vue.component('incrementers', require('./components/Incrementers.vue').default);
 Vue.component('success-flash', require('./components/SuccessFlash.vue').default);
 Vue.component('failure-flash', require('./components/FailureFlash.vue').default);
+Vue.component('bar-chart', require('./components/BarChart.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
