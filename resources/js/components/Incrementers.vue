@@ -1,6 +1,8 @@
 <template>
     <div>
         <success-flash v-if="success" :success="success"/>
+        <failure-flash v-if="failure" :failure="failure"/>
+        <h4 class="card-title dashboard__card__title  mb-4">Overview</h4>
         <div class="pb-3 border__bottom--grey">
             <div class="row align-items-center">
                 <div class="col-8">
@@ -14,7 +16,7 @@
                     </div>
                 </div>
             </div>
-            <form method="POST" @submit.prevent = 'submitCount'>
+            <form v-if="showPTOButton" method="POST" @submit.prevent = 'submitCount'>
                 <div class="text-center">
                     <button class="btn__submit">Submit</button>
                 </div>
@@ -33,7 +35,7 @@
                     </div>
                 </div>
             </div>
-            <form method="POST" @submit.prevent = 'submitCount'>
+            <form v-if="showPointsButton" method="POST" @submit.prevent = 'submitCount'>
                 <div class="text-center">
                     <button type="submit" class="btn__submit">Submit</button>
                 </div>
@@ -54,27 +56,33 @@ export default {
             pto_value: this.pto,
             points_value: this.points,
             failure: false,
-            success: false
+            success: false,
+            showPTOButton:false,
+            showPointsButton:false
         }
     },
     methods: {
         increasePTO: function() {
             if(this.pto_value < 40) {
+                this.showPTOButton = true
                 this.pto_value++;
             }
         },
         decreasePTO:  function() {
             if(this.pto_value > 0) {
+                this.showPTOButton = true
                 this.pto_value--;
             }
         },
         increasePoints: function() {
             if(this.points_value < 15) {
+                this.showPointsButton = true
                 this.points_value++;
             }
         },
         decreasePoints:  function() {
             if(this.points_value > 0) {
+                this.showPointsButton = true
                 this.points_value--;
             }
         },
@@ -83,6 +91,13 @@ export default {
             setTimeout(resolve, 8000);
             }).then( response => {
             this.success = false;
+            });
+        },
+        changeFailure: function() {
+            return new Promise(function(resolve, reject) {
+                setTimeout(resolve, 8000);
+            }).then( response => {
+                this.failure = false;
             });
         },
         submitCount() {
@@ -94,6 +109,7 @@ export default {
 
             .catch((err) => {
                 this.failure = true
+                this.changeFailure()
             })
         },
     }

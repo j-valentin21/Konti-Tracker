@@ -32,21 +32,43 @@
     }
 }
 
+@keyframes slideInUp {
+    from {
+        transform: translate3d(0, 100%, 0);
+        visibility: visible;
+    }
+
+    to {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
 @keyframes pulse {
       from {
-          -webkit-transform: scale3d(1, 1, 1);
           transform: scale3d(1, 1, 1);
       }
 
       50% {
-          -webkit-transform: scale3d(1.05, 1.05, 1.05);
           transform: scale3d(1.05, 1.05, 1.05);
       }
 
       to {
-          -webkit-transform: scale3d(1, 1, 1);
           transform: scale3d(1, 1, 1);
       }
+}
+
+@keyframes pulse_danger {
+    from {
+        transform: scale3d(1, 1, 1);
+    }
+
+    50% {
+        transform: scale3d(.85, .85, .85);
+    }
+
+    to {
+        transform: scale3d(1.20, 1.20, 1.20);
+    }
 }
 
 @keyframes blink {

@@ -26,7 +26,6 @@
                     <div class="col-xl-3">
                         <div class="card dashboard__card mb-4">
                             <div class="card-body">
-                                <h4 class="card-title dashboard__card__title  mb-4">Overview</h4>
                                 <incrementers :points="{{ auth()->user()->profile->points }}"
                                               :pto="{{ auth()->user()->profile->pto }}">
                                 </incrementers>

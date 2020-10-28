@@ -11036,6 +11036,28 @@ body {
   }
 }
 
+@-webkit-keyframes slideInUp {
+  from {
+    transform: translate3d(0, 100%, 0);
+    visibility: visible;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translate3d(0, 100%, 0);
+    visibility: visible;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
 @-webkit-keyframes pulse {
   from {
     transform: scale3d(1, 1, 1);
@@ -11061,6 +11083,34 @@ body {
 
   to {
     transform: scale3d(1, 1, 1);
+  }
+}
+
+@-webkit-keyframes pulse_danger {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+
+  50% {
+    transform: scale3d(0.85, 0.85, 0.85);
+  }
+
+  to {
+    transform: scale3d(1.2, 1.2, 1.2);
+  }
+}
+
+@keyframes pulse_danger {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+
+  50% {
+    transform: scale3d(0.85, 0.85, 0.85);
+  }
+
+  to {
+    transform: scale3d(1.2, 1.2, 1.2);
   }
 }
 
@@ -11881,6 +11931,8 @@ body {
   display: inline-block;
   transition: all 0.25s ease 0s;
   margin: 0 auto;
+  -webkit-animation: slideInUp 1s ease-out;
+          animation: slideInUp 1s ease-out;
 }
 
 .btn__submit:hover {
@@ -12217,6 +12269,21 @@ body {
   transition: 0.5s;
 }
 
+.alert__danger {
+  border: 1px solid rgba(241, 6, 6, 0.81);
+  background-color: rgba(220, 17, 1, 0.16);
+  box-shadow: 0px 0px 2px #ff0303;
+  color: #ff0303;
+  text-shadow: 2px 1px #00040a;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.alert__danger:hover {
+  background-color: rgba(220, 17, 1, 0.33);
+  transition: 0.5s;
+}
+
 .alert__icon {
   height: 2rem;
   width: 1.5vw;
@@ -12229,10 +12296,26 @@ body {
           animation: blink 2s infinite both;
 }
 
+.alert__icon--x_red {
+  fill: #ff0303;
+  height: 3rem;
+  width: 1.5vw;
+  -webkit-animation: blink 2s infinite both;
+          animation: blink 2s infinite both;
+}
+
 .alert__icon--check {
   fill: #25ff0b;
   -webkit-animation: rotation 2s infinite both;
           animation: rotation 2s infinite both;
+}
+
+.alert__icon--danger {
+  fill: #ff0303;
+  height: 3rem;
+  width: 1.5vw;
+  -webkit-animation: pulse_danger 3s infinite both;
+          animation: pulse_danger 3s infinite both;
 }
 
 .alert__start {
