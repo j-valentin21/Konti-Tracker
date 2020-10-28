@@ -1,48 +1,7 @@
 //===========CHART.JS CHARTS=================
 
 window.onload = function() {
-    //===========PTO USAGE================
-    const barChartData = {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
-        datasets: [{
-            label: 'PTO per month',
-            backgroundColor: 'rgba(0, 123, 255, 0.5)',
-            borderColor: 'rgb(0, 123, 255)',
-            borderWidth: 2,
-            data: [2,6,1,0,2.5,1.5]
-        }]
 
-    };
-    let ctx = document.getElementById('barChart').getContext('2d');
-    window.myBar = new Chart(ctx, {
-        type: 'bar',
-        data: barChartData,
-        options: {
-            maintainAspectRatio: false,
-            responsive: true,
-            legend: {
-                position: 'top',
-            },
-            animation: {
-                duration: 2000,
-                easing: 'easeInOutQuint'
-            },
-            scales: {
-                yAxes: [{
-                    gridLines: {
-                        color: 'rgba(54, 68, 88, 1)',
-                        lineWidth: 1
-                    }
-                }],
-                xAxes: [{
-                    gridLines: {
-                        color: 'rgba(54, 68, 88, 1)',
-                        lineWidth: 0
-                    }
-                }]
-            }
-        }
-    });
 
     //=========POINTS PER MONTH CHART=============
     let lineChart = document.getElementById('lineChart').getContext('2d');
@@ -119,3 +78,4 @@ window.onload = function() {
         }
     });
 }
+

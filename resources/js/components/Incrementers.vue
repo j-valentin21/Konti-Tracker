@@ -46,6 +46,7 @@
 
 <script>
 import SuccessFlash from './SuccessFlash.vue';
+
 export default {
     components: {
         SuccessFlash
@@ -108,6 +109,7 @@ export default {
             })
 
             .catch((err) => {
+                console.log(err)
                 this.failure = true
                 this.changeFailure()
             })

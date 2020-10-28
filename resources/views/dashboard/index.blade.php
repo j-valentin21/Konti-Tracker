@@ -50,7 +50,7 @@
                             <div class="card-body">
                                 <h4 class="card-title dashboard__card__title mb-4">PTO usage</h4>
                                 <div class="dashboard__card__chart">
-                                    <canvas id="barChart"></canvas>
+                                    <bar-chart/>
                                 </div>
                             </div>
                         </div>
@@ -200,8 +200,4 @@
             </div> <!-- END OF DASHBOARD MAIN-CONTENT -->
         </div> <!-- END OF DASHBOARD-MAIN -->
     </div><!-- END OF MAIN CONTAINER-FLUID -->
-@endsection
-    <!-- SCRIPTS -->
-@section('body-scripts')
-    <script src="{{ asset('js/scripts/chart.js') }}"></script>
 @endsection
