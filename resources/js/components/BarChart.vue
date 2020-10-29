@@ -5,6 +5,12 @@
 </template>
 <script>
 export default{
+    props : ['pto_usage'],
+    data() {
+        return {
+            pto_used: this.pto_usage,
+        }
+    },
     mounted() {
         const chart = this.$refs.barChart;
         const ctx = chart.getContext("2d");
@@ -15,7 +21,7 @@ export default{
                 backgroundColor: 'rgba(0, 123, 255, 0.5)',
                 borderColor: 'rgb(0, 123, 255)',
                 borderWidth: 2,
-                data: [3,5,9]
+                data: [this.pto_used]
             }]
         };
         const barChart = new Chart(ctx, {

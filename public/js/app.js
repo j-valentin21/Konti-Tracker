@@ -1914,6 +1914,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['pto_usage'],
+  data: function data() {
+    return {
+      pto_used: this.pto_usage
+    };
+  },
   mounted: function mounted() {
     var chart = this.$refs.barChart;
     var ctx = chart.getContext("2d");
@@ -1924,7 +1930,7 @@ __webpack_require__.r(__webpack_exports__);
         backgroundColor: 'rgba(0, 123, 255, 0.5)',
         borderColor: 'rgb(0, 123, 255)',
         borderWidth: 2,
-        data: [3, 5, 9]
+        data: [this.pto_used]
       }]
     };
     var barChart = new Chart(ctx, {
@@ -2064,11 +2070,12 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     SuccessFlash: _SuccessFlash_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
-  props: ['pto', 'points'],
+  props: ['pto', 'points', 'pto_usage'],
   data: function data() {
     return {
       pto_value: this.pto,
       points_value: this.points,
+      pto_used: this.pto_usage,
       failure: false,
       success: false,
       showPTOButton: false,
@@ -2080,13 +2087,19 @@ __webpack_require__.r(__webpack_exports__);
       if (this.pto_value < 40) {
         this.showPTOButton = true;
         this.pto_value++;
-      }
+      } // if(this.pto_used > 0 && this.pto_used > this.pto_usage) {
+      //     this.pto_used--
+      // }
+
     },
     decreasePTO: function decreasePTO() {
       if (this.pto_value > 0) {
         this.showPTOButton = true;
         this.pto_value--;
-      }
+      } // if(this.pto_used > -1) {
+      //     this.pto_used++
+      // }
+
     },
     increasePoints: function increasePoints() {
       if (this.points_value < 15) {
