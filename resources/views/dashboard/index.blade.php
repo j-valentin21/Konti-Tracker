@@ -27,7 +27,8 @@
                         <div class="card dashboard__card mb-4">
                             <div class="card-body">
                                 <incrementers :points="{{ auth()->user()->profile->points }}"
-                                              :pto="{{ auth()->user()->profile->pto }}">
+                                              :pto="{{ auth()->user()->profile->pto }}"
+                                              :pto_usage="{{ auth()->user()->profile->pto_usage }}">
                                 </incrementers>
 
                                 <div class="row align-items-center">
@@ -50,7 +51,7 @@
                             <div class="card-body">
                                 <h4 class="card-title dashboard__card__title mb-4">PTO usage</h4>
                                 <div class="dashboard__card__chart">
-                                    <bar-chart/>
+                                    <bar-chart :pto_usage="{{auth()->user()->profile->pto_usage }}"/>
                                 </div>
                             </div>
                         </div>

@@ -51,11 +51,12 @@ export default {
     components: {
         SuccessFlash
     },
-    props : ['pto', 'points'],
+    props : ['pto', 'points','pto_usage'],
     data() {
         return {
             pto_value: this.pto,
             points_value: this.points,
+            pto_used: this.pto_usage,
             failure: false,
             success: false,
             showPTOButton:false,
@@ -63,17 +64,23 @@ export default {
         }
     },
     methods: {
-        increasePTO: function() {
-            if(this.pto_value < 40) {
+        increasePTO: function () {
+            if (this.pto_value < 40) {
                 this.showPTOButton = true
                 this.pto_value++;
             }
+            // if(this.pto_used > 0 && this.pto_used > this.pto_usage) {
+            //     this.pto_used--
+            // }
         },
         decreasePTO:  function() {
             if(this.pto_value > 0) {
                 this.showPTOButton = true
                 this.pto_value--;
             }
+            // if(this.pto_used > -1) {
+            //     this.pto_used++
+            // }
         },
         increasePoints: function() {
             if(this.points_value < 15) {
@@ -105,7 +112,7 @@ export default {
             axios.put("/dashboard",this.$data)
             .then( response => {
                this.success = true
-                this.changeSuccess()
+               this.changeSuccess()
             })
 
             .catch((err) => {
