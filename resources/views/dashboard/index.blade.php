@@ -51,7 +51,7 @@
                             <div class="card-body">
                                 <h4 class="card-title dashboard__card__title mb-4">PTO usage</h4>
                                 <div class="dashboard__card__chart">
-                                    <bar-chart :pto_usage="{{ auth()->user()->profile->pto_usage }}"/>
+                                    <bar-chart :pto_usage="{{auth()->user()->profile->pto_usage }}"/>
                                 </div>
                             </div>
                         </div>

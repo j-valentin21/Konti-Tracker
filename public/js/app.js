@@ -1911,8 +1911,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['pto_usage'],
   data: function data() {
@@ -1951,6 +1949,10 @@ __webpack_require__.r(__webpack_exports__);
             gridLines: {
               color: 'rgba(54, 68, 88, 1)',
               lineWidth: 1
+            },
+            ticks: {
+              min: 0,
+              max: 30
             }
           }],
           xAxes: [{
@@ -76594,9 +76596,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("canvas", { ref: "barChart" })
-  ])
+  return _c("canvas", { ref: "barChart" })
 }
 var staticRenderFns = []
 render._withStripped = true

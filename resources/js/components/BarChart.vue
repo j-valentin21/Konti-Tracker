@@ -1,7 +1,5 @@
 <template>
-    <div class="container">
         <canvas ref="barChart"></canvas>
-    </div>
 </template>
 <script>
 export default{
@@ -42,6 +40,10 @@ export default{
                         gridLines: {
                             color: 'rgba(54, 68, 88, 1)',
                             lineWidth: 1
+                        },
+                        ticks: {
+                            min:0,
+                            max:30
                         }
                     }],
                     xAxes: [{
