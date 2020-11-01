@@ -14,6 +14,10 @@ class Profile extends Model
     protected $fillable = [
         'position','pto', 'points','avatar','user_id,'
     ];
+
+    protected $casts = [
+        'pto_usage' => 'array'
+    ];
     /**
      * Returns an integer that gives you a two day expiration date.
      *
@@ -27,5 +31,9 @@ class Profile extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function getColumnNameAttribute($value) {
+        return json_decode($value);
     }
 }

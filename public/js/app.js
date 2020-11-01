@@ -1921,6 +1921,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var chart = this.$refs.barChart;
     var ctx = chart.getContext("2d");
+    var barData = [this.pto_used['Jan'], this.pto_used['Feb'], this.pto_used['Mar'], this.pto_used['Apr'], this.pto_used['May'], this.pto_used['June'], this.pto_used['July'], this.pto_used['Aug'], this.pto_used['Sept'], this.pto_used['Oct'], this.pto_used['Nov'], this.pto_used['Dec']];
     var barChartData = {
       labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
       datasets: [{
@@ -1928,7 +1929,7 @@ __webpack_require__.r(__webpack_exports__);
         backgroundColor: 'rgba(0, 123, 255, 0.5)',
         borderColor: 'rgb(0, 123, 255)',
         borderWidth: 2,
-        data: [this.pto_used]
+        data: barData
       }]
     };
     var barChart = new Chart(ctx, {
@@ -2089,19 +2090,13 @@ __webpack_require__.r(__webpack_exports__);
       if (this.pto_value < 40) {
         this.showPTOButton = true;
         this.pto_value++;
-      } // if(this.pto_used > 0 && this.pto_used > this.pto_usage) {
-      //     this.pto_used--
-      // }
-
+      }
     },
     decreasePTO: function decreasePTO() {
       if (this.pto_value > 0) {
         this.showPTOButton = true;
         this.pto_value--;
-      } // if(this.pto_used > -1) {
-      //     this.pto_used++
-      // }
-
+      }
     },
     increasePoints: function increasePoints() {
       if (this.points_value < 15) {

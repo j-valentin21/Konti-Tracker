@@ -20,7 +20,7 @@ class CreateProfilesTable extends Migration
             $table->tinyInteger('pto')->nullable();
             $table->tinyInteger('points')->nullable();
             $table->tinyInteger('pending')->default(0);
-            $table->tinyInteger('pto_usage')->default(0);
+            $table->json('pto_usage')->nullable();
             $table->tinyInteger('points_usage')->default(0);
             $table->string('avatar')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
