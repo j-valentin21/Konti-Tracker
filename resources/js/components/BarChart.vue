@@ -12,14 +12,17 @@ export default{
     mounted() {
         const chart = this.$refs.barChart;
         const ctx = chart.getContext("2d");
+        const barData = [this.pto_used['Jan'], this.pto_used['Feb'],this.pto_used['Mar'],this.pto_used['Apr'],this.pto_used['May'],this.pto_used['June'],
+            this.pto_used['July'], this.pto_used['Aug'],this.pto_used['Sept'], this.pto_used['Oct'], this.pto_used['Nov'], this.pto_used['Dec']]
         const barChartData = {
+
             labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
             datasets: [{
                 label: 'PTO per month',
                 backgroundColor: 'rgba(0, 123, 255, 0.5)',
                 borderColor: 'rgb(0, 123, 255)',
                 borderWidth: 2,
-                data: [this.pto_used]
+                data: barData
             }]
         };
         const barChart = new Chart(ctx, {

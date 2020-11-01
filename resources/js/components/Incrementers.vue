@@ -69,18 +69,12 @@ export default {
                 this.showPTOButton = true
                 this.pto_value++;
             }
-            // if(this.pto_used > 0 && this.pto_used > this.pto_usage) {
-            //     this.pto_used--
-            // }
         },
         decreasePTO:  function() {
             if(this.pto_value > 0) {
                 this.showPTOButton = true
                 this.pto_value--;
             }
-            // if(this.pto_used > -1) {
-            //     this.pto_used++
-            // }
         },
         increasePoints: function() {
             if(this.points_value < 15) {
