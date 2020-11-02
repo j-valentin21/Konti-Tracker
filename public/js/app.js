@@ -1911,61 +1911,68 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['pto_usage'],
+  // props : ['pto_usage'],
   data: function data() {
-    return {
-      pto_used: this.pto_usage
+    return {// pto_used: this.pto_usage,
     };
   },
   mounted: function mounted() {
-    var chart = this.$refs.barChart;
-    var ctx = chart.getContext("2d");
-    var barData = [this.pto_used['Jan'], this.pto_used['Feb'], this.pto_used['Mar'], this.pto_used['Apr'], this.pto_used['May'], this.pto_used['June'], this.pto_used['July'], this.pto_used['Aug'], this.pto_used['Sept'], this.pto_used['Oct'], this.pto_used['Nov'], this.pto_used['Dec']];
-    var barChartData = {
-      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
-      datasets: [{
-        label: 'PTO per month',
-        backgroundColor: 'rgba(0, 123, 255, 0.5)',
-        borderColor: 'rgb(0, 123, 255)',
-        borderWidth: 2,
-        data: barData
-      }]
-    };
-    var barChart = new Chart(ctx, {
-      type: 'bar',
-      data: barChartData,
-      options: {
-        maintainAspectRatio: true,
-        responsive: true,
-        legend: {
-          position: 'top'
-        },
-        animation: {
-          duration: 2000,
-          easing: 'easeInOutQuint'
-        },
-        scales: {
-          yAxes: [{
-            gridLines: {
-              color: 'rgba(54, 68, 88, 1)',
-              lineWidth: 1
-            },
-            ticks: {
-              min: 0,
-              max: 30
-            }
-          }],
-          xAxes: [{
-            gridLines: {
-              color: 'rgba(54, 68, 88, 1)',
-              lineWidth: 0
-            }
-          }]
+    var _this = this;
+
+    var uri = '/dashboard/charts';
+    axios.get(uri).then(function (response) {
+      var chart = _this.$refs.barChart;
+      var ctx = chart.getContext("2d");
+      var barData = [response.data['Jan'], response.data['Feb'], response.data['Mar'], response.data['Apr'], response.data['May'], response.data['June'], response.data['July'], response.data['Aug'], response.data['Sept'], response.data['Oct'], response.data['Nov'], response.data['Dec']];
+      var barChartData = {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
+        datasets: [{
+          label: 'PTO days used',
+          backgroundColor: 'rgba(0, 123, 255, 0.5)',
+          borderColor: 'rgb(0, 123, 255)',
+          borderWidth: 2,
+          data: barData
+        }]
+      };
+      var barChart = new Chart(ctx, {
+        type: 'bar',
+        data: barChartData,
+        options: {
+          maintainAspectRatio: true,
+          responsive: true,
+          legend: {
+            position: 'top'
+          },
+          animation: {
+            duration: 2000,
+            easing: 'easeInOutQuint'
+          },
+          scales: {
+            yAxes: [{
+              gridLines: {
+                color: 'rgba(54, 68, 88, 1)',
+                lineWidth: 1
+              },
+              ticks: {
+                min: 0,
+                max: 30
+              }
+            }],
+            xAxes: [{
+              gridLines: {
+                color: 'rgba(54, 68, 88, 1)',
+                lineWidth: 0
+              }
+            }]
+          }
         }
-      }
+      });
     });
-  }
+  },
+  methods: {}
 });
 
 /***/ }),
@@ -76591,7 +76598,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("canvas", { ref: "barChart" })
+  return _c("div", [_c("canvas", { ref: "barChart" })])
 }
 var staticRenderFns = []
 render._withStripped = true
