@@ -107,6 +107,7 @@ export default {
             .then( response => {
                this.success = true
                this.changeSuccess()
+                Fire.$emit('SubmitCount')
             })
 
             .catch((err) => {

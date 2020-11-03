@@ -10,6 +10,8 @@ let Chart = require('chart.js');
 
 window.Vue = require('vue');
 
+window.Fire = new Vue();
+
 import {Bar} from 'vue-chartjs';
 
 

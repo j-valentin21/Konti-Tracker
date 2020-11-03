@@ -7,33 +7,51 @@
 
 
 export default{
-    // props : ['pto_usage'],
-
     data() {
         return {
-            // pto_used: this.pto_usage,
+            barData: [],
+            barChartData: {},
+            barChart: {},
         }
+    },
+    methods: {
+        fetchTasks() {
+            let uri = `/dashboard/charts`;
+            axios.get(uri).then(response => {
+                this.barData = [response.data['Jan'], response.data['Feb'], response.data['Mar'], response.data['Apr'], response.data['May'], response.data['June'],
+                    response.data['July'], response.data['Aug'], response.data['Sept'], response.data['Oct'], response.data['Nov'], response.data['Dec']]
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+        },
+    },
+    created() {
+        this.fetchTasks();
+        Fire.$on('SubmitCount', () => {
+            this.fetchTasks()
+            this.barChartData.datasets[0].data = this.barData
+            this.barChart.update()
+        })
     },
     mounted() {
         let uri = '/dashboard/charts';
         axios.get(uri).then((response) => {
             const chart = this.$refs.barChart;
             const ctx = chart.getContext("2d");
-            const barData = [response.data['Jan'], response.data['Feb'], response.data['Mar'], response.data['Apr'], response.data['May'], response.data['June'],
-                response.data['July'], response.data['Aug'], response.data['Sept'], response.data['Oct'], response.data['Nov'], response.data['Dec']]
-            const barChartData = {
+            this.barChartData = {
                 labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
                 datasets: [{
                     label: 'PTO days used',
                     backgroundColor: 'rgba(0, 123, 255, 0.5)',
                     borderColor: 'rgb(0, 123, 255)',
                     borderWidth: 2,
-                    data: barData
+                    data: this.barData
                 }]
             };
-            const barChart = new Chart(ctx, {
+            this.barChart = new Chart(ctx, {
                 type: 'bar',
-                data: barChartData,
+                data: this.barChartData,
                 options: {
                     maintainAspectRatio: true,
                     responsive: true,
@@ -65,10 +83,6 @@ export default{
                 }
             });
         })
-    },
-    methods: {
-
     }
-
 }
 </script>
