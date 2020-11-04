@@ -23,7 +23,7 @@ class DashboardController extends Controller
         return view('dashboard.index', ['message'=>$message]);
     }
 
-        /**
+    /**
      * Update PTO or points on the dashboard view.
      *
      * @param Request $request
@@ -56,7 +56,17 @@ class DashboardController extends Controller
         if($profile->points !== $request->points_value) {
             $profile->points = $request->points_value;
         }
-
         $profile->save();
+    }
+    /**
+     * Get data to update charts in dashboard.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getChartData()
+    {
+        $profile = Profile::find(auth()->user()->id);
+        $data = $profile->pto_usage;
+        return response()->json($data);
     }
 }

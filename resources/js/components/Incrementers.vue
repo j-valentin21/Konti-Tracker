@@ -90,14 +90,14 @@ export default {
         },
        changeSuccess: function() {
             return new Promise(function(resolve, reject) {
-            setTimeout(resolve, 8000);
+            setTimeout(resolve, 7000);
             }).then( response => {
             this.success = false;
             });
         },
         changeFailure: function() {
             return new Promise(function(resolve, reject) {
-                setTimeout(resolve, 8000);
+                setTimeout(resolve, 7000);
             }).then( response => {
                 this.failure = false;
             });
@@ -107,6 +107,7 @@ export default {
             .then( response => {
                this.success = true
                this.changeSuccess()
+                Fire.$emit('SubmitCount');
             })
 
             .catch((err) => {

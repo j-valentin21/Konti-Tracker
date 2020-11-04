@@ -1911,59 +1911,95 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['pto_usage'],
   data: function data() {
     return {
-      pto_used: this.pto_usage
+      barData: [],
+      barChartData: {},
+      barChart: {}
     };
   },
+  methods: {
+    fetchTasks: function fetchTasks() {
+      var _this = this;
+
+      var uri = "/dashboard/charts";
+      axios.get(uri).then(function (response) {
+        _this.barData = [response.data['Jan'], response.data['Feb'], response.data['Mar'], response.data['Apr'], response.data['May'], response.data['June'], response.data['July'], response.data['Aug'], response.data['Sept'], response.data['Oct'], response.data['Nov'], response.data['Dec']];
+      })["catch"](function (err) {
+        console.log(err);
+      });
+    }
+  },
+  created: function created() {
+    var _this2 = this;
+
+    this.fetchTasks();
+    Fire.$on('SubmitCount', function () {
+      var timer = setInterval(function () {
+        _this2.fetchTasks();
+
+        _this2.barChartData.datasets[0].data = _this2.barData;
+
+        _this2.barChart.update();
+      }, 1000);
+      setTimeout(function () {
+        clearInterval(timer);
+      }, 2000);
+    });
+  },
   mounted: function mounted() {
-    var chart = this.$refs.barChart;
-    var ctx = chart.getContext("2d");
-    var barData = [this.pto_used['Jan'], this.pto_used['Feb'], this.pto_used['Mar'], this.pto_used['Apr'], this.pto_used['May'], this.pto_used['June'], this.pto_used['July'], this.pto_used['Aug'], this.pto_used['Sept'], this.pto_used['Oct'], this.pto_used['Nov'], this.pto_used['Dec']];
-    var barChartData = {
-      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
-      datasets: [{
-        label: 'PTO per month',
-        backgroundColor: 'rgba(0, 123, 255, 0.5)',
-        borderColor: 'rgb(0, 123, 255)',
-        borderWidth: 2,
-        data: barData
-      }]
-    };
-    var barChart = new Chart(ctx, {
-      type: 'bar',
-      data: barChartData,
-      options: {
-        maintainAspectRatio: true,
-        responsive: true,
-        legend: {
-          position: 'top'
-        },
-        animation: {
-          duration: 2000,
-          easing: 'easeInOutQuint'
-        },
-        scales: {
-          yAxes: [{
-            gridLines: {
-              color: 'rgba(54, 68, 88, 1)',
-              lineWidth: 1
-            },
-            ticks: {
-              min: 0,
-              max: 30
-            }
-          }],
-          xAxes: [{
-            gridLines: {
-              color: 'rgba(54, 68, 88, 1)',
-              lineWidth: 0
-            }
-          }]
+    var _this3 = this;
+
+    var uri = '/dashboard/charts';
+    axios.get(uri).then(function (response) {
+      var chart = _this3.$refs.barChart;
+      var ctx = chart.getContext("2d");
+      _this3.barChartData = {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
+        datasets: [{
+          label: 'PTO days used',
+          backgroundColor: 'rgba(0, 123, 255, 0.5)',
+          borderColor: 'rgb(0, 123, 255)',
+          borderWidth: 2,
+          data: _this3.barData
+        }]
+      };
+      _this3.barChart = new Chart(ctx, {
+        type: 'bar',
+        data: _this3.barChartData,
+        options: {
+          maintainAspectRatio: true,
+          responsive: true,
+          legend: {
+            position: 'top'
+          },
+          animation: {
+            duration: 2000,
+            easing: 'easeInOutQuint'
+          },
+          scales: {
+            yAxes: [{
+              gridLines: {
+                color: 'rgba(54, 68, 88, 1)',
+                lineWidth: 1
+              },
+              ticks: {
+                min: 0,
+                max: 30
+              }
+            }],
+            xAxes: [{
+              gridLines: {
+                color: 'rgba(54, 68, 88, 1)',
+                lineWidth: 0
+              }
+            }]
+          }
         }
-      }
+      });
     });
   }
 });
@@ -2114,7 +2150,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       return new Promise(function (resolve, reject) {
-        setTimeout(resolve, 8000);
+        setTimeout(resolve, 7000);
       }).then(function (response) {
         _this.success = false;
       });
@@ -2123,7 +2159,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       return new Promise(function (resolve, reject) {
-        setTimeout(resolve, 8000);
+        setTimeout(resolve, 7000);
       }).then(function (response) {
         _this2.failure = false;
       });
@@ -2135,6 +2171,8 @@ __webpack_require__.r(__webpack_exports__);
         _this3.success = true;
 
         _this3.changeSuccess();
+
+        Fire.$emit('SubmitCount');
       })["catch"](function (err) {
         console.log(err);
         _this3.failure = true;
@@ -76591,7 +76629,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("canvas", { ref: "barChart" })
+  return _c("div", [_c("canvas", { ref: "barChart" })])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -89296,6 +89334,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 var Chart = __webpack_require__(/*! chart.js */ "./node_modules/chart.js/dist/Chart.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+window.Fire = new Vue();
 
 /**
  * The following block of code may be used to automatically register your
