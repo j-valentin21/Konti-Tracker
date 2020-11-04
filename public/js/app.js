@@ -1938,11 +1938,16 @@ __webpack_require__.r(__webpack_exports__);
 
     this.fetchTasks();
     Fire.$on('SubmitCount', function () {
-      _this2.fetchTasks();
+      var timer = setInterval(function () {
+        _this2.fetchTasks();
 
-      _this2.barChartData.datasets[0].data = _this2.barData;
+        _this2.barChartData.datasets[0].data = _this2.barData;
 
-      _this2.barChart.update();
+        _this2.barChart.update();
+      }, 1000);
+      setTimeout(function () {
+        clearInterval(timer);
+      }, 2000);
     });
   },
   mounted: function mounted() {
@@ -2145,7 +2150,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       return new Promise(function (resolve, reject) {
-        setTimeout(resolve, 8000);
+        setTimeout(resolve, 7000);
       }).then(function (response) {
         _this.success = false;
       });
@@ -2154,7 +2159,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       return new Promise(function (resolve, reject) {
-        setTimeout(resolve, 8000);
+        setTimeout(resolve, 7000);
       }).then(function (response) {
         _this2.failure = false;
       });

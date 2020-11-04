@@ -4,8 +4,6 @@
     </div>
 </template>
 <script>
-
-
 export default{
     data() {
         return {
@@ -29,10 +27,15 @@ export default{
     created() {
         this.fetchTasks();
         Fire.$on('SubmitCount', () => {
-            this.fetchTasks()
-            this.barChartData.datasets[0].data = this.barData
-            this.barChart.update()
-        })
+           let timer = setInterval(() => {
+                this.fetchTasks()
+                this.barChartData.datasets[0].data = this.barData
+                this.barChart.update()
+                }, 1000);
+           setTimeout(() => {
+               clearInterval(timer);
+           },2000)
+        });
     },
     mounted() {
         let uri = '/dashboard/charts';
@@ -84,5 +87,6 @@ export default{
             });
         })
     }
+
 }
 </script>

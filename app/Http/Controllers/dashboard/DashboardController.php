@@ -56,7 +56,6 @@ class DashboardController extends Controller
         if($profile->points !== $request->points_value) {
             $profile->points = $request->points_value;
         }
-
         $profile->save();
     }
     /**
