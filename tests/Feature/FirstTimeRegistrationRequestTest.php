@@ -101,7 +101,7 @@ class FirstTimeRegistrationRequestTest extends TestCase
      * @param bool $shouldPass
      * @param array $mockedRequestData
      */
-    public function validation_results_as_expected(bool $shouldPass, array $mockedRequestData)
+    public function validation_results_as_expected(bool $shouldPass, array $mockedRequestData):void
     {
         $this->assertEquals(
             $shouldPass,

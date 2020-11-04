@@ -2,17 +2,20 @@
 
 namespace Tests\Unit;
 
+use App\Profile;
 use PHPUnit\Framework\TestCase;
 
 class ProfileTest extends TestCase
 {
     /**
-     * A basic unit test example.
+     * Test to check it expireDate method is calculating properly.
      *
-     * @return void
      */
-    public function profile ()
+    public function test_Expire_Date_Method():void
     {
-        $profile = factory(profile::class)->create();
+        $profile = new Profile();
+        $expireDate = $profile->expireDate();
+        $days = 60*60*24*2;
+        $this->assertEquals($expireDate, $days);
     }
 }
