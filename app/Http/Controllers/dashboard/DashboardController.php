@@ -35,20 +35,10 @@ class DashboardController extends Controller
 
         if($profile->pto > $request->pto_value) {
             $pto_used = $profile->pto - $request->pto_value;
-            if ($profile->pto_usage === null) {
-                $months = array('Jan' => 0, 'Feb' => 0, 'Mar' => 0, 'Apr' => 0, 'May' => 0, 'June' => 0,
-                    'July' => 0, 'Aug' => 0, 'Sept' => 0, 'Oct' => 0, 'Nov' => 0, 'Dec' => 0);
-                $graph_date = $profile->updated_at;
-                $graph_month = $graph_date->shortEnglishMonth;
-                $months[$graph_month] = $pto_used;
-                $profile->pto_usage = $months;
-            } else {
-                $months = $profile->pto_usage;
-                $graph_date = $profile->updated_at;
-                $graph_month = $graph_date->shortEnglishMonth;
-                $months[$graph_month] = $months[$graph_month] + $pto_used;
-                $profile->pto_usage = $months;
-            }
+            $month =  $profile->getBarChartMonth();
+            $months = $profile->pto_usage;
+            $months[$month] = $pto_used + $months[$month];
+            $profile->pto_usage = $months;
         }
         if ($profile->pto !== $request->pto_value) {
             $profile->pto = $request->pto_value;
@@ -63,7 +53,7 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function getChartData()
+    public function getBarChartData()
     {
         $profile = Profile::find(auth()->user()->id);
         $data = $profile->pto_usage;
