@@ -19,9 +19,8 @@ class FirstTimeRegistrationTest extends TestCase
     /**
      * Check if route to build your profile is working properly.
      *
-     * @return void
      */
-    public function test_Build_Your_Profile_View_Is_Working_Properly()
+    public function test_Build_Your_Profile_View_Is_Working_Properly():void
     {
         $this->withoutMiddleware([FirstTimeUser::class, Authenticate::class, EnsureEmailIsVerified::class,]);
 
@@ -33,9 +32,8 @@ class FirstTimeRegistrationTest extends TestCase
     /**
      * Check if route to avatar is working properly.
      *
-     * @return void
      */
-    public function test_Avatar_View_Is_Working_Properly()
+    public function test_Avatar_View_Is_Working_Properly():void
     {
         $this->withoutMiddleware([FirstTimeUser::class, Authenticate::class, EnsureEmailIsVerified::class]);
 
@@ -47,9 +45,8 @@ class FirstTimeRegistrationTest extends TestCase
     /**
      * Check if route to avatar is working properly.
      *
-     * @return void
      */
-    public function test_Confirmation_View_Is_Working_Properly()
+    public function test_Confirmation_View_Is_Working_Properly():void
     {
         $this->withoutMiddleware([FirstTimeUser::class, Authenticate::class, EnsureEmailIsVerified::class]);
 
@@ -61,9 +58,8 @@ class FirstTimeRegistrationTest extends TestCase
     /**
      * Guest cannot access build your profile page without being authenticated.
      *
-     * @return void
      */
-    public function test_Guest_Cannot_Access_Build_Your_Profile_View()
+    public function test_Guest_Cannot_Access_Build_Your_Profile_View():void
     {
         $response = $this->get('/register/build-your-profile');
 
@@ -73,9 +69,8 @@ class FirstTimeRegistrationTest extends TestCase
     /**
      * Guest cannot access avatar page without being authenticated.
      *
-     * @return void
      */
-    public function test_Guest_Cannot_Access_Avatar_Page()
+    public function test_Guest_Cannot_Access_Avatar_Page():void
     {
         $response = $this->get('/register/avatar');
 
@@ -85,9 +80,8 @@ class FirstTimeRegistrationTest extends TestCase
     /**
      * Guest cannot access confirmation page without being authenticated.
      *
-     * @return void
      */
-    public function test_Guest_Cannot_Access_Confirmation_Page()
+    public function test_Guest_Cannot_Access_Confirmation_Page():void
     {
         $response = $this->get('/register/confirmation');
 
@@ -97,10 +91,9 @@ class FirstTimeRegistrationTest extends TestCase
     /**
      * Guest cannot access build your profile page without being authenticated and a first time user.
      *
-     * @return void
      */
 
-    public function test_Only_First_Time_User_Can_Access_Build_Your_Profile_Page()
+    public function test_Only_First_Time_User_Can_Access_Build_Your_Profile_Page():void
     {
         $this->actingAs($user = factory(User::class)->make());
 
@@ -139,9 +132,8 @@ class FirstTimeRegistrationTest extends TestCase
     /**
      * User can pass session data to avatar page.
      *
-     * @return void
      */
-    public function test_User_Can_Pass_Sessions_To_Avatar_Page()
+    public function test_User_Can_Pass_Sessions_To_Avatar_Page():void
     {
         $this->withoutMiddleware([FirstTimeUser::class]);
 
@@ -149,7 +141,7 @@ class FirstTimeRegistrationTest extends TestCase
         $user = factory(User::class)->make();
 
         $response = $this->actingAs($user)
-        ->withSession([
+        ->session([
             'position' => $profile->position,
             'pto'=> $profile->pto,
             'points'=> $profile->points
@@ -163,9 +155,8 @@ class FirstTimeRegistrationTest extends TestCase
     /**
      * User can post input in confirmation page.
      *
-     * @return void
      */
-    public function test_User_Can_Post_Input_On_Confirmation_Page()
+    public function test_User_Can_Post_Input_On_Confirmation_Page():void
     {
         $user = factory(user::class)->create();
         $profile = factory(Profile::class)->create();

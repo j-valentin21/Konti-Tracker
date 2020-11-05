@@ -15,9 +15,8 @@ class DashboardProfileTest extends TestCase
     /**
      * Guest cannot access dashboard profile view without being authenticated.
      *
-     * @return void
      */
-    public function test_Guest_Cannot_Access_Dashboard_Profile_View()
+    public function test_Guest_Cannot_Access_Dashboard_Profile_View():void
     {
 
         $response = $this->get('/dashboard/profile');
@@ -27,9 +26,8 @@ class DashboardProfileTest extends TestCase
     /**
      * User can update profile data on dashboard profile view.
      *
-     * @return void
      */
-    public function test_User_Can_Update_Profile_On_Dashboard_Profile_View()
+    public function test_User_Can_Update_Profile_On_Dashboard_Profile_View():void
     {
         $user = factory(user::class)->create();
         $profile = factory(Profile::class)->create();
@@ -57,9 +55,8 @@ class DashboardProfileTest extends TestCase
     /**
      * User can delete avatar on dashboard profile view.
      *
-     * @return void
      */
-    public function User_Can_delete_Avatar_On_Dashboard_Profile_View()
+    public function User_Can_delete_Avatar_On_Dashboard_Profile_View():void
     {
         $user = factory(user::class)->create();
         $profile = factory(Profile::class)->create([
