@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Http\Middleware\NotFirstTimeUser;
 use App\Profile;
 use App\User;
+use Illuminate\Auth\Middleware\EnsureEmailIsVerified;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -63,6 +64,24 @@ class DashboardTest extends TestCase
         $this->assertEquals(3, $profile->pto);
         $this->assertEquals(5, $profile->points);
         $this->assertEquals(18, $profile->pto_usage[0]);
+    }
+
+    function test_Get_Bar_Chart_Data_json_response()
+    {
+        $this->withoutExceptionHandling();
+
+        $user = factory(User::class)->create();
+        $profile = factory(Profile::class)->create();
+
+
+        $response = $this->actingAs($user)
+            ->json('GET', '/dashboard/charts');
+
+        $response
+            ->assertStatus(200)
+            ->assertJsonFragment([
+                0 =>$profile->pto_usage[0]
+            ]);
     }
 }
 
