@@ -2,10 +2,8 @@
 
 namespace Tests\Feature;
 
-use App\Http\Middleware\NotFirstTimeUser;
 use App\Profile;
 use App\User;
-use Illuminate\Auth\Middleware\EnsureEmailIsVerified;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
