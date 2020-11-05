@@ -141,7 +141,7 @@ class FirstTimeRegistrationTest extends TestCase
         $user = factory(User::class)->make();
 
         $response = $this->actingAs($user)
-        ->withSession([
+        ->session([
             'position' => $profile->position,
             'pto'=> $profile->pto,
             'points'=> $profile->points
