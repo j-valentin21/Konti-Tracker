@@ -29,16 +29,10 @@
                                 <incrementers :points="{{ auth()->user()->profile->points }}"
                                               :pto="{{ auth()->user()->profile->pto }}">
                                 </incrementers>
-
                                 <div class="row align-items-center">
                                     <div class="col-8">
                                         <p class="my-4 dashboard__card__text">Pending</p>
                                         <h4 class="my-3 text-white">{{ auth()->user()->profile->pending }}</h4>
-                                    </div>
-                                    <div class="col-4">
-                                        <div class="text-right">
-
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -64,7 +58,7 @@
                         <div class="card dashboard__card">
                             <div class="card-body">
                                 <h4 class="card-title dashboard__card__title mb-4">Points per month</h4>
-                                <canvas id="lineChart"></canvas>
+                                <line-chart/>
                             </div>
                         </div>
                     </div>

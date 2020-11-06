@@ -27,9 +27,8 @@ class DashboardController extends Controller
      * Update PTO or points on the dashboard view.
      *
      * @param Request $request
-     * @return void
      */
-    public function update(Request $request)
+    public function update(Request $request):void
     {
         $profile = Profile::find(auth()->user()->id);
 
