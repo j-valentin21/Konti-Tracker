@@ -46,7 +46,7 @@ export default{
                 labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
                 datasets: [{
                     label: 'PTO days used',
-                    backgroundColor: 'rgba(0, 123, 255, 0.5)',
+                    backgroundColor: 'rgb(0, 123, 255)',
                     borderColor: 'rgb(0, 123, 255)',
                     borderWidth: 2,
                     data: this.barData
