@@ -44,7 +44,7 @@
                 </span>
                 @enderror
                 @if (!$errors->has('email'))
-                    <label for="email" class="registration__label">{{ __('email') }}</label>
+                    <label for="email" class="registration__label">{{ __('Email') }}</label>
                 @endif
             </div>
             <!-- ========== PASSWORD ========== -->

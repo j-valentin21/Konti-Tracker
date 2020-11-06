@@ -1,47 +1,28 @@
-//===========CHART.JS CHARTS=================
-
-window.onload = function() {
-
-
-    //=========POINTS PER MONTH CHART=============
-    let lineChart = document.getElementById('lineChart').getContext('2d');
-    const line  = new Chart(lineChart, {
-        // The type of chart we want to create
-        type: 'line',
-
-        // The data for our dataset
-        data: {
-            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
-            datasets: [{
-                label: 'Points used per month',
-                backgroundColor: 'rgba(235, 167, 43, 0.1)',
-                borderColor: 'rgb(235, 167, 43)',
-                data: [0, 3, 1, 3, 5, 0,0]
-            }]
-        },
-
-        // Configuration options go here
-        options: {
-            animation: {
-                duration: 2000,
-                easing: 'easeInOutQuint'
-            },
-            scales: {
-                yAxes: [{
-                    gridLines: {
-                        color: 'rgba(54, 68, 88, 1)',
-                        lineWidth: 1
-                    }
-                }],
-                xAxes: [{
-                    gridLines: {
-                        color: 'rgba(54, 68, 88, 1)',
-                        lineWidth: 0
-                    }
-                }]
-            }
-        }
+methods: {
+    fetchTasks() {
+        let uri = `/dashboard/charts`;
+        axios.get(uri).then(response => {
+            this.barData = [response.data['Jan'], response.data['Feb'], response.data['Mar'], response.data['Apr'], response.data['May'], response.data['June'],
+                response.data['July'], response.data['Aug'], response.data['Sept'], response.data['Oct'], response.data['Nov'], response.data['Dec']]
+        })
+            .catch((err) => {
+                console.log(err)
+            })
+    },
+},
+created() {
+    this.fetchTasks();
+    Fire.$on('SubmitCount', () => {
+        let timer = setInterval(() => {
+            this.fetchTasks()
+            this.lineChartData.datasets[0].data = this.lineData
+            this.lineChart.update()
+        }, 1000);
+        setTimeout(() => {
+            clearInterval(timer);
+        },2000)
     });
+},
     //=========PENDING=============
     const pieChart = document.getElementById('pieChart').getContext('2d');
     const pie  = new Chart(pieChart, {
