@@ -27,17 +27,25 @@ class DashboardController extends Controller
      * Update PTO or points on the dashboard view.
      *
      * @param Request $request
+     * @return void
      */
-    public function update(Request $request):void
+    public function update(Request $request)
     {
         $profile = Profile::find(auth()->user()->id);
 
         if($profile->pto > $request->pto_value) {
             $pto_used = $profile->pto - $request->pto_value;
-            $month =  $profile->getBarChartMonth();
+            $month =  $profile->getChartMonth();
             $months = $profile->pto_usage;
             $months[$month] = $pto_used + $months[$month];
             $profile->pto_usage = $months;
+        }
+        if($profile->points > $request->points_value) {
+            $points_used = $profile->points - $request->points_value;
+            $month =  $profile->getChartMonth();
+            $months = $profile->points_usage;
+            $months[$month] = $points_used + $months[$month];
+            $profile->points_usage = $months;
         }
         if ($profile->pto !== $request->pto_value) {
             $profile->pto = $request->pto_value;

@@ -16,7 +16,8 @@ class Profile extends Model
     ];
 
     protected $casts = [
-        'pto_usage' => 'array'
+        'pto_usage' => 'array',
+        'points_usage' => 'array'
     ];
     /**
      * Returns an integer that gives you a two day expiration date.
@@ -32,18 +33,18 @@ class Profile extends Model
      *
      * @return string
      */
-    public function getBarChartMonth()
+    public function getChartMonth()
     {
-        if ($this->pto_usage === null) {
+        if ($this->pto_usage === null || $this->points_usage === null) {
             $months = array('Jan' => 0, 'Feb' => 0, 'Mar' => 0, 'Apr' => 0, 'May' => 0, 'June' => 0,
                 'July' => 0, 'Aug' => 0, 'Sept' => 0, 'Oct' => 0, 'Nov' => 0, 'Dec' => 0);
             $graph_date = $this->updated_at;
             $graph_month = $graph_date->shortEnglishMonth;
             $this->pto_usage = $months;
+            $this->points_usage = $months;
             $this->save();
             return $graph_month;
-        }
-        else {
+        } else {
             $graph_date = $this->updated_at;
             $graph_month = $graph_date->shortEnglishMonth;
             return $graph_month;
