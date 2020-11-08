@@ -12239,6 +12239,16 @@ body {
   font-weight: bolder;
 }
 
+.alert {
+  padding: 0;
+}
+
+@media only screen and (max-width: 75em) {
+  .alert {
+    padding: 0.75rem 1.25rem;
+  }
+}
+
 .alert::before {
   content: "";
   position: absolute;

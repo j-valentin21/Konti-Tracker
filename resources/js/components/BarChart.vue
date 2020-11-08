@@ -14,7 +14,7 @@ export default{
     },
     methods: {
         fetchTasks() {
-            let uri = `/dashboard/charts`;
+            let uri = `/dashboard/pto-chart`;
             axios.get(uri).then(response => {
                 this.barData = [response.data['Jan'], response.data['Feb'], response.data['Mar'], response.data['Apr'], response.data['May'], response.data['June'],
                     response.data['July'], response.data['Aug'], response.data['Sept'], response.data['Oct'], response.data['Nov'], response.data['Dec']]
@@ -38,7 +38,7 @@ export default{
         });
     },
     mounted() {
-        let uri = '/dashboard/charts';
+        let uri = '/dashboard/pto-chart';
         axios.get(uri).then((response) => {
             const chart = this.$refs.barChart;
             const ctx = chart.getContext("2d");
@@ -87,6 +87,5 @@ export default{
             });
         })
     }
-
 }
 </script>

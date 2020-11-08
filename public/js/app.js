@@ -1925,7 +1925,7 @@ __webpack_require__.r(__webpack_exports__);
     fetchTasks: function fetchTasks() {
       var _this = this;
 
-      var uri = "/dashboard/charts";
+      var uri = "/dashboard/pto-chart";
       axios.get(uri).then(function (response) {
         _this.barData = [response.data['Jan'], response.data['Feb'], response.data['Mar'], response.data['Apr'], response.data['May'], response.data['June'], response.data['July'], response.data['Aug'], response.data['Sept'], response.data['Oct'], response.data['Nov'], response.data['Dec']];
       })["catch"](function (err) {
@@ -1953,7 +1953,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this3 = this;
 
-    var uri = '/dashboard/charts';
+    var uri = '/dashboard/pto-chart';
     axios.get(uri).then(function (response) {
       var chart = _this3.$refs.barChart;
       var ctx = chart.getContext("2d");
@@ -2207,26 +2207,55 @@ __webpack_require__.r(__webpack_exports__);
       lineChart: {}
     };
   },
-  mounted: function mounted() {
-    var _this = this;
+  methods: {
+    fetchTasks: function fetchTasks() {
+      var _this = this;
 
-    var uri = '/dashboard/charts';
+      var uri = "/dashboard/points-chart";
+      axios.get(uri).then(function (response) {
+        _this.lineData = [response.data['Jan'], response.data['Feb'], response.data['Mar'], response.data['Apr'], response.data['May'], response.data['June'], response.data['July'], response.data['Aug'], response.data['Sept'], response.data['Oct'], response.data['Nov'], response.data['Dec']];
+      })["catch"](function (err) {
+        console.log(err);
+      });
+    }
+  },
+  created: function created() {
+    var _this2 = this;
+
+    this.fetchTasks();
+    Fire.$on('SubmitCount', function () {
+      var timer = setInterval(function () {
+        _this2.fetchTasks();
+
+        _this2.lineChartData.datasets[0].data = _this2.lineData;
+
+        _this2.lineChart.update();
+      }, 1000);
+      setTimeout(function () {
+        clearInterval(timer);
+      }, 2000);
+    });
+  },
+  mounted: function mounted() {
+    var _this3 = this;
+
+    var uri = '/dashboard/points-chart';
     axios.get(uri).then(function (response) {
-      var chart = _this.$refs.lineChart;
+      var chart = _this3.$refs.lineChart;
       var ctx = chart.getContext("2d");
-      _this.lineChartData = {
+      _this3.lineChartData = {
         labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
         datasets: [{
           label: 'Points used per month',
           backgroundColor: 'rgb(235, 167, 43)',
           borderColor: 'rgb(235, 167, 43)',
           borderWidth: 2,
-          data: _this.lineData
+          data: _this3.lineData
         }]
       };
-      _this.lineChart = new Chart(ctx, {
+      _this3.lineChart = new Chart(ctx, {
         type: 'line',
-        data: _this.lineChartData,
+        data: _this3.lineChartData,
         options: {
           maintainAspectRatio: true,
           responsive: true,
@@ -2448,6 +2477,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -77207,41 +77238,42 @@ var render = function() {
               "alert fade alert__success alert-dismissible text-left brk-library-rendered rendered show"
           },
           [
-            _c(
-              "button",
-              {
-                staticClass: "close",
-                attrs: { type: "button", "data-dismiss": "alert" }
-              },
-              [
-                _c(
-                  "span",
-                  { staticClass: "mb-5", attrs: { "aria-hidden": "true" } },
-                  [
-                    _c("svg", { staticClass: "alert__icon alert__icon--x" }, [
-                      _c("use", {
-                        attrs: { href: "svg/sprite.svg#icon-times" }
-                      })
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c("span", { staticClass: "sr-only" }, [_vm._v("Close")])
-              ]
-            ),
-            _vm._v(" "),
-            _c("span", { staticClass: "alert__start" }, [
-              _c("svg", { staticClass: "alert__icon alert__icon--check" }, [
-                _c("use", {
-                  attrs: { href: "svg/sprite.svg#icon-check_circle_outline" }
-                })
+            _c("div", { staticClass: "d-flex" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "close d-lg-none",
+                  attrs: { type: "button", "data-dismiss": "alert" }
+                },
+                [
+                  _c(
+                    "span",
+                    { staticClass: "mb-5", attrs: { "aria-hidden": "true" } },
+                    [
+                      _c("svg", { staticClass: "alert__icon alert__icon--x" }, [
+                        _c("use", {
+                          attrs: { href: "svg/sprite.svg#icon-times" }
+                        })
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "sr-only" }, [_vm._v("Close")])
+                ]
+              ),
+              _vm._v(" "),
+              _c("span", { staticClass: "alert__start mr-3" }, [
+                _c("svg", { staticClass: "alert__icon alert__icon--check" }, [
+                  _c("use", {
+                    attrs: { href: "svg/sprite.svg#icon-check_circle_outline" }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("strong", { staticClass: "font__weight-semibold pr-3" }, [
+                _vm._v("Your profile has been successfully updated!")
               ])
-            ]),
-            _vm._v(" "),
-            _c("strong", { staticClass: "font__weight-semibold" }, [
-              _vm._v("Your profile has been successfully updated!")
-            ]),
-            _vm._v(".\n    ")
+            ])
           ]
         )
       ])

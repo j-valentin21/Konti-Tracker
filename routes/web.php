@@ -32,7 +32,8 @@ Route::middleware(['auth', 'firstTimeUser', 'verified'])->group(function () {
 Route::middleware(['auth', 'NotFirstTimeUser', 'verified'])->group(function () {
     Route::get('/dashboard', 'dashboard\DashboardController@index')->name('dashboard.index');
     Route::put('/dashboard', 'dashboard\DashboardController@update')->name('dashboard.update');
-    Route::get('/dashboard/charts', 'dashboard\DashboardController@getBarChartData')->name('dashboard.getChartData');
+    Route::get('/dashboard/pto-chart', 'dashboard\DashboardController@getPTOChartData')->name('dashboard.getPTOChartData');
+    Route::get('/dashboard/points-chart', 'dashboard\DashboardController@getPointsChartData')->name('dashboard.getPointsChartData');
     Route::get('/dashboard/profile', 'dashboard\DashboardProfileController@index')->name('dashboard.profile.index');
     Route::put('/dashboard/profile', 'dashboard\DashboardProfileController@update')->name('dashboard.profile.update');
     Route::delete('/dashboard/remove-avatar', 'dashboard\DashboardProfileController@destroy')->name('dashboard.profile.destroy');
