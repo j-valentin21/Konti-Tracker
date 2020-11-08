@@ -43,9 +43,7 @@
                         <div class="card dashboard__card">
                             <div class="card-body">
                                 <h4 class="card-title dashboard__card__title mb-4">PTO usage</h4>
-                                <div class="dashboard__card__chart">
-                                    <bar-chart/>
-                                </div>
+                                <bar-chart/>
                             </div>
                         </div>
                     </div>

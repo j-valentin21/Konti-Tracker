@@ -60,10 +60,22 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function getBarChartData()
+    public function getPTOChartData()
     {
         $profile = Profile::find(auth()->user()->id);
         $data = $profile->pto_usage;
+        return response()->json($data);
+    }
+
+    /**
+     * Get data to update points chart in dashboard.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getPointsChartData()
+    {
+        $profile = Profile::find(auth()->user()->id);
+        $data = $profile->points_usage;
         return response()->json($data);
     }
 }
