@@ -46,7 +46,6 @@ export default{
                 labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
                 datasets: [{
                     label: 'Points used per month',
-                    backgroundColor: 'rgb(235, 167, 43)',
                     borderColor: 'rgb(235, 167, 43)',
                     borderWidth: 2,
                     data: this.lineData
@@ -73,7 +72,7 @@ export default{
                             },
                             ticks: {
                                 min: 0,
-                                max: 30
+                                max: 15
                             }
                         }],
                         xAxes: [{

@@ -51,6 +51,29 @@ class Profile extends Model
         }
     }
 
+    /**
+     * Reset month array at the end of the year.
+     *
+     */
+    public function resetMonths():void
+    {
+        $graph_date = $this->updated_at;
+        $graph_year = $graph_date->year;
+        if($graph_year >= $this->user->year_count) {
+            if($graph_year > $this->user->year_count) {
+                $this->user->year_count = $graph_year;
+                $this->user->save();
+            }
+            $months = array('Jan' => 0, 'Feb' => 0, 'Mar' => 0, 'Apr' => 0, 'May' => 0, 'June' => 0,
+                'July' => 0, 'Aug' => 0, 'Sept' => 0, 'Oct' => 0, 'Nov' => 0, 'Dec' => 0);
+            $this->pto_usage = $months;
+            $this->points_usage = $months;
+            $this->user->year_count++;
+            $this->user->save();
+            $this->save();
+        }
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
