@@ -17,6 +17,8 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        $profile = Profile::find(auth()->user()->id);
+        $profile->resetMonths();
         $redis = Redis::connection();
         $message = $redis->get('message_' .  auth()->id());
         $redis->expire('message_' . auth()->id(),5);
