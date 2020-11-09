@@ -130,29 +130,6 @@ class FirstTimeRegistrationTest extends TestCase
     }
 
     /**
-     * User can pass session data to avatar page.
-     *
-     */
-    public function test_User_Can_Pass_Sessions_To_Avatar_Page():void
-    {
-        $this->withoutMiddleware([FirstTimeUser::class]);
-
-        $profile = factory(Profile::class)->make();
-        $user = factory(User::class)->make();
-
-        $response = $this->actingAs($user)
-        ->session([
-            'position' => $profile->position,
-            'pto'=> $profile->pto,
-            'points'=> $profile->points
-        ])
-            ->get('/register/avatar')
-            ->assertSessionHasAll(['position', 'pto', 'points']);
-
-        $response->assertStatus( 200);
-    }
-
-    /**
      * User can post input in confirmation page.
      *
      */

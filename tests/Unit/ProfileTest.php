@@ -4,12 +4,12 @@ namespace Tests\Unit;
 
 use App\Profile;
 use App\User;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class ProfileTest extends TestCase
 {
-    use DatabaseTransactions;
+    use RefreshDatabase;
 
     /**
      * Test to check it expireDate method is calculating properly.
@@ -31,7 +31,7 @@ class ProfileTest extends TestCase
     {
         $user = factory(User::class)->create();
         $profile = factory(Profile::class)->create();
-        $barMonth = $profile->getBarChartMonth();
+        $barMonth = $profile->getChartMonth();
 
         $graph_date = $profile->updated_at;
         $graph_month = $graph_date->shortEnglishMonth;
@@ -40,7 +40,7 @@ class ProfileTest extends TestCase
     }
 
     /**
-     * Test to check it expireDate method is calculating properly.
+     * Test to check it $months array resets properly and year_count increments by 1.
      *
      */
     public function test_Reset_Months():void
