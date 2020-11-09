@@ -42,8 +42,8 @@ class DashboardController extends Controller
             $months[$month] = $pto_used + $months[$month];
             $profile->pto_usage = $months;
         }
-        if($profile->points > $request->points_value) {
-            $points_used = $profile->points - $request->points_value;
+        if($profile->points < $request->points_value) {
+            $points_used = $request->points_value - $profile->points;
             $month =  $profile->getChartMonth();
             $months = $profile->points_usage;
             $months[$month] = $points_used + $months[$month];
