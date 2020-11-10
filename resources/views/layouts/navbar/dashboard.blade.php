@@ -19,12 +19,12 @@
                     </button>
                     <div class="dropdown-menu dropdown-menu-right dashboard__card dashboard__card__dropdown">
                         <a class="dropdown-item dashboard__card__text hover__black" href="{{ route('dashboard.profile.index') }}">
-                            <svg class="icons">
+                            <svg class="icons pl-3">
                                 <use href="{{ asset('svg/sprite.svg#icon-user') }}"></use>
                             </svg> Profile
                         </a>
                         <a class="dropdown-item dashboard__card__text hover__black" href="{{ route('dashboard.password.index') }}">
-                            <svg class="icons pr-3 pb-1">
+                            <svg class="icons pb-1 pl-2">
                                 <use href="{{ asset('svg/sprite.svg#icon-key-outline') }}"></use>
                             </svg> Change Password
                         </a>
@@ -32,7 +32,7 @@
                            href="{{ route('logout') }}"
                            onclick="event.preventDefault();
                            document.getElementById('logout-form').submit();">
-                            <svg class="icons">
+                            <svg class="icons pl-3">
                                 <use href="{{ asset('svg/sprite.svg#icon-switch') }}"></use>
                             </svg> {{ __('Logout') }}
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
