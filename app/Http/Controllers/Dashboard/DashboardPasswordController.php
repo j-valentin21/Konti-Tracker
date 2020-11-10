@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class DashboardPasswordController extends Controller
 {
     /**
-     * Show the dashboard profile view.
+     * Show the dashboard password view.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
