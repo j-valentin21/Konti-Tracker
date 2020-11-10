@@ -30,11 +30,13 @@ Route::middleware(['auth', 'firstTimeUser', 'verified'])->group(function () {
 });
 
 Route::middleware(['auth', 'NotFirstTimeUser', 'verified'])->group(function () {
-    Route::get('/dashboard', 'dashboard\DashboardController@index')->name('dashboard.index');
-    Route::put('/dashboard', 'dashboard\DashboardController@update')->name('dashboard.update');
-    Route::get('/dashboard/pto-chart', 'dashboard\DashboardController@getPTOChartData')->name('dashboard.getPTOChartData');
-    Route::get('/dashboard/points-chart', 'dashboard\DashboardController@getPointsChartData')->name('dashboard.getPointsChartData');
-    Route::get('/dashboard/profile', 'dashboard\DashboardProfileController@index')->name('dashboard.profile.index');
-    Route::put('/dashboard/profile', 'dashboard\DashboardProfileController@update')->name('dashboard.profile.update');
-    Route::delete('/dashboard/remove-avatar', 'dashboard\DashboardProfileController@destroy')->name('dashboard.profile.destroy');
+    Route::get('/dashboard', 'Dashboard\DashboardController@index')->name('dashboard.index');
+    Route::put('/dashboard', 'Dashboard\DashboardController@update')->name('dashboard.update');
+    Route::get('/dashboard/pto-chart', 'Dashboard\DashboardController@getPTOChartData')->name('dashboard.getPTOChartData');
+    Route::get('/dashboard/points-chart', 'Dashboard\DashboardController@getPointsChartData')->name('dashboard.getPointsChartData');
+    Route::get('/dashboard/profile', 'Dashboard\DashboardProfileController@index')->name('dashboard.profile.index');
+    Route::put('/dashboard/profile', 'Dashboard\DashboardProfileController@update')->name('dashboard.profile.update');
+    Route::delete('/dashboard/remove-avatar', 'Dashboard\DashboardProfileController@destroy')->name('dashboard.profile.destroy');
+    Route::get('/dashboard/change-password', 'Dashboard\DashboardPasswordController@index')->name('dashboard.password.index');
+    Route::put('/dashboard/update-password', 'Dashboard\DashboardPasswordController@update')->name('dashboard.password.update');
 });

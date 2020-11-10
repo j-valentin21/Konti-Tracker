@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\dashboard;
+namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 
 use App\Profile;
@@ -22,7 +22,7 @@ class DashboardController extends Controller
         $redis = Redis::connection();
         $message = $redis->get('message_' .  auth()->id());
         $redis->expire('message_' . auth()->id(),5);
-        return view('dashboard.index', ['message'=>$message]);
+        return view('dashboard.index', ['message'=>$message, 'profile'=> $profile]);
     }
 
     /**

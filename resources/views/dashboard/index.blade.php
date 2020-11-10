@@ -26,13 +26,13 @@
                     <div class="col-xl-3">
                         <div class="card dashboard__card mb-4">
                             <div class="card-body">
-                                <incrementers :points="{{ auth()->user()->profile->points }}"
-                                              :pto="{{ auth()->user()->profile->pto }}">
+                                <incrementers :points="{{ $profile->points }}"
+                                              :pto="{{ $profile->pto }}">
                                 </incrementers>
                                 <div class="row align-items-center">
                                     <div class="col-8">
                                         <p class="my-4 dashboard__card__text">Pending</p>
-                                        <h4 class="my-3 text-white">{{ auth()->user()->profile->pending }}</h4>
+                                        <h4 class="my-3 text-white">{{ $profile->pending }}</h4>
                                     </div>
                                 </div>
                             </div>
@@ -65,7 +65,8 @@
                         <div class="card dashboard__card">
                             <div class="card-body">
                                 <h4 class="card-title dashboard__card__title mb-4">Pending</h4>
-                                <canvas id="pieChart"></canvas>
+                                <pie-chart :pending="{{ $profile->pending }}"
+                                            :pto="{{ $profile->pto }}" />
                             </div>
                         </div>
                     </div>
