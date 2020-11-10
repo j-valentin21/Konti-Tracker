@@ -33,6 +33,7 @@ Vue.component('success-flash', require('./components/SuccessFlash.vue').default)
 Vue.component('failure-flash', require('./components/FailureFlash.vue').default);
 Vue.component('bar-chart', require('./components/BarChart.vue').default);
 Vue.component('line-chart', require('./components/LineChart.vue').default);
+Vue.component('pie-chart', require('./components/PieChart.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
