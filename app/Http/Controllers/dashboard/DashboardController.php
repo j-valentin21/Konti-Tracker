@@ -22,7 +22,7 @@ class DashboardController extends Controller
         $redis = Redis::connection();
         $message = $redis->get('message_' .  auth()->id());
         $redis->expire('message_' . auth()->id(),5);
-        return view('dashboard.index', ['message'=>$message]);
+        return view('dashboard.index', ['message'=>$message, 'profile'=> $profile]);
     }
 
     /**
