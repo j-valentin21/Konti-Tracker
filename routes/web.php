@@ -36,5 +36,6 @@ Route::middleware(['auth', 'NotFirstTimeUser', 'verified'])->group(function () {
     Route::get('/dashboard/points-chart', 'dashboard\DashboardController@getPointsChartData')->name('dashboard.getPointsChartData');
     Route::get('/dashboard/profile', 'dashboard\DashboardProfileController@index')->name('dashboard.profile.index');
     Route::put('/dashboard/profile', 'dashboard\DashboardProfileController@update')->name('dashboard.profile.update');
+    Route::get('/dashboard/update-password', 'dashboard\DashboardPasswordController@index')->name('dashboard.password.index');
     Route::delete('/dashboard/remove-avatar', 'dashboard\DashboardProfileController@destroy')->name('dashboard.profile.destroy');
 });

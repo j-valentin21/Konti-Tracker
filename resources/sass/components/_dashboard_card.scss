@@ -1,6 +1,10 @@
 .dashboard__card {
     background-color: #1e2938;
 
+    &__dropdown {
+        min-width: 13rem;
+    }
+
     &__title {
         color: $color-white;
     }

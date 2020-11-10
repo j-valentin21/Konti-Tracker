@@ -11874,6 +11874,10 @@ body {
   background-color: #1e2938;
 }
 
+.dashboard__card__dropdown {
+  min-width: 13rem;
+}
+
 .dashboard__card__title {
   color: #ffffff;
 }
