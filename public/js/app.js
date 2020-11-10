@@ -2482,8 +2482,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['pending', 'pto'],
   data: function data() {
     return {
+      pendingData: this.pending,
       pieData: [],
       pieChartData: {},
       pieChart: {}
@@ -2499,7 +2501,7 @@ __webpack_require__.r(__webpack_exports__);
         backgroundColor: ['rgba(40, 167, 69, 0.4)', 'rgba(233, 236, 239, .7)'],
         borderColor: ['rgb(40, 167, 69)', 'rgba(0, 0, 0, .6)'],
         borderWidth: 2,
-        data: [22, 5]
+        data: [this.pto - this.pendingData, this.pendingData]
       }]
     };
     this.pieChart = new Chart(ctx, {
@@ -2514,24 +2516,6 @@ __webpack_require__.r(__webpack_exports__);
         animation: {
           duration: 2000,
           easing: 'easeInOutQuint'
-        },
-        scales: {
-          yAxes: [{
-            gridLines: {
-              color: 'rgba(54, 68, 88, 1)',
-              lineWidth: 1
-            },
-            ticks: {
-              min: 0,
-              max: 30
-            }
-          }],
-          xAxes: [{
-            gridLines: {
-              color: 'rgba(54, 68, 88, 1)',
-              lineWidth: 0
-            }
-          }]
         }
       }
     });

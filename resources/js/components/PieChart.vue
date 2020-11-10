@@ -5,8 +5,10 @@
 </template>
 <script>
 export default{
+    props:['pending', 'pto'],
     data() {
         return {
+            pendingData: this.pending,
             pieData: [],
             pieChartData: {},
             pieChart: {},
@@ -32,7 +34,7 @@ export default{
                     'rgba(0, 0, 0, .6)'
                 ],
                 borderWidth: 2,
-                data: [22,5]
+                data: [this.pto - this.pendingData,this.pendingData]
             }]
         };
         this.pieChart = new Chart(ctx, {
@@ -48,24 +50,7 @@ export default{
                     duration: 2000,
                     easing: 'easeInOutQuint'
                 },
-                scales: {
-                    yAxes: [{
-                        gridLines: {
-                            color: 'rgba(54, 68, 88, 1)',
-                            lineWidth: 1
-                        },
-                        ticks: {
-                            min: 0,
-                            max: 30
-                        }
-                    }],
-                    xAxes: [{
-                        gridLines: {
-                            color: 'rgba(54, 68, 88, 1)',
-                            lineWidth: 0
-                        }
-                    }]
-                }
+
             }
         });
     }

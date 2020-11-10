@@ -65,7 +65,8 @@
                         <div class="card dashboard__card">
                             <div class="card-body">
                                 <h4 class="card-title dashboard__card__title mb-4">Pending</h4>
-                                <pie-chart/>
+                                <pie-chart :pending="{{ $profile->pending }}"
+                                            :pto="{{ $profile->pto }}" />
                             </div>
                         </div>
                     </div>
