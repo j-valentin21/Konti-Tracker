@@ -20,7 +20,9 @@
             <div class="dashboard__main-content">
                 <!-- ========== ROW START/OVERVIEW ========== -->
             @if($message)
-                <x-alert-success/>
+                <x-alert-success>
+                    <strong class="font__weight-semibold">{{$message}}</strong>
+                </x-alert-success>
             @endif
                 <div class="row mb-3">
                     <div class="col-xl-3">

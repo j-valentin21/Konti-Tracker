@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use Illuminate\Support\Facades\Redis;
 use Illuminate\View\Component;
 
 class AlertSuccess extends Component

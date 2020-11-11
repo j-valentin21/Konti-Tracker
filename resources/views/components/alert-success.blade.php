@@ -13,7 +13,7 @@
                 <use href="{{ asset('svg/sprite.svg#icon-check_circle_outline') }}"></use>
             </svg>
         </span>
-        <strong class="font__weight-semibold">Your profile has been successfully updated!</strong>.
+       {{$slot}}
     </div>
 </div>
 
