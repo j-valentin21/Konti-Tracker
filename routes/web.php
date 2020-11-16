@@ -39,4 +39,5 @@ Route::middleware(['auth', 'NotFirstTimeUser', 'verified'])->group(function () {
     Route::delete('/dashboard/remove-avatar', 'Dashboard\DashboardProfileController@destroy')->name('dashboard.profile.destroy');
     Route::get('/dashboard/change-password', 'Dashboard\DashboardPasswordController@index')->name('dashboard.password.index');
     Route::put('/dashboard/update-password', 'Dashboard\DashboardPasswordController@update')->name('dashboard.password.update');
+    Route::resource('/dashboard/calendar', 'Dashboard\DashboardCalendarController');
 });
