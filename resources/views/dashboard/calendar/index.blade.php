@@ -17,8 +17,7 @@
         <x-dash-sidebar/>
         <div class="dashboard__main my-3">
             <div class="dashboard__main-content  dashboard__main-content--grey m-5 d-flex justify-content-center my-5">
-                <h1>{{ json_encode($calendar)}}</h1>
-                <calendar></calendar>
+                <calendar :calendar="{{ json_encode($calendar ?? 0 )}}"></calendar>
             </div>
         </div>
     </div>
