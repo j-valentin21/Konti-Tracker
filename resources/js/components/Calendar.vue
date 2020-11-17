@@ -102,14 +102,13 @@ export default {
         // },
         eventClick: function(info) {
             this.addingMode = false;
-            // alert(info.startStr);
-            let startDate = moment(info.event.start).format("YYYY-MM-DD");
-            let endDate = moment(info.event.end).format("YYYY-MM-DD");
-
+            let startDate = info.event.startStr;
+            let endDate = info.event.endStr;
             this.indexToUpdate = info.event.id;
+
             this.newEvent = {
                 event_name: info.event.title,
-                start_date: startDate,
+                start_date:startDate,
                 end_date: endDate
             };
         },

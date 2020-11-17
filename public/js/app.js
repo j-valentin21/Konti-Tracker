@@ -17359,10 +17359,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     //     this.addingMode = false;
     // },
     eventClick: function eventClick(info) {
-      this.addingMode = false; // alert(info.startStr);
-
-      var startDate = moment__WEBPACK_IMPORTED_MODULE_3___default()(info.event.start).format("YYYY-MM-DD");
-      var endDate = moment__WEBPACK_IMPORTED_MODULE_3___default()(info.event.end).format("YYYY-MM-DD");
+      this.addingMode = false;
+      var startDate = info.event.startStr;
+      var endDate = info.event.endStr;
       this.indexToUpdate = info.event.id;
       this.newEvent = {
         event_name: info.event.title,
