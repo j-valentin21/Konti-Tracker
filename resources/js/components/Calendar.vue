@@ -31,7 +31,7 @@
                             <div class="col-md-6 mb-4">
                                 <button class="btn btn-sm btn-success" @click="updateEvent">Update</button>
                                 <button class="btn btn-sm btn-danger" @click="deleteEvent">Delete</button>
-                                <button class="btn btn-sm btn-secondary" @click="addingMode = !addingMode">Cancel</button>
+                                <button class="btn btn-sm btn-secondary" @click="cancelForm">Cancel</button>
                             </div>
                         </template>
                     </div>
@@ -133,7 +133,6 @@ export default {
             .delete("/dashboard/calendar/" + this.indexToUpdate)
             .then(resp => {
                 this.resetForm();
-                this.addingMode = !this.addingMode;
                 this.componentKey++;
             })
             .catch(err =>
@@ -144,7 +143,11 @@ export default {
             Object.keys(this.newEvent).forEach(key => {
                 return (this.newEvent[key] = "");
             });
-        }
+        },
+        cancelForm() {
+            this.resetForm();
+            this.addingMode = !this.addingMode;
+        },
     },
     watch: {
         indexToUpdate() {

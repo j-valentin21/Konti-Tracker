@@ -17389,7 +17389,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       axios["delete"]("/dashboard/calendar/" + this.indexToUpdate).then(function (resp) {
         _this3.resetForm();
 
-        _this3.addingMode = !_this3.addingMode;
         _this3.componentKey++;
       })["catch"](function (err) {
         return console.log("Unable to delete event!", err.response.data);
@@ -17401,6 +17400,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       Object.keys(this.newEvent).forEach(function (key) {
         return _this4.newEvent[key] = "";
       });
+    },
+    cancelForm: function cancelForm() {
+      this.resetForm();
+      this.addingMode = !this.addingMode;
     }
   },
   watch: {
@@ -92153,11 +92156,7 @@ var render = function() {
                           "button",
                           {
                             staticClass: "btn btn-sm btn-secondary",
-                            on: {
-                              click: function($event) {
-                                _vm.addingMode = !_vm.addingMode
-                              }
-                            }
+                            on: { click: _vm.cancelForm }
                           },
                           [_vm._v("Cancel")]
                         )
