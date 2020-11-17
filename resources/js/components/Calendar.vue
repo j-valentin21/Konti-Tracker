@@ -48,7 +48,6 @@
 import Fullcalendar from "@fullcalendar/vue";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
-import moment from 'moment'
 
 export default {
     props:['componentKey'],
@@ -104,6 +103,9 @@ export default {
             this.addingMode = false;
             let startDate = info.event.startStr;
             let endDate = info.event.endStr;
+            if(endDate === '') {
+                endDate = startDate
+            }
             this.indexToUpdate = info.event.id;
 
             this.newEvent = {
