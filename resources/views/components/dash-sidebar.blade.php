@@ -31,7 +31,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="calendar.html" class=" sidebar__link hover__black">
+                    <a href="dashboard/calendar" class=" sidebar__link hover__black">
                         <svg class="icons icons--sidebar">
                             <use href="{{ asset('svg/sprite.svg#icon-calendar') }}"></use>
                         </svg>

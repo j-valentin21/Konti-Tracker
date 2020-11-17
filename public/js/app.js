@@ -17313,19 +17313,26 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['calendar'],
+  props: ['componentKey'],
   name: 'Calendar',
   components: {
     Fullcalendar: _fullcalendar_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   data: function data() {
     return {
+      calendarEvents: [],
       calendarOptions: {
         plugins: [_fullcalendar_daygrid__WEBPACK_IMPORTED_MODULE_1__["default"], _fullcalendar_interaction__WEBPACK_IMPORTED_MODULE_2__["default"]],
         initialView: 'dayGridMonth',
-        events: this.getEvents(),
-        dateClick: this.handleDateClick,
-        eventClick: this.eventClick
+        // dateClick: this.handleDateClick,
+        eventClick: this.eventClick,
+        eventSources: [{
+          events: function events(start, callback) {
+            axios.get('http://127.0.0.1:8000/dashboard/calendar/events/').then(function (response) {
+              callback(response.data.resource);
+            });
+          }
+        }]
       },
       newEvent: {
         event_name: "",
@@ -17341,20 +17348,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var _this = this;
 
       axios.post("/dashboard/calendar", _objectSpread({}, this.newEvent)).then(function (data) {
-        _this.getEvents(); // update our list of events
+        _this.resetForm();
 
-
-        _this.resetForm(); // clear newEvent properties (e.g. title, start_date and end_date)
-
+        _this.componentKey++;
       })["catch"](function (err) {
         return console.log("Unable to add new event!", err.response.data);
       });
     },
-    handleDateClick: function handleDateClick(info) {
-      this.addingMode = false;
-    },
+    // handleDateClick: function(info) {
+    //     this.addingMode = false;
+    // },
     eventClick: function eventClick(info) {
-      this.addingMode = false;
+      this.addingMode = false; // alert(info.startStr);
+
       var startDate = moment__WEBPACK_IMPORTED_MODULE_3___default()(info.event.start).format("YYYY-MM-DD");
       var endDate = moment__WEBPACK_IMPORTED_MODULE_3___default()(info.event.end).format("YYYY-MM-DD");
       this.indexToUpdate = info.event.id;
@@ -17370,9 +17376,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       axios.put("/dashboard/calendar/" + this.indexToUpdate, _objectSpread({}, this.newEvent)).then(function (resp) {
         _this2.resetForm();
 
-        _this2.getEvents();
-
         _this2.addingMode = !_this2.addingMode;
+        _this2.componentKey++;
       })["catch"](function (err) {
         return console.log("Unable to update event!", err.response.data);
       });
@@ -17383,15 +17388,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       axios["delete"]("/dashboard/calendar/" + this.indexToUpdate).then(function (resp) {
         _this3.resetForm();
 
-        _this3.getEvents();
-
         _this3.addingMode = !_this3.addingMode;
+        _this3.componentKey++;
       })["catch"](function (err) {
         return console.log("Unable to delete event!", err.response.data);
       });
-    },
-    getEvents: function getEvents() {
-      return this.calendar;
     },
     resetForm: function resetForm() {
       var _this4 = this;
@@ -92171,7 +92172,12 @@ var render = function() {
       _c(
         "div",
         { staticClass: "col-md-8" },
-        [_c("Fullcalendar", { attrs: { options: _vm.calendarOptions } })],
+        [
+          _c("Fullcalendar", {
+            key: _vm.componentKey,
+            attrs: { options: _vm.calendarOptions }
+          })
+        ],
         1
       )
     ])
@@ -105076,15 +105082,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!**********************************************!*\
   !*** ./resources/js/components/Calendar.vue ***!
   \**********************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Calendar_vue_vue_type_template_id_052a41a9_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Calendar.vue?vue&type=template&id=052a41a9&scoped=true& */ "./resources/js/components/Calendar.vue?vue&type=template&id=052a41a9&scoped=true&");
 /* harmony import */ var _Calendar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Calendar.vue?vue&type=script&lang=js& */ "./resources/js/components/Calendar.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _Calendar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _Calendar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -105114,7 +105119,7 @@ component.options.__file = "resources/js/components/Calendar.vue"
 /*!***********************************************************************!*\
   !*** ./resources/js/components/Calendar.vue?vue&type=script&lang=js& ***!
   \***********************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

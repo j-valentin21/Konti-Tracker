@@ -38,7 +38,7 @@
                 </form>
             </div>
             <div class="col-md-8">
-                <Fullcalendar :options="calendarOptions"/>
+                <Fullcalendar :key="componentKey"  :options="calendarOptions"/>
             </div>
         </div>
     </div>
@@ -51,19 +51,28 @@ import interactionPlugin from "@fullcalendar/interaction";
 import moment from 'moment'
 
 export default {
-    props: ['calendar'],
+    props:['componentKey'],
     name: 'Calendar',
     components: {
         Fullcalendar
     },
     data() {
         return {
+            calendarEvents: [],
             calendarOptions: {
                 plugins: [ dayGridPlugin, interactionPlugin],
                 initialView: 'dayGridMonth',
-                events: this.getEvents(),
-                dateClick: this.handleDateClick,
+                // dateClick: this.handleDateClick,
                 eventClick: this.eventClick,
+                eventSources: [
+                    {
+                        events(start, callback) {
+                            axios.get('http://127.0.0.1:8000/dashboard/calendar/events/').then(response => {
+                                callback(response.data.resource)
+                            })
+                        }
+                    }
+                ]
             },
             newEvent: {
                 event_name: "",
@@ -81,18 +90,19 @@ export default {
                     ...this.newEvent
                 })
                 .then(data => {
-                    this.getEvents(); // update our list of events
-                    this.resetForm(); // clear newEvent properties (e.g. title, start_date and end_date)
+                    this.resetForm();
+                    this.componentKey++;
                 })
                 .catch(err =>
                     console.log("Unable to add new event!", err.response.data)
                 );
         },
-        handleDateClick: function(info) {
-            this.addingMode = false;
-        },
+        // handleDateClick: function(info) {
+        //     this.addingMode = false;
+        // },
         eventClick: function(info) {
             this.addingMode = false;
+            // alert(info.startStr);
             let startDate = moment(info.event.start).format("YYYY-MM-DD");
             let endDate = moment(info.event.end).format("YYYY-MM-DD");
 
@@ -102,35 +112,32 @@ export default {
                 start_date: startDate,
                 end_date: endDate
             };
-            },
+        },
         updateEvent() {
-            axios
-                .put("/dashboard/calendar/" + this.indexToUpdate, {
-                    ...this.newEvent
-                })
-                .then(resp => {
-                    this.resetForm();
-                    this.getEvents();
-                    this.addingMode = !this.addingMode;
-                })
-                .catch(err =>
-                    console.log("Unable to update event!", err.response.data)
-                );
+        axios
+            .put("/dashboard/calendar/" + this.indexToUpdate, {
+                ...this.newEvent
+            })
+            .then(resp => {
+                this.resetForm();
+                this.addingMode = !this.addingMode;
+                this.componentKey++;
+            })
+            .catch(err =>
+                console.log("Unable to update event!", err.response.data)
+            );
         },
         deleteEvent() {
-            axios
-                .delete("/dashboard/calendar/" + this.indexToUpdate)
-                .then(resp => {
-                    this.resetForm();
-                    this.getEvents();
-                    this.addingMode = !this.addingMode;
-                })
-                .catch(err =>
-                    console.log("Unable to delete event!", err.response.data)
-                );
-        },
-        getEvents() {
-            return this.calendar;
+        axios
+            .delete("/dashboard/calendar/" + this.indexToUpdate)
+            .then(resp => {
+                this.resetForm();
+                this.addingMode = !this.addingMode;
+                this.componentKey++;
+            })
+            .catch(err =>
+                console.log("Unable to delete event!", err.response.data)
+            );
         },
         resetForm() {
             Object.keys(this.newEvent).forEach(key => {
@@ -144,7 +151,6 @@ export default {
         }
     }
 }
-
 </script>
 
 <style lang="scss" scoped>
