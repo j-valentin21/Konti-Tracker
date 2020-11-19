@@ -17329,6 +17329,44 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         eventBackgroundColor: '#eba72b',
         eventBorderColor: 'black',
         eventTextColor: 'black',
+        events: [{
+          title: "New Year's Day",
+          start: "".concat(this.getYear(), "-01-05")
+        }, {
+          title: 'MLK Day',
+          start: "".concat(this.getYear(), "-01-20")
+        }, {
+          title: "President's Day",
+          start: "".concat(this.getYear(), "-02-17")
+        }, {
+          title: "Good Friday",
+          start: "".concat(this.getYear(), "-04-10")
+        }, {
+          title: "Memorial Day",
+          start: "".concat(this.getYear(), "-05-25")
+        }, {
+          title: "Independence Day",
+          start: "".concat(this.getYear(), "-07-04")
+        }, {
+          title: "Labor Day",
+          start: "".concat(this.getYear(), "-09-07")
+        }, {
+          title: "Columbus Day",
+          start: "".concat(this.getYear(), "-10-12")
+        }, {
+          title: "Thanksgiving Day",
+          start: "".concat(this.getYear(), "-11-26"),
+          end: "".concat(this.getYear(), "-11-28")
+        }, {
+          title: "Christmas Eve",
+          start: "".concat(this.getYear(), "-12-24")
+        }, {
+          title: "Christmas Day",
+          start: "".concat(this.getYear(), "-12-25")
+        }, {
+          title: "New Year's Eve",
+          start: "".concat(this.getYear(), "-12-31")
+        }],
         eventSources: [{
           events: function events(start, callback) {
             axios.get('http://127.0.0.1:8000/dashboard/calendar/events/').then(function (response) {
@@ -17347,17 +17385,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     };
   },
   methods: {
-    addNewEvent: function addNewEvent() {
-      var _this = this;
-
-      axios.post("/dashboard/calendar", _objectSpread({}, this.newEvent)).then(function (data) {
-        _this.resetForm();
-
-        _this.componentKey++;
-      })["catch"](function (err) {
-        return console.log("Unable to add new event!", err.response.data);
-      });
-    },
     eventClick: function eventClick(info) {
       this.addingMode = false;
       var startDate = info.event.startStr;
@@ -17409,6 +17436,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         end_date: endDate
       };
     },
+    addNewEvent: function addNewEvent() {
+      var _this = this;
+
+      axios.post("/dashboard/calendar", _objectSpread({}, this.newEvent)).then(function (data) {
+        _this.resetForm();
+
+        _this.componentKey++;
+      })["catch"](function (err) {
+        return console.log("Unable to add new event!", err.response.data);
+      });
+    },
     updateEvent: function updateEvent() {
       var _this2 = this;
 
@@ -17443,6 +17481,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     cancelForm: function cancelForm() {
       this.resetForm();
       this.addingMode = !this.addingMode;
+    },
+    getYear: function getYear() {
+      var date = new Date();
+      return date.getFullYear();
     }
   },
   watch: {
