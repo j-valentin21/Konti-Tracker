@@ -16,8 +16,8 @@
     <div class="container-fluid">
         <x-dash-sidebar/>
         <div class="dashboard__main my-3">
-            <div class="dashboard__main-content  dashboard__main-content--grey m-5 d-flex justify-content-center my-5">
-                <calendar :calendar="{{ json_encode($calendar ?? 0 )}}"></calendar>
+            <div class="dashboard__main-content  dashboard__main-content--grey m-lg-5 my-5">
+                <calendar/>
             </div>
         </div>
     </div>

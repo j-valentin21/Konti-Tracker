@@ -1,50 +1,49 @@
 <template>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <form @submit.prevent>
-                    <div class="form-group">
-                        <label for="event_name">Event Name</label>
-                        <input type="text" id="event_name" class="form-control" v-model="newEvent.event_name">
+    <div class="row justify-content-center">
+        <div class="col-12 mb-5">
+            <form @submit.prevent>
+                <div class="form-group">
+                    <label for="event_name">Event Name</label>
+                    <input type="text" id="event_name" class="form-control" v-model="newEvent.event_name">
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="start_date">Start Date</label>
+                            <input
+                                type="date"
+                                id="start_date"
+                                class="form-control"
+                                v-model="newEvent.start_date">
+                        </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="start_date">Start Date</label>
-                                <input
-                                    type="date"
-                                    id="start_date"
-                                    class="form-control"
-                                    v-model="newEvent.start_date">
-                            </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="end_date">End Date</label>
+                            <input type="date" id="end_date" class="form-control" v-model="newEvent.end_date">
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="end_date">End Date</label>
-                                <input type="date" id="end_date" class="form-control" v-model="newEvent.end_date">
-                            </div>
-                        </div>
-                        <div class="col-md-6 mb-4" v-if="addingMode">
-                            <button class="btn btn-sm btn-primary" @click="addNewEvent">Save Event</button>
-                        </div>
-                        <template v-else>
-                            <div class="col-md-6 mb-4">
-                                <button class="btn btn-sm btn-success" @click="updateEvent">Update</button>
-                                <button class="btn btn-sm btn-danger" @click="deleteEvent">Delete</button>
-                                <button class="btn btn-sm btn-secondary" @click="cancelForm">Cancel</button>
-                            </div>
-                        </template>
                     </div>
-                </form>
-            </div>
-            <div class="col-md-8">
-                <Fullcalendar :key="componentKey"  :options="calendarOptions"/>
-            </div>
+                    <div class="col-md-6 mb-4" v-if="addingMode">
+                        <button class="btn btn-sm btn-primary" @click="addNewEvent">Save Event</button>
+                    </div>
+                    <template v-else>
+                        <div class="col-md-6 mb-4">
+                            <button class="btn btn-sm btn-success" @click="updateEvent">Update</button>
+                            <button class="btn btn-sm btn-danger" @click="deleteEvent">Delete</button>
+                            <button class="btn btn-sm btn-secondary" @click="cancelForm">Cancel</button>
+                        </div>
+                    </template>
+                </div>
+            </form>
+        </div>
+        <div class="col-12">
+            <Fullcalendar :key="componentKey"  :options="calendarOptions"/>
         </div>
     </div>
 </template>
 
 <script>
+
 import Fullcalendar from "@fullcalendar/vue";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
@@ -61,8 +60,10 @@ export default {
             calendarOptions: {
                 plugins: [ dayGridPlugin, interactionPlugin],
                 initialView: 'dayGridMonth',
-                // dateClick: this.handleDateClick,
                 eventClick: this.eventClick,
+                eventBackgroundColor: '#eba72b',
+                eventBorderColor: 'black',
+                eventTextColor: 'black',
                 eventSources: [
                     {
                         events(start, callback) {
@@ -71,7 +72,7 @@ export default {
                             })
                         }
                     }
-                ]
+                ],
             },
             newEvent: {
                 event_name: "",
@@ -96,24 +97,27 @@ export default {
                     console.log("Unable to add new event!", err.response.data)
                 );
         },
-        // handleDateClick: function(info) {
-        //     this.addingMode = false;
-        // },
         eventClick: function(info) {
             this.addingMode = false;
             let startDate = info.event.startStr;
             let endDate = info.event.endStr;
-            if(endDate === '') {
+            if (endDate === '') {
                 endDate = startDate
             }
             this.indexToUpdate = info.event.id;
 
             this.newEvent = {
                 event_name: info.event.title,
-                start_date:startDate,
+                start_date: startDate,
                 end_date: endDate
             };
         },
+        eventHover: function(mouseEnterInfo, view) {
+
+            console.log(mouseEnterInfo.event);
+            console.log(view);
+        },
+
         updateEvent() {
         axios
             .put("/dashboard/calendar/" + this.indexToUpdate, {
@@ -157,6 +161,34 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="css" >
+.fc .fc-toolbar-title {
+    font-size: 2rem;
+    margin: 0;
+    color: black
+}
+.fc .fc-scroller-liquid-absolute {
+    background-color: white;
+}
 
+.fc-col-header-cell {
+    background-color: #212529;
+    color: white;
+}
+
+.fc-event-title-container {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.fc .fc-daygrid-day-frame:hover {
+    border: 3px solid grey;
+}
+.fc .fc-daygrid-day-frame:active {
+    background-color: lightgrey;
+}
+.fc-scrollgrid-sync-inner {
+    border: 1px solid lightgrey;
+
+}
 </style>
