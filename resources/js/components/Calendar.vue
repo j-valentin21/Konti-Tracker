@@ -111,7 +111,6 @@ export default {
                     {
                         title  : "Christmas Eve",
                         start  : `${this.getYear()}-12-24`,
-
                     },
                     {
                         title  : "Christmas Day",
@@ -122,7 +121,6 @@ export default {
                         start  : `${this.getYear()}-12-31`,
                     },
                 ],
-
                 eventSources: [
                     {
                         events(start, callback) {
@@ -259,6 +257,7 @@ export default {
     margin: 0;
     color: black
 }
+
 .fc .fc-scroller-liquid-absolute {
     background-color: white;
 }
