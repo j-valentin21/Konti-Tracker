@@ -63,9 +63,10 @@ export default {
                 eventClick: this.eventClick,
                 editable: true,
                 eventDrop: this.eventDrop,
-                // dateClick: function(info) {
-                //     this.newEvent.start_date = info.startStr;
-                // },
+                eventDragStart: this.eventDragStart,
+                selectable:true,
+                select: this.selectionClick,
+                selectMinDistance: 20,
                 eventBackgroundColor: '#eba72b',
                 eventBorderColor: 'black',
                 eventTextColor: 'black',
@@ -117,11 +118,6 @@ export default {
                 end_date: endDate
             };
         },
-        eventHover: function(mouseEnterInfo, view) {
-
-            console.log(mouseEnterInfo.event);
-            console.log(view);
-        },
         eventDrop: function(info) {
             if (!confirm("Are you sure about this change?")) {
                 info.revert();
@@ -142,6 +138,19 @@ export default {
                 this.addingMode = false;
             }
         },
+        selectionClick: function(selectionInfo ) {
+            let startDate = selectionInfo.startStr;
+            let endDate = selectionInfo.endStr;
+            if (endDate === '') {
+                endDate = startDate
+            }
+            this.indexToUpdate = selectionInfo.id;
+
+            this.newEvent = {
+                start_date: startDate,
+                end_date: endDate
+            };
+        },
         updateEvent() {
         axios
             .put("/dashboard/calendar/" + this.indexToUpdate, {
@@ -161,6 +170,7 @@ export default {
             .delete("/dashboard/calendar/" + this.indexToUpdate)
             .then(resp => {
                 this.resetForm();
+                this.addingMode = !this.addingMode;
                 this.componentKey++;
             })
             .catch(err =>
@@ -208,9 +218,11 @@ export default {
 .fc .fc-daygrid-day-frame:hover {
     border: 3px solid grey;
 }
+
 .fc .fc-daygrid-day-frame:active {
     background-color: lightgrey;
 }
+
 .fc-scrollgrid-sync-inner {
     border: 1px solid lightgrey;
 }

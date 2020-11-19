@@ -17322,9 +17322,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         eventClick: this.eventClick,
         editable: true,
         eventDrop: this.eventDrop,
-        // dateClick: function(info) {
-        //     this.newEvent.start_date = info.startStr;
-        // },
+        eventDragStart: this.eventDragStart,
+        selectable: true,
+        select: this.selectionClick,
+        selectMinDistance: 20,
         eventBackgroundColor: '#eba72b',
         eventBorderColor: 'black',
         eventTextColor: 'black',
@@ -17373,10 +17374,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         end_date: endDate
       };
     },
-    eventHover: function eventHover(mouseEnterInfo, view) {
-      console.log(mouseEnterInfo.event);
-      console.log(view);
-    },
     eventDrop: function eventDrop(info) {
       if (!confirm("Are you sure about this change?")) {
         info.revert();
@@ -17398,6 +17395,20 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         this.addingMode = false;
       }
     },
+    selectionClick: function selectionClick(selectionInfo) {
+      var startDate = selectionInfo.startStr;
+      var endDate = selectionInfo.endStr;
+
+      if (endDate === '') {
+        endDate = startDate;
+      }
+
+      this.indexToUpdate = selectionInfo.id;
+      this.newEvent = {
+        start_date: startDate,
+        end_date: endDate
+      };
+    },
     updateEvent: function updateEvent() {
       var _this2 = this;
 
@@ -17416,6 +17427,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       axios["delete"]("/dashboard/calendar/" + this.indexToUpdate).then(function (resp) {
         _this3.resetForm();
 
+        _this3.addingMode = !_this3.addingMode;
         _this3.componentKey++;
       })["catch"](function (err) {
         return console.log("Unable to delete event!", err.response.data);
