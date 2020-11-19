@@ -61,6 +61,11 @@ export default {
                 plugins: [ dayGridPlugin, interactionPlugin],
                 initialView: 'dayGridMonth',
                 eventClick: this.eventClick,
+                editable: true,
+                eventDrop: this.eventDrop,
+                // dateClick: function(info) {
+                //     this.newEvent.start_date = info.startStr;
+                // },
                 eventBackgroundColor: '#eba72b',
                 eventBorderColor: 'black',
                 eventTextColor: 'black',
@@ -117,7 +122,26 @@ export default {
             console.log(mouseEnterInfo.event);
             console.log(view);
         },
+        eventDrop: function(info) {
+            if (!confirm("Are you sure about this change?")) {
+                info.revert();
+            } else {
+                let startDate = info.event.startStr;
+                let endDate = info.event.endStr;
+                if (endDate === '') {
+                    endDate = startDate
+                }
+                this.indexToUpdate = info.event.id;
 
+                this.newEvent = {
+                    event_name: info.event.title,
+                    start_date: startDate,
+                    end_date: endDate
+                };
+                this.updateEvent();
+                this.addingMode = false;
+            }
+        },
         updateEvent() {
         axios
             .put("/dashboard/calendar/" + this.indexToUpdate, {
@@ -189,6 +213,5 @@ export default {
 }
 .fc-scrollgrid-sync-inner {
     border: 1px solid lightgrey;
-
 }
 </style>

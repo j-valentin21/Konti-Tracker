@@ -17320,6 +17320,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         plugins: [_fullcalendar_daygrid__WEBPACK_IMPORTED_MODULE_1__["default"], _fullcalendar_interaction__WEBPACK_IMPORTED_MODULE_2__["default"]],
         initialView: 'dayGridMonth',
         eventClick: this.eventClick,
+        editable: true,
+        eventDrop: this.eventDrop,
+        // dateClick: function(info) {
+        //     this.newEvent.start_date = info.startStr;
+        // },
         eventBackgroundColor: '#eba72b',
         eventBorderColor: 'black',
         eventTextColor: 'black',
@@ -17371,6 +17376,27 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     eventHover: function eventHover(mouseEnterInfo, view) {
       console.log(mouseEnterInfo.event);
       console.log(view);
+    },
+    eventDrop: function eventDrop(info) {
+      if (!confirm("Are you sure about this change?")) {
+        info.revert();
+      } else {
+        var startDate = info.event.startStr;
+        var endDate = info.event.endStr;
+
+        if (endDate === '') {
+          endDate = startDate;
+        }
+
+        this.indexToUpdate = info.event.id;
+        this.newEvent = {
+          event_name: info.event.title,
+          start_date: startDate,
+          end_date: endDate
+        };
+        this.updateEvent();
+        this.addingMode = false;
+      }
     },
     updateEvent: function updateEvent() {
       var _this2 = this;
