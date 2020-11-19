@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Calendar;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\CalendarResource;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -17,15 +18,14 @@ class DashboardCalendarController extends Controller
      */
     public function index()
     {
-        $calendar = CalendarResource::collection(Calendar::all());
-        return view('dashboard.calendar.index',compact('calendar'));
+        return view('dashboard.calendar.index');
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function store(Request $request)
     {
@@ -53,7 +53,7 @@ class DashboardCalendarController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Calendar  $calendar
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function update(Request $request, Calendar $calendar)
     {
@@ -76,5 +76,17 @@ class DashboardCalendarController extends Controller
     {
         $calendar->delete();
         return response('Event removed successfully!', Response::HTTP_NO_CONTENT);
+    }
+
+    /**
+     * Get data to update points chart in dashboard.
+     *
+     * @return JsonResponse
+     */
+    public function getCalendarData()
+    {
+//        $calendar = Calendar::find(8);
+        $resource = CalendarResource::collection(Calendar::all());
+        return response()->json(['resource' => $resource]);
     }
 }

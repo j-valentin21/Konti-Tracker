@@ -39,5 +39,10 @@ Route::middleware(['auth', 'NotFirstTimeUser', 'verified'])->group(function () {
     Route::delete('/dashboard/remove-avatar', 'Dashboard\DashboardProfileController@destroy')->name('dashboard.profile.destroy');
     Route::get('/dashboard/change-password', 'Dashboard\DashboardPasswordController@index')->name('dashboard.password.index');
     Route::put('/dashboard/update-password', 'Dashboard\DashboardPasswordController@update')->name('dashboard.password.update');
-    Route::resource('/dashboard/calendar', 'Dashboard\DashboardCalendarController');
+    Route::post('/dashboard/calendar', 'Dashboard\DashboardCalendarController@store')->name('calendar.store');
+    Route::get('/dashboard/calendar', 'Dashboard\DashboardCalendarController@index')->name('calendar.index');
+    Route::get('/dashboard/calendar/events', 'Dashboard\DashboardCalendarController@getCalendarData')->name('calendar.getCalendarData');
+    Route::get('/dashboard/calendar/{calendar}', 'Dashboard\DashboardCalendarController@show')->name('calendar.show');
+    Route::delete('/dashboard/calendar/{calendar}', 'Dashboard\DashboardCalendarController@destroy')->name('calendar.destroy');
+    Route::put('/dashboard/calendar/{calendar}', 'Dashboard\DashboardCalendarController@update')->name('calendar.update');
 });
