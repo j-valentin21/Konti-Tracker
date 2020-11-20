@@ -24,16 +24,18 @@ class DashboardCalendarController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     * @param Calendar $calendar
      * @return JsonResponse
      */
     public function store(Request $request)
     {
         $new_calendar = Calendar::create($request->all());
+        $new_calendar->user_id = auth()->id();
+        $new_calendar->save();
         return response()->json([
             'data' => new CalendarResource($new_calendar),
             'message' => 'Successfully added new event!',
-            'status' => Response::HTTP_CREATED
         ]);
     }
 
@@ -57,11 +59,11 @@ class DashboardCalendarController extends Controller
      */
     public function update(Request $request, Calendar $calendar)
     {
+        $calendar->user_id = auth()->id();
         $calendar->update($request->all());
         return response()->json([
             'data' => new CalendarResource($calendar),
             'message' => 'Successfully updated event!',
-            'status' => Response::HTTP_ACCEPTED
         ]);
     }
 
@@ -75,7 +77,6 @@ class DashboardCalendarController extends Controller
     public function destroy(Calendar $calendar)
     {
         $calendar->delete();
-
         return response(['message' => 'Your Event has been successfully removed']);
     }
 
@@ -86,7 +87,8 @@ class DashboardCalendarController extends Controller
      */
     public function getCalendarData()
     {
-        $resource = CalendarResource::collection(Calendar::all());
+        $calendar = Calendar::where("user_id", "=", auth()->id())->get();
+        $resource = CalendarResource::collection($calendar);
         return response()->json(['resource' => $resource]);
     }
 }
