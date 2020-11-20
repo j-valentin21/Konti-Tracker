@@ -17304,6 +17304,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -17315,6 +17321,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   data: function data() {
     return {
+      success: false,
+      failure: false,
+      message: "",
       calendarEvents: [],
       calendarOptions: {
         plugins: [_fullcalendar_daygrid__WEBPACK_IMPORTED_MODULE_1__["default"], _fullcalendar_interaction__WEBPACK_IMPORTED_MODULE_2__["default"]],
@@ -17402,7 +17411,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       };
     },
     eventDrop: function eventDrop(info) {
-      if (!confirm("Are you sure about this change?")) {
+      if (!confirm("Are you sure you want to move ".concat(info.event.title, " to date ").concat(info.event.startStr))) {
         info.revert();
       } else {
         var startDate = info.event.startStr;
@@ -17423,6 +17432,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
     },
     selectionClick: function selectionClick(selectionInfo) {
+      this.addingMode = true;
       var startDate = selectionInfo.startStr;
       var endDate = selectionInfo.endStr;
 
@@ -17439,12 +17449,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     addNewEvent: function addNewEvent() {
       var _this = this;
 
-      axios.post("/dashboard/calendar", _objectSpread({}, this.newEvent)).then(function (data) {
+      axios.post("/dashboard/calendar", _objectSpread({}, this.newEvent)).then(function (resp) {
         _this.resetForm();
 
         _this.componentKey++;
+        _this.message = resp.data.message;
+        _this.success = true;
       })["catch"](function (err) {
-        return console.log("Unable to add new event!", err.response.data);
+        _this.message = "Unable to add new event. Please try again at a later time.";
+        _this.failure = true;
       });
     },
     updateEvent: function updateEvent() {
@@ -17455,8 +17468,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
         _this2.addingMode = !_this2.addingMode;
         _this2.componentKey++;
+        _this2.message = resp.data.message;
+        _this2.success = true;
       })["catch"](function (err) {
-        return console.log("Unable to update event!", err.response.data);
+        _this2.message = "Unable to update event. Please try again at a later time.";
+        _this2.failure = true;
       });
     },
     deleteEvent: function deleteEvent() {
@@ -17467,8 +17483,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
         _this3.addingMode = !_this3.addingMode;
         _this3.componentKey++;
+        _this3.message = resp.data.message;
+        _this3.success = true;
       })["catch"](function (err) {
-        return console.log("Unable to delete event!", err.response.data);
+        _this3.message = "Unable to delete event. Please try again at a later time.";
+        _this3.failure = true;
       });
     },
     resetForm: function resetForm() {
@@ -92138,174 +92157,199 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "row justify-content-center" }, [
-    _c("div", { staticClass: "col-12 mb-5" }, [
-      _c(
-        "form",
-        {
-          on: {
-            submit: function($event) {
-              $event.preventDefault()
+  return _c(
+    "div",
+    { staticClass: "row justify-content-center" },
+    [
+      _vm.success
+        ? _c("success-flash", { attrs: { success: _vm.success } }, [
+            _c("strong", { staticClass: "font__weight-semibold pr-3" }, [
+              _vm._v(_vm._s(_vm.message))
+            ])
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.failure
+        ? _c("failure-flash", { attrs: { failure: _vm.failure } }, [
+            _c("strong", { staticClass: "font__weight-semibold pr-3 ml-2" }, [
+              _vm._v(_vm._s(_vm.message))
+            ])
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-12 mb-5" }, [
+        _c(
+          "form",
+          {
+            on: {
+              submit: function($event) {
+                $event.preventDefault()
+              }
             }
-          }
-        },
-        [
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", { attrs: { for: "event_name" } }, [
-              _vm._v("Event Name")
+          },
+          [
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { attrs: { for: "event_name" } }, [
+                _vm._v("Event Name")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.newEvent.event_name,
+                    expression: "newEvent.event_name"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text", id: "event_name" },
+                domProps: { value: _vm.newEvent.event_name },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.newEvent, "event_name", $event.target.value)
+                  }
+                }
+              })
             ]),
             _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.newEvent.event_name,
-                  expression: "newEvent.event_name"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: { type: "text", id: "event_name" },
-              domProps: { value: _vm.newEvent.event_name },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.newEvent, "event_name", $event.target.value)
-                }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "row" },
-            [
-              _c("div", { staticClass: "col-md-6" }, [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "start_date" } }, [
-                    _vm._v("Start Date")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.newEvent.start_date,
-                        expression: "newEvent.start_date"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "date", id: "start_date" },
-                    domProps: { value: _vm.newEvent.start_date },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
+            _c(
+              "div",
+              { staticClass: "row" },
+              [
+                _c("div", { staticClass: "col-md-6" }, [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "start_date" } }, [
+                      _vm._v("Start Date")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.newEvent.start_date,
+                          expression: "newEvent.start_date"
                         }
-                        _vm.$set(
-                          _vm.newEvent,
-                          "start_date",
-                          $event.target.value
-                        )
-                      }
-                    }
-                  })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-md-6" }, [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "end_date" } }, [
-                    _vm._v("End Date")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.newEvent.end_date,
-                        expression: "newEvent.end_date"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "date", id: "end_date" },
-                    domProps: { value: _vm.newEvent.end_date },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "date", id: "start_date" },
+                      domProps: { value: _vm.newEvent.start_date },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.newEvent,
+                            "start_date",
+                            $event.target.value
+                          )
                         }
-                        _vm.$set(_vm.newEvent, "end_date", $event.target.value)
                       }
-                    }
-                  })
-                ])
-              ]),
-              _vm._v(" "),
-              _vm.addingMode
-                ? _c("div", { staticClass: "col-md-6 mb-4" }, [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-sm btn-primary",
-                        on: { click: _vm.addNewEvent }
-                      },
-                      [_vm._v("Save Event")]
-                    )
+                    })
                   ])
-                : [
-                    _c("div", { staticClass: "col-md-6 mb-4" }, [
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-6" }, [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "end_date" } }, [
+                      _vm._v("End Date")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.newEvent.end_date,
+                          expression: "newEvent.end_date"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "date", id: "end_date" },
+                      domProps: { value: _vm.newEvent.end_date },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.newEvent,
+                            "end_date",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm.addingMode
+                  ? _c("div", { staticClass: "col-md-6 mb-4" }, [
                       _c(
                         "button",
                         {
-                          staticClass: "btn btn-sm btn-success",
-                          on: { click: _vm.updateEvent }
+                          staticClass: "btn btn-sm btn-primary",
+                          on: { click: _vm.addNewEvent }
                         },
-                        [_vm._v("Update")]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-sm btn-danger",
-                          on: { click: _vm.deleteEvent }
-                        },
-                        [_vm._v("Delete")]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-sm btn-secondary",
-                          on: { click: _vm.cancelForm }
-                        },
-                        [_vm._v("Cancel")]
+                        [_vm._v("Save Event")]
                       )
                     ])
-                  ]
-            ],
-            2
-          )
-        ]
+                  : [
+                      _c("div", { staticClass: "col-md-6 mb-4" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-sm btn-success",
+                            on: { click: _vm.updateEvent }
+                          },
+                          [_vm._v("Update")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-sm btn-danger",
+                            on: { click: _vm.deleteEvent }
+                          },
+                          [_vm._v("Delete")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-sm btn-secondary",
+                            on: { click: _vm.cancelForm }
+                          },
+                          [_vm._v("Cancel")]
+                        )
+                      ])
+                    ]
+              ],
+              2
+            )
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "col-12" },
+        [
+          _c("Fullcalendar", {
+            key: _vm.componentKey,
+            attrs: { options: _vm.calendarOptions }
+          })
+        ],
+        1
       )
-    ]),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "col-12" },
-      [
-        _c("Fullcalendar", {
-          key: _vm.componentKey,
-          attrs: { options: _vm.calendarOptions }
-        })
-      ],
-      1
-    )
-  ])
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -92354,7 +92398,10 @@ var render = function() {
                       { staticClass: "alert__icon alert__icon--x_red" },
                       [
                         _c("use", {
-                          attrs: { href: "svg/sprite.svg#icon-times" }
+                          attrs: {
+                            href:
+                              "http://127.0.0.1:8000/svg/sprite.svg#icon-times"
+                          }
                         })
                       ]
                     )
@@ -92367,15 +92414,22 @@ var render = function() {
             _vm._v(" "),
             _c("span", { staticClass: "alert__start" }, [
               _c("svg", { staticClass: "alert__icon alert__icon--danger" }, [
-                _c("use", { attrs: { href: "svg/sprite.svg#icon-dangerous" } })
+                _c("use", {
+                  attrs: {
+                    href: "http://127.0.0.1:8000/svg/sprite.svg#icon-dangerous"
+                  }
+                })
               ])
             ]),
             _vm._v(" "),
-            _c("strong", { staticClass: "font__weight-semibold" }, [
-              _vm._v("Please try again at a later time.")
-            ]),
-            _vm._v(".\n    ")
-          ]
+            _vm._t("default", [
+              _c("strong", { staticClass: "font__weight-semibold" }, [
+                _vm._v("Please try again at a later time.")
+              ]),
+              _vm._v(".")
+            ])
+          ],
+          2
         )
       ])
     : _vm._e()
@@ -92829,42 +92883,59 @@ var render = function() {
               "alert fade alert__success alert-dismissible text-left brk-library-rendered rendered show"
           },
           [
-            _c("div", { staticClass: "d-flex" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "close d-lg-none",
-                  attrs: { type: "button", "data-dismiss": "alert" }
-                },
-                [
-                  _c(
-                    "span",
-                    { staticClass: "mb-5", attrs: { "aria-hidden": "true" } },
-                    [
-                      _c("svg", { staticClass: "alert__icon alert__icon--x" }, [
-                        _c("use", {
-                          attrs: { href: "svg/sprite.svg#icon-times" }
-                        })
-                      ])
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "sr-only" }, [_vm._v("Close")])
-                ]
-              ),
-              _vm._v(" "),
-              _c("span", { staticClass: "alert__start mr-3" }, [
-                _c("svg", { staticClass: "alert__icon alert__icon--check" }, [
-                  _c("use", {
-                    attrs: { href: "svg/sprite.svg#icon-check_circle_outline" }
-                  })
+            _c(
+              "div",
+              { staticClass: "d-flex" },
+              [
+                _c(
+                  "button",
+                  {
+                    staticClass: "close",
+                    attrs: { type: "button", "data-dismiss": "alert" }
+                  },
+                  [
+                    _c(
+                      "span",
+                      { staticClass: "mb-5", attrs: { "aria-hidden": "true" } },
+                      [
+                        _c(
+                          "svg",
+                          { staticClass: "alert__icon alert__icon--x" },
+                          [
+                            _c("use", {
+                              attrs: {
+                                href:
+                                  "http://127.0.0.1:8000/svg/sprite.svg#icon-times"
+                              }
+                            })
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "sr-only" }, [_vm._v("Close")])
+                  ]
+                ),
+                _vm._v(" "),
+                _c("span", { staticClass: "alert__start mr-3" }, [
+                  _c("svg", { staticClass: "alert__icon alert__icon--check" }, [
+                    _c("use", {
+                      attrs: {
+                        href:
+                          "http://127.0.0.1:8000/svg/sprite.svg#icon-check_circle_outline"
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm._t("default", [
+                  _c("strong", { staticClass: "font__weight-semibold pr-3" }, [
+                    _vm._v("Your profile has been successfully updated!")
+                  ])
                 ])
-              ]),
-              _vm._v(" "),
-              _c("strong", { staticClass: "font__weight-semibold pr-3" }, [
-                _vm._v("Your profile has been successfully updated!")
-              ])
-            ])
+              ],
+              2
+            )
           ]
         )
       ])
