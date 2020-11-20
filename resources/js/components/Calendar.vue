@@ -1,5 +1,11 @@
 <template>
     <div class="row justify-content-center">
+        <success-flash v-if="success" :success="success">
+            <strong class="font__weight-semibold pr-3">{{message}}</strong>
+        </success-flash>
+        <failure-flash v-if="failure" :failure="failure">
+            <strong class="font__weight-semibold pr-3 ml-2">{{message}}</strong>
+        </failure-flash>
         <div class="col-12 mb-5">
             <form @submit.prevent>
                 <div class="form-group">
@@ -56,6 +62,9 @@ export default {
     },
     data() {
         return {
+            success: false,
+            failure: false,
+            message: "",
             calendarEvents: [],
             calendarOptions: {
                 plugins: [ dayGridPlugin, interactionPlugin],
@@ -157,7 +166,7 @@ export default {
             };
         },
         eventDrop: function(info) {
-            if (!confirm("Are you sure about this change?")) {
+            if (!confirm(`Are you sure you want to move ${info.event.title} to date ${info.event.startStr}`)) {
                 info.revert();
             } else {
                 let startDate = info.event.startStr;
@@ -177,6 +186,7 @@ export default {
             }
         },
         selectionClick: function(selectionInfo ) {
+            this.addingMode = true
             let startDate = selectionInfo.startStr;
             let endDate = selectionInfo.endStr;
             if (endDate === '') {
@@ -194,13 +204,17 @@ export default {
                 .post("/dashboard/calendar", {
                     ...this.newEvent
                 })
-                .then(data => {
+                .then(resp => {
                     this.resetForm();
                     this.componentKey++;
+                    this.message = resp.data.message;
+                    this.success = true;
                 })
-                .catch(err =>
-                    console.log("Unable to add new event!", err.response.data)
-                );
+                .catch(err => {
+                    this.message = "Unable to add new event. Please try again at a later time."
+                    this.failure = true;
+                });
+
         },
         updateEvent() {
         axios
@@ -211,10 +225,13 @@ export default {
                 this.resetForm();
                 this.addingMode = !this.addingMode;
                 this.componentKey++;
+                this.message = resp.data.message;
+                this.success = true;
             })
-            .catch(err =>
-                console.log("Unable to update event!", err.response.data)
-            );
+            .catch(err => {
+                this.message = "Unable to update event. Please try again at a later time."
+                this.failure = true
+            });
         },
         deleteEvent() {
         axios
@@ -223,10 +240,13 @@ export default {
                 this.resetForm();
                 this.addingMode = !this.addingMode;
                 this.componentKey++;
+                this.message = resp.data.message;
+                this.success = true;
             })
-            .catch(err =>
-                console.log("Unable to delete event!", err.response.data)
-            );
+            .catch(err => {
+                this.message = "Unable to delete event. Please try again at a later time."
+                this.failure = true
+            });
         },
         resetForm() {
             Object.keys(this.newEvent).forEach(key => {

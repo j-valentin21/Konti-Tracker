@@ -75,7 +75,8 @@ class DashboardCalendarController extends Controller
     public function destroy(Calendar $calendar)
     {
         $calendar->delete();
-        return response('Event removed successfully!', Response::HTTP_NO_CONTENT);
+
+        return response(['message' => 'Your Event has been successfully removed']);
     }
 
     /**
@@ -85,7 +86,6 @@ class DashboardCalendarController extends Controller
      */
     public function getCalendarData()
     {
-//        $calendar = Calendar::find(8);
         $resource = CalendarResource::collection(Calendar::all());
         return response()->json(['resource' => $resource]);
     }

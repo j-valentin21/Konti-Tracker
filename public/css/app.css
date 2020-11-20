@@ -12254,30 +12254,30 @@ body {
   left: 0;
   top: 50%;
   transform: translate(0, -50%);
-  height: 20px;
 }
 
 .alert__success {
-  border: 1px solid rgba(36, 241, 6, 0.46);
-  background-color: rgba(7, 149, 66, 0.1215686275);
+  border: 2px solid rgba(36, 241, 6, 0.75);
+  background-color: rgba(7, 149, 66, 0.5);
   box-shadow: 0px 0px 2px #259c08;
   color: #0ad406;
   text-shadow: 2px 1px #00040a;
   transition: 0.5s;
   cursor: pointer;
+  font-size: 1.25rem;
 }
 
 .alert__success:hover {
-  background-color: rgba(7, 149, 66, 0.35);
+  background-color: rgba(7, 149, 66, 0.5);
   transition: 0.5s;
 }
 
 .alert__danger {
-  border: 1px solid rgba(241, 6, 6, 0.81);
+  border: 2px solid rgba(241, 6, 6, 0.81);
   background-color: rgba(220, 17, 1, 0.16);
   box-shadow: 0px 0px 2px #ff0303;
   color: #ff0303;
-  text-shadow: 2px 1px #00040a;
+  text-shadow: 0.25px 0.25px #00040a;
   transition: 0.5s;
   cursor: pointer;
 }
@@ -12288,8 +12288,8 @@ body {
 }
 
 .alert__icon {
-  height: 2rem;
-  width: 1.5vw;
+  height: 1.5rem;
+  width: 1.5rem;
   text-shadow: none;
 }
 
@@ -12301,8 +12301,8 @@ body {
 
 .alert__icon--x_red {
   fill: #ff0303;
-  height: 3rem;
-  width: 1.5vw;
+  height: 2rem;
+  width: 2rem;
   -webkit-animation: blink 2s infinite both;
           animation: blink 2s infinite both;
 }
@@ -12315,8 +12315,8 @@ body {
 
 .alert__icon--danger {
   fill: #ff0303;
-  height: 3rem;
-  width: 1.5vw;
+  height: 2rem;
+  width: 2rem;
   -webkit-animation: pulse_danger 3s infinite both;
           animation: pulse_danger 3s infinite both;
 }
