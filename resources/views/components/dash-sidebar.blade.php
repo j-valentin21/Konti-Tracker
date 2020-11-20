@@ -31,7 +31,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="dashboard/calendar" class=" sidebar__link hover__black">
+                    <a href="{{ route('calendar.index') }}" class=" sidebar__link hover__black">
                         <svg class="icons icons--sidebar">
                             <use href="{{ asset('svg/sprite.svg#icon-calendar') }}"></use>
                         </svg>
@@ -39,7 +39,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="notifications.html" class=" sidebar__link hover__black">
+                    <a href="/" class=" sidebar__link hover__black">
                         <svg class="icons icons--sidebar">
                             <use href="{{ asset('svg/sprite.svg#icon-bell') }}"></use>
                         </svg>
@@ -47,7 +47,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="pto.html" class=" sidebar__link hover__black">
+                    <a href="/" class=" sidebar__link hover__black">
                         <svg class="icons icons--sidebar">
                             <use href="{{ asset('svg/sprite.svg#icon-airplane') }}"></use>
                         </svg>

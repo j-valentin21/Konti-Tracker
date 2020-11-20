@@ -70,6 +70,57 @@ export default {
                 eventBackgroundColor: '#eba72b',
                 eventBorderColor: 'black',
                 eventTextColor: 'black',
+                events: [
+                    {
+                        title  : "New Year's Day",
+                        start  : `${this.getYear()}-01-05`,
+                    },
+                    {
+                        title  : 'MLK Day',
+                        start  : `${this.getYear()}-01-20`,
+                    },
+                    {
+                        title  : "President's Day",
+                        start  : `${this.getYear()}-02-17`,
+                    },
+                    {
+                        title  : "Good Friday",
+                        start  : `${this.getYear()}-04-10`,
+                    },
+                    {
+                        title  : "Memorial Day",
+                        start  : `${this.getYear()}-05-25`,
+                    },
+                    {
+                        title  : "Independence Day",
+                        start  : `${this.getYear()}-07-04`,
+                    },
+                    {
+                        title  : "Labor Day",
+                        start  : `${this.getYear()}-09-07`,
+                    },
+                    {
+                        title  : "Columbus Day",
+                        start  : `${this.getYear()}-10-12`,
+                    },
+                    {
+                        title  : "Thanksgiving Day",
+                        start  : `${this.getYear()}-11-26`,
+                        end    : `${this.getYear()}-11-28`,
+                    },
+                    {
+                        title  : "Christmas Eve",
+                        start  : `${this.getYear()}-12-24`,
+                    },
+                    {
+                        title  : "Christmas Day",
+                        start  : `${this.getYear()}-12-25`,
+                    },
+                    {
+                        title  : "New Year's Eve",
+                        start  : `${this.getYear()}-12-31`,
+                    },
+                ],
                 eventSources: [
                     {
                         events(start, callback) {
@@ -90,19 +141,6 @@ export default {
         };
     },
     methods: {
-        addNewEvent() {
-            axios
-                .post("/dashboard/calendar", {
-                    ...this.newEvent
-                })
-                .then(data => {
-                    this.resetForm();
-                    this.componentKey++;
-                })
-                .catch(err =>
-                    console.log("Unable to add new event!", err.response.data)
-                );
-        },
         eventClick: function(info) {
             this.addingMode = false;
             let startDate = info.event.startStr;
@@ -151,6 +189,19 @@ export default {
                 end_date: endDate
             };
         },
+        addNewEvent() {
+            axios
+                .post("/dashboard/calendar", {
+                    ...this.newEvent
+                })
+                .then(data => {
+                    this.resetForm();
+                    this.componentKey++;
+                })
+                .catch(err =>
+                    console.log("Unable to add new event!", err.response.data)
+                );
+        },
         updateEvent() {
         axios
             .put("/dashboard/calendar/" + this.indexToUpdate, {
@@ -186,7 +237,12 @@ export default {
             this.resetForm();
             this.addingMode = !this.addingMode;
         },
+        getYear() {
+            let date = new Date();
+            return date.getFullYear()
+        },
     },
+
     watch: {
         indexToUpdate() {
             return this.indexToUpdate;
@@ -201,6 +257,7 @@ export default {
     margin: 0;
     color: black
 }
+
 .fc .fc-scroller-liquid-absolute {
     background-color: white;
 }
