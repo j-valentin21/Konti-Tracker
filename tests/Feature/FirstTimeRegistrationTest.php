@@ -16,23 +16,15 @@ class FirstTimeRegistrationTest extends TestCase
 
     use RefreshDatabase;
 
-    /**
-     * Check if route to build your profile is working properly.
-     *
-     */
     public function test_Build_Your_Profile_View_Is_Working_Properly():void
     {
         $this->withoutMiddleware([FirstTimeUser::class, Authenticate::class, EnsureEmailIsVerified::class,]);
 
         $response = $this->get('/register/build-your-profile');
 
-        $response->assertStatus(200);
+        $response->assertSuccessful();
     }
 
-    /**
-     * Check if route to avatar is working properly.
-     *
-     */
     public function test_Avatar_View_Is_Working_Properly():void
     {
         $this->withoutMiddleware([FirstTimeUser::class, Authenticate::class, EnsureEmailIsVerified::class]);
@@ -42,10 +34,6 @@ class FirstTimeRegistrationTest extends TestCase
         $response->assertStatus(200);
     }
 
-    /**
-     * Check if route to avatar is working properly.
-     *
-     */
     public function test_Confirmation_View_Is_Working_Properly():void
     {
         $this->withoutMiddleware([FirstTimeUser::class, Authenticate::class, EnsureEmailIsVerified::class]);
@@ -55,10 +43,6 @@ class FirstTimeRegistrationTest extends TestCase
         $response->assertStatus(200);
     }
 
-    /**
-     * Guest cannot access build your profile page without being authenticated.
-     *
-     */
     public function test_Guest_Cannot_Access_Build_Your_Profile_View():void
     {
         $response = $this->get('/register/build-your-profile');
@@ -66,10 +50,6 @@ class FirstTimeRegistrationTest extends TestCase
         $response->assertRedirect('/');
     }
 
-    /**
-     * Guest cannot access avatar page without being authenticated.
-     *
-     */
     public function test_Guest_Cannot_Access_Avatar_Page():void
     {
         $response = $this->get('/register/avatar');
@@ -77,21 +57,12 @@ class FirstTimeRegistrationTest extends TestCase
         $response->assertRedirect('/');
     }
 
-    /**
-     * Guest cannot access confirmation page without being authenticated.
-     *
-     */
     public function test_Guest_Cannot_Access_Confirmation_Page():void
     {
         $response = $this->get('/register/confirmation');
 
         $response->assertRedirect('/');
     }
-
-    /**
-     * Guest cannot access build your profile page without being authenticated and a first time user.
-     *
-     */
 
     public function test_Only_First_Time_User_Can_Access_Build_Your_Profile_Page():void
     {
@@ -129,10 +100,6 @@ class FirstTimeRegistrationTest extends TestCase
         $this->assertAuthenticatedAs($user);
     }
 
-    /**
-     * User can post input in confirmation page.
-     *
-     */
     public function test_User_Can_Post_Input_On_Confirmation_Page():void
     {
         $user = factory(user::class)->create();
