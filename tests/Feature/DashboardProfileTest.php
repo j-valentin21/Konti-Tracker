@@ -11,10 +11,6 @@ class DashboardProfileTest extends TestCase
 {
     use RefreshDatabase;
 
-    /**
-     * Guest cannot access dashboard profile view without being authenticated.
-     *
-     */
     public function test_Guest_Cannot_Access_Dashboard_Profile_View():void
     {
 
@@ -22,10 +18,7 @@ class DashboardProfileTest extends TestCase
 
         $response->assertRedirect('/');
     }
-    /**
-     * User can update profile data on dashboard profile view.
-     *
-     */
+
     public function test_User_Can_Update_Profile_On_Dashboard_Profile_View():void
     {
         $user = factory(user::class)->create();
@@ -48,13 +41,9 @@ class DashboardProfileTest extends TestCase
 
         $this->assertDatabaseHas('users', $input_user);
         $this->assertDatabaseHas('profiles', $input);
-        $response->assertStatus(302);
     }
 
-    /**
-     * User can delete avatar on dashboard profile view.
-     *
-     */
+
     public function User_Can_delete_Avatar_On_Dashboard_Profile_View():void
     {
         $user = factory(user::class)->create();
