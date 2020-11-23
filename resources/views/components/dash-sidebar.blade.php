@@ -39,6 +39,14 @@
                     </a>
                 </li>
                 <li>
+                    <a href="{{ route('dashboard.weather.index') }}" class=" sidebar__link hover__black">
+                        <svg class="icons icons--sidebar pr-1">
+                            <use href="{{ asset('svg/sprite.svg#icon-weather-cloudy') }}"></use>
+                        </svg>
+                        <span class="">Weather</span>
+                    </a>
+                </li>
+                <li>
                     <a href="/" class=" sidebar__link hover__black">
                         <svg class="icons icons--sidebar">
                             <use href="{{ asset('svg/sprite.svg#icon-bell') }}"></use>
