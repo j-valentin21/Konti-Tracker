@@ -45,4 +45,5 @@ Route::middleware(['auth', 'NotFirstTimeUser', 'verified'])->group(function () {
     Route::get('/dashboard/calendar/{calendar}', 'Dashboard\DashboardCalendarController@show')->name('calendar.show');
     Route::delete('/dashboard/calendar/{calendar}', 'Dashboard\DashboardCalendarController@destroy')->name('calendar.destroy');
     Route::put('/dashboard/calendar/{calendar}', 'Dashboard\DashboardCalendarController@update')->name('calendar.update');
+    Route::get('/dashboard/weather', 'Dashboard\DashboardWeatherController@index')->name('dashboard.weather.index');
 });
