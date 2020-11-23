@@ -92203,7 +92203,7 @@ var render = function() {
                   }
                 ],
                 staticClass: "form-control",
-                attrs: { type: "text", id: "event_name" },
+                attrs: { type: "text", id: "event_name", required: "" },
                 domProps: { value: _vm.newEvent.event_name },
                 on: {
                   input: function($event) {
