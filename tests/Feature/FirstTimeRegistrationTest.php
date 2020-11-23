@@ -72,7 +72,7 @@ class FirstTimeRegistrationTest extends TestCase
             Route::getRoutes()->getByName('profile')->gatherMiddleware(),
             ['web','auth','firstTimeUser','verified']
         );
-        $this->assertEquals('1', $user->FirstTimeUser);
+        $this->assertEquals('1', $user->firstTimeUser);
         $this->assertAuthenticatedAs($user);
     }
 
@@ -84,7 +84,7 @@ class FirstTimeRegistrationTest extends TestCase
             Route::getRoutes()->getByName('avatar')->gatherMiddleware(),
             ['web','auth','firstTimeUser', 'verified']
         );
-        $this->assertEquals('1', $user->FirstTimeUser);
+        $this->assertEquals('1', $user->firstTimeUser);
         $this->assertAuthenticatedAs($user);
     }
 
@@ -96,27 +96,8 @@ class FirstTimeRegistrationTest extends TestCase
             Route::getRoutes()->getByName('confirmation')->gatherMiddleware(),
             ['web','auth','firstTimeUser', 'verified']
         );
-        $this->assertEquals('1', $user->FirstTimeUser);
+        $this->assertEquals('1', $user->firstTimeUser);
         $this->assertAuthenticatedAs($user);
-    }
-
-    public function test_User_Can_Post_Input_On_Confirmation_Page():void
-    {
-        $user = factory(user::class)->create();
-        $profile = factory(Profile::class)->create();
-
-        $input = [
-            'position' => $profile->position,
-            'avatar' => $profile->avatar,
-            'pto' => $profile->pto,
-            'points' => $profile->points,
-            'user_id' => $profile->user_id
-        ];
-        $response = $this->actingAs($user)
-            ->post('/register/store', $input);
-
-        $this->assertDatabaseHas('profiles', $input);
-        $response->assertRedirect(route('dashboard.index'));
     }
 }
 

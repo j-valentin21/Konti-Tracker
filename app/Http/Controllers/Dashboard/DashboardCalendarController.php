@@ -25,7 +25,6 @@ class DashboardCalendarController extends Controller
      * Store a newly created resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @param Calendar $calendar
      * @return JsonResponse
      */
     public function store(Request $request)
