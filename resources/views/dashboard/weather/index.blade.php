@@ -28,9 +28,9 @@
                                 <div class="weather__date">Thursday 10 January 2020</div>
                             </section>
                             <div>
-                                <div class="weather__temp">15<span class="weather__celsius">°c</span></div>
+                                <div class="weather__temp">15<span class="weather__celsius">°F</span></div>
                                 <div class="weather__name">Sunny</div>
-                                <div class="weather__hi-lo">13°c / 16°c</div>
+                                <div class="weather__hi-lo">13°F / 16°F</div>
                             </div>
                         </main>
                     </div>
