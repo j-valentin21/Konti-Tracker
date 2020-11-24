@@ -32,6 +32,7 @@ Vue.component('bar-chart', require('./components/BarChart.vue').default);
 Vue.component('line-chart', require('./components/LineChart.vue').default);
 Vue.component('pie-chart', require('./components/PieChart.vue').default);
 Vue.component('calendar', require('./components/Calendar.vue').default);
+Vue.component('weather', require('./components/Weather.vue').default);
 
 
 /**
