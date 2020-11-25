@@ -18110,36 +18110,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
-    this.fetchCurrentWeather();
-    this.fetchDailyWeather();
+    this.fetchWeather();
   },
   data: function data() {
     return {
-      current_weather: [],
-      daily_weather: []
+      location: {
+        name: 'Allentown, PA',
+        lon: -75.49,
+        lat: 40.61
+      }
     };
   },
   computed: {},
   methods: {
-    fetchCurrentWeather: function fetchCurrentWeather() {
-      var _this = this;
-
-      var uri = "/api/weather-current";
+    fetchWeather: function fetchWeather() {
+      var uri = "/api/weather-daily?lat=".concat(this.location.lat, "&lon=").concat(this.location.lon, "&exclude=current,minutely,hourly,alerts&units=imperial");
       axios.get(uri).then(function (response) {
-        _this.current_weather = response.data;
+        console.log(response.data);
       })["catch"](function (err) {
         console.log(err);
       });
     },
-    fetchDailyWeather: function fetchDailyWeather() {
-      var _this2 = this;
-
-      var uri = "/api/weather-daily";
-      axios.get(uri).then(function (response) {
-        _this2.daily_weather = response.data.daily;
-      })["catch"](function (err) {
-        console.log(err);
-      });
+    toFullDate: function toFullDate(timestamp) {
+      return new Date(timestamp * 1000);
     },
     roundTemp: function roundTemp(temp) {
       return Math.round(temp);
@@ -93040,31 +93033,23 @@ var render = function() {
       _vm._m(0),
       _vm._v(" "),
       _c("main", { staticClass: "weather__body" }, [
-        _c("section", [
-          _c("div", { staticClass: "weather__city" }, [
-            _vm._v(_vm._s(_vm.current_weather.name))
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "weather__date" }, [
-            _vm._v("Thursday 10 January 2020")
-          ])
-        ]),
+        _vm._m(1),
         _vm._v(" "),
         _c("div", [
           _c("div", { staticClass: "weather__temp" }, [
-            _vm._v(_vm._s(_vm.roundTemp(_vm.daily_weather[0].temp.day)) + " "),
+            _vm._v(_vm._s(_vm.roundTemp(_vm.day)) + " "),
             _c("span", { staticClass: "weather__fair" }, [_vm._v("°F")])
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "weather__name" }, [
-            _vm._v(_vm._s(_vm.daily_weather[0].weather[0].description))
+            _vm._v(" description ")
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "weather__hi-lo" }, [
             _vm._v(
-              _vm._s(_vm.roundTemp(_vm.daily_weather[0].temp.max) + "°F") +
+              _vm._s(_vm.roundTemp(20) + "°F") +
                 " /\n                    " +
-                _vm._s(_vm.roundTemp(_vm.daily_weather[0].temp.min) + "°F")
+                _vm._s(_vm.roundTemp(30) + "°F")
             )
           ])
         ])
@@ -93086,6 +93071,16 @@ var staticRenderFns = [
           placeholder: "Search for a city..."
         }
       })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("section", [
+      _c("div", { staticClass: "weather__city" }, [_vm._v("name")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "weather__date" }, [_vm._v("{{}}")])
     ])
   }
 ]
