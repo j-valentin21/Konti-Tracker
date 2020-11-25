@@ -6,13 +6,14 @@
             </header>
             <main class="weather__body">
                 <section>
-                    <div class="weather__city">{{weather.name}}</div>
-                    <div class="weather__date">Thursday 10 January 2020</div>
+                    <div class="weather__city">name</div>
+                    <div class="weather__date">{{}}</div>
                 </section>
                 <div>
-                    <div class="weather__temp">{{weather.main.temp}}<span class="weather__fair">°F</span></div>
-                    <div class="weather__name">{{weather.weather[0].description}}</div>
-                    <div class="weather__hi-lo">{{weather.main.temp_min}} / {{weather.main.temp_max}}</div>
+                    <div class="weather__temp">{{ roundTemp(day) }} <span class="weather__fair">°F</span></div>
+                    <div class="weather__name"> description </div>
+                    <div class="weather__hi-lo">{{ roundTemp(20) + '&#176F' }} /
+                        {{ roundTemp(30) + '&#176F' }}</div>
                 </div>
             </main>
         </div>
@@ -26,23 +27,33 @@ export default {
     },
     data() {
         return {
-            weather: []
+            location: {
+                name: 'Allentown, PA',
+                lon: -75.49,
+                lat: 40.61
+            }
         }
+    },
+    computed: {
+
     },
     methods: {
         fetchWeather() {
-            let uri = `/api/weather`;
+            let uri = `/api/weather-daily?lat=${this.location.lat}&lon=${this.location.lon}&exclude=current,minutely,hourly,alerts&units=imperial`;
             axios.get(uri).then(response => {
-                this.weather = response.data;
+                console.log(response.data);
             })
             .catch((err) => {
                 console.log(err)
             })
+        },
+        toFullDate(timestamp) {
+            return new Date(timestamp * 1000);
+        },
+        roundTemp(temp) {
+            return Math.round(temp);
         }
     },
-
-
-
 }
 </script>
 
