@@ -18107,23 +18107,36 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
-    this.fetchWeather();
+    this.fetchCurrentWeather();
+    this.fetchDailyWeather();
   },
   data: function data() {
     return {
-      weather: []
+      current_weather: [],
+      daily_weather: []
     };
   },
   computed: {},
   methods: {
-    fetchWeather: function fetchWeather() {
+    fetchCurrentWeather: function fetchCurrentWeather() {
       var _this = this;
 
-      var uri = "/api/weather";
+      var uri = "/api/weather-current";
       axios.get(uri).then(function (response) {
-        _this.weather = response.data;
+        _this.current_weather = response.data;
+      })["catch"](function (err) {
+        console.log(err);
+      });
+    },
+    fetchDailyWeather: function fetchDailyWeather() {
+      var _this2 = this;
+
+      var uri = "/api/weather-daily";
+      axios.get(uri).then(function (response) {
+        _this2.daily_weather = response.data.daily;
       })["catch"](function (err) {
         console.log(err);
       });
@@ -93029,7 +93042,7 @@ var render = function() {
       _c("main", { staticClass: "weather__body" }, [
         _c("section", [
           _c("div", { staticClass: "weather__city" }, [
-            _vm._v(_vm._s(_vm.weather.name))
+            _vm._v(_vm._s(_vm.current_weather.name))
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "weather__date" }, [
@@ -93039,19 +93052,19 @@ var render = function() {
         _vm._v(" "),
         _c("div", [
           _c("div", { staticClass: "weather__temp" }, [
-            _vm._v(_vm._s(_vm.roundTemp(_vm.weather.main.temp)) + " "),
+            _vm._v(_vm._s(_vm.roundTemp(_vm.daily_weather[0].temp.day)) + " "),
             _c("span", { staticClass: "weather__fair" }, [_vm._v("°F")])
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "weather__name" }, [
-            _vm._v(_vm._s(_vm.weather.weather[0].description))
+            _vm._v(_vm._s(_vm.daily_weather[0].weather[0].description))
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "weather__hi-lo" }, [
             _vm._v(
-              _vm._s(_vm.roundTemp(_vm.weather.main.temp_min)) +
-                " / " +
-                _vm._s(_vm.weather.main.temp_max)
+              _vm._s(_vm.roundTemp(_vm.daily_weather[0].temp.max) + "°F") +
+                " /\n                    " +
+                _vm._s(_vm.roundTemp(_vm.daily_weather[0].temp.min) + "°F")
             )
           ])
         ])

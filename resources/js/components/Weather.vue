@@ -6,13 +6,14 @@
             </header>
             <main class="weather__body">
                 <section>
-                    <div class="weather__city">{{ weather.name }}</div>
+                    <div class="weather__city">{{ current_weather.name }}</div>
                     <div class="weather__date">Thursday 10 January 2020</div>
                 </section>
                 <div>
-                    <div class="weather__temp">{{ roundTemp(weather.main.temp) }} <span class="weather__fair">°F</span></div>
-                    <div class="weather__name">{{ weather.weather[0].description }}</div>
-                    <div class="weather__hi-lo">{{ roundTemp(weather.main.temp_min) }} / {{ weather.main.temp_max }}</div>
+                    <div class="weather__temp">{{ roundTemp(daily_weather[0].temp.day) }} <span class="weather__fair">°F</span></div>
+                    <div class="weather__name">{{ daily_weather[0].weather[0].description }}</div>
+                    <div class="weather__hi-lo">{{ roundTemp(daily_weather[0].temp.max) + '&#176F' }} /
+                        {{ roundTemp(daily_weather[0].temp.min) + '&#176F' }}</div>
                 </div>
             </main>
         </div>
@@ -22,11 +23,13 @@
 <script>
 export default {
     mounted() {
-        this.fetchWeather();
+        this.fetchCurrentWeather();
+        this.fetchDailyWeather();
     },
     data() {
         return {
-            weather: []
+            current_weather: [],
+            daily_weather:[]
         }
     },
     computed: {
@@ -34,10 +37,19 @@ export default {
     },
 
     methods: {
-        fetchWeather() {
-            let uri = `/api/weather`;
+        fetchCurrentWeather() {
+            let uri = `/api/weather-current`;
             axios.get(uri).then(response => {
-                this.weather = response.data;
+                this.current_weather = response.data;
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+        },
+        fetchDailyWeather() {
+            let uri = `/api/weather-daily`;
+            axios.get(uri).then(response => {
+                this.daily_weather = response.data.daily;
             })
             .catch((err) => {
                 console.log(err)
