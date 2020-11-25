@@ -1,6 +1,6 @@
 .weather {
     font-family: 'montserrat', sans-serif;
-    background-image: url('img/sunrise.jpg');
+    background-image: url('img/sunny.jpg');
     background-size: cover;
     background-position: top center;
 
@@ -67,7 +67,7 @@
         text-shadow: 2px 10px rgba(0, 0, 0, 0.6);
     }
 
-    &__celsius {
+    &__fair {
         font-weight: 500;
     }
 
