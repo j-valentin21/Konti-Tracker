@@ -18116,6 +18116,7 @@ __webpack_require__.r(__webpack_exports__);
       weather: []
     };
   },
+  computed: {},
   methods: {
     fetchWeather: function fetchWeather() {
       var _this = this;
@@ -18126,6 +18127,9 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (err) {
         console.log(err);
       });
+    },
+    roundTemp: function roundTemp(temp) {
+      return Math.round(temp);
     }
   }
 });
@@ -93035,7 +93039,7 @@ var render = function() {
         _vm._v(" "),
         _c("div", [
           _c("div", { staticClass: "weather__temp" }, [
-            _vm._v(_vm._s(_vm.weather.main.temp)),
+            _vm._v(_vm._s(_vm.roundTemp(_vm.weather.main.temp)) + " "),
             _c("span", { staticClass: "weather__fair" }, [_vm._v("°F")])
           ]),
           _vm._v(" "),
@@ -93045,7 +93049,7 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "weather__hi-lo" }, [
             _vm._v(
-              _vm._s(_vm.weather.main.temp_min) +
+              _vm._s(_vm.roundTemp(_vm.weather.main.temp_min)) +
                 " / " +
                 _vm._s(_vm.weather.main.temp_max)
             )
@@ -105996,14 +106000,15 @@ __webpack_require__.r(__webpack_exports__);
 /*!*********************************************!*\
   !*** ./resources/js/components/Weather.vue ***!
   \*********************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Weather_vue_vue_type_template_id_41e7714e_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Weather.vue?vue&type=template&id=41e7714e&scoped=true& */ "./resources/js/components/Weather.vue?vue&type=template&id=41e7714e&scoped=true&");
 /* harmony import */ var _Weather_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Weather.vue?vue&type=script&lang=js& */ "./resources/js/components/Weather.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _Weather_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _Weather_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -106033,7 +106038,7 @@ component.options.__file = "resources/js/components/Weather.vue"
 /*!**********************************************************************!*\
   !*** ./resources/js/components/Weather.vue?vue&type=script&lang=js& ***!
   \**********************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
