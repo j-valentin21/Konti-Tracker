@@ -20,6 +20,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/weather', function () {
-    $response = Http::get('https://api.openweathermap.org/data/2.5/weather?q=allentown&units=metric&APPID=' . $_ENV['OPEN_WEATHER_KEY']);
+    $weatherKey = config('services.openweather.key');
+    $lat = request('lat');
+    $lng = request('lng');
+    $response = Http::get("https://api.openweathermap.org/data/2.5/weather?q=allentown&units=imperial&APPID=$weatherKey");
     return $response->json();
 });

@@ -18108,7 +18108,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Weather"
+  mounted: function mounted() {
+    this.fetchWeather();
+  },
+  data: function data() {
+    return {
+      weather: []
+    };
+  },
+  methods: {
+    fetchWeather: function fetchWeather() {
+      var _this = this;
+
+      var uri = "/api/weather";
+      axios.get(uri).then(function (response) {
+        _this.weather = response.data;
+      })["catch"](function (err) {
+        console.log(err);
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -92999,51 +93018,57 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "weather" }, [
+    _c("div", { staticClass: "weather__container" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("main", { staticClass: "weather__body" }, [
+        _c("section", [
+          _c("div", { staticClass: "weather__city" }, [
+            _vm._v(_vm._s(_vm.weather.name))
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "weather__date" }, [
+            _vm._v("Thursday 10 January 2020")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", [
+          _c("div", { staticClass: "weather__temp" }, [
+            _vm._v(_vm._s(_vm.weather.main.temp)),
+            _c("span", { staticClass: "weather__fair" }, [_vm._v("°F")])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "weather__name" }, [
+            _vm._v(_vm._s(_vm.weather.weather[0].description))
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "weather__hi-lo" }, [
+            _vm._v(
+              _vm._s(_vm.weather.main.temp_min) +
+                " / " +
+                _vm._s(_vm.weather.main.temp_max)
+            )
+          ])
+        ])
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "weather" }, [
-      _c("div", { staticClass: "weather__container" }, [
-        _c("header", { staticClass: "weather__header" }, [
-          _c("input", {
-            staticClass: "weather__header-text",
-            attrs: {
-              type: "text",
-              autocomplete: "off",
-              placeholder: "Search for a city..."
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("main", { staticClass: "weather__body" }, [
-          _c("section", [
-            _c("div", { staticClass: "weather__city" }, [
-              _vm._v("Orefield, PA")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "weather__date" }, [
-              _vm._v("Thursday 10 January 2020")
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", [
-            _c("div", { staticClass: "weather__temp" }, [
-              _vm._v("15"),
-              _c("span", { staticClass: "weather__celsius" }, [_vm._v("°F")])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "weather__name" }, [_vm._v("Sunny")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "weather__hi-lo" }, [
-              _vm._v("13°F / 16°F")
-            ])
-          ])
-        ])
-      ])
+    return _c("header", { staticClass: "weather__header" }, [
+      _c("input", {
+        staticClass: "weather__header-text",
+        attrs: {
+          type: "text",
+          autocomplete: "off",
+          placeholder: "Search for a city..."
+        }
+      })
     ])
   }
 ]

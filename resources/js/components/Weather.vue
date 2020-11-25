@@ -6,13 +6,13 @@
             </header>
             <main class="weather__body">
                 <section>
-                    <div class="weather__city">Orefield, PA</div>
+                    <div class="weather__city">{{weather.name}}</div>
                     <div class="weather__date">Thursday 10 January 2020</div>
                 </section>
                 <div>
-                    <div class="weather__temp">15<span class="weather__celsius">°F</span></div>
-                    <div class="weather__name">Sunny</div>
-                    <div class="weather__hi-lo">13°F / 16°F</div>
+                    <div class="weather__temp">{{weather.main.temp}}<span class="weather__fair">°F</span></div>
+                    <div class="weather__name">{{weather.weather[0].description}}</div>
+                    <div class="weather__hi-lo">{{weather.main.temp_min}} / {{weather.main.temp_max}}</div>
                 </div>
             </main>
         </div>
@@ -21,7 +21,28 @@
 
 <script>
 export default {
-    name: "Weather"
+    mounted() {
+        this.fetchWeather();
+    },
+    data() {
+        return {
+            weather: []
+        }
+    },
+    methods: {
+        fetchWeather() {
+            let uri = `/api/weather`;
+            axios.get(uri).then(response => {
+                this.weather = response.data;
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+        }
+    },
+
+
+
 }
 </script>
 
