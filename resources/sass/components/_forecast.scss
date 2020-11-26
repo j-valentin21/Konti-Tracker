@@ -1,0 +1,23 @@
+.forecast {
+    width: 60vw;
+    background-color: rgba(5,10,48,0.9);
+
+    &__current {
+        font-size: 3.75rem;
+        line-height: 1;
+    }
+
+    &__future-weather {
+        width: 60vw;
+        font-size: 0.9rem;
+        line-height: 1.25rem;
+        opacity: 1;
+        background-color: rgba(61, 72, 73, .7);
+    }
+
+    &__day {
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+        color: rgba(229, 231, 235, 1)
+    }
+}

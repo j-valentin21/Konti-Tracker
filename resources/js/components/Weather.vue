@@ -5,16 +5,18 @@
                 <input type="text" autocomplete="off" class="weather__header-text" placeholder="Search for a city..." />
             </header>
             <main class="weather__body">
-                <section>
+                <section v-if="forecast">
                     <div class="weather__city">name</div>
                     <div class="weather__date">{{}}</div>
+                    <div>
+                        <div class="weather__temp">{{ roundTemp(day) }} <span class="weather__fair">°F</span></div>
+                        <div class="weather__name"> description </div>
+                        <div class="weather__hi-lo">{{ roundTemp(20) + '&#176F' }} /
+                            {{ roundTemp(30) + '&#176F' }}</div>
+                    </div>
                 </section>
-                <div>
-                    <div class="weather__temp">{{ roundTemp(day) }} <span class="weather__fair">°F</span></div>
-                    <div class="weather__name"> description </div>
-                    <div class="weather__hi-lo">{{ roundTemp(20) + '&#176F' }} /
-                        {{ roundTemp(30) + '&#176F' }}</div>
-                </div>
+                <forecast v-else/>
+                <button type="button" @click="getForecast" class="btn btn-primary btn-lg border border-dark mt-5">7-Day Forecast</button>
             </main>
         </div>
     </div>
@@ -27,6 +29,7 @@ export default {
     },
     data() {
         return {
+            forecast: true,
             location: {
                 name: 'Allentown, PA',
                 lon: -75.49,
@@ -46,6 +49,9 @@ export default {
             .catch((err) => {
                 console.log(err)
             })
+        },
+        getForecast() {
+            this.forecast = false
         },
         toFullDate(timestamp) {
             return new Date(timestamp * 1000);
