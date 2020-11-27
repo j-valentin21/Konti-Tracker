@@ -12329,7 +12329,6 @@ body {
 
 .weather {
   font-family: "montserrat", sans-serif;
-  background-image: url(/images/sunny.jpg?e7593ad6dca5a5258691b325ad9913bd);
   background-size: cover;
   background-position: top center;
 }
@@ -12338,7 +12337,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 98vh;
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2));
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));
 }
 
 .weather__header {
@@ -12414,5 +12413,29 @@ body {
   font-size: 24px;
   font-weight: 500;
   text-shadow: 0px 4px rgba(0, 0, 0, 0.4);
+}
+
+.forecast {
+  width: 60vw;
+  background-color: rgba(5, 10, 48, 0.9);
+}
+
+.forecast__current {
+  font-size: 3.75rem;
+  line-height: 1;
+}
+
+.forecast__future-weather {
+  width: 60vw;
+  font-size: 0.9rem;
+  line-height: 1.25rem;
+  opacity: 1;
+  background-color: rgba(61, 72, 73, 0.7);
+}
+
+.forecast__day {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  color: #e5e7eb;
 }
 
