@@ -1,6 +1,5 @@
 .weather {
     font-family: 'montserrat', sans-serif;
-    background-image: url('img/sunny.jpg');
     background-size: cover;
     background-position: top center;
 
@@ -8,7 +7,7 @@
         display: flex;
         flex-direction: column;
         min-height: 98vh;
-        background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, .2));
+        background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, .1));
     }
 
     &__header {

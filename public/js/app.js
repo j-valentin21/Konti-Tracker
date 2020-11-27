@@ -18205,6 +18205,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
+      daily: [],
+      conditions: [],
+      image: {},
       forecast: true,
       location: {
         name: 'Allentown, PA',
@@ -18213,17 +18216,68 @@ __webpack_require__.r(__webpack_exports__);
       }
     };
   },
-  computed: {},
   methods: {
     fetchWeather: function fetchWeather() {
+      var _this2 = this;
+
       var uri = "/api/weather-daily?lat=".concat(this.location.lat, "&lon=").concat(this.location.lon, "&exclude=current,minutely,hourly,alerts&units=imperial");
       axios.get(uri).then(function (response) {
-        console.log(response.data);
+        _this2.daily = response.data;
+        _this2.conditions = response.data.daily[0].weather[0].main;
+
+        switch (_this2.conditions) {
+          case "Clouds":
+            _this2.image = {
+              backgroundImage: "url(http://127.0.0.1:8000/img/cloudy.jpg)"
+            };
+            break;
+
+          case "Thunderstorm":
+            _this2.image = {
+              backgroundImage: "url(http://127.0.0.1:8000/img/thunderstorm.jpg)"
+            };
+            break;
+
+          case "Drizzle":
+            _this2.image = {
+              backgroundImage: "url(http://127.0.0.1:8000/img/drizzle.jpg)"
+            };
+            break;
+
+          case "Rain":
+            _this2.image = {
+              backgroundImage: "url(http://127.0.0.1:8000/img/rain.jpg)"
+            };
+            break;
+
+          case "Snow":
+            _this2.image = {
+              backgroundImage: "url(http://127.0.0.1:8000/img/snow.jpg)"
+            };
+            break;
+
+          case "Clear":
+            _this2.image = {
+              backgroundImage: "url(http://127.0.0.1:8000/img/clear.jpg)"
+            };
+            break;
+
+          case "Fog":
+            _this2.image = {
+              backgroundImage: "url(http://127.0.0.1:8000/img/fog.jpg)"
+            };
+            break;
+
+          case "Tornado":
+            _this2.image = {
+              backgroundImage: "url(http://127.0.0.1:8000/img/tornado.jpg)"
+            };
+            break;
+        }
       })["catch"](function (err) {
         console.log(err);
       });
     },
-    getForecast: function getForecast() {},
     toFullDate: function toFullDate(timestamp) {
       return new Date(timestamp * 1000);
     },
@@ -93261,7 +93315,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "weather" }, [
+  return _c("div", { staticClass: "weather", style: _vm.image }, [
     _c("div", { staticClass: "weather__container" }, [
       _vm._m(0),
       _vm._v(" "),

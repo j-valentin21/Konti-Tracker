@@ -1,5 +1,5 @@
 <template>
-    <div class="weather">
+    <div class="weather" :style="image">
         <div class="weather__container">
             <header class="weather__header">
                 <input type="text" autocomplete="off" class="weather__header-text" placeholder="Search for a city..." />
@@ -32,6 +32,9 @@ export default {
     },
     data() {
         return {
+            daily:[],
+            conditions: [],
+            image: {},
             forecast: true,
             location: {
                 name: 'Allentown, PA',
@@ -40,21 +43,42 @@ export default {
             }
         }
     },
-    computed: {
-
-    },
     methods: {
         fetchWeather() {
             let uri = `/api/weather-daily?lat=${this.location.lat}&lon=${this.location.lon}&exclude=current,minutely,hourly,alerts&units=imperial`;
             axios.get(uri).then(response => {
-                console.log(response.data);
+                this.daily = response.data;
+                this.conditions = response.data.daily[0].weather[0].main;
+                switch (this.conditions) {
+                    case "Clouds":
+                        this.image = {backgroundImage: "url(http://127.0.0.1:8000/img/cloudy.jpg)"}
+                        break;
+                    case "Thunderstorm":
+                        this.image = {backgroundImage: "url(http://127.0.0.1:8000/img/thunderstorm.jpg)"}
+                        break;
+                    case "Drizzle":
+                        this.image = {backgroundImage: "url(http://127.0.0.1:8000/img/drizzle.jpg)"}
+                        break;
+                    case "Rain":
+                        this.image = {backgroundImage: "url(http://127.0.0.1:8000/img/rain.jpg)"}
+                        break;
+                    case "Snow":
+                        this.image = {backgroundImage: "url(http://127.0.0.1:8000/img/snow.jpg)"}
+                        break;
+                    case "Clear":
+                        this.image = {backgroundImage: "url(http://127.0.0.1:8000/img/clear.jpg)"}
+                        break;
+                    case "Fog":
+                        this.image = {backgroundImage: "url(http://127.0.0.1:8000/img/fog.jpg)"}
+                        break;
+                    case "Tornado":
+                        this.image = {backgroundImage: "url(http://127.0.0.1:8000/img/tornado.jpg)"}
+                        break;
+                }
             })
             .catch((err) => {
                 console.log(err)
             })
-        },
-        getForecast() {
-
         },
         toFullDate(timestamp) {
             return new Date(timestamp * 1000);

@@ -12329,7 +12329,6 @@ body {
 
 .weather {
   font-family: "montserrat", sans-serif;
-  background-image: url(/images/sunny.jpg?e7593ad6dca5a5258691b325ad9913bd);
   background-size: cover;
   background-position: top center;
 }
@@ -12338,7 +12337,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 98vh;
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2));
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));
 }
 
 .weather__header {
