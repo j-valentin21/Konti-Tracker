@@ -17623,8 +17623,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Forecast"
+  data: function data() {
+    return {
+      dailyForecast: true
+    };
+  },
+  methods: {
+    getDailyForecast: function getDailyForecast() {
+      Fire.$emit('dailyForecast');
+    }
+  }
 });
 
 /***/ }),
@@ -18184,7 +18196,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
+    var _this = this;
+
     this.fetchWeather();
+    Fire.$on('dailyForecast', function () {
+      _this.forecast = true;
+    });
   },
   data: function data() {
     return {
@@ -18206,9 +18223,7 @@ __webpack_require__.r(__webpack_exports__);
         console.log(err);
       });
     },
-    getForecast: function getForecast() {
-      this.forecast = false;
-    },
+    getForecast: function getForecast() {},
     toFullDate: function toFullDate(timestamp) {
       return new Date(timestamp * 1000);
     },
@@ -92599,124 +92614,122 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "text-white mb-5" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "forecast__future-weather px-3 py-4 overflow-hidden" },
+      [
+        _c("div", { staticClass: "d-flex align-items-center" }, [
+          _c("div", { staticClass: "container-fluid" }, [
+            _vm._m(1),
+            _vm._v(" "),
+            _c("div", { staticClass: "justify-content-center" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary btn-lg border border-dark mt-5",
+                  attrs: { type: "button" },
+                  on: { click: _vm.getDailyForecast }
+                },
+                [_vm._v("Daily Forecast")]
+              )
+            ])
+          ])
+        ])
+      ]
+    )
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "text-white mb-5" }, [
-      _c("div", { staticClass: "forecast rounded" }, [
-        _c(
-          "div",
-          {
-            staticClass:
-              "d-flex align-content-center justify-content-between px-3 py-4"
-          },
-          [
-            _c("div", { staticClass: "d-flex align-items-center" }, [
-              _c("div", [
-                _c(
-                  "div",
-                  { staticClass: "forecast__current font-weight-bold" },
-                  [_vm._v("42°F")]
-                ),
-                _vm._v(" "),
-                _c("div", {}, [_vm._v("Feels like 40°F")])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "mx-3" }, [
-                _c("div", { staticClass: "font-weight-bold" }, [
-                  _vm._v("Cloudy")
-                ]),
-                _vm._v(" "),
-                _c("div", [_vm._v("Allentown, PA")])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", [_vm._v("Icon")])
-          ]
-        )
-      ]),
-      _vm._v(" "),
+    return _c("div", { staticClass: "forecast rounded" }, [
       _c(
         "div",
-        { staticClass: "forecast__future-weather px-3 py-4 overflow-hidden" },
+        {
+          staticClass:
+            "d-flex align-content-center justify-content-between px-3 py-4"
+        },
         [
           _c("div", { staticClass: "d-flex align-items-center" }, [
-            _c("div", { staticClass: "container-fluid" }, [
-              _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col-3 forecast__day" }, [
-                  _vm._v("MON")
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "col-6 px-2 d-flex align-items-center " },
-                  [
-                    _c("div", [_vm._v("Icon")]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "ml-1" }, [
-                      _vm._v("Cloudy with a chance of showers")
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-3 text-right mt-2" }, [
-                  _c("div", [_vm._v("50°F")]),
-                  _vm._v(" "),
-                  _c("div", [_vm._v("35°F")])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-3 forecast__day mt-2" }, [
-                  _vm._v("TUES")
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "col-6 px-2 d-flex align-items-center " },
-                  [
-                    _c("div", [_vm._v("Icon")]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "ml-1" }, [
-                      _vm._v("Cloudy with a chance of showers")
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-3 text-right mt-2" }, [
-                  _c("div", [_vm._v("50°F")]),
-                  _vm._v(" "),
-                  _c("div", [_vm._v("35°F")])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-3 forecast__day mt-2" }, [
-                  _vm._v("WED")
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "col-6 px-2 d-flex align-items-center " },
-                  [
-                    _c("div", [_vm._v("Icon")]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "ml-1" }, [
-                      _vm._v("Cloudy with a chance of showers")
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-3 text-right mt-2" }, [
-                  _c("div", [_vm._v("50°F")]),
-                  _vm._v(" "),
-                  _c("div", [_vm._v("35°F")])
-                ])
-              ])
+            _c("div", [
+              _c("div", { staticClass: "forecast__current font-weight-bold" }, [
+                _vm._v("42°F")
+              ]),
+              _vm._v(" "),
+              _c("div", {}, [_vm._v("Feels like 40°F")])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "mx-3" }, [
+              _c("div", { staticClass: "font-weight-bold" }, [
+                _vm._v("Cloudy")
+              ]),
+              _vm._v(" "),
+              _c("div", [_vm._v("Allentown, PA")])
             ])
-          ])
+          ]),
+          _vm._v(" "),
+          _c("div", [_vm._v("Icon")])
         ]
       )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-3 forecast__day" }, [_vm._v("MON")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-6 px-2 d-flex align-items-center " }, [
+        _c("div", [_vm._v("Icon")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "ml-1" }, [
+          _vm._v("Cloudy with a chance of showers")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-3 text-right mt-2" }, [
+        _c("div", [_vm._v("50°F")]),
+        _vm._v(" "),
+        _c("div", [_vm._v("35°F")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-3 forecast__day mt-2" }, [_vm._v("TUES")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-6 px-2 d-flex align-items-center " }, [
+        _c("div", [_vm._v("Icon")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "ml-1" }, [
+          _vm._v("Cloudy with a chance of showers")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-3 text-right mt-2" }, [
+        _c("div", [_vm._v("50°F")]),
+        _vm._v(" "),
+        _c("div", [_vm._v("35°F")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-3 forecast__day mt-2" }, [_vm._v("WED")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-6 px-2 d-flex align-items-center " }, [
+        _c("div", [_vm._v("Icon")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "ml-1" }, [
+          _vm._v("Cloudy with a chance of showers")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-3 text-right mt-2" }, [
+        _c("div", [_vm._v("50°F")]),
+        _vm._v(" "),
+        _c("div", [_vm._v("35°F")])
+      ])
     ])
   }
 ]
@@ -93264,7 +93277,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("div", [
                   _c("div", { staticClass: "weather__temp" }, [
-                    _vm._v(_vm._s(_vm.roundTemp(_vm.day)) + " "),
+                    _vm._v(_vm._s(_vm.roundTemp(25)) + " "),
                     _c("span", { staticClass: "weather__fair" }, [_vm._v("°F")])
                   ]),
                   _vm._v(" "),
@@ -93279,19 +93292,26 @@ var render = function() {
                         _vm._s(_vm.roundTemp(30) + "°F")
                     )
                   ])
-                ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass:
+                      "btn btn-primary btn-lg border border-dark mt-5",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        _vm.forecast = !_vm.forecast
+                      }
+                    }
+                  },
+                  [_vm._v("7-Day Forecast")]
+                )
               ])
-            : _c("forecast"),
+            : _vm._e(),
           _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-primary btn-lg border border-dark mt-5",
-              attrs: { type: "button" },
-              on: { click: _vm.getForecast }
-            },
-            [_vm._v("7-Day Forecast")]
-          )
+          !_vm.forecast ? _c("forecast") : _vm._e()
         ],
         1
       )

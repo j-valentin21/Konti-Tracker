@@ -9,14 +9,14 @@
                     <div class="weather__city">name</div>
                     <div class="weather__date">{{}}</div>
                     <div>
-                        <div class="weather__temp">{{ roundTemp(day) }} <span class="weather__fair">°F</span></div>
+                        <div class="weather__temp">{{ roundTemp(25) }} <span class="weather__fair">°F</span></div>
                         <div class="weather__name"> description </div>
                         <div class="weather__hi-lo">{{ roundTemp(20) + '&#176F' }} /
                             {{ roundTemp(30) + '&#176F' }}</div>
                     </div>
+                    <button type="button" @click="forecast = !forecast" class="btn btn-primary btn-lg border border-dark mt-5">7-Day Forecast</button>
                 </section>
-                <forecast v-else/>
-                <button type="button" @click="getForecast" class="btn btn-primary btn-lg border border-dark mt-5">7-Day Forecast</button>
+                <forecast v-if="!forecast"/>
             </main>
         </div>
     </div>
@@ -26,6 +26,9 @@
 export default {
     mounted() {
         this.fetchWeather();
+        Fire.$on('dailyForecast', () => {
+            this.forecast = true
+        });
     },
     data() {
         return {
@@ -51,7 +54,7 @@ export default {
             })
         },
         getForecast() {
-            this.forecast = false
+
         },
         toFullDate(timestamp) {
             return new Date(timestamp * 1000);

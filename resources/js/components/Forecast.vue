@@ -49,6 +49,9 @@
                             <div>35°F</div>
                         </div>
                     </div>
+                    <div class="justify-content-center">
+                        <button type="button" @click="getDailyForecast"   class="btn btn-primary btn-lg border border-dark mt-5">Daily Forecast</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -57,7 +60,17 @@
 
 <script>
 export default {
-name: "Forecast"
+    data() {
+        return {
+            dailyForecast: true
+
+        }
+    },
+    methods: {
+        getDailyForecast() {
+            Fire.$emit('dailyForecast');
+        }
+    }
 }
 </script>
 
