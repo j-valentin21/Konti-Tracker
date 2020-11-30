@@ -11170,6 +11170,82 @@ body {
   }
 }
 
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes flipInY {
+  from {
+    transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+    opacity: 0;
+  }
+
+  40% {
+    transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+  }
+
+  60% {
+    transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
+    opacity: 1;
+  }
+
+  80% {
+    transform: perspective(400px) rotate3d(0, 1, 0, -5deg);
+  }
+
+  to {
+    transform: perspective(400px);
+  }
+}
+
+@keyframes flipInY {
+  from {
+    transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+    opacity: 0;
+  }
+
+  40% {
+    transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+  }
+
+  60% {
+    transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
+    opacity: 1;
+  }
+
+  80% {
+    transform: perspective(400px) rotate3d(0, 1, 0, -5deg);
+  }
+
+  to {
+    transform: perspective(400px);
+  }
+}
+
 .border__bottom--grey {
   border-bottom: 1px solid #364458;
 }
@@ -12331,6 +12407,10 @@ body {
   font-family: "montserrat", sans-serif;
   background-size: cover;
   background-position: top center;
+  -webkit-backface-visibility: visible !important;
+          backface-visibility: visible !important;
+  -webkit-animation: flipInY 1.5s ease-in;
+          animation: flipInY 1.5s ease-in;
 }
 
 .weather__container {
@@ -12389,9 +12469,8 @@ body {
 
 .weather__temp {
   color: #FFF;
-  font-size: 102px;
+  font-size: 8rem;
   font-weight: 900;
-  margin: 30px 0px;
   text-shadow: 2px 10px rgba(0, 0, 0, 0.6);
 }
 
@@ -12418,6 +12497,8 @@ body {
 .forecast {
   width: 60vw;
   background-color: rgba(5, 10, 48, 0.9);
+  -webkit-animation: fadeIn 1.25s ease-in;
+          animation: fadeIn 1.25s ease-in;
 }
 
 .forecast__current {
@@ -12431,6 +12512,8 @@ body {
   line-height: 1.25rem;
   opacity: 1;
   background-color: rgba(61, 72, 73, 0.7);
+  -webkit-animation: fadeIn 1.25s ease-in;
+          animation: fadeIn 1.25s ease-in;
 }
 
 .forecast__day {

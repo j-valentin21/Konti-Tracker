@@ -9,14 +9,15 @@
                     <div class="weather__city">name</div>
                     <div class="weather__date">{{}}</div>
                     <div>
-                        <div class="weather__temp">{{ roundTemp(25) }} <span class="weather__fair">°F</span></div>
-                        <div class="weather__name"> description </div>
-                        <div class="weather__hi-lo">{{ roundTemp(20) + '&#176F' }} /
-                            {{ roundTemp(30) + '&#176F' }}</div>
+                        <div class="weather__temp">{{ currentTemperature.actual }} <span class="weather__fair">°F</span></div>
+                        <div class="text-white mb-3 font-weight-bold">Feels like {{ currentTemperature.feels + '°F' }}</div>
+                        <div class="weather__name"> {{ currentTemperature.description }} </div>
+                        <div class="weather__hi-lo">{{ dailyTemperature.high + '°F'  }} /
+                            {{ dailyTemperature.low + '°F'  }}</div>
                     </div>
                     <button type="button" @click="forecast = !forecast" class="btn btn-primary btn-lg border border-dark mt-5">7-Day Forecast</button>
                 </section>
-                <forecast v-if="!forecast"/>
+                <forecast :currentTemperature="currentTemperature" :daily="daily" v-if="!forecast"/>
             </main>
         </div>
     </div>
@@ -40,15 +41,34 @@ export default {
                 name: 'Allentown, PA',
                 lon: -75.49,
                 lat: 40.61
+            },
+            currentTemperature: {
+                actual: '',
+                feels: '',
+                icon: '',
+                description: ''
+            },
+            dailyTemperature: {
+                high: '' ,
+                low: ''
             }
         }
     },
     methods: {
         fetchWeather() {
-            let uri = `/api/weather-daily?lat=${this.location.lat}&lon=${this.location.lon}&exclude=current,minutely,hourly,alerts&units=imperial`;
+            let uri = `/api/weather-daily?lat=${this.location.lat}&lon=${this.location.lon}&exclude=minutely,hourly,alerts&units=imperial`;
             axios.get(uri).then(response => {
+                this.currentTemperature.actual = Math.round(response.data.current.temp);
+                this.currentTemperature.feels = Math.round(response.data.current.feels_like);
+                this.currentTemperature.description = response.data.current.weather[0].description;
+                this.currentTemperature.icon = response.data.daily[0].weather[0].icon;
+
+                this.dailyTemperature.high = Math.round(response.data.daily[0].temp.max);
+                this.dailyTemperature.low = Math.round(response.data.daily[0].temp.min);
+
                 this.daily = response.data;
                 this.conditions = response.data.daily[0].weather[0].main;
+
                 switch (this.conditions) {
                     case "Clouds":
                         this.image = {backgroundImage: "url(http://127.0.0.1:8000/img/cloudy.jpg)"}
