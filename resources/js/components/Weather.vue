@@ -103,12 +103,6 @@ export default {
                 console.log(err)
             })
         },
-        toFullDate(timestamp) {
-            return new Date(timestamp * 1000);
-        },
-        roundTemp(temp) {
-            return Math.round(temp);
-        }
     },
 }
 </script>
