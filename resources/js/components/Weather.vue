@@ -94,6 +94,9 @@ export default {
                     case "Tornado":
                         this.image = {backgroundImage: "url(http://127.0.0.1:8000/img/tornado.jpg)"}
                         break;
+                    default:
+                        this.image = {backgroundImage: "url(http://127.0.0.1:8000/img/cloudy.jpg)"}
+                        break;
                 }
             })
             .catch((err) => {

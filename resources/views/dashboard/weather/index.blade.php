@@ -1,5 +1,9 @@
 @extends('layouts.master')
 
+@section('head-extra')
+    <script src="{{asset('js/scripts/skycons.js')}}"></script>
+@endsection
+
 @section('title', "Profile")
 
 @section('class', 'dashboard')
