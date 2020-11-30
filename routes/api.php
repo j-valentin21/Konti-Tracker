@@ -30,6 +30,6 @@ Route::get('/weather-daily', function () {
     $baseUrl = "https://api.openweathermap.org/data/2.5/onecall?&appid=$weatherKey&";
     $lat = 40.61;
     $lon = -75.49;
-    $response = Http::get( $baseUrl . "lat=$lat&lon=$lon&exclude=current,minutely,hourly,alerts&units=imperial");
+    $response = Http::get( $baseUrl . "lat=$lat&lon=$lon&exclude=minutely,hourly,alerts&units=imperial");
     return $response->json();
 });
