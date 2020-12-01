@@ -2,11 +2,12 @@
     <div class="weather" :style="image">
         <div class="weather__container">
             <header class="weather__header">
-                <input type="text" autocomplete="off" class="weather__header-text" placeholder="Search for a city..." />
+                <input type="search" id="address" class="weather__header-text" placeholder="Search for a city..." />
+                <p hidden>Selected: <strong id="address-value">none</strong></p>
             </header>
             <main class="weather__body">
                 <section v-if="forecast">
-                    <div class="weather__city">name</div>
+                    <div class="weather__city">{{location.name}}</div>
                     <div class="weather__date">{{}}</div>
                     <div>
                         <div class="weather__temp">{{ currentTemperature.actual }} <span class="weather__fair">°F</span></div>
@@ -24,15 +25,44 @@
 </template>
 
 <script>
+import places  from 'places.js';
+
 export default {
     mounted() {
         this.fetchWeather();
         Fire.$on('dailyForecast', () => {
             this.forecast = true
         });
+        const placesAutocomplete = places({
+            appId: 'pl8C4GU8WLCX',
+            apiKey: '73537beb0b92ba86a681e26605eedc50',
+            container: document.querySelector('#address')
+        }).configure({
+            type: 'city',
+            aroundLatLngViaIP: false,
+        });
+        const $address = document.querySelector('#address-value')
+        placesAutocomplete.on('change', (e) => {
+            $address.textContent = e.suggestion.value
+            this.location.name = `${e.suggestion.name}, ${e.suggestion.administrative}`
+            this.location.lat = e.suggestion.latlng.lat
+            this.location.lon = e.suggestion.latlng.lng
+        });
+        placesAutocomplete.on('clear', function () {
+            $address.textContent = 'none';
+        });
+    },
+    watch: {
+        location: {
+            handler(newValue,oldValue) {
+                this.fetchWeather();
+            },
+            deep:true
+        }
     },
     data() {
         return {
+            query: '',
             daily:[],
             conditions: [],
             image: {},
@@ -55,6 +85,9 @@ export default {
         }
     },
     methods: {
+        // getInput() {
+        //     this.fetchWeather();
+        // },
         fetchWeather() {
             let uri = `/api/weather-daily?lat=${this.location.lat}&lon=${this.location.lon}&exclude=minutely,hourly,alerts&units=imperial`;
             axios.get(uri).then(response => {

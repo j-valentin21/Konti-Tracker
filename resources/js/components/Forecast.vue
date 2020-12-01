@@ -25,7 +25,7 @@
                 :key="day.dt"
                 class="d-flex align-items-center"
                 :class="{'mt-4' : index > 0}"
-                v-if="index >= 1">
+               v-if="index >= 1">
 
                 <div class="container-fluid">
                     <div class="row">
@@ -86,13 +86,13 @@ export default {
 
         this.$nextTick(() => {
             skycons.add('icon2', document.getElementById('icon2').getAttribute('data-icon'))
-            skycons.add('icon3', document.getElementById('icon2').getAttribute('data-icon'))
-            skycons.add('icon4', document.getElementById('icon3').getAttribute('data-icon'))
-            skycons.add('icon5', document.getElementById('icon4').getAttribute('data-icon'))
-            skycons.add('icon6', document.getElementById('icon5').getAttribute('data-icon'))
-            skycons.add('icon7', document.getElementById('icon6').getAttribute('data-icon'))
-            skycons.add('icon8', document.getElementById('icon7').getAttribute('data-icon'))
-            skycons.add('icon9', document.getElementById('icon8').getAttribute('data-icon'))
+            skycons.add('icon3', document.getElementById('icon3').getAttribute('data-icon'))
+            skycons.add('icon4', document.getElementById('icon4').getAttribute('data-icon'))
+            skycons.add('icon5', document.getElementById('icon5').getAttribute('data-icon'))
+            skycons.add('icon6', document.getElementById('icon6').getAttribute('data-icon'))
+            skycons.add('icon7', document.getElementById('icon7').getAttribute('data-icon'))
+            skycons.add('icon8', document.getElementById('icon8').getAttribute('data-icon'))
+            skycons.add('icon9', document.getElementById('icon9').getAttribute('data-icon'))
             skycons.play()
         })
     },
