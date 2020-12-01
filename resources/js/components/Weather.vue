@@ -8,7 +8,7 @@
             <main class="weather__body">
                 <section v-if="forecast">
                     <div class="weather__city">{{location.name}}</div>
-                    <div class="weather__date">{{}}</div>
+                    <div class="weather__date">{{getDate(currentTemperature.time)}}</div>
                     <div>
                         <div class="weather__temp">{{ currentTemperature.actual }} <span class="weather__fair">°F</span></div>
                         <div class="text-white mb-3 font-weight-bold">Feels like {{ currentTemperature.feels + '°F' }}</div>
@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import places  from 'places.js';
+import places from 'places.js';
 
 export default {
     mounted() {
@@ -76,7 +76,8 @@ export default {
                 actual: '',
                 feels: '',
                 icon: '',
-                description: ''
+                description: '',
+                time: ''
             },
             dailyTemperature: {
                 high: '' ,
@@ -85,9 +86,6 @@ export default {
         }
     },
     methods: {
-        // getInput() {
-        //     this.fetchWeather();
-        // },
         fetchWeather() {
             let uri = `/api/weather-daily?lat=${this.location.lat}&lon=${this.location.lon}&exclude=minutely,hourly,alerts&units=imperial`;
             axios.get(uri).then(response => {
@@ -95,6 +93,7 @@ export default {
                 this.currentTemperature.feels = Math.round(response.data.current.feels_like);
                 this.currentTemperature.description = response.data.current.weather[0].description;
                 this.currentTemperature.icon = response.data.daily[0].weather[0].icon;
+                this.currentTemperature.time = response.data.current.dt;
 
                 this.dailyTemperature.high = Math.round(response.data.daily[0].temp.max);
                 this.dailyTemperature.low = Math.round(response.data.daily[0].temp.min);
@@ -136,6 +135,17 @@ export default {
                 console.log(err)
             })
         },
+        getDate(timestamp) {
+            let newDate = new Date(timestamp * 1000)
+            let days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
+            let months =['January', 'February' , 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October','November', 'December']
+            let day =days[newDate.getDay()];
+            let date = newDate.getDate();
+            let month = months[newDate.getMonth()];
+            let year = newDate.getFullYear();
+
+            return `${day}, ${month} ${date}, ${year}`
+        }
     },
 }
 </script>

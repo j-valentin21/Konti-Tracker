@@ -24873,7 +24873,8 @@ __webpack_require__.r(__webpack_exports__);
         actual: '',
         feels: '',
         icon: '',
-        description: ''
+        description: '',
+        time: ''
       },
       dailyTemperature: {
         high: '',
@@ -24882,9 +24883,6 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    // getInput() {
-    //     this.fetchWeather();
-    // },
     fetchWeather: function fetchWeather() {
       var _this2 = this;
 
@@ -24894,6 +24892,7 @@ __webpack_require__.r(__webpack_exports__);
         _this2.currentTemperature.feels = Math.round(response.data.current.feels_like);
         _this2.currentTemperature.description = response.data.current.weather[0].description;
         _this2.currentTemperature.icon = response.data.daily[0].weather[0].icon;
+        _this2.currentTemperature.time = response.data.current.dt;
         _this2.dailyTemperature.high = Math.round(response.data.daily[0].temp.max);
         _this2.dailyTemperature.low = Math.round(response.data.daily[0].temp.min);
         _this2.daily = response.data;
@@ -24957,6 +24956,16 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (err) {
         console.log(err);
       });
+    },
+    getDate: function getDate(timestamp) {
+      var newDate = new Date(timestamp * 1000);
+      var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+      var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+      var day = days[newDate.getDay()];
+      var date = newDate.getDate();
+      var month = months[newDate.getMonth()];
+      var year = newDate.getFullYear();
+      return "".concat(day, ", ").concat(month, " ").concat(date, ", ").concat(year);
     }
   }
 });
@@ -103899,7 +103908,9 @@ var render = function() {
                   _vm._v(_vm._s(_vm.location.name))
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "weather__date" }, [_vm._v("{{}}")]),
+                _c("div", { staticClass: "weather__date" }, [
+                  _vm._v(_vm._s(_vm.getDate(_vm.currentTemperature.time)))
+                ]),
                 _vm._v(" "),
                 _c("div", [
                   _c("div", { staticClass: "weather__temp" }, [
