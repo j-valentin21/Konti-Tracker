@@ -34,5 +34,18 @@
                 padding:1.5rem 1%;
             }
         }
+        &--weather {
+            margin-left:15%;
+            overflow: hidden;
+            padding:1.5rem 6%;
+
+            @include respond(tab-land) {
+               margin-left: 0%;
+            }
+
+            @include respond(mobile-land-bp2) {
+                padding:1.5rem 1%;
+            }
+        }
     }
 }

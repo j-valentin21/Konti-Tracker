@@ -1,24 +1,29 @@
 <template>
     <div class="text-white mb-5">
-        <div class="forecast rounded">
-            <div class="d-flex align-content-center justify-content-between px-3 py-4">
-                <div class="d-flex align-items-center">
-                    <div>
-                        <div class="forecast__current font-weight-bold">{{ dailyTemperature.actual + '°F' }}</div>
-                        <div class="">Feels like {{ feelsLike + '°F' }}</div>
+        <div class="container">
+            <div class="row">
+                <div class="forecast rounded">
+                    <div class="d-flex align-content-center justify-content-between px-3 py-4">
+                        <div class="d-flex align-items-center forecast__daily">
+                            <div>
+                                <div class="forecast__current font-weight-bold">{{ dailyTemperature.actual + '°F' }}</div>
+                                <div class="forecast__feels-like">Feels like {{ feelsLike + '°F' }}</div>
+                            </div>
+                            <div class="mx-5">
+                                <div class="font-weight-bold">{{dailyTemperature.description}}</div>
+                                <div>Allentown, PA</div>
+                            </div>
+                        </div>
+                        <div class=" text-right mt-2 mr-4">
+                            <canvas ref="iconCurrent" id="iconCurrent" width="40" height="40"></canvas>
+                            <div class="mr-2 mr-sm-0">{{dailyTemperature.high + '°F'}}</div>
+                            <div class="mr-2 mr-sm-0">{{dailyTemperature.low + '°F'}}</div>
+                        </div>
                     </div>
-                    <div class="mx-3">
-                        <div class="font-weight-bold">{{dailyTemperature.description}}</div>
-                        <div>Allentown, PA</div>
-                    </div>
-                </div>
-                <div class="col-3 text-right mt-2">
-                    <canvas ref="iconCurrent" id="iconCurrent" width="45" height="45"></canvas>
-                    <div>{{dailyTemperature.high + '°F'}}</div>
-                    <div>{{dailyTemperature.low + '°F'}}</div>
                 </div>
             </div>
         </div>
+
         <div class="forecast__future-weather px-3 py-4 overflow-hidden">
             <div
                 v-for="(day, index) in dailyWeather"
@@ -29,12 +34,12 @@
 
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-sm-3 forecast__day">{{ toDayOfWeek(day.dt) }}</div>
-                        <div class="col-sm-6 px-2 d-flex align-items-center">
+                        <div class="col-3 forecast__day">{{ toDayOfWeek(day.dt) }}</div>
+                        <div class="col-6 px-2 d-flex align-items-center">
                             <div class="mr-3"><canvas :id="`icon${index+1}`" :data-icon="day.weather[0].icon" width="20" height="20"></canvas></div>
                             <div class="ml-1">{{ day.weather[0].description }}</div>
                         </div>
-                        <div class="col-sm-3 text-right mt-2">
+                        <div class="col-3 text-right mt-2">
                             <div>{{ Math.round(day.temp.max) + '°F' }}</div>
                             <div>{{ Math.round(day.temp.min) + '°F' }}</div>
                         </div>
@@ -92,7 +97,6 @@ export default {
             skycons.add('icon6', document.getElementById('icon6').getAttribute('data-icon'))
             skycons.add('icon7', document.getElementById('icon7').getAttribute('data-icon'))
             skycons.add('icon8', document.getElementById('icon8').getAttribute('data-icon'))
-            skycons.add('icon9', document.getElementById('icon9').getAttribute('data-icon'))
             skycons.play()
         })
     },

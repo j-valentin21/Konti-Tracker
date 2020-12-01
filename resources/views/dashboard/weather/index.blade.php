@@ -19,8 +19,7 @@
 @section('body-content')
     <div class="container-fluid">
         <x-dash-sidebar/>
-        <div class="dashboard__main">
-            <div class="dashboard__main-content  dashboard__main-content--grey m-3">
+            <div class=" dashboard__main-content--weather">
                 <weather/>
             </div>
         </div>

@@ -12,7 +12,7 @@
                     <div>
                         <div class="weather__temp">{{ currentTemperature.actual }} <span class="weather__fair">°F</span></div>
                         <div class="text-white mb-3 font-weight-bold">Feels like {{ currentTemperature.feels + '°F' }}</div>
-                        <div class="weather__name"> {{ currentTemperature.description }} </div>
+                        <div class="weather__name my-4"> {{ currentTemperature.description }} </div>
                         <div class="weather__hi-lo">{{ dailyTemperature.high + '°F'  }} /
                             {{ dailyTemperature.low + '°F'  }}</div>
                     </div>

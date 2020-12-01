@@ -24181,6 +24181,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['currentTemperature', 'daily'],
   mounted: function mounted() {
@@ -24233,7 +24238,6 @@ __webpack_require__.r(__webpack_exports__);
       skycons.add('icon6', document.getElementById('icon6').getAttribute('data-icon'));
       skycons.add('icon7', document.getElementById('icon7').getAttribute('data-icon'));
       skycons.add('icon8', document.getElementById('icon8').getAttribute('data-icon'));
-      skycons.add('icon9', document.getElementById('icon9').getAttribute('data-icon'));
       skycons.play();
     });
   },
@@ -103248,46 +103252,60 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "text-white mb-5" }, [
-    _c("div", { staticClass: "forecast rounded" }, [
-      _c(
-        "div",
-        {
-          staticClass:
-            "d-flex align-content-center justify-content-between px-3 py-4"
-        },
-        [
-          _c("div", { staticClass: "d-flex align-items-center" }, [
-            _c("div", [
-              _c("div", { staticClass: "forecast__current font-weight-bold" }, [
-                _vm._v(_vm._s(_vm.dailyTemperature.actual + "°F"))
-              ]),
+    _c("div", { staticClass: "container" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "forecast rounded" }, [
+          _c(
+            "div",
+            {
+              staticClass:
+                "d-flex align-content-center justify-content-between px-3 py-4"
+            },
+            [
+              _c(
+                "div",
+                { staticClass: "d-flex align-items-center forecast__daily" },
+                [
+                  _c("div", [
+                    _c(
+                      "div",
+                      { staticClass: "forecast__current font-weight-bold" },
+                      [_vm._v(_vm._s(_vm.dailyTemperature.actual + "°F"))]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "forecast__feels-like" }, [
+                      _vm._v("Feels like " + _vm._s(_vm.feelsLike + "°F"))
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "mx-5" }, [
+                    _c("div", { staticClass: "font-weight-bold" }, [
+                      _vm._v(_vm._s(_vm.dailyTemperature.description))
+                    ]),
+                    _vm._v(" "),
+                    _c("div", [_vm._v("Allentown, PA")])
+                  ])
+                ]
+              ),
               _vm._v(" "),
-              _c("div", {}, [
-                _vm._v("Feels like " + _vm._s(_vm.feelsLike + "°F"))
+              _c("div", { staticClass: " text-right mt-2 mr-4" }, [
+                _c("canvas", {
+                  ref: "iconCurrent",
+                  attrs: { id: "iconCurrent", width: "40", height: "40" }
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "mr-2 mr-sm-0" }, [
+                  _vm._v(_vm._s(_vm.dailyTemperature.high + "°F"))
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "mr-2 mr-sm-0" }, [
+                  _vm._v(_vm._s(_vm.dailyTemperature.low + "°F"))
+                ])
               ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "mx-3" }, [
-              _c("div", { staticClass: "font-weight-bold" }, [
-                _vm._v(_vm._s(_vm.dailyTemperature.description))
-              ]),
-              _vm._v(" "),
-              _c("div", [_vm._v("Allentown, PA")])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-3 text-right mt-2" }, [
-            _c("canvas", {
-              ref: "iconCurrent",
-              attrs: { id: "iconCurrent", width: "45", height: "45" }
-            }),
-            _vm._v(" "),
-            _c("div", [_vm._v(_vm._s(_vm.dailyTemperature.high + "°F"))]),
-            _vm._v(" "),
-            _c("div", [_vm._v(_vm._s(_vm.dailyTemperature.low + "°F"))])
-          ])
-        ]
-      )
+            ]
+          )
+        ])
+      ])
     ]),
     _vm._v(" "),
     _c(
@@ -103306,15 +103324,13 @@ var render = function() {
                 [
                   _c("div", { staticClass: "container-fluid" }, [
                     _c("div", { staticClass: "row" }, [
-                      _c("div", { staticClass: "col-sm-3 forecast__day" }, [
+                      _c("div", { staticClass: "col-3 forecast__day" }, [
                         _vm._v(_vm._s(_vm.toDayOfWeek(day.dt)))
                       ]),
                       _vm._v(" "),
                       _c(
                         "div",
-                        {
-                          staticClass: "col-sm-6 px-2 d-flex align-items-center"
-                        },
+                        { staticClass: "col-6 px-2 d-flex align-items-center" },
                         [
                           _c("div", { staticClass: "mr-3" }, [
                             _c("canvas", {
@@ -103333,7 +103349,7 @@ var render = function() {
                         ]
                       ),
                       _vm._v(" "),
-                      _c("div", { staticClass: "col-sm-3 text-right mt-2" }, [
+                      _c("div", { staticClass: "col-3 text-right mt-2" }, [
                         _c("div", [
                           _vm._v(_vm._s(Math.round(day.temp.max) + "°F"))
                         ]),
@@ -103929,7 +103945,7 @@ var render = function() {
                     ]
                   ),
                   _vm._v(" "),
-                  _c("div", { staticClass: "weather__name" }, [
+                  _c("div", { staticClass: "weather__name my-4" }, [
                     _vm._v(
                       " " + _vm._s(_vm.currentTemperature.description) + " "
                     )
