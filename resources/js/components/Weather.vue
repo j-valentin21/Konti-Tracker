@@ -2,34 +2,70 @@
     <div class="weather" :style="image">
         <div class="weather__container">
             <header class="weather__header">
-                <input type="text" autocomplete="off" class="weather__header-text" placeholder="Search for a city..." />
+                <input type="search" id="address" class="weather__header-text" placeholder="Search for a city..." />
+                <p hidden>Selected: <strong id="address-value">none</strong></p>
             </header>
             <main class="weather__body">
                 <section v-if="forecast">
-                    <div class="weather__city">name</div>
-                    <div class="weather__date">{{}}</div>
+                    <div class="weather__city">{{location.name}}</div>
+                    <div class="weather__date">{{getDate(currentTemperature.time)}}</div>
                     <div>
                         <div class="weather__temp">{{ currentTemperature.actual }} <span class="weather__fair">°F</span></div>
                         <div class="text-white mb-3 font-weight-bold">Feels like {{ currentTemperature.feels + '°F' }}</div>
-                        <div class="weather__name"> {{ currentTemperature.description }} </div>
+                        <div class="weather__name my-4"> {{ currentTemperature.description }} </div>
                         <div class="weather__hi-lo">{{ dailyTemperature.high + '°F'  }} /
                             {{ dailyTemperature.low + '°F'  }}</div>
                     </div>
                     <button type="button" @click="forecast = !forecast" class="btn btn-primary btn-lg border border-dark mt-5">7-Day Forecast</button>
                 </section>
-                <forecast :currentTemperature="currentTemperature" :daily="daily" v-if="!forecast"/>
+                <forecast
+                    :locationName= location
+                    :currentTemperature="currentTemperature"
+                    :daily="daily"
+                    :key="componentKey"
+                    v-if="!forecast"/>
             </main>
         </div>
     </div>
 </template>
 
 <script>
+import places from 'places.js';
+
 export default {
+    props:['componentKey'],
     mounted() {
         this.fetchWeather();
         Fire.$on('dailyForecast', () => {
             this.forecast = true
         });
+        const placesAutocomplete = places({
+            appId: 'pl8C4GU8WLCX',
+            apiKey: '73537beb0b92ba86a681e26605eedc50',
+            container: document.querySelector('#address')
+        }).configure({
+            type: 'city',
+            aroundLatLngViaIP: false,
+        });
+        const $address = document.querySelector('#address-value')
+        placesAutocomplete.on('change', (e) => {
+            $address.textContent = e.suggestion.value
+            this.location.name = `${e.suggestion.name}, ${e.suggestion.administrative}`
+            this.location.lat = e.suggestion.latlng.lat
+            this.location.lon = e.suggestion.latlng.lng
+        });
+        placesAutocomplete.on('clear', function () {
+            $address.textContent = 'none';
+        });
+    },
+    watch: {
+        location: {
+            handler(newValue,oldValue) {
+                this.fetchWeather();
+                this.componentKey++
+            },
+            deep:true
+        }
     },
     data() {
         return {
@@ -46,7 +82,8 @@ export default {
                 actual: '',
                 feels: '',
                 icon: '',
-                description: ''
+                description: '',
+                time: ''
             },
             dailyTemperature: {
                 high: '' ,
@@ -62,6 +99,7 @@ export default {
                 this.currentTemperature.feels = Math.round(response.data.current.feels_like);
                 this.currentTemperature.description = response.data.current.weather[0].description;
                 this.currentTemperature.icon = response.data.daily[0].weather[0].icon;
+                this.currentTemperature.time = response.data.current.dt;
 
                 this.dailyTemperature.high = Math.round(response.data.daily[0].temp.max);
                 this.dailyTemperature.low = Math.round(response.data.daily[0].temp.min);
@@ -103,16 +141,23 @@ export default {
                 console.log(err)
             })
         },
-        toFullDate(timestamp) {
-            return new Date(timestamp * 1000);
-        },
-        roundTemp(temp) {
-            return Math.round(temp);
+        getDate(timestamp) {
+            let newDate = new Date(timestamp * 1000)
+            let days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
+            let months =['January', 'February' , 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October','November', 'December']
+            let day =days[newDate.getDay()];
+            let date = newDate.getDate();
+            let month = months[newDate.getMonth()];
+            let year = newDate.getFullYear();
+
+            return `${day}, ${month} ${date}, ${year}`
         }
     },
 }
 </script>
 
 <style scoped>
+/*lang="css"*/
+
 
 </style>

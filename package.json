@@ -29,6 +29,7 @@
         "@fullcalendar/interaction": "^5.4.0",
         "@fullcalendar/vue": "^5.4.0",
         "chart.js": "^2.9.4",
+        "places.js": "^1.19.0",
         "vue-chartjs": "^3.5.1"
     }
 }

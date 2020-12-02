@@ -11309,6 +11309,24 @@ body {
   }
 }
 
+.dashboard__main-content--weather {
+  margin-left: 15%;
+  overflow: hidden;
+  padding: 1.5rem 6%;
+}
+
+@media only screen and (max-width: 62.5em) {
+  .dashboard__main-content--weather {
+    margin-left: 0%;
+  }
+}
+
+@media only screen and (max-width: 31.25em) {
+  .dashboard__main-content--weather {
+    padding: 1.5rem 1%;
+  }
+}
+
 .profile {
   background: linear-gradient(to top, #000000, #434343) !important;
 }
@@ -12409,8 +12427,7 @@ body {
   background-position: top center;
   -webkit-backface-visibility: visible !important;
           backface-visibility: visible !important;
-  -webkit-animation: flipInY 1.5s ease-in;
-          animation: flipInY 1.5s ease-in;
+  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
 }
 
 .weather__container {
@@ -12424,12 +12441,11 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 50px 15px 15px;
+  padding: 50px 5rem 15px 5rem;
 }
 
 .weather__header-text {
   width: 100%;
-  max-width: 280px;
   padding: 10px 15px;
   border: none;
   outline: none;
@@ -12444,6 +12460,22 @@ body {
 
 .weather__header-text:focus {
   background-color: rgba(255, 255, 255, 0.6);
+}
+
+.weather__header-text::-moz-placeholder {
+  font-weight: bold;
+}
+
+.weather__header-text:-ms-input-placeholder {
+  font-weight: bold;
+}
+
+.weather__header-text::-ms-input-placeholder {
+  font-weight: bold;
+}
+
+.weather__header-text::placeholder {
+  font-weight: bold;
 }
 
 .weather__body {
@@ -12501,9 +12533,27 @@ body {
           animation: fadeIn 1.25s ease-in;
 }
 
+@media only screen and (max-width: 36.5em) {
+  .forecast {
+    width: 85vw;
+  }
+}
+
 .forecast__current {
   font-size: 3.75rem;
   line-height: 1;
+}
+
+@media only screen and (max-width: 47.9em) {
+  .forecast__daily {
+    display: block !important;
+  }
+}
+
+@media only screen and (max-width: 36.5em) {
+  .forecast__daily {
+    font-size: 1rem;
+  }
 }
 
 .forecast__future-weather {
@@ -12514,6 +12564,12 @@ body {
   background-color: rgba(61, 72, 73, 0.7);
   -webkit-animation: fadeIn 1.25s ease-in;
           animation: fadeIn 1.25s ease-in;
+}
+
+@media only screen and (max-width: 36.5em) {
+  .forecast__future-weather {
+    width: 85vw;
+  }
 }
 
 .forecast__day {

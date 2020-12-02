@@ -6,11 +6,12 @@
 
 require('./bootstrap');
 
-let Chart = require('chart.js');
-
 window.Vue = require('vue');
 
 window.Fire = new Vue();
+
+require('chart.js');
+require('places.js');
 
 /**
  * The following block of code may be used to automatically register your

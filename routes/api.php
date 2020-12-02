@@ -28,8 +28,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/weather-daily', function () {
     $weatherKey = config('services.openweather.key');
     $baseUrl = "https://api.openweathermap.org/data/2.5/onecall?&appid=$weatherKey&";
-    $lat = 40.61;
-    $lon = -75.49;
+    $lat = request('lat');
+    $lon = request('lon');
     $response = Http::get( $baseUrl . "lat=$lat&lon=$lon&exclude=minutely,hourly,alerts&units=imperial");
     return $response->json();
 });
