@@ -271,7 +271,7 @@ export default {
 }
 </script>
 
-<style lang="css" >
+<style lang="css">
 .fc .fc-toolbar-title {
     font-size: 2rem;
     margin: 0;

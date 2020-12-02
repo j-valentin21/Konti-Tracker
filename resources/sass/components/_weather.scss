@@ -3,8 +3,7 @@
     background-size: cover;
     background-position: top center;
     backface-visibility: visible !important;
-    animation: flipInY  1.5s ease-in;
-
+    transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
 
     &__container {
         display: flex;

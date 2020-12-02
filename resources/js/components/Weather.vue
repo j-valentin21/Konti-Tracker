@@ -18,7 +18,12 @@
                     </div>
                     <button type="button" @click="forecast = !forecast" class="btn btn-primary btn-lg border border-dark mt-5">7-Day Forecast</button>
                 </section>
-                <forecast :currentTemperature="currentTemperature" :daily="daily" v-if="!forecast"/>
+                <forecast
+                    :locationName= location
+                    :currentTemperature="currentTemperature"
+                    :daily="daily"
+                    :key="componentKey"
+                    v-if="!forecast"/>
             </main>
         </div>
     </div>
@@ -28,6 +33,7 @@
 import places from 'places.js';
 
 export default {
+    props:['componentKey'],
     mounted() {
         this.fetchWeather();
         Fire.$on('dailyForecast', () => {
@@ -56,13 +62,13 @@ export default {
         location: {
             handler(newValue,oldValue) {
                 this.fetchWeather();
+                this.componentKey++
             },
             deep:true
         }
     },
     data() {
         return {
-            query: '',
             daily:[],
             conditions: [],
             image: {},
@@ -151,5 +157,7 @@ export default {
 </script>
 
 <style scoped>
+/*lang="css"*/
+
 
 </style>

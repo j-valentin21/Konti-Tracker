@@ -12427,8 +12427,7 @@ body {
   background-position: top center;
   -webkit-backface-visibility: visible !important;
           backface-visibility: visible !important;
-  -webkit-animation: flipInY 1.5s ease-in;
-          animation: flipInY 1.5s ease-in;
+  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
 }
 
 .weather__container {

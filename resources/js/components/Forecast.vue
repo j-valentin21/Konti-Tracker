@@ -11,7 +11,7 @@
                             </div>
                             <div class="mx-5">
                                 <div class="font-weight-bold">{{dailyTemperature.description}}</div>
-                                <div>Allentown, PA</div>
+                                <div>{{ locationName.name}}</div>
                             </div>
                         </div>
                         <div class=" text-right mt-2 mr-4">
@@ -54,7 +54,7 @@
 </template>
 <script>
 export default {
-    props: ['currentTemperature', 'daily'],
+    props: ['currentTemperature', 'daily','locationName'],
     mounted() {
         this.dailyWeather.forEach(element => {
             switch (element.weather[0].main) {
