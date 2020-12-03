@@ -1,0 +1,12 @@
+.pto_modal {
+        transform:scaleY(.01) scaleX(0);
+        animation:unfoldIn 1s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+
+    &__active {
+        overflow: hidden;
+    }
+
+    &__content {
+        outline: #3d4852 solid 3px;
+    }
+}
