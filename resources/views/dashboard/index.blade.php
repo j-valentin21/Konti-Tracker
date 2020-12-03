@@ -15,6 +15,7 @@
 @section('body-content')
     <div class="container-fluid">
         <x-dash-sidebar/>
+        <x-request-modal/>
         <!-- ========== MAIN CONTENT ========== -->
         <div class="dashboard__main">
             <div class="dashboard__main-content">

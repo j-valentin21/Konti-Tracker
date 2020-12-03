@@ -47,7 +47,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/" class=" sidebar__link hover__black">
+                    <a href="/" class="sidebar__link hover__black">
                         <svg class="icons icons--sidebar">
                             <use href="{{ asset('svg/sprite.svg#icon-bell') }}"></use>
                         </svg>
@@ -55,7 +55,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/" class=" sidebar__link hover__black">
+                    <a data-toggle="modal" href="#requestmodal" class=" sidebar__link hover__black">
                         <svg class="icons icons--sidebar">
                             <use href="{{ asset('svg/sprite.svg#icon-airplane') }}"></use>
                         </svg>
