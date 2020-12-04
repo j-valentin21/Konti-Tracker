@@ -15,7 +15,6 @@
 @section('body-content')
     <div class="container-fluid">
         <x-dash-sidebar/>
-        <x-request-modal/>
         <!-- ========== MAIN CONTENT ========== -->
         <div class="dashboard__main">
             <div class="dashboard__main-content">
@@ -186,6 +185,7 @@
                                                 <li class="pagination__item"><a class="pagination__link" href="#">Next</a></li>
                                             </ul>
                                         </div>
+                                        <request-pto-form/>
                                     </div>
                                 </div>
                             </div>

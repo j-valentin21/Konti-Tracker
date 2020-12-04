@@ -34,6 +34,7 @@ Vue.component('pie-chart', require('./components/PieChart.vue').default);
 Vue.component('calendar', require('./components/Calendar.vue').default);
 Vue.component('weather', require('./components/Weather.vue').default);
 Vue.component('forecast', require('./components/Forecast.vue').default);
+Vue.component('request-pto-form', require('./components/RequestPTOForm.vue').default);
 
 
 /**
