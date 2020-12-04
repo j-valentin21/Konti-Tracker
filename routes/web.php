@@ -33,6 +33,7 @@ Route::middleware(['auth', 'firstTimeUser', 'verified'])->group(function () {
 Route::middleware(['auth', 'NotFirstTimeUser', 'verified'])->group(function () {
     Route::get('/dashboard', 'Dashboard\DashboardController@index')->name('dashboard.index');
     Route::put('/dashboard', 'Dashboard\DashboardController@update')->name('dashboard.update');
+    Route::post('/dashboard', 'Dashboard\DashboardController@create')->name('dashboard.create');
     Route::get('/dashboard/pto-chart', 'Dashboard\DashboardController@getPTOChartData')->name('dashboard.getPTOChartData');
     Route::get('/dashboard/points-chart', 'Dashboard\DashboardController@getPointsChartData')->name('dashboard.getPointsChartData');
     Route::get('/dashboard/profile', 'Dashboard\DashboardProfileController@index')->name('dashboard.profile.index');
