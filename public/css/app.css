@@ -12561,6 +12561,62 @@ body {
 }
 
 .pto_modal__content {
-  outline: #3d4852 solid 3px;
+  outline: #3d4852 solid 4px;
+}
+
+.pto_modal__title {
+  color: #000000;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.pto_modal__header {
+  background-color: #eba72b;
+}
+
+.pto_modal__body {
+  background-color: #e3e3e3;
+}
+
+.pto_modal__label {
+  font-size: 1.1rem;
+}
+
+.pto_modal__or {
+  color: #000000;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.pto_modal__button {
+  background-image: linear-gradient(to right, #000000, #222);
+  border-radius: 5%;
+  width: 20%;
+  padding: 0.5rem 1rem;
+  box-sizing: border-box;
+  font-size: 12px;
+  font-weight: 700;
+  color: #eba72b;
+  text-transform: uppercase;
+  border: none;
+  box-shadow: 1px 1px 1px;
+  transition: all 0.2s;
+}
+
+.pto_modal__button--black {
+  background-image: linear-gradient(to right, #000000, #222);
+  color: #ffffff;
+}
+
+.pto_modal__button--black:hover {
+  transform: translateY(-0.1rem);
+  box-shadow: 0px 1rem 3rem rgba(0, 0, 0, 0.2);
+  background-image: linear-gradient(to left, #000000, #222);
+  color: #eba72b;
+}
+
+.pto_modal__button--black:active {
+  transform: translateY(-0.3rem);
+  box-shadow: 0rem 0.5rem 1rem rgba(0, 0, 0, 0.2);
 }
 

@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 
+use App\Http\Requests\RequestPTODayRequest;
 use App\Profile;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
 
 class DashboardController extends Controller
 {
-
     /**
      * Show the dashboard view.
      *
@@ -24,7 +25,6 @@ class DashboardController extends Controller
         $redis->expire('message_' . auth()->id(),5);
         return view('dashboard.index', ['message'=>$message, 'profile'=> $profile]);
     }
-
     /**
      * Update PTO or points on the dashboard view.
      *
@@ -68,7 +68,6 @@ class DashboardController extends Controller
         $data = $profile->pto_usage;
         return response()->json($data);
     }
-
     /**
      * Get data to update points chart in dashboard.
      *
@@ -79,5 +78,14 @@ class DashboardController extends Controller
         $profile = Profile::find(auth()->user()->id);
         $data = $profile->points_usage;
         return response()->json($data);
+    }
+    /**
+     * Create Request for PTO day.
+     *
+     *
+     */
+    public function create()
+    {
+        return redirect('/dashboard');
     }
 }
