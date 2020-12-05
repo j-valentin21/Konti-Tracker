@@ -21,7 +21,7 @@
                                 <div class="row">
                                     <div class="col-md-5">
                                         <div class="form-group">
-                                            <label for="date" class="control-label pto_modal__label">Choose your date</label>
+                                            <label class="control-label pto_modal__label">Choose your date</label>
                                             <flat-pickr
                                                 v-model="date"
                                                 :config="config"
@@ -76,13 +76,35 @@ export default {
                 altFormat: 'M j, Y',
                 altInput: true,
                 dateFormat: 'Y-m-d',
-                minDate: "2020-01",
-            },
+                minDate: "2020-01-01",
+                disable: [
+                    `${this.getYear()}-12-07`,`${this.getYear()}-01-20`, `${this.getYear()}-02-17`,`${this.getYear()}-04-10`,`${this.getYear()}-05-25`,
+                    `${this.getYear()}-07-04`,`${this.getYear()}-09-07`,`${this.getYear()}-10-12`,`${this.getYear()}-12-24`,`${this.getYear()}-12-25`,
+                    `${this.getYear()}-12-31`,
+                    function(date) {
+                        // return true to disable
+                        return (date.getDay() === 0 || date.getDay() === 6)
+                    },
+                    {
+                        from: "2020-01-01",
+                        to: "today"
+                    },
+                    {
+                        from: `${this.getYear()}-11-26`,
+                        to: `${this.getYear()}-11-28`
+                    },
+                ],
+            }
         }
+    },
+    methods: {
+        getYear() {
+            let date = new Date();
+            return date.getFullYear()
+        },
     },
     components: {
         flatPickr
     },
 }
-
 </script>

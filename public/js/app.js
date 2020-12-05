@@ -24833,9 +24833,25 @@ __webpack_require__.r(__webpack_exports__);
         altFormat: 'M j, Y',
         altInput: true,
         dateFormat: 'Y-m-d',
-        minDate: "2020-01"
+        minDate: "2020-01-01",
+        disable: ["".concat(this.getYear(), "-12-07"), "".concat(this.getYear(), "-01-20"), "".concat(this.getYear(), "-02-17"), "".concat(this.getYear(), "-04-10"), "".concat(this.getYear(), "-05-25"), "".concat(this.getYear(), "-07-04"), "".concat(this.getYear(), "-09-07"), "".concat(this.getYear(), "-10-12"), "".concat(this.getYear(), "-12-24"), "".concat(this.getYear(), "-12-25"), "".concat(this.getYear(), "-12-31"), function (date) {
+          // return true to disable
+          return date.getDay() === 0 || date.getDay() === 6;
+        }, {
+          from: "2020-01-01",
+          to: "today"
+        }, {
+          from: "".concat(this.getYear(), "-11-26"),
+          to: "".concat(this.getYear(), "-11-28")
+        }]
       }
     };
+  },
+  methods: {
+    getYear: function getYear() {
+      var date = new Date();
+      return date.getFullYear();
+    }
   },
   components: {
     flatPickr: vue_flatpickr_component__WEBPACK_IMPORTED_MODULE_0___default.a
@@ -106741,10 +106757,7 @@ var render = function() {
                           [
                             _c(
                               "label",
-                              {
-                                staticClass: "control-label pto_modal__label",
-                                attrs: { for: "date" }
-                              },
+                              { staticClass: "control-label pto_modal__label" },
                               [_vm._v("Choose your date")]
                             ),
                             _vm._v(" "),
