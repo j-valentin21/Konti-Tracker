@@ -22,7 +22,13 @@
                                     <div class="col-md-5">
                                         <div class="form-group">
                                             <label for="date" class="control-label pto_modal__label">Choose your date</label>
-                                            <input type="date" class="form-control" name="date" id="date">
+                                            <flat-pickr
+                                                v-model="date"
+                                                :config="config"
+                                                class="form-control"
+                                                placeholder="Select date"
+                                                name="date">
+                                            </flat-pickr>
                                         </div>
                                     </div>
                                     <div class="col-md-2">
@@ -32,13 +38,21 @@
                                         <div class="form-group">
                                             <label for="date-range" class="control-label pto_modal__label">Choose your date range</label>
                                             <div class='input-group date' id='date-range'>
-                                                <input type='date' class="form-control"/>
+<!--                                                <flat-pickr-->
+<!--                                                    v-model="date"-->
+<!--                                                    :config="config"-->
+<!--                                                    class="form-control"-->
+<!--                                                    placeholder="Select date"-->
+<!--                                                    name="date">-->
+<!--                                                </flat-pickr>-->
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="text-right mt-3">
                                     <input type="submit" class="pto_modal__button pto_modal__button--black" value="Submit">
+                                </div>
+                                <div>
                                 </div>
                             </form>
                         </div>
@@ -50,5 +64,25 @@
 </template>
 
 <script>
+import flatPickr from 'vue-flatpickr-component';
+import 'flatpickr/dist/flatpickr.css';
+
+export default {
+    data () {
+        return {
+            date: 'today',
+            config: {
+                wrap: true,
+                altFormat: 'M j, Y',
+                altInput: true,
+                dateFormat: 'Y-m-d',
+                minDate: "2020-01",
+            },
+        }
+    },
+    components: {
+        flatPickr
+    },
+}
 
 </script>
