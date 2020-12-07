@@ -24802,18 +24802,53 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      date: '',
       ptoDays: '',
+      reason: '',
+      date: '',
+      datesArray: [],
+      startTime: '',
+      endTime: '',
+      selectDate: false,
       config: {
         wrap: true,
         altFormat: 'm/d/y',
         altInput: true,
-        dateFormat: 'Y-m-d',
+        dateFormat: 'm/d/y',
         minDate: "2020-01-01",
         mode: 'multiple',
         disable: ["".concat(this.getYear(), "-01-20"), "".concat(this.getYear(), "-02-17"), "".concat(this.getYear(), "-04-10"), "".concat(this.getYear(), "-05-25"), "".concat(this.getYear(), "-12-31"), "".concat(this.getYear(), "-07-04"), "".concat(this.getYear(), "-09-07"), "".concat(this.getYear(), "-10-12"), "".concat(this.getYear(), "-12-24"), "".concat(this.getYear(), "-12-25"), function (date) {
@@ -24825,18 +24860,33 @@ __webpack_require__.r(__webpack_exports__);
           from: "".concat(this.getYear(), "-11-26"),
           to: "".concat(this.getYear(), "-11-28")
         }]
+      },
+      configStart: {
+        minTime: "8:00",
+        maxTime: "16:30",
+        enableTime: true,
+        noCalendar: true,
+        dateFormat: "h:i K",
+        defaultDate: "8:00"
+      },
+      configEnd: {
+        minTime: "8:00",
+        maxTime: "16:30",
+        enableTime: true,
+        noCalendar: true,
+        dateFormat: "h:i K",
+        defaultDate: "16:30"
       }
     };
-  },
-  mounted: function mounted() {
-    if (this.toggleMode === '') {
-      this.toggleMode = "multiple";
-    }
   },
   methods: {
     getYear: function getYear() {
       var date = new Date();
       return date.getFullYear();
+    },
+    onChange: function onChange(selectedDates, dateStr, instance) {
+      this.datesArray = dateStr.split(",");
+      this.selectDate = dateStr !== '';
     }
   },
   components: {
@@ -106763,7 +106813,6 @@ var render = function() {
         id: "request-modal",
         "data-backdrop": "static",
         "data-keyboard": "false",
-        tabindex: "-1",
         "aria-labelledby": "staticBackdropLabel",
         "aria-hidden": "true"
       }
@@ -106781,90 +106830,229 @@ var render = function() {
             _vm._v(" "),
             _c("div", { staticClass: "modal-body pto" }, [
               _c("div", { staticClass: "container" }, [
-                _c("div", {}, [
-                  _c("form", { attrs: { method: "POST" } }, [
-                    _c("div", { staticClass: "form-group" }, [
-                      _c(
-                        "label",
-                        {
-                          staticClass:
-                            "control-label pto_modal__label mr-3 mt-3",
-                          attrs: { for: "pto-consumed" }
-                        },
-                        [_vm._v("How much PTO days do you want to use?")]
-                      ),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model.number",
-                            value: _vm.ptoDays,
-                            expression: "ptoDays",
-                            modifiers: { number: true }
-                          }
-                        ],
-                        attrs: {
-                          type: "number",
-                          id: "pto-consumed",
-                          name: "pto-consumed",
-                          placeholder: "Days",
-                          step: ".25",
-                          min: "0.25",
-                          max: "40"
-                        },
-                        domProps: { value: _vm.ptoDays },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.ptoDays = _vm._n($event.target.value)
-                          },
-                          blur: function($event) {
-                            return _vm.$forceUpdate()
-                          }
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(1),
-                    _vm._v(" "),
+                _c("form", { attrs: { method: "POST" } }, [
+                  _c("div", { staticClass: "form-group" }, [
                     _c(
-                      "div",
-                      { staticClass: "form-group" },
-                      [
-                        _c(
-                          "label",
-                          {
-                            staticClass: "control-label pto_modal__label mb-2"
-                          },
-                          [_vm._v("Choose your date")]
-                        ),
-                        _vm._v(" "),
-                        _c("flat-pickr", {
-                          staticClass: "form-control pto_modal__input",
-                          attrs: {
-                            config: _vm.config,
-                            placeholder: "Select date",
-                            name: "date"
-                          },
-                          model: {
-                            value: _vm.date,
-                            callback: function($$v) {
-                              _vm.date = $$v
-                            },
-                            expression: "date"
-                          }
-                        })
-                      ],
-                      1
+                      "label",
+                      {
+                        staticClass: "control-label pto_modal__label mr-3 mt-3",
+                        attrs: { for: "pto-consumed" }
+                      },
+                      [_vm._v("How much PTO days do you want to use?")]
                     ),
                     _vm._v(" "),
-                    _vm._m(2),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model.number",
+                          value: _vm.ptoDays,
+                          expression: "ptoDays",
+                          modifiers: { number: true }
+                        }
+                      ],
+                      attrs: {
+                        type: "number",
+                        id: "pto-consumed",
+                        name: "pto-consumed",
+                        placeholder: "Days",
+                        step: ".25",
+                        min: "0.25",
+                        max: "40"
+                      },
+                      domProps: { value: _vm.ptoDays },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.ptoDays = _vm._n($event.target.value)
+                        },
+                        blur: function($event) {
+                          return _vm.$forceUpdate()
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c(
+                      "label",
+                      {
+                        staticClass: "control-label pto_modal__label my-3",
+                        attrs: { for: "reason" }
+                      },
+                      [_vm._v("Reason for request")]
+                    ),
                     _vm._v(" "),
-                    _c("div")
-                  ])
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.reason,
+                          expression: "reason"
+                        }
+                      ],
+                      staticClass: "form-control pto_modal__input",
+                      attrs: {
+                        type: "text",
+                        name: "reason",
+                        id: "reason",
+                        maxlength: "100",
+                        placeholder: "Reason for request"
+                      },
+                      domProps: { value: _vm.reason },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.reason = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "form-group" },
+                    [
+                      _c(
+                        "label",
+                        { staticClass: "control-label pto_modal__label my-3" },
+                        [_vm._v("Choose your date")]
+                      ),
+                      _vm._v(" "),
+                      _c("flat-pickr", {
+                        staticClass: "form-control pto_modal__input mb-3",
+                        attrs: {
+                          config: _vm.config,
+                          placeholder: "Select date",
+                          name: "date"
+                        },
+                        on: { "on-change": _vm.onChange },
+                        model: {
+                          value: _vm.date,
+                          callback: function($$v) {
+                            _vm.date = $$v
+                          },
+                          expression: "date"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _vm.selectDate
+                    ? _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c(
+                            "label",
+                            {
+                              staticClass: "control-label pto_modal__label my-3"
+                            },
+                            [
+                              _vm._v(
+                                "Choose your scheduling time for each date"
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _vm._l(_vm.datesArray, function(date, index) {
+                            return _c("div", { staticClass: "container" }, [
+                              _c("div", { staticClass: "row" }, [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "col-sm-6 mt-3 mt-sm-3 text-center text-sm-left"
+                                  },
+                                  [
+                                    _c(
+                                      "time",
+                                      {
+                                        staticClass:
+                                          "font-weight-bold font-italic",
+                                        attrs: { datetime: "2020-07-07" }
+                                      },
+                                      [_vm._v(_vm._s(date))]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "col-sm-3" },
+                                  [
+                                    _c(
+                                      "label",
+                                      { attrs: { for: "start-time" } },
+                                      [_vm._v("Start Time")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("flat-pickr", {
+                                      staticClass:
+                                        "form-control pto_modal__input mb-3",
+                                      attrs: {
+                                        id: "start-time",
+                                        config: _vm.configStart,
+                                        placeholder: "Select time",
+                                        name: "start-time"
+                                      },
+                                      model: {
+                                        value: _vm.startTime,
+                                        callback: function($$v) {
+                                          _vm.startTime = $$v
+                                        },
+                                        expression: "startTime"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "col-sm-3" },
+                                  [
+                                    _c(
+                                      "label",
+                                      { attrs: { for: "start-time" } },
+                                      [_vm._v("End Time")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("flat-pickr", {
+                                      staticClass:
+                                        "form-control pto_modal__input mb-3",
+                                      attrs: {
+                                        id: "end-time",
+                                        config: _vm.configEnd,
+                                        placeholder: "Select time",
+                                        name: "end-time"
+                                      },
+                                      model: {
+                                        value: _vm.endTime,
+                                        callback: function($$v) {
+                                          _vm.endTime = $$v
+                                        },
+                                        expression: "endTime"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                )
+                              ])
+                            ])
+                          })
+                        ],
+                        2
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm._m(1)
                 ])
               ])
             ])
@@ -106906,32 +107094,6 @@ var staticRenderFns = [
         )
       ]
     )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c(
-        "label",
-        {
-          staticClass: "control-label pto_modal__label mb-2",
-          attrs: { for: "reason" }
-        },
-        [_vm._v("Reason for request")]
-      ),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "form-control pto_modal__input",
-        attrs: {
-          type: "text",
-          name: "reason",
-          id: "reason",
-          maxlength: "100",
-          placeholder: "Reason for request"
-        }
-      })
-    ])
   },
   function() {
     var _vm = this
