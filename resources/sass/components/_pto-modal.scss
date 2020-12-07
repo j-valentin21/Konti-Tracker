@@ -1,10 +1,6 @@
 .pto_modal {
-        transform:scaleY(.01) scaleX(0);
-        animation:unfoldIn 1s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
-
-    &__active {
-        overflow: hidden;
-    }
+    transform:scaleY(.01) scaleX(0);
+    animation:unfoldIn 1s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
 
     &__content {
         outline: #3d4852 solid 4px;
@@ -13,8 +9,18 @@
     &__title {
         color: $color-black;
         font-weight: 700;
-        font-size: 1.5rem;
+        font-size: 1.75rem;
     }
+
+    &__input {
+        width: 100%;
+
+        &:focus {
+            border: black solid 2px;
+            box-shadow: 0 0 0 0 rgba($color-grey, 0.0);
+        }
+    }
+
 
     &__header {
         background-color: $color-orange;
@@ -25,14 +31,18 @@
     }
 
     &__label {
+        font-weight: 600;
         font-size: 1.1rem;
-
     }
 
     &__or {
         color: $color-black;
         font-weight: 700;
         font-size: 1.1rem;
+    }
+
+    &__bg {
+        filter: blur(8px);
     }
 
     &__button {

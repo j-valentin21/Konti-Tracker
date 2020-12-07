@@ -11270,6 +11270,12 @@ body {
   overflow-wrap: break-word;
 }
 
+@media only screen and (max-width: 62.5em) {
+  .dashboard__main-content {
+    padding-left: 0%;
+  }
+}
+
 .dashboard__main-content--grey {
   background-color: darkgrey;
   padding: 1.5rem 6%;
@@ -12556,10 +12562,6 @@ body {
           animation: unfoldIn 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
 
-.pto_modal__active {
-  overflow: hidden;
-}
-
 .pto_modal__content {
   outline: #3d4852 solid 4px;
 }
@@ -12567,7 +12569,16 @@ body {
 .pto_modal__title {
   color: #000000;
   font-weight: 700;
-  font-size: 1.5rem;
+  font-size: 1.75rem;
+}
+
+.pto_modal__input {
+  width: 100%;
+}
+
+.pto_modal__input:focus {
+  border: black solid 2px;
+  box-shadow: 0 0 0 0 rgba(227, 227, 227, 0);
 }
 
 .pto_modal__header {
@@ -12579,6 +12590,7 @@ body {
 }
 
 .pto_modal__label {
+  font-weight: 600;
   font-size: 1.1rem;
 }
 
@@ -12586,6 +12598,11 @@ body {
   color: #000000;
   font-weight: 700;
   font-size: 1.1rem;
+}
+
+.pto_modal__bg {
+  -webkit-filter: blur(8px);
+          filter: blur(8px);
 }
 
 .pto_modal__button {
