@@ -11270,6 +11270,12 @@ body {
   overflow-wrap: break-word;
 }
 
+@media only screen and (max-width: 62.5em) {
+  .dashboard__main-content {
+    padding-left: 0%;
+  }
+}
+
 .dashboard__main-content--grey {
   background-color: darkgrey;
   padding: 1.5rem 6%;
@@ -12629,10 +12635,5 @@ body {
 .pto_modal__button--black:active {
   transform: translateY(-0.3rem);
   box-shadow: 0rem 0.5rem 1rem rgba(0, 0, 0, 0.2);
-}
-
-.modal-backdrop {
-  filter: blur(8px);
-  -webkit-filter: blur(8px);
 }
 

@@ -26,6 +26,10 @@
         padding-top: 1.5rem;
         overflow-wrap: break-word;
 
+        @include respond(tab-land) {
+            padding-left:0%;
+        }
+
         &--grey {
             background-color: darkgrey;
             padding:1.5rem 6%;

@@ -29,40 +29,41 @@
                                     name="date">
                                 </flat-pickr>
                             </div>
-
                             <div v-if="selectDate" class="form-group">
                                 <label class="control-label pto_modal__label my-3">Choose your scheduling time for each date</label>
-                                <div v-for="(date, index) in datesArray" class="container">
-                                    <div class="row">
-                                        <div class="col-sm-6 mt-3 mt-sm-3 text-center text-sm-left">
-                                            <time class="font-weight-bold font-italic" datetime="2020-07-07">{{date}}</time>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <label for="start-time">Start Time</label>
-                                            <flat-pickr
-                                                id="start-time"
-                                                v-model="startTime"
-                                                :config="configStart"
-                                                class="form-control pto_modal__input mb-3"
-                                                placeholder="Select time"
-                                                name="start-time">
-                                            </flat-pickr>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <label for="start-time">End Time</label>
-                                            <flat-pickr
-                                                id="end-time"
-                                                v-model="endTime"
-                                                :config="configEnd"
-                                                class="form-control pto_modal__input mb-3"
-                                                placeholder="Select time"
-                                                name="end-time">
-                                            </flat-pickr>
+                                <transition-group name="list">
+                                    <div v-for="(date, index) in datesArray" :key="date" class="container">
+                                        <div class="row">
+                                            <div class="col-sm-6 mt-3 mt-sm-3 text-center text-sm-left">
+                                                <time class="font-weight-bold font-italic" datetime="2020-07-07">{{date}}</time>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <label for="start-time">Start Time</label>
+                                                <flat-pickr
+                                                    id="start-time"
+                                                    v-model="startTime"
+                                                    :config="configStart"
+                                                    class="form-control pto_modal__input mb-3"
+                                                    placeholder="Select time"
+                                                    name="start-time">
+                                                </flat-pickr>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <label for="start-time">End Time</label>
+                                                <flat-pickr
+                                                    id="end-time"
+                                                    v-model="endTime"
+                                                    :config="configEnd"
+                                                    class="form-control pto_modal__input mb-3"
+                                                    placeholder="Select time"
+                                                    name="end-time">
+                                                </flat-pickr>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                </transition-group>
                             </div>
-                            <div class="text-right mt-3">
+                            <div class="text-center text-sm-right mt-3">
                                 <input type="submit" class="pto_modal__button pto_modal__button--black" value="Submit">
                             </div>
                         </form>
@@ -165,4 +166,25 @@ export default {
 .flatpickr-rContainer {
     background-color: #FFFAFA;
 }
+
+.list-enter-active,
+.list-leave-active {
+    transition: opacity .5s ease-in-out, transform 0.5s ease;
+}
+
+.list-enter-active {
+    transistion-delay:0.5s
+}
+
+.list-enter, .list-leave-to {
+    opacity: 0;
+    transform: translateX(-100px);
+}
+
+
+.list-enter-to, .view-leave {
+    opacity: 1;
+    transform: translateX(0px);
+}
+
 </style>

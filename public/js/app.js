@@ -24832,6 +24832,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -45853,7 +45854,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.flatpickr-months .flatpickr-prev-month svg {\n    fill: white;\n}\n.flatpickr-current-month {\n    color: orange;\n    font-weight: bolder;\n}\n.flatpickr-months .flatpickr-month {\n    background-color: black;\n}\n.flatpickr-months .flatpickr-next-month svg {\n    fill: white;\n}\n.flatpickr-rContainer {\n    background-color: #FFFAFA;\n}\n", ""]);
+exports.push([module.i, "\n.flatpickr-months .flatpickr-prev-month svg {\n    fill: white;\n}\n.flatpickr-current-month {\n    color: orange;\n    font-weight: bolder;\n}\n.flatpickr-months .flatpickr-month {\n    background-color: black;\n}\n.flatpickr-months .flatpickr-next-month svg {\n    fill: white;\n}\n.flatpickr-rContainer {\n    background-color: #FFFAFA;\n}\n.list-enter-active,\n.list-leave-active {\n    transition: opacity .5s ease-in-out, transform 0.5s ease;\n}\n.list-enter-active {\n    transistion-delay:0.5s\n}\n.list-enter, .list-leave-to {\n    opacity: 0;\n    transform: translateX(-100px);\n}\n.list-enter-to, .view-leave {\n    opacity: 1;\n    transform: translateX(0px);\n}\n\n", ""]);
 
 // exports
 
@@ -106961,94 +106962,103 @@ var render = function() {
                             ]
                           ),
                           _vm._v(" "),
-                          _vm._l(_vm.datesArray, function(date, index) {
-                            return _c("div", { staticClass: "container" }, [
-                              _c("div", { staticClass: "row" }, [
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass:
-                                      "col-sm-6 mt-3 mt-sm-3 text-center text-sm-left"
-                                  },
-                                  [
+                          _c(
+                            "transition-group",
+                            { attrs: { name: "list" } },
+                            _vm._l(_vm.datesArray, function(date, index) {
+                              return _c(
+                                "div",
+                                { key: date, staticClass: "container" },
+                                [
+                                  _c("div", { staticClass: "row" }, [
                                     _c(
-                                      "time",
+                                      "div",
                                       {
                                         staticClass:
-                                          "font-weight-bold font-italic",
-                                        attrs: { datetime: "2020-07-07" }
+                                          "col-sm-6 mt-3 mt-sm-3 text-center text-sm-left"
                                       },
-                                      [_vm._v(_vm._s(date))]
+                                      [
+                                        _c(
+                                          "time",
+                                          {
+                                            staticClass:
+                                              "font-weight-bold font-italic",
+                                            attrs: { datetime: "2020-07-07" }
+                                          },
+                                          [_vm._v(_vm._s(date))]
+                                        )
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      { staticClass: "col-sm-3" },
+                                      [
+                                        _c(
+                                          "label",
+                                          { attrs: { for: "start-time" } },
+                                          [_vm._v("Start Time")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c("flat-pickr", {
+                                          staticClass:
+                                            "form-control pto_modal__input mb-3",
+                                          attrs: {
+                                            id: "start-time",
+                                            config: _vm.configStart,
+                                            placeholder: "Select time",
+                                            name: "start-time"
+                                          },
+                                          model: {
+                                            value: _vm.startTime,
+                                            callback: function($$v) {
+                                              _vm.startTime = $$v
+                                            },
+                                            expression: "startTime"
+                                          }
+                                        })
+                                      ],
+                                      1
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      { staticClass: "col-sm-3" },
+                                      [
+                                        _c(
+                                          "label",
+                                          { attrs: { for: "start-time" } },
+                                          [_vm._v("End Time")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c("flat-pickr", {
+                                          staticClass:
+                                            "form-control pto_modal__input mb-3",
+                                          attrs: {
+                                            id: "end-time",
+                                            config: _vm.configEnd,
+                                            placeholder: "Select time",
+                                            name: "end-time"
+                                          },
+                                          model: {
+                                            value: _vm.endTime,
+                                            callback: function($$v) {
+                                              _vm.endTime = $$v
+                                            },
+                                            expression: "endTime"
+                                          }
+                                        })
+                                      ],
+                                      1
                                     )
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  { staticClass: "col-sm-3" },
-                                  [
-                                    _c(
-                                      "label",
-                                      { attrs: { for: "start-time" } },
-                                      [_vm._v("Start Time")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c("flat-pickr", {
-                                      staticClass:
-                                        "form-control pto_modal__input mb-3",
-                                      attrs: {
-                                        id: "start-time",
-                                        config: _vm.configStart,
-                                        placeholder: "Select time",
-                                        name: "start-time"
-                                      },
-                                      model: {
-                                        value: _vm.startTime,
-                                        callback: function($$v) {
-                                          _vm.startTime = $$v
-                                        },
-                                        expression: "startTime"
-                                      }
-                                    })
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  { staticClass: "col-sm-3" },
-                                  [
-                                    _c(
-                                      "label",
-                                      { attrs: { for: "start-time" } },
-                                      [_vm._v("End Time")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c("flat-pickr", {
-                                      staticClass:
-                                        "form-control pto_modal__input mb-3",
-                                      attrs: {
-                                        id: "end-time",
-                                        config: _vm.configEnd,
-                                        placeholder: "Select time",
-                                        name: "end-time"
-                                      },
-                                      model: {
-                                        value: _vm.endTime,
-                                        callback: function($$v) {
-                                          _vm.endTime = $$v
-                                        },
-                                        expression: "endTime"
-                                      }
-                                    })
-                                  ],
-                                  1
-                                )
-                              ])
-                            ])
-                          })
+                                  ])
+                                ]
+                              )
+                            }),
+                            0
+                          )
                         ],
-                        2
+                        1
                       )
                     : _vm._e(),
                   _vm._v(" "),
@@ -107099,7 +107109,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "text-right mt-3" }, [
+    return _c("div", { staticClass: "text-center text-sm-right mt-3" }, [
       _c("input", {
         staticClass: "pto_modal__button pto_modal__button--black",
         attrs: { type: "submit", value: "Submit" }
