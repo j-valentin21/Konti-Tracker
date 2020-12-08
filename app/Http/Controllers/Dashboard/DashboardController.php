@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 
-use App\Http\Requests\RequestPTODayRequest;
 use App\Profile;
 use App\User;
 use Illuminate\Http\Request;
@@ -79,13 +78,14 @@ class DashboardController extends Controller
         $data = $profile->points_usage;
         return response()->json($data);
     }
+
     /**
      * Create Request for PTO day.
      *
-     *
+     * @param Request $request
      */
-    public function create()
+    public function create(request $request)
     {
-        return redirect('/dashboard');
+        dd($request->all());
     }
 }

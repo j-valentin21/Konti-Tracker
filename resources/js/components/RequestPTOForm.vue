@@ -8,7 +8,7 @@
                 </div>
                 <div class="modal-body pto">
                     <div class="container">
-                        <form method="POST">
+                        <form method="POST" @submit.prevent = 'submitPTOForm'>
                             <div class="form-group">
                                 <label for="pto-consumed" class="control-label pto_modal__label mr-3 mt-3">How much PTO days do you want to use?</label>
                                 <input v-model.number="ptoDays" type="number" id="pto-consumed" name="pto-consumed" placeholder="Days"
@@ -41,22 +41,20 @@
                                                 <label for="start-time">Start Time</label>
                                                 <flat-pickr
                                                     id="start-time"
-                                                    v-model="startTime"
-                                                    :config="configStart"
+                                                    v-model="startTime.time[index]"
+                                                    :config="configTime"
                                                     class="form-control pto_modal__input mb-3"
-                                                    placeholder="Select time"
-                                                    name="start-time">
+                                                    placeholder="Select time">
                                                 </flat-pickr>
                                             </div>
                                             <div class="col-sm-3">
                                                 <label for="start-time">End Time</label>
                                                 <flat-pickr
                                                     id="end-time"
-                                                    v-model="endTime"
-                                                    :config="configEnd"
+                                                    v-model="endTime.time[index]"
+                                                    :config="configTime"
                                                     class="form-control pto_modal__input mb-3"
-                                                    placeholder="Select time"
-                                                    name="end-time">
+                                                    placeholder="Select time">
                                                 </flat-pickr>
                                             </div>
                                         </div>
@@ -64,7 +62,7 @@
                                 </transition-group>
                             </div>
                             <div class="text-center text-sm-right mt-3">
-                                <input type="submit" class="pto_modal__button pto_modal__button--black" value="Submit">
+                                <button type="submit" class="pto_modal__button pto_modal__button--black">Submit</button>
                             </div>
                         </form>
                     </div>
@@ -85,8 +83,12 @@ export default {
             reason:'',
             date: '',
             datesArray: [],
-            startTime:'',
-            endTime:'',
+            startTime: {
+                time:["8:00 AM","8:00 AM","8:00 AM","8:00 AM","8:00 AM"],
+            },
+            endTime: {
+                time:["4:30 PM", "4:30 PM","4:30 PM","4:30 PM","4:30 PM",],
+            },
             selectDate: false,
             config: {
                 wrap: true,
@@ -111,21 +113,12 @@ export default {
                     },
                 ],
             },
-            configStart: {
+            configTime: {
                 minTime: "8:00",
                 maxTime: "16:30",
                 enableTime: true,
                 noCalendar: true,
                 dateFormat: "h:i K",
-                defaultDate: "8:00"
-            },
-            configEnd: {
-                minTime: "8:00",
-                maxTime: "16:30",
-                enableTime: true,
-                noCalendar: true,
-                dateFormat: "h:i K",
-                defaultDate: "16:30"
             },
         }
     },
@@ -137,6 +130,14 @@ export default {
         onChange: function(selectedDates, dateStr, instance){
             this.datesArray = dateStr.split(",");
             this.selectDate = dateStr !== '';
+        },
+        submitPTOForm() {
+            axios.post("/dashboard", this.$data)
+                .then( response => {
+
+                    console.log(response);
+                })
+                .catch(error => this.errors.record(error.response.data.errors))
         },
     },
     components: {
