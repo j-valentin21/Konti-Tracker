@@ -45,8 +45,22 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasOne(Profile::class);
     }
+    /**
+     * Create relationship between user and calendar
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function calendar()
     {
         return $this->hasMany(Calendar::class);
+    }
+    /**
+     * Create relationship between user and requestPTO
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function p_t_o_request()
+    {
+        return $this->hasMany(PTORequest::class);
     }
 }

@@ -24841,10 +24841,10 @@ __webpack_require__.r(__webpack_exports__);
       date: '',
       datesArray: [],
       startTime: {
-        time: ["8:00 AM", "8:00 AM", "8:00 AM", "8:00 AM", "8:00 AM"]
+        time: []
       },
       endTime: {
-        time: ["4:30 PM", "4:30 PM", "4:30 PM", "4:30 PM", "4:30 PM"]
+        time: []
       },
       selectDate: false,
       config: {

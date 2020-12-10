@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 
 use App\Profile;
-use App\User;
+use App\PTORequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
 
@@ -86,6 +86,13 @@ class DashboardController extends Controller
      */
     public function create(request $request)
     {
-        dd($request->all());
+        $request_pto = new PTORequest();
+        $request_pto->user_id = auth()->user()->id;
+        $request_pto->pto_days = $request->ptoDays;
+        $request_pto->reason_for_request = $request->reason;
+        $request_pto->dates = $request->datesArray;
+        $request_pto->start_times = $request->startTime["time"];
+        $request_pto->end_times = $request->endTime["time"];
+        $request_pto->save();
     }
 }
