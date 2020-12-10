@@ -16,8 +16,8 @@ class CreatePTORequestsTable extends Migration
         Schema::create('p_t_o_requests', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedBigInteger('user_id')->nullable()->index();
-            $table->string('reason_for_request');
-            $table->tinyInteger('pto_days');
+            $table->string('reason_for_request', 100);
+            $table->float('pto_days', 5, 2);
             $table->json('dates');
             $table->json('start_times');
             $table->json('end_times');
