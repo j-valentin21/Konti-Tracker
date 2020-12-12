@@ -30,7 +30,7 @@
                 :key="day.dt"
                 class="d-flex align-items-center"
                 :class="{'mt-4' : index > 0}"
-               v-if="index >= 1">
+                v-if="index >= 1">
 
                 <div class="container-fluid">
                     <div class="row">

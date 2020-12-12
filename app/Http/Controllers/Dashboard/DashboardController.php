@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 
-use App\Http\Requests\RequestPTODayRequest;
+use App\Http\Requests\PTOFormRequest;
 use App\Profile;
-use App\User;
+use App\PTORequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
 
@@ -79,13 +79,21 @@ class DashboardController extends Controller
         $data = $profile->points_usage;
         return response()->json($data);
     }
+
     /**
      * Create Request for PTO day.
      *
-     *
+     * @param Request $request
      */
-    public function create()
+    public function create(PTOFormRequest $request)
     {
-        return redirect('/dashboard');
+        $request_pto = new PTORequest();
+        $request_pto->user_id = auth()->user()->id;
+        $request_pto->pto_days = $request->ptoDays;
+        $request_pto->reason_for_request = $request->reason;
+        $request_pto->dates = $request->datesArray;
+        $request_pto->start_times = $request->startTime;
+        $request_pto->end_times = $request->endTime;
+        $request_pto->save();
     }
 }
