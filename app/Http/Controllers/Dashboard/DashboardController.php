@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 
+use App\Http\Requests\PTOFormRequest;
 use App\Profile;
 use App\PTORequest;
 use Illuminate\Http\Request;
@@ -84,15 +85,15 @@ class DashboardController extends Controller
      *
      * @param Request $request
      */
-    public function create(request $request)
+    public function create(PTOFormRequest $request)
     {
         $request_pto = new PTORequest();
         $request_pto->user_id = auth()->user()->id;
         $request_pto->pto_days = $request->ptoDays;
         $request_pto->reason_for_request = $request->reason;
         $request_pto->dates = $request->datesArray;
-        $request_pto->start_times = $request->startTime["time"];
-        $request_pto->end_times = $request->endTime["time"];
+        $request_pto->start_times = $request->startTime;
+        $request_pto->end_times = $request->endTime;
         $request_pto->save();
     }
 }

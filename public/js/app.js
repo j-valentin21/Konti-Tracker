@@ -24757,6 +24757,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_flatpickr_component__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_flatpickr_component__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var flatpickr_dist_flatpickr_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! flatpickr/dist/flatpickr.css */ "./node_modules/flatpickr/dist/flatpickr.css");
 /* harmony import */ var flatpickr_dist_flatpickr_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(flatpickr_dist_flatpickr_css__WEBPACK_IMPORTED_MODULE_1__);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
 //
 //
 //
@@ -24831,6 +24837,89 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/**
+ * Keeps track of all of laravel's validation errors that come from axios.
+ */
+var Errors = /*#__PURE__*/function () {
+  /**
+   * Create a new controller instance.
+   *
+   * @return void
+   */
+  function Errors() {
+    _classCallCheck(this, Errors);
+
+    this.errors = {};
+  }
+  /**
+   * Checks to see if this.errors has a 'field' property.
+   *
+   * @return boolean
+   */
+
+
+  _createClass(Errors, [{
+    key: "has",
+    value: function has(field) {
+      return this.errors.hasOwnProperty(field);
+    }
+    /**
+     * Get error(field) name to display correct error.
+     *
+     * @return object
+     */
+
+  }, {
+    key: "get",
+    value: function get(field) {
+      if (this.errors[field]) {
+        return this.errors[field][0];
+      }
+    }
+    /**
+     * Get error from axios and store it.
+     *
+     * @return void
+     */
+
+  }, {
+    key: "record",
+    value: function record(errors) {
+      this.errors = errors;
+    }
+    /**
+     * Delete error message on keydown.
+     *
+     * @return void
+     */
+
+  }, {
+    key: "clear",
+    value: function clear(field) {
+      delete this.errors[field];
+    }
+  }]);
+
+  return Errors;
+}();
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -24839,13 +24928,10 @@ __webpack_require__.r(__webpack_exports__);
       ptoDays: '',
       reason: '',
       date: '',
+      errors: new Errors(),
       datesArray: [],
-      startTime: {
-        time: []
-      },
-      endTime: {
-        time: []
-      },
+      startTime: [],
+      endTime: [],
       selectDate: false,
       config: {
         wrap: true,
@@ -24886,7 +24972,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.post("/dashboard", this.$data).then(function (response) {
-        console.log(response);
+        window.location.href = '/dashboard';
       })["catch"](function (error) {
         return _this.errors.record(error.response.data.errors);
       });
@@ -45856,7 +45942,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.flatpickr-months .flatpickr-prev-month svg {\n    fill: white;\n}\n.flatpickr-current-month {\n    color: orange;\n    font-weight: bolder;\n}\n.flatpickr-months .flatpickr-month {\n    background-color: black;\n}\n.flatpickr-months .flatpickr-next-month svg {\n    fill: white;\n}\n.flatpickr-rContainer {\n    background-color: #FFFAFA;\n}\n.list-enter-active,\n.list-leave-active {\n    transition: opacity .5s ease-in-out, transform 0.5s ease;\n}\n.list-enter-active {\n    transistion-delay:0.5s\n}\n.list-enter, .list-leave-to {\n    opacity: 0;\n    transform: translateX(-100px);\n}\n.list-enter-to, .view-leave {\n    opacity: 1;\n    transform: translateX(0px);\n}\n\n", ""]);
+exports.push([module.i, "\n.flatpickr-months .flatpickr-prev-month svg {\n    fill: white;\n}\n.flatpickr-current-month {\n    color: orange;\n    font-weight: bolder;\n}\n.flatpickr-months .flatpickr-month {\n    background-color: black;\n}\n.flatpickr-months .flatpickr-next-month svg {\n    fill: white;\n}\n.flatpickr-rContainer {\n    background-color: #FFFAFA;\n}\n.list-enter-active,\n.list-leave-active {\n    transition: opacity .5s ease-in-out, transform 0.5s ease;\n}\n.list-enter-active {\n    transistion-delay:0.5s\n}\n.list-enter, .list-leave-to {\n    opacity: 0;\n    transform: translateX(-100px);\n}\n.list-enter-to, .view-leave {\n    opacity: 1;\n    transform: translateX(0px);\n}\n", ""]);
 
 // exports
 
@@ -106841,6 +106927,9 @@ var render = function() {
                       submit: function($event) {
                         $event.preventDefault()
                         return _vm.submitPTOForm($event)
+                      },
+                      keydown: function($event) {
+                        return _vm.errors.clear($event.target.name)
                       }
                     }
                   },
@@ -106873,7 +106962,8 @@ var render = function() {
                           placeholder: "Days",
                           step: ".25",
                           min: "0.25",
-                          max: "40"
+                          max: "40",
+                          required: ""
                         },
                         domProps: { value: _vm.ptoDays },
                         on: {
@@ -106889,6 +106979,15 @@ var render = function() {
                         }
                       })
                     ]),
+                    _vm._v(" "),
+                    _vm.errors.has("ptoDays")
+                      ? _c("strong", {
+                          staticClass: "text-danger",
+                          domProps: {
+                            textContent: _vm._s(_vm.errors.get("ptoDays"))
+                          }
+                        })
+                      : _vm._e(),
                     _vm._v(" "),
                     _c("div", { staticClass: "form-group" }, [
                       _c(
@@ -106915,7 +107014,8 @@ var render = function() {
                           name: "reason",
                           id: "reason",
                           maxlength: "100",
-                          placeholder: "Reason for request"
+                          placeholder: "Reason for request",
+                          required: ""
                         },
                         domProps: { value: _vm.reason },
                         on: {
@@ -106928,6 +107028,15 @@ var render = function() {
                         }
                       })
                     ]),
+                    _vm._v(" "),
+                    _vm.errors.has("reason")
+                      ? _c("strong", {
+                          staticClass: "text-danger",
+                          domProps: {
+                            textContent: _vm._s(_vm.errors.get("reason"))
+                          }
+                        })
+                      : _vm._e(),
                     _vm._v(" "),
                     _c(
                       "div",
@@ -106960,6 +107069,15 @@ var render = function() {
                       ],
                       1
                     ),
+                    _vm._v(" "),
+                    _vm.errors.has("date")
+                      ? _c("strong", {
+                          staticClass: "text-danger",
+                          domProps: {
+                            textContent: _vm._s(_vm.errors.get("date"))
+                          }
+                        })
+                      : _vm._e(),
                     _vm._v(" "),
                     _vm.selectDate
                       ? _c(
@@ -107021,21 +107139,21 @@ var render = function() {
                                             staticClass:
                                               "form-control pto_modal__input mb-3",
                                             attrs: {
+                                              name: "startTime",
                                               id: "start-time",
                                               config: _vm.configTime,
                                               placeholder: "Select time"
                                             },
                                             model: {
-                                              value: _vm.startTime.time[index],
+                                              value: _vm.startTime[index],
                                               callback: function($$v) {
                                                 _vm.$set(
-                                                  _vm.startTime.time,
+                                                  _vm.startTime,
                                                   index,
                                                   $$v
                                                 )
                                               },
-                                              expression:
-                                                "startTime.time[index]"
+                                              expression: "startTime[index]"
                                             }
                                           })
                                         ],
@@ -107056,20 +107174,21 @@ var render = function() {
                                             staticClass:
                                               "form-control pto_modal__input mb-3",
                                             attrs: {
+                                              name: "endTime",
                                               id: "end-time",
                                               config: _vm.configTime,
                                               placeholder: "Select time"
                                             },
                                             model: {
-                                              value: _vm.endTime.time[index],
+                                              value: _vm.endTime[index],
                                               callback: function($$v) {
                                                 _vm.$set(
-                                                  _vm.endTime.time,
+                                                  _vm.endTime,
                                                   index,
                                                   $$v
                                                 )
                                               },
-                                              expression: "endTime.time[index]"
+                                              expression: "endTime[index]"
                                             }
                                           })
                                         ],
@@ -107084,6 +107203,26 @@ var render = function() {
                           ],
                           1
                         )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.errors.has("startTime")
+                      ? _c("strong", {
+                          staticClass: "text-danger",
+                          domProps: {
+                            textContent: _vm._s(_vm.errors.get("startTime"))
+                          }
+                        })
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c("br"),
+                    _vm._v(" "),
+                    _vm.errors.has("endTime")
+                      ? _c("strong", {
+                          staticClass: "text-danger",
+                          domProps: {
+                            textContent: _vm._s(_vm.errors.get("endTime"))
+                          }
+                        })
                       : _vm._e(),
                     _vm._v(" "),
                     _vm._m(1)
