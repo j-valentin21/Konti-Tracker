@@ -87,6 +87,7 @@ class DashboardController extends Controller
      */
     public function create(PTOFormRequest $request)
     {
+        $profile = Profile::find(auth()->user()->id);
         $validated = $request->validated();
         $request_pto = new PTORequest();
         $request_pto->fill($validated);
@@ -94,5 +95,9 @@ class DashboardController extends Controller
         $request_pto->start_times = $request->start_times;
         $request_pto->end_times = $request->end_times;
         $request_pto->save();
+        $pto_used = $profile->pto - $request->pto_days;
+        $profile->pto = $pto_used;
+        $profile->pending = $profile->pending + $request->pto_days;
+        $profile->save();
     }
 }

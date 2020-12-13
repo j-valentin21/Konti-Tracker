@@ -24972,7 +24972,8 @@ var Errors = /*#__PURE__*/function () {
     submitPTOForm: function submitPTOForm() {
       var _this = this;
 
-      axios.post("/dashboard", this.$data).then(function (response) {// window.location.href = '/dashboard';
+      axios.post("/dashboard", this.$data).then(function (response) {
+        window.location.href = '/dashboard';
       })["catch"](function (error) {
         return _this.errors.record(error.response.data.errors);
       });
@@ -106499,7 +106500,7 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("h4", { staticClass: "my-3 text-white" }, [
-              _vm._v(_vm._s(_vm.pto_value))
+              _vm._v(_vm._s(_vm.pto_value + " Days"))
             ])
           ]),
           _vm._v(" "),

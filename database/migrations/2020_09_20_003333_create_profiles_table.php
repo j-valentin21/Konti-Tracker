@@ -17,9 +17,9 @@ class CreateProfilesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id')->nullable()->index();
             $table->string('position')->nullable();
-            $table->tinyInteger('pto')->nullable();
+            $table->float('pto', 5, 2)->nullable();
             $table->tinyInteger('points')->nullable();
-            $table->tinyInteger('pending')->default(0);
+            $table->float('pending')->default(0);
             $table->json('pto_usage')->nullable();
             $table->json('points_usage')->nullable();
             $table->string('avatar')->nullable();
