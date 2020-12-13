@@ -24345,13 +24345,13 @@ __webpack_require__.r(__webpack_exports__);
     increasePTO: function increasePTO() {
       if (this.pto_value < 40) {
         this.showPTOButton = true;
-        this.pto_value++;
+        this.pto_value += .25;
       }
     },
     decreasePTO: function decreasePTO() {
       if (this.pto_value > 0) {
         this.showPTOButton = true;
-        this.pto_value--;
+        this.pto_value -= .25;
       }
     },
     increasePoints: function increasePoints() {
@@ -24721,7 +24721,7 @@ __webpack_require__.r(__webpack_exports__);
         backgroundColor: ['rgba(40, 167, 69, 0.4)', 'rgba(233, 236, 239, .7)'],
         borderColor: ['rgb(40, 167, 69)', 'rgba(0, 0, 0, .6)'],
         borderWidth: 2,
-        data: [this.pto - this.pendingData, this.pendingData]
+        data: [this.pto, this.pendingData]
       }]
     };
     this.pieChart = new Chart(ctx, {

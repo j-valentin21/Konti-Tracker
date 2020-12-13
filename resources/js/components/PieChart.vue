@@ -34,7 +34,7 @@ export default{
                     'rgba(0, 0, 0, .6)'
                 ],
                 borderWidth: 2,
-                data: [this.pto - this.pendingData,this.pendingData]
+                data: [this.pto,this.pendingData]
             }]
         };
         this.pieChart = new Chart(ctx, {
@@ -50,7 +50,6 @@ export default{
                     duration: 2000,
                     easing: 'easeInOutQuint'
                 },
-
             }
         });
     }

@@ -67,13 +67,13 @@ export default {
         increasePTO: function () {
             if (this.pto_value < 40) {
                 this.showPTOButton = true
-                this.pto_value++;
+                this.pto_value+= .25;
             }
         },
         decreasePTO:  function() {
             if(this.pto_value > 0) {
                 this.showPTOButton = true
-                this.pto_value--;
+                this.pto_value-= .25;
             }
         },
         increasePoints: function() {
