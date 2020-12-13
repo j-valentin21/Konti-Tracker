@@ -15,7 +15,6 @@ class PTOFormRequest extends FormRequest
     {
         return true;
     }
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -27,28 +26,26 @@ class PTOFormRequest extends FormRequest
         $count = count($date);
 
         return [
-            'ptoDays' => 'required|numeric|max:40',
-            'reason' => 'required|string|min:5|max:100',
-            'date' => 'required',
-            'startTime' => 'array|min:' . $count,
-            'startTime.*' => 'required',
-            'endTime' => 'array|min:' . $count,
-            'endTime.*' => 'required'
+            'pto_days' => 'required|numeric|max:40',
+            'reason_for_request' => 'required|string|min:5|max:100',
+            'dates' => 'required',
+            'start_times' => 'array|min:' . $count,
+            'end_times' => 'array|min:' . $count,
         ];
     }
-
     /**
      * Get the error messages for the defined validation rules.
-     *.
+     *
      * @return array
      */
     public function messages()
     {
         return [
             'reason.required' => 'The reason for request field is required',
-            'startTime.required' => 'All start time fields are required',
-            'endTime.required'  => 'All end time fields are required',
+            'start_times.min' => 'All start time fields are required',
+            'end_times.min'  => 'All end time fields are required',
+            'start_times.required' => 'All start time fields are required',
+            'end_times.required'  => 'All end time fields are required',
         ];
     }
-
 }

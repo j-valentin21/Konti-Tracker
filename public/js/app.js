@@ -24853,6 +24853,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 //
 //
 //
+//
 
 /**
  * Keeps track of all of laravel's validation errors that come from axios.
@@ -24925,13 +24926,13 @@ var Errors = /*#__PURE__*/function () {
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      ptoDays: '',
-      reason: '',
-      date: '',
+      pto_days: '',
+      reason_for_request: '',
+      dates: '',
       errors: new Errors(),
       datesArray: [],
-      startTime: [],
-      endTime: [],
+      start_times: [],
+      end_times: [],
       selectDate: false,
       config: {
         wrap: true,
@@ -24971,8 +24972,7 @@ var Errors = /*#__PURE__*/function () {
     submitPTOForm: function submitPTOForm() {
       var _this = this;
 
-      axios.post("/dashboard", this.$data).then(function (response) {
-        window.location.href = '/dashboard';
+      axios.post("/dashboard", this.$data).then(function (response) {// window.location.href = '/dashboard';
       })["catch"](function (error) {
         return _this.errors.record(error.response.data.errors);
       });
@@ -106950,28 +106950,28 @@ var render = function() {
                           {
                             name: "model",
                             rawName: "v-model.number",
-                            value: _vm.ptoDays,
-                            expression: "ptoDays",
+                            value: _vm.pto_days,
+                            expression: "pto_days",
                             modifiers: { number: true }
                           }
                         ],
                         attrs: {
                           type: "number",
                           id: "pto-consumed",
-                          name: "pto-consumed",
+                          name: "pto_days",
                           placeholder: "Days",
                           step: ".25",
                           min: "0.25",
                           max: "40",
                           required: ""
                         },
-                        domProps: { value: _vm.ptoDays },
+                        domProps: { value: _vm.pto_days },
                         on: {
                           input: function($event) {
                             if ($event.target.composing) {
                               return
                             }
-                            _vm.ptoDays = _vm._n($event.target.value)
+                            _vm.pto_days = _vm._n($event.target.value)
                           },
                           blur: function($event) {
                             return _vm.$forceUpdate()
@@ -106980,11 +106980,11 @@ var render = function() {
                       })
                     ]),
                     _vm._v(" "),
-                    _vm.errors.has("ptoDays")
+                    _vm.errors.has("pto_days")
                       ? _c("strong", {
                           staticClass: "text-danger",
                           domProps: {
-                            textContent: _vm._s(_vm.errors.get("ptoDays"))
+                            textContent: _vm._s(_vm.errors.get("pto_days"))
                           }
                         })
                       : _vm._e(),
@@ -106994,7 +106994,7 @@ var render = function() {
                         "label",
                         {
                           staticClass: "control-label pto_modal__label my-3",
-                          attrs: { for: "reason" }
+                          attrs: { for: "reason_for_request" }
                         },
                         [_vm._v("Reason for request")]
                       ),
@@ -107004,36 +107004,38 @@ var render = function() {
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.reason,
-                            expression: "reason"
+                            value: _vm.reason_for_request,
+                            expression: "reason_for_request"
                           }
                         ],
                         staticClass: "form-control pto_modal__input",
                         attrs: {
                           type: "text",
-                          name: "reason",
-                          id: "reason",
+                          name: "reason_for_request",
+                          id: "reason_for_request",
                           maxlength: "100",
                           placeholder: "Reason for request",
                           required: ""
                         },
-                        domProps: { value: _vm.reason },
+                        domProps: { value: _vm.reason_for_request },
                         on: {
                           input: function($event) {
                             if ($event.target.composing) {
                               return
                             }
-                            _vm.reason = $event.target.value
+                            _vm.reason_for_request = $event.target.value
                           }
                         }
                       })
                     ]),
                     _vm._v(" "),
-                    _vm.errors.has("reason")
+                    _vm.errors.has("reason_for_request")
                       ? _c("strong", {
                           staticClass: "text-danger",
                           domProps: {
-                            textContent: _vm._s(_vm.errors.get("reason"))
+                            textContent: _vm._s(
+                              _vm.errors.get("reason_for_request")
+                            )
                           }
                         })
                       : _vm._e(),
@@ -107059,22 +107061,22 @@ var render = function() {
                           },
                           on: { "on-change": _vm.onChange },
                           model: {
-                            value: _vm.date,
+                            value: _vm.dates,
                             callback: function($$v) {
-                              _vm.date = $$v
+                              _vm.dates = $$v
                             },
-                            expression: "date"
+                            expression: "dates"
                           }
                         })
                       ],
                       1
                     ),
                     _vm._v(" "),
-                    _vm.errors.has("date")
+                    _vm.errors.has("dates")
                       ? _c("strong", {
                           staticClass: "text-danger",
                           domProps: {
-                            textContent: _vm._s(_vm.errors.get("date"))
+                            textContent: _vm._s(_vm.errors.get("dates"))
                           }
                         })
                       : _vm._e(),
@@ -107131,7 +107133,7 @@ var render = function() {
                                         [
                                           _c(
                                             "label",
-                                            { attrs: { for: "start-time" } },
+                                            { attrs: { for: "start_times" } },
                                             [_vm._v("Start Time")]
                                           ),
                                           _vm._v(" "),
@@ -107139,21 +107141,21 @@ var render = function() {
                                             staticClass:
                                               "form-control pto_modal__input mb-3",
                                             attrs: {
-                                              name: "startTime",
-                                              id: "start-time",
+                                              name: "start_times",
+                                              id: "start_times",
                                               config: _vm.configTime,
                                               placeholder: "Select time"
                                             },
                                             model: {
-                                              value: _vm.startTime[index],
+                                              value: _vm.start_times[index],
                                               callback: function($$v) {
                                                 _vm.$set(
-                                                  _vm.startTime,
+                                                  _vm.start_times,
                                                   index,
                                                   $$v
                                                 )
                                               },
-                                              expression: "startTime[index]"
+                                              expression: "start_times[index]"
                                             }
                                           })
                                         ],
@@ -107166,7 +107168,7 @@ var render = function() {
                                         [
                                           _c(
                                             "label",
-                                            { attrs: { for: "start-time" } },
+                                            { attrs: { for: "end_times" } },
                                             [_vm._v("End Time")]
                                           ),
                                           _vm._v(" "),
@@ -107174,21 +107176,21 @@ var render = function() {
                                             staticClass:
                                               "form-control pto_modal__input mb-3",
                                             attrs: {
-                                              name: "endTime",
-                                              id: "end-time",
+                                              name: "end_times",
+                                              id: "end_times",
                                               config: _vm.configTime,
                                               placeholder: "Select time"
                                             },
                                             model: {
-                                              value: _vm.endTime[index],
+                                              value: _vm.end_times[index],
                                               callback: function($$v) {
                                                 _vm.$set(
-                                                  _vm.endTime,
+                                                  _vm.end_times,
                                                   index,
                                                   $$v
                                                 )
                                               },
-                                              expression: "endTime[index]"
+                                              expression: "end_times[index]"
                                             }
                                           })
                                         ],
@@ -107205,22 +107207,22 @@ var render = function() {
                         )
                       : _vm._e(),
                     _vm._v(" "),
-                    _vm.errors.has("startTime")
+                    _vm.errors.has("start_times")
                       ? _c("strong", {
                           staticClass: "text-danger",
                           domProps: {
-                            textContent: _vm._s(_vm.errors.get("startTime"))
+                            textContent: _vm._s(_vm.errors.get("start_times"))
                           }
                         })
                       : _vm._e(),
                     _vm._v(" "),
                     _c("br"),
                     _vm._v(" "),
-                    _vm.errors.has("endTime")
+                    _vm.errors.has("end_times")
                       ? _c("strong", {
                           staticClass: "text-danger",
                           domProps: {
-                            textContent: _vm._s(_vm.errors.get("endTime"))
+                            textContent: _vm._s(_vm.errors.get("end_times"))
                           }
                         })
                       : _vm._e(),

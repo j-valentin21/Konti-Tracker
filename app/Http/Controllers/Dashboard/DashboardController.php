@@ -87,13 +87,12 @@ class DashboardController extends Controller
      */
     public function create(PTOFormRequest $request)
     {
+        $validated = $request->validated();
         $request_pto = new PTORequest();
+        $request_pto->fill($validated);
         $request_pto->user_id = auth()->user()->id;
-        $request_pto->pto_days = $request->ptoDays;
-        $request_pto->reason_for_request = $request->reason;
-        $request_pto->dates = $request->datesArray;
-        $request_pto->start_times = $request->startTime;
-        $request_pto->end_times = $request->endTime;
+        $request_pto->start_times = $request->start_times;
+        $request_pto->end_times = $request->end_times;
         $request_pto->save();
     }
 }
