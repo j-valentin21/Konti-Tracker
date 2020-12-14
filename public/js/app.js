@@ -24782,8 +24782,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['pto'],
   data: function data() {
     return {
+      actualPTO: this.pto,
       pto_days: '',
       reason_for_request: '',
       dates: '',

@@ -87,6 +87,7 @@ class DashboardController extends Controller
      */
     public function create(PTOFormRequest $request)
     {
+        $redis = Redis::connection();
         $profile = Profile::find(auth()->user()->id);
         $validated = $request->validated();
         $request_pto = new PTORequest();
@@ -98,6 +99,7 @@ class DashboardController extends Controller
         $pto_used = $profile->pto - $request->pto_days;
         $profile->pto = $pto_used;
         $profile->pending = $profile->pending + $request->pto_days;
+        $redis->set('message_' .  auth()->id(), 'Your PTO request has been successfully created! Awaiting approval for your request');
         $profile->save();
     }
 }

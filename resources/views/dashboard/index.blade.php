@@ -32,7 +32,7 @@
                                               :pto="{{ $profile->pto }}">
                                 </incrementers>
                                 <div class="row align-items-center">
-                                    <div class="col-8">
+                                    <div class="col-12">
                                         <p class="my-4 dashboard__card__text">Pending</p>
                                         <h4 class="my-3 text-white">{{ $profile->pending . " " . "Days" }}</h4>
                                     </div>
@@ -185,7 +185,7 @@
                                                 <li class="pagination__item"><a class="pagination__link" href="#">Next</a></li>
                                             </ul>
                                         </div>
-                                        <request-pto-form/>
+                                        <request-pto-form :pto="{{ $profile->pto }}"/>
                                     </div>
                                 </div>
                             </div>

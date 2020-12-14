@@ -95,8 +95,10 @@ import 'flatpickr/dist/flatpickr.css';
 import { Errors } from '../error.js'
 
 export default {
+    props:['pto'],
     data () {
         return {
+            actualPTO: this.pto,
             pto_days:'',
             reason_for_request:'',
             dates: '',
