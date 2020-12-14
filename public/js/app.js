@@ -24520,12 +24520,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
+/* harmony import */ var _error_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../error.js */ "./resources/js/error.js");
 //
 //
 //
@@ -24564,79 +24559,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 //
 //
 //
-
-/**
- * Keeps track of all of laravel's validation errors that come from axios.
- */
-var Errors = /*#__PURE__*/function () {
-  /**
-   * Create a new controller instance.
-   *
-   * @return void
-   */
-  function Errors() {
-    _classCallCheck(this, Errors);
-
-    this.errors = {};
-  }
-  /**
-   * Checks to see if this.errors has a 'field' property.
-   *
-   * @return boolean
-   */
-
-
-  _createClass(Errors, [{
-    key: "has",
-    value: function has(field) {
-      return this.errors.hasOwnProperty(field);
-    }
-    /**
-     * Get error(field) name to display correct error.
-     *
-     * @return object
-     */
-
-  }, {
-    key: "get",
-    value: function get(field) {
-      if (this.errors[field]) {
-        return this.errors[field][0];
-      }
-    }
-    /**
-     * Get error from axios and store it.
-     *
-     * @return void
-     */
-
-  }, {
-    key: "record",
-    value: function record(errors) {
-      this.errors = errors;
-    }
-    /**
-     * Delete error message on keydown.
-     *
-     * @return void
-     */
-
-  }, {
-    key: "clear",
-    value: function clear(field) {
-      delete this.errors[field];
-    }
-  }]);
-
-  return Errors;
-}();
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       email: '',
       password: '',
-      errors: new Errors()
+      errors: new _error_js__WEBPACK_IMPORTED_MODULE_0__["Errors"]()
     };
   },
   methods: {
@@ -24757,12 +24686,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_flatpickr_component__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_flatpickr_component__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var flatpickr_dist_flatpickr_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! flatpickr/dist/flatpickr.css */ "./node_modules/flatpickr/dist/flatpickr.css");
 /* harmony import */ var flatpickr_dist_flatpickr_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(flatpickr_dist_flatpickr_css__WEBPACK_IMPORTED_MODULE_1__);
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
+/* harmony import */ var _error_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../error.js */ "./resources/js/error.js");
 //
 //
 //
@@ -24854,72 +24778,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 //
 //
 //
-
-/**
- * Keeps track of all of laravel's validation errors that come from axios.
- */
-var Errors = /*#__PURE__*/function () {
-  /**
-   * Create a new controller instance.
-   *
-   * @return void
-   */
-  function Errors() {
-    _classCallCheck(this, Errors);
-
-    this.errors = {};
-  }
-  /**
-   * Checks to see if this.errors has a 'field' property.
-   *
-   * @return boolean
-   */
-
-
-  _createClass(Errors, [{
-    key: "has",
-    value: function has(field) {
-      return this.errors.hasOwnProperty(field);
-    }
-    /**
-     * Get error(field) name to display correct error.
-     *
-     * @return object
-     */
-
-  }, {
-    key: "get",
-    value: function get(field) {
-      if (this.errors[field]) {
-        return this.errors[field][0];
-      }
-    }
-    /**
-     * Get error from axios and store it.
-     *
-     * @return void
-     */
-
-  }, {
-    key: "record",
-    value: function record(errors) {
-      this.errors = errors;
-    }
-    /**
-     * Delete error message on keydown.
-     *
-     * @return void
-     */
-
-  }, {
-    key: "clear",
-    value: function clear(field) {
-      delete this.errors[field];
-    }
-  }]);
-
-  return Errors;
-}();
 
 
 
@@ -24929,7 +24787,7 @@ var Errors = /*#__PURE__*/function () {
       pto_days: '',
       reason_for_request: '',
       dates: '',
-      errors: new Errors(),
+      errors: new _error_js__WEBPACK_IMPORTED_MODULE_2__["Errors"](),
       datesArray: [],
       start_times: [],
       end_times: [],
@@ -120668,6 +120526,90 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Weather_vue_vue_type_template_id_41e7714e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/error.js":
+/*!*******************************!*\
+  !*** ./resources/js/error.js ***!
+  \*******************************/
+/*! exports provided: Errors */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Errors", function() { return Errors; });
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+/**
+ * Keeps track of all of laravel validation errors that come from axios.
+ */
+var Errors = /*#__PURE__*/function () {
+  /**
+   * Create a new controller instance.
+   *
+   * @return void
+   */
+  function Errors() {
+    _classCallCheck(this, Errors);
+
+    this.errors = {};
+  }
+  /**
+   * Checks to see if this.errors has a 'field' property.
+   *
+   * @return boolean
+   */
+
+
+  _createClass(Errors, [{
+    key: "has",
+    value: function has(field) {
+      return this.errors.hasOwnProperty(field);
+    }
+    /**
+     * Get error(field) name to display correct error.
+     *
+     * @return object
+     */
+
+  }, {
+    key: "get",
+    value: function get(field) {
+      if (this.errors[field]) {
+        return this.errors[field][0];
+      }
+    }
+    /**
+     * Get error from axios and store it.
+     *
+     * @return void
+     */
+
+  }, {
+    key: "record",
+    value: function record(errors) {
+      this.errors = errors;
+    }
+    /**
+     * Delete error message on keydown.
+     *
+     * @return void
+     */
+
+  }, {
+    key: "clear",
+    value: function clear(field) {
+      delete this.errors[field];
+    }
+  }]);
+
+  return Errors;
+}();
 
 /***/ }),
 
