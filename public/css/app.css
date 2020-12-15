@@ -11955,6 +11955,7 @@ body {
 
 .dashboard__card__text {
   color: #7f879c;
+  padding: 0.25rem 0.5rem;
 }
 
 .dashboard__card__chart {

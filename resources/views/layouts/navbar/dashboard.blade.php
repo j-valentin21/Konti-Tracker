@@ -24,7 +24,7 @@
                             </svg> Profile
                         </a>
                         <a class="dropdown-item dashboard__card__text hover__black" href="{{ route('dashboard.password.index') }}">
-                            <svg class="icons pb-1 pl-2">
+                            <svg class="icons pb-2 pl-3 pr-3">
                                 <use href="{{ asset('svg/sprite.svg#icon-key-outline') }}"></use>
                             </svg> Change Password
                         </a>
