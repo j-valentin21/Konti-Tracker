@@ -11,30 +11,31 @@
                         <form method="POST" @submit.prevent = 'submitPTOForm' @keydown="errors.clear($event.target.name)">
                             <div class="form-group">
                                 <label for="pto-consumed" class="control-label pto_modal__label mr-3 mt-3">How much PTO days do you want to use?</label>
-                                <input v-model.number="ptoDays" type="number" id="pto-consumed" name="pto-consumed" placeholder="Days"
+                                <input v-model.number="pto_days" type="number" id="pto-consumed" name="pto_days" placeholder="Days"
                                        step=".25" min="0.25" max="40" required>
                             </div>
-                            <strong v-if="errors.has('ptoDays')" v-text="errors.get('ptoDays')" class="text-danger"></strong>
+                            <strong v-if="errors.has('pto_days')" v-text="errors.get('pto_days')" class="text-danger"></strong>
 
                             <div class="form-group">
-                                <label for="reason" class="control-label pto_modal__label my-3">Reason for request</label>
-                                <input v-model="reason" type="text" class="form-control pto_modal__input" name="reason" id="reason" maxlength="100" placeholder="Reason for request"
+                                <label for="reason_for_request" class="control-label pto_modal__label my-3">Reason for request</label>
+                                <input v-model="reason_for_request" type="text" class="form-control pto_modal__input" name="reason_for_request"
+                                       id="reason_for_request" maxlength="100" placeholder="Reason for request"
                                 required>
                             </div>
-                            <strong v-if="errors.has('reason')" v-text="errors.get('reason')" class="text-danger"></strong>
+                            <strong v-if="errors.has('reason_for_request')" v-text="errors.get('reason_for_request')" class="text-danger"></strong>
 
                             <div class="form-group">
                                 <label class="control-label pto_modal__label my-3">Choose your date</label>
                                 <flat-pickr
                                     @on-change="onChange"
-                                    v-model="date"
+                                    v-model="dates"
                                     :config="config"
                                     class="form-control pto_modal__input mb-3"
                                     placeholder="Select date"
                                     name="date">
                                 </flat-pickr>
                             </div>
-                            <strong v-if="errors.has('date')" v-text="errors.get('date')" class="text-danger"></strong>
+                            <strong v-if="errors.has('dates')" v-text="errors.get('dates')" class="text-danger"></strong>
 
                             <div v-if="selectDate" class="form-group">
                                 <label class="control-label pto_modal__label my-3">Choose your scheduling time for each date</label>
@@ -46,11 +47,11 @@
                                             </div>
 
                                             <div class="col-sm-3">
-                                                <label for="start-time">Start Time</label>
+                                                <label for="start_times">Start Time</label>
                                                 <flat-pickr
-                                                    name="startTime"
-                                                    id="start-time"
-                                                    v-model="startTime[index]"
+                                                    name="start_times"
+                                                    id="start_times"
+                                                    v-model="start_times[index]"
                                                     :config="configTime"
                                                     class="form-control pto_modal__input mb-3"
                                                     placeholder="Select time">
@@ -58,11 +59,11 @@
                                             </div>
 
                                             <div class="col-sm-3">
-                                                <label for="start-time">End Time</label>
+                                                <label for="end_times">End Time</label>
                                                 <flat-pickr
-                                                    name="endTime"
-                                                    id="end-time"
-                                                    v-model="endTime[index]"
+                                                    name="end_times"
+                                                    id="end_times"
+                                                    v-model="end_times[index]"
                                                     :config="configTime"
                                                     class="form-control pto_modal__input mb-3"
                                                     placeholder="Select time">
@@ -73,9 +74,9 @@
                                     </div>
                                 </transition-group>
                             </div>
-                            <strong v-if="errors.has('startTime')" v-text="errors.get('startTime')" class="text-danger"></strong>
+                            <strong v-if="errors.has('start_times')" v-text="errors.get('start_times')" class="text-danger"></strong>
                             <br>
-                            <strong v-if="errors.has('endTime')" v-text="errors.get('endTime')" class="text-danger"></strong>
+                            <strong v-if="errors.has('end_times')" v-text="errors.get('end_times')" class="text-danger"></strong>
 
                             <div class="text-center text-sm-right mt-3">
                                 <button type="submit" class="pto_modal__button pto_modal__button--black">Submit</button>
@@ -89,69 +90,22 @@
 </template>
 
 <script>
-/**
- * Keeps track of all of laravel's validation errors that come from axios.
- */
-class Errors {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    constructor() {
-        this.errors = {};
-    }
-    /**
-     * Checks to see if this.errors has a 'field' property.
-     *
-     * @return boolean
-     */
-    has(field) {
-        return this.errors.hasOwnProperty(field);
-    }
-
-    /**
-     * Get error(field) name to display correct error.
-     *
-     * @return object
-     */
-    get(field) {
-        if (this.errors[field]) {
-            return this.errors[field][0];
-        }
-    }
-
-    /**
-     * Get error from axios and store it.
-     *
-     * @return void
-     */
-    record(errors) {
-        this.errors = errors;
-    }
-    /**
-     * Delete error message on keydown.
-     *
-     * @return void
-     */
-    clear(field) {
-        delete this.errors[field];
-    }
-
-}
 import flatPickr from 'vue-flatpickr-component';
 import 'flatpickr/dist/flatpickr.css';
+import { Errors } from '../error.js'
 
 export default {
+    props:['pto'],
     data () {
         return {
-            ptoDays:'',
-            reason:'',
-            date: '',
+            actualPTO: this.pto,
+            pto_days:'',
+            reason_for_request:'',
+            dates: '',
             errors: new Errors(),
             datesArray: [],
-            startTime: [],
-            endTime:[],
+            start_times: [],
+            end_times:[],
             selectDate: false,
             config: {
                 wrap: true,

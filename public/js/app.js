@@ -24345,13 +24345,13 @@ __webpack_require__.r(__webpack_exports__);
     increasePTO: function increasePTO() {
       if (this.pto_value < 40) {
         this.showPTOButton = true;
-        this.pto_value++;
+        this.pto_value += .25;
       }
     },
     decreasePTO: function decreasePTO() {
       if (this.pto_value > 0) {
         this.showPTOButton = true;
-        this.pto_value--;
+        this.pto_value -= .25;
       }
     },
     increasePoints: function increasePoints() {
@@ -24520,12 +24520,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
+/* harmony import */ var _error_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../error.js */ "./resources/js/error.js");
 //
 //
 //
@@ -24564,79 +24559,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 //
 //
 //
-
-/**
- * Keeps track of all of laravel's validation errors that come from axios.
- */
-var Errors = /*#__PURE__*/function () {
-  /**
-   * Create a new controller instance.
-   *
-   * @return void
-   */
-  function Errors() {
-    _classCallCheck(this, Errors);
-
-    this.errors = {};
-  }
-  /**
-   * Checks to see if this.errors has a 'field' property.
-   *
-   * @return boolean
-   */
-
-
-  _createClass(Errors, [{
-    key: "has",
-    value: function has(field) {
-      return this.errors.hasOwnProperty(field);
-    }
-    /**
-     * Get error(field) name to display correct error.
-     *
-     * @return object
-     */
-
-  }, {
-    key: "get",
-    value: function get(field) {
-      if (this.errors[field]) {
-        return this.errors[field][0];
-      }
-    }
-    /**
-     * Get error from axios and store it.
-     *
-     * @return void
-     */
-
-  }, {
-    key: "record",
-    value: function record(errors) {
-      this.errors = errors;
-    }
-    /**
-     * Delete error message on keydown.
-     *
-     * @return void
-     */
-
-  }, {
-    key: "clear",
-    value: function clear(field) {
-      delete this.errors[field];
-    }
-  }]);
-
-  return Errors;
-}();
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       email: '',
       password: '',
-      errors: new Errors()
+      errors: new _error_js__WEBPACK_IMPORTED_MODULE_0__["Errors"]()
     };
   },
   methods: {
@@ -24721,7 +24650,7 @@ __webpack_require__.r(__webpack_exports__);
         backgroundColor: ['rgba(40, 167, 69, 0.4)', 'rgba(233, 236, 239, .7)'],
         borderColor: ['rgb(40, 167, 69)', 'rgba(0, 0, 0, .6)'],
         borderWidth: 2,
-        data: [this.pto - this.pendingData, this.pendingData]
+        data: [this.pto, this.pendingData]
       }]
     };
     this.pieChart = new Chart(ctx, {
@@ -24757,12 +24686,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_flatpickr_component__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_flatpickr_component__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var flatpickr_dist_flatpickr_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! flatpickr/dist/flatpickr.css */ "./node_modules/flatpickr/dist/flatpickr.css");
 /* harmony import */ var flatpickr_dist_flatpickr_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(flatpickr_dist_flatpickr_css__WEBPACK_IMPORTED_MODULE_1__);
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
+/* harmony import */ var _error_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../error.js */ "./resources/js/error.js");
 //
 //
 //
@@ -24853,85 +24777,22 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 //
 //
 //
-
-/**
- * Keeps track of all of laravel's validation errors that come from axios.
- */
-var Errors = /*#__PURE__*/function () {
-  /**
-   * Create a new controller instance.
-   *
-   * @return void
-   */
-  function Errors() {
-    _classCallCheck(this, Errors);
-
-    this.errors = {};
-  }
-  /**
-   * Checks to see if this.errors has a 'field' property.
-   *
-   * @return boolean
-   */
-
-
-  _createClass(Errors, [{
-    key: "has",
-    value: function has(field) {
-      return this.errors.hasOwnProperty(field);
-    }
-    /**
-     * Get error(field) name to display correct error.
-     *
-     * @return object
-     */
-
-  }, {
-    key: "get",
-    value: function get(field) {
-      if (this.errors[field]) {
-        return this.errors[field][0];
-      }
-    }
-    /**
-     * Get error from axios and store it.
-     *
-     * @return void
-     */
-
-  }, {
-    key: "record",
-    value: function record(errors) {
-      this.errors = errors;
-    }
-    /**
-     * Delete error message on keydown.
-     *
-     * @return void
-     */
-
-  }, {
-    key: "clear",
-    value: function clear(field) {
-      delete this.errors[field];
-    }
-  }]);
-
-  return Errors;
-}();
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['pto'],
   data: function data() {
     return {
-      ptoDays: '',
-      reason: '',
-      date: '',
-      errors: new Errors(),
+      actualPTO: this.pto,
+      pto_days: '',
+      reason_for_request: '',
+      dates: '',
+      errors: new _error_js__WEBPACK_IMPORTED_MODULE_2__["Errors"](),
       datesArray: [],
-      startTime: [],
-      endTime: [],
+      start_times: [],
+      end_times: [],
       selectDate: false,
       config: {
         wrap: true,
@@ -106499,7 +106360,7 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("h4", { staticClass: "my-3 text-white" }, [
-              _vm._v(_vm._s(_vm.pto_value))
+              _vm._v(_vm._s(_vm.pto_value + " Days"))
             ])
           ]),
           _vm._v(" "),
@@ -106950,28 +106811,28 @@ var render = function() {
                           {
                             name: "model",
                             rawName: "v-model.number",
-                            value: _vm.ptoDays,
-                            expression: "ptoDays",
+                            value: _vm.pto_days,
+                            expression: "pto_days",
                             modifiers: { number: true }
                           }
                         ],
                         attrs: {
                           type: "number",
                           id: "pto-consumed",
-                          name: "pto-consumed",
+                          name: "pto_days",
                           placeholder: "Days",
                           step: ".25",
                           min: "0.25",
                           max: "40",
                           required: ""
                         },
-                        domProps: { value: _vm.ptoDays },
+                        domProps: { value: _vm.pto_days },
                         on: {
                           input: function($event) {
                             if ($event.target.composing) {
                               return
                             }
-                            _vm.ptoDays = _vm._n($event.target.value)
+                            _vm.pto_days = _vm._n($event.target.value)
                           },
                           blur: function($event) {
                             return _vm.$forceUpdate()
@@ -106980,11 +106841,11 @@ var render = function() {
                       })
                     ]),
                     _vm._v(" "),
-                    _vm.errors.has("ptoDays")
+                    _vm.errors.has("pto_days")
                       ? _c("strong", {
                           staticClass: "text-danger",
                           domProps: {
-                            textContent: _vm._s(_vm.errors.get("ptoDays"))
+                            textContent: _vm._s(_vm.errors.get("pto_days"))
                           }
                         })
                       : _vm._e(),
@@ -106994,7 +106855,7 @@ var render = function() {
                         "label",
                         {
                           staticClass: "control-label pto_modal__label my-3",
-                          attrs: { for: "reason" }
+                          attrs: { for: "reason_for_request" }
                         },
                         [_vm._v("Reason for request")]
                       ),
@@ -107004,36 +106865,38 @@ var render = function() {
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.reason,
-                            expression: "reason"
+                            value: _vm.reason_for_request,
+                            expression: "reason_for_request"
                           }
                         ],
                         staticClass: "form-control pto_modal__input",
                         attrs: {
                           type: "text",
-                          name: "reason",
-                          id: "reason",
+                          name: "reason_for_request",
+                          id: "reason_for_request",
                           maxlength: "100",
                           placeholder: "Reason for request",
                           required: ""
                         },
-                        domProps: { value: _vm.reason },
+                        domProps: { value: _vm.reason_for_request },
                         on: {
                           input: function($event) {
                             if ($event.target.composing) {
                               return
                             }
-                            _vm.reason = $event.target.value
+                            _vm.reason_for_request = $event.target.value
                           }
                         }
                       })
                     ]),
                     _vm._v(" "),
-                    _vm.errors.has("reason")
+                    _vm.errors.has("reason_for_request")
                       ? _c("strong", {
                           staticClass: "text-danger",
                           domProps: {
-                            textContent: _vm._s(_vm.errors.get("reason"))
+                            textContent: _vm._s(
+                              _vm.errors.get("reason_for_request")
+                            )
                           }
                         })
                       : _vm._e(),
@@ -107059,22 +106922,22 @@ var render = function() {
                           },
                           on: { "on-change": _vm.onChange },
                           model: {
-                            value: _vm.date,
+                            value: _vm.dates,
                             callback: function($$v) {
-                              _vm.date = $$v
+                              _vm.dates = $$v
                             },
-                            expression: "date"
+                            expression: "dates"
                           }
                         })
                       ],
                       1
                     ),
                     _vm._v(" "),
-                    _vm.errors.has("date")
+                    _vm.errors.has("dates")
                       ? _c("strong", {
                           staticClass: "text-danger",
                           domProps: {
-                            textContent: _vm._s(_vm.errors.get("date"))
+                            textContent: _vm._s(_vm.errors.get("dates"))
                           }
                         })
                       : _vm._e(),
@@ -107131,7 +106994,7 @@ var render = function() {
                                         [
                                           _c(
                                             "label",
-                                            { attrs: { for: "start-time" } },
+                                            { attrs: { for: "start_times" } },
                                             [_vm._v("Start Time")]
                                           ),
                                           _vm._v(" "),
@@ -107139,21 +107002,21 @@ var render = function() {
                                             staticClass:
                                               "form-control pto_modal__input mb-3",
                                             attrs: {
-                                              name: "startTime",
-                                              id: "start-time",
+                                              name: "start_times",
+                                              id: "start_times",
                                               config: _vm.configTime,
                                               placeholder: "Select time"
                                             },
                                             model: {
-                                              value: _vm.startTime[index],
+                                              value: _vm.start_times[index],
                                               callback: function($$v) {
                                                 _vm.$set(
-                                                  _vm.startTime,
+                                                  _vm.start_times,
                                                   index,
                                                   $$v
                                                 )
                                               },
-                                              expression: "startTime[index]"
+                                              expression: "start_times[index]"
                                             }
                                           })
                                         ],
@@ -107166,7 +107029,7 @@ var render = function() {
                                         [
                                           _c(
                                             "label",
-                                            { attrs: { for: "start-time" } },
+                                            { attrs: { for: "end_times" } },
                                             [_vm._v("End Time")]
                                           ),
                                           _vm._v(" "),
@@ -107174,21 +107037,21 @@ var render = function() {
                                             staticClass:
                                               "form-control pto_modal__input mb-3",
                                             attrs: {
-                                              name: "endTime",
-                                              id: "end-time",
+                                              name: "end_times",
+                                              id: "end_times",
                                               config: _vm.configTime,
                                               placeholder: "Select time"
                                             },
                                             model: {
-                                              value: _vm.endTime[index],
+                                              value: _vm.end_times[index],
                                               callback: function($$v) {
                                                 _vm.$set(
-                                                  _vm.endTime,
+                                                  _vm.end_times,
                                                   index,
                                                   $$v
                                                 )
                                               },
-                                              expression: "endTime[index]"
+                                              expression: "end_times[index]"
                                             }
                                           })
                                         ],
@@ -107205,22 +107068,22 @@ var render = function() {
                         )
                       : _vm._e(),
                     _vm._v(" "),
-                    _vm.errors.has("startTime")
+                    _vm.errors.has("start_times")
                       ? _c("strong", {
                           staticClass: "text-danger",
                           domProps: {
-                            textContent: _vm._s(_vm.errors.get("startTime"))
+                            textContent: _vm._s(_vm.errors.get("start_times"))
                           }
                         })
                       : _vm._e(),
                     _vm._v(" "),
                     _c("br"),
                     _vm._v(" "),
-                    _vm.errors.has("endTime")
+                    _vm.errors.has("end_times")
                       ? _c("strong", {
                           staticClass: "text-danger",
                           domProps: {
-                            textContent: _vm._s(_vm.errors.get("endTime"))
+                            textContent: _vm._s(_vm.errors.get("end_times"))
                           }
                         })
                       : _vm._e(),
@@ -120665,6 +120528,90 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Weather_vue_vue_type_template_id_41e7714e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/error.js":
+/*!*******************************!*\
+  !*** ./resources/js/error.js ***!
+  \*******************************/
+/*! exports provided: Errors */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Errors", function() { return Errors; });
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+/**
+ * Keeps track of all of laravel validation errors that come from axios.
+ */
+var Errors = /*#__PURE__*/function () {
+  /**
+   * Create a new controller instance.
+   *
+   * @return void
+   */
+  function Errors() {
+    _classCallCheck(this, Errors);
+
+    this.errors = {};
+  }
+  /**
+   * Checks to see if this.errors has a 'field' property.
+   *
+   * @return boolean
+   */
+
+
+  _createClass(Errors, [{
+    key: "has",
+    value: function has(field) {
+      return this.errors.hasOwnProperty(field);
+    }
+    /**
+     * Get error(field) name to display correct error.
+     *
+     * @return object
+     */
+
+  }, {
+    key: "get",
+    value: function get(field) {
+      if (this.errors[field]) {
+        return this.errors[field][0];
+      }
+    }
+    /**
+     * Get error from axios and store it.
+     *
+     * @return void
+     */
+
+  }, {
+    key: "record",
+    value: function record(errors) {
+      this.errors = errors;
+    }
+    /**
+     * Delete error message on keydown.
+     *
+     * @return void
+     */
+
+  }, {
+    key: "clear",
+    value: function clear(field) {
+      delete this.errors[field];
+    }
+  }]);
+
+  return Errors;
+}();
 
 /***/ }),
 

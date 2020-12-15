@@ -7,7 +7,7 @@
             <div class="row align-items-center">
                 <div class="col-8">
                     <p class="mb-2 dashboard__card__text ">PTO</p>
-                    <h4  class="my-3 text-white">{{ pto_value }}</h4>
+                    <h4  class="my-3 text-white">{{ `${pto_value} Days`}}</h4>
                 </div>
                 <div class="col-4">
                     <div class="text-right">
@@ -67,13 +67,13 @@ export default {
         increasePTO: function () {
             if (this.pto_value < 40) {
                 this.showPTOButton = true
-                this.pto_value++;
+                this.pto_value+= .25;
             }
         },
         decreasePTO:  function() {
             if(this.pto_value > 0) {
                 this.showPTOButton = true
-                this.pto_value--;
+                this.pto_value-= .25;
             }
         },
         increasePoints: function() {
