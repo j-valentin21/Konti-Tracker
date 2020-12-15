@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 
 use App\Http\Requests\PTOFormRequest;
+use App\Jobs\ApprovePTORequestJob;
 use App\Profile;
 use App\PTORequest;
 use Illuminate\Http\Request;
@@ -24,6 +25,31 @@ class DashboardController extends Controller
         $message = $redis->get('message_' .  auth()->id());
         $redis->expire('message_' . auth()->id(),5);
         return view('dashboard.index', ['message'=>$message, 'profile'=> $profile]);
+    }
+    /**
+     * Create Request for PTO day.
+     *
+     * @param Request $request
+     */
+    public function create(PTOFormRequest $request)
+    {
+        $redis = Redis::connection();
+        $profile = Profile::find(auth()->user()->id);
+        $validated = $request->validated();
+        $request_pto = new PTORequest();
+        $request_pto->fill($validated);
+        $request_pto->user_id = auth()->user()->id;
+        $request_pto->start_times = $request->start_times;
+        $request_pto->end_times = $request->end_times;
+        $pto_used = $profile->pto - $request->pto_days;
+        $profile->pto = $pto_used;
+        $profile->pending = $profile->pending + $request->pto_days;
+        $redis->set('message_' .  auth()->id(), 'Your PTO request has been successfully created! Awaiting approval for your request');
+        $redis->expire('message_' . auth()->id(),5);
+        ApprovePTORequestJob::dispatch(auth()->user()->id, $request->pto_days)
+            ->delay(now()->addMinutes(15));
+        $request_pto->save();
+        $profile->save();
     }
     /**
      * Update PTO or points on the dashboard view.
@@ -78,28 +104,5 @@ class DashboardController extends Controller
         $profile = Profile::find(auth()->user()->id);
         $data = $profile->points_usage;
         return response()->json($data);
-    }
-
-    /**
-     * Create Request for PTO day.
-     *
-     * @param Request $request
-     */
-    public function create(PTOFormRequest $request)
-    {
-        $redis = Redis::connection();
-        $profile = Profile::find(auth()->user()->id);
-        $validated = $request->validated();
-        $request_pto = new PTORequest();
-        $request_pto->fill($validated);
-        $request_pto->user_id = auth()->user()->id;
-        $request_pto->start_times = $request->start_times;
-        $request_pto->end_times = $request->end_times;
-        $request_pto->save();
-        $pto_used = $profile->pto - $request->pto_days;
-        $profile->pto = $pto_used;
-        $profile->pending = $profile->pending + $request->pto_days;
-        $redis->set('message_' .  auth()->id(), 'Your PTO request has been successfully created! Awaiting approval for your request');
-        $profile->save();
     }
 }
