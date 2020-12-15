@@ -17,7 +17,7 @@
                 </div>
             </div>
             <form v-if="showPTOButton" method="POST" @submit.prevent = 'submitCount'>
-                <div class="text-center">
+                <div class="text-center mt-3">
                     <button class="btn__submit">Submit</button>
                 </div>
             </form>
@@ -36,7 +36,7 @@
                 </div>
             </div>
             <form v-if="showPointsButton" method="POST" @submit.prevent = 'submitCount'>
-                <div class="text-center">
+                <div class="text-center mt-3">
                     <button type="submit" class="btn__submit">Submit</button>
                 </div>
             </form>

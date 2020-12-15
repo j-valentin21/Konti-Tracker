@@ -106468,7 +106468,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "text-center" }, [
+    return _c("div", { staticClass: "text-center mt-3" }, [
       _c("button", { staticClass: "btn__submit" }, [_vm._v("Submit")])
     ])
   },
@@ -106476,7 +106476,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "text-center" }, [
+    return _c("div", { staticClass: "text-center mt-3" }, [
       _c("button", { staticClass: "btn__submit", attrs: { type: "submit" } }, [
         _vm._v("Submit")
       ])
