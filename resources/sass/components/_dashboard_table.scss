@@ -1,0 +1,40 @@
+.dashboard__table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 1rem;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+
+    &__head {
+        background: linear-gradient(to left, #ebac00 18%, #ffae00 100%);
+        color: #ffffff;
+        text-align: left;
+        font-weight: bold;
+    }
+
+    &__body {
+       background-color: $color-white;
+    }
+
+    &__row {
+        border-bottom: 2px solid #dee2e6;
+
+        &:nth-of-type(even) {
+            background-color: #f3f3f3;
+        }
+
+        &:last-of-type {
+            border-bottom: 2px solid $color-orange;
+        }
+
+        &:hover {
+            color: $color-orange;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+    }
+    &__cell {
+        border-left: 2px solid #cfd1d7;
+    }
+}

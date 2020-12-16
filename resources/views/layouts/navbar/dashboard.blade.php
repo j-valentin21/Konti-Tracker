@@ -23,8 +23,8 @@
                                 <use href="{{ asset('svg/sprite.svg#icon-user') }}"></use>
                             </svg> Profile
                         </a>
-                        <a class="dropdown-item dashboard__card__text hover__black mb-1" href="{{ route('dashboard.profile.index') }}">
-                            <svg class="icons ">
+                        <a class="dropdown-item dashboard__card__text hover__black mb-1" href="{{ route('dashboard.PTOPoints.index') }}">
+                            <svg class="icons">
                                 <use href="{{ asset('svg/sprite.svg#icon-chart-bar-outline') }}"></use>
                             </svg> PTO/Points Data
                         </a>

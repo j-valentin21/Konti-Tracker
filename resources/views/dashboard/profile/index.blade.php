@@ -17,11 +17,11 @@
         <x-dash-sidebar/>
 
         <div class="dashboard__main">
-            <div class="dashboard__main-content  dashboard__main-content--grey m-5">
+            <div class="dashboard__main-content  dashboard__main-content--grey">
                 <form method="POST" action="{{ route('dashboard.profile.update') }}" enctype="multipart/form-data">
                 @method('PUT')
                 @csrf
-                    <div class="mx-5 mx-sm-5 container">
+                    <div class="container dashboard__form">
                         <!-- ========== NAME ========== -->
                         <div class="form-group my-4">
                             <input id="name"
@@ -61,7 +61,7 @@
                             @endif
                         </div>
                     <!-- ========== POSITION ========== -->
-                        <div class="form-group mb-4 mr-5" >
+                        <div class="form-group mb-4 " >
                             <input id="position"
                                    type="text"
                                    class="form-input registration__input registration__input--profile @error('position') is-invalid @enderror"
@@ -147,14 +147,14 @@
                 <!-- ========== REMOVE AVATAR  ========== -->
                 @if(isset(auth()->user()->profile->avatar))
                     <div class="my-3 mr-5">
-                        <h6 class="form__wizard__label">Avatar</h6>
-                        <img class=" my-3  form__wizard__img w-55" alt="Avatar" src="{{ Storage::disk('s3')->url(auth()->user()->profile->avatar) }}">
+                        <h5 class="form__wizard__label">Avatar</h5>
+                        <img class=" my-3 mx-3  form__wizard__img" alt="Avatar" src="{{ Storage::disk('s3')->url(auth()->user()->profile->avatar) }}">
                     </div>
                     <form method="POST" action="{{ route('dashboard.profile.destroy') }}">
                         @method('DELETE')
                         @csrf
                         <div class="text-center">
-                            <button type="submit" class="form__wizard__btn form__wizard__btn--red mb-5 width__25">Remove Avatar</button>
+                            <button type="submit" class="form__wizard__btn form__wizard__btn--red mb-5 width__35">Remove Avatar</button>
                         </div>
                     </form>
                 @endif

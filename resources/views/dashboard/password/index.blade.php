@@ -16,7 +16,7 @@
     <div class="container-fluid">
         <x-dash-sidebar/>
         <div class="dashboard__main my-3">
-            <div class="dashboard__main-content  dashboard__main-content--grey m-5 d-flex justify-content-center my-5">
+            <div class="dashboard__main-content  dashboard__main-content--grey d-flex justify-content-center my-5">
                 <form method="POST" action="{{ route('dashboard.password.update') }}" enctype="multipart/form-data">
                     @method('PUT')
                     @csrf
