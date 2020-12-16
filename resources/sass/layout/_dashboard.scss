@@ -21,6 +21,14 @@
             }
     }
 
+    &__form {
+        margin-left: 4rem;
+
+        @include respond(mobile-land) {
+            margin-left: 0;
+        }
+    }
+
     &__main-content {
         padding-left: 7%;
         padding-top: 1.5rem;
@@ -33,6 +41,25 @@
         &--grey {
             background-color: darkgrey;
             padding:1.5rem 6%;
+            margin: 2rem 4rem;
+
+            @include respond(tab-land) {
+                margin: 2rem 1rem
+            }
+
+            @include respond(mobile-land-bp2) {
+                padding:1.5rem 1%;
+            }
+        }
+        &--pto {
+            background-color: darkgrey;
+            padding:1.5rem 6%;
+            margin: 2rem 4rem;
+            height: 100vh;
+
+            @include respond(tab-land) {
+                margin: 2rem 1rem
+            }
 
             @include respond(mobile-land-bp2) {
                 padding:1.5rem 1%;

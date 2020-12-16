@@ -23,7 +23,6 @@
         @include respond(tab-land) {
             height: 40vh;
         }
-
     }
 
     &__img-text {
@@ -198,6 +197,9 @@
         color: $color-black;
         font-weight: 700;
         display: block;
+        font-size: 2.25rem;
+        text-decoration: underline;
+        margin: 1rem 1rem;
     }
 
 

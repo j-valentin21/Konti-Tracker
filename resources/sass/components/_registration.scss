@@ -55,8 +55,16 @@
         &--profile {
             width: 50vw;
 
-            @include respond(mobile-land-bp2) {
-                width: 50vw;
+            @include respond(tab-land) {
+                width: 80%;
+            }
+
+            @include respond(tab-land) {
+                width: 80%;
+            }
+
+            @include respond(mobile-land) {
+                width: 100%;
             }
         }
     }

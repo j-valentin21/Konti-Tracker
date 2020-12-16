@@ -18,21 +18,26 @@
                         <span class="text-white d-none d-xl-inline-block ml-1">{{ auth()->user()->name }}</span>
                     </button>
                     <div class="dropdown-menu dropdown-menu-right dashboard__card dashboard__card__dropdown">
-                        <a class="dropdown-item dashboard__card__text hover__black" href="{{ route('dashboard.profile.index') }}">
-                            <svg class="icons pl-3">
+                        <a class="dropdown-item dashboard__card__text hover__black mb-1" href="{{ route('dashboard.profile.index') }}">
+                            <svg class="icons">
                                 <use href="{{ asset('svg/sprite.svg#icon-user') }}"></use>
                             </svg> Profile
                         </a>
-                        <a class="dropdown-item dashboard__card__text hover__black" href="{{ route('dashboard.password.index') }}">
-                            <svg class="icons pb-1 pl-2">
+                        <a class="dropdown-item dashboard__card__text hover__black mb-1" href="{{ route('dashboard.PTOPoints.index') }}">
+                            <svg class="icons">
+                                <use href="{{ asset('svg/sprite.svg#icon-chart-bar-outline') }}"></use>
+                            </svg> PTO/Points Data
+                        </a>
+                        <a class="dropdown-item dashboard__card__text hover__black mb-1" href="{{ route('dashboard.password.index') }}">
+                            <svg class="icons">
                                 <use href="{{ asset('svg/sprite.svg#icon-key-outline') }}"></use>
                             </svg> Change Password
                         </a>
-                        <a class="dropdown-item dashboard__card__text hover__black"
+                        <a class="dropdown-item dashboard__card__text hover__black mb-1"
                            href="{{ route('logout') }}"
                            onclick="event.preventDefault();
                            document.getElementById('logout-form').submit();">
-                            <svg class="icons pl-3">
+                            <svg class="icons">
                                 <use href="{{ asset('svg/sprite.svg#icon-switch') }}"></use>
                             </svg> {{ __('Logout') }}
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
