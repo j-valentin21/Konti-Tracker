@@ -27,12 +27,20 @@
                 @foreach ($results as $result)
                         <tr class="dashboard__table__row">
                             <td>{{$result[1]}}</td>
-                            <td class="dashboard__table__cell">{{ $result[0] }}</td>
-                            <td class="dashboard__table__cell">{{ $result[2] }}</td>
+                            <td contenteditable="true" id="hello" class="dashboard__table__cell">{{ $result[0] }}</td>
+                            <td contenteditable="true" class="dashboard__table__cell">{{ $result[2] }}</td>
                         </tr>
                 @endforeach
                 </x-dashboard-table>
             </div>
         </div>
     </div>
+@endsection
+@section('body-scripts')
+    <script
+        src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs="
+        crossorigin="anonymous">
+    </script>
+    <script src="{{ asset('jquery/table_cell.js') }}"></script>
 @endsection
