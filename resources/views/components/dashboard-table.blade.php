@@ -9,4 +9,7 @@
             {{ $slot }}
         </tbody>
     </table>
+    <div class="text-center">
+        <button type="submit" class="form__wizard__btn form__wizard__btn--orange mt-4">Update</button>
+    </div>
 </div>

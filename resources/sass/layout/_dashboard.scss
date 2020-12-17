@@ -61,8 +61,12 @@
                 margin: 2rem 1rem
             }
 
+            @include respond(tab-port) {
+                height: 80vh;
+            }
+
             @include respond(mobile-land-bp2) {
-                padding:1.5rem 1%;
+                padding-top:2rem;
             }
         }
         &--weather {
