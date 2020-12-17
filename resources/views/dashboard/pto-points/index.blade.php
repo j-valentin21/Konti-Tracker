@@ -22,11 +22,15 @@
                     <x-slot name="table_head">
                         <th>Month</th>
                         <th>PTO Used</th>
+                        <th>Points Used</th>
                     </x-slot>
-                    <tr class="dashboard__table__row">
-                        <td>January</td>
-                        <td class="dashboard__table__cell">20</td>
-                    </tr>
+                @foreach ($results as $result)
+                        <tr class="dashboard__table__row">
+                            <td>{{$result[1]}}</td>
+                            <td class="dashboard__table__cell">{{ $result[0] }}</td>
+                            <td class="dashboard__table__cell">{{ $result[2] }}</td>
+                        </tr>
+                @endforeach
                 </x-dashboard-table>
             </div>
         </div>
