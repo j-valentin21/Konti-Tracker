@@ -55,14 +55,10 @@
             background-color: darkgrey;
             padding:1.5rem 6%;
             margin: 2rem 4rem;
-            height: 100vh;
+            height: 100%;
 
             @include respond(tab-land) {
                 margin: 2rem 1rem
-            }
-
-            @include respond(tab-port) {
-                height: 80vh;
             }
 
             @include respond(mobile-land-bp2) {

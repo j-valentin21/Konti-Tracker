@@ -12,7 +12,6 @@ class DashboardPTOPointsController extends Controller
     /**
      * Show dashboard weather view.
      *
-     *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
@@ -33,5 +32,17 @@ class DashboardPTOPointsController extends Controller
         $results->attachIterator( new \ArrayIterator($month));
         $results->attachIterator( new \ArrayIterator($pointMonths));
         return view('dashboard.pto-points.index', ['results'=> $results]);
+    }
+
+    /**
+     * Update dashboard profile view.
+     *
+     *
+     *
+     * @param Request $request
+     */
+    public function update(Request $request)
+    {
+        dd($request->all());
     }
 }

@@ -15,7 +15,6 @@
 @section('body-content')
     <div class="container-fluid">
         <x-dash-sidebar/>
-
         <div class="dashboard__main">
             <div class="dashboard__main-content  dashboard__main-content--pto">
                 <x-dashboard-table>
@@ -24,23 +23,26 @@
                         <th>PTO Used</th>
                         <th>Points Used</th>
                     </x-slot>
-                @foreach ($results as $result)
-                        <tr class="dashboard__table__row">
-                            <td>{{$result[1]}}</td>
-                            <td contenteditable="true" id="hello" class="dashboard__table__cell">{{ $result[0] }}</td>
-                            <td contenteditable="true" class="dashboard__table__cell">{{ $result[2] }}</td>
-                        </tr>
-                @endforeach
+                    <x-slot name="table_row">
+                    @foreach ($results as $result)
+                            <tr class="dashboard__table__row">
+                                <td class="font-weight-bolder">{{$result[1]}}</td>
+                                <td  class="dashboard__table__cell">
+                                    <input class="form-control" name="pto_used[]" type="number" min="0" value="{{ $result[0] }}"/>
+                                </td>
+                                <td class="dashboard__table__cell">
+                                    <input class="form-control" name="points_used[]" type="number" min="0" value="{{ $result[0] }}"/>
+                                </td>
+                            </tr>
+                    @endforeach
+                    </x-slot>
+                    <x-slot name="table_button">
+                        <div class="text-center">
+                            <button type="submit" class="form__wizard__btn form__wizard__btn--orange mt-4">Update</button>
+                        </div>
+                    </x-slot>
                 </x-dashboard-table>
             </div>
         </div>
     </div>
-@endsection
-@section('body-scripts')
-    <script
-        src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs="
-        crossorigin="anonymous">
-    </script>
-    <script src="{{ asset('jquery/table_cell.js') }}"></script>
 @endsection
