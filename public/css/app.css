@@ -11308,7 +11308,7 @@ body {
   background-color: darkgrey;
   padding: 1.5rem 6%;
   margin: 2rem 4rem;
-  height: 100vh;
+  height: 100%;
 }
 
 @media only screen and (max-width: 62.5em) {
@@ -11319,7 +11319,7 @@ body {
 
 @media only screen and (max-width: 31.25em) {
   .dashboard__main-content--pto {
-    padding: 1.5rem 1%;
+    padding-top: 2rem;
   }
 }
 
@@ -12710,6 +12710,7 @@ body {
 }
 
 .dashboard__table__row {
+  transition: all 0.25s ease-out;
   border-bottom: 2px solid #dee2e6;
 }
 
@@ -12724,7 +12725,7 @@ body {
 .dashboard__table__row:hover {
   color: #eba72b;
   font-weight: bold;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
 }
 
 .dashboard__table__cell {

@@ -74,6 +74,12 @@ class Profile extends Model
         }
     }
 
+    public function sortMonths($data) {
+
+        return array('Jan' => $data[0], 'Feb' => $data[1], 'Mar' => $data[2], 'Apr' => $data[3], 'May' => $data[4], 'June' => $data[5],
+            'July' => $data[6], 'Aug' => $data[7], 'Sept' => $data[8], 'Oct' => $data[9], 'Nov' => $data[10], 'Dec' => $data[11]);
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
