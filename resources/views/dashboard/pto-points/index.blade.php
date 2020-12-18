@@ -31,7 +31,7 @@
                                     <input class="form-control" name="pto_used[]" type="number" min="0" value="{{ $result[0] }}"/>
                                 </td>
                                 <td class="dashboard__table__cell">
-                                    <input class="form-control" name="points_used[]" type="number" min="0" value="{{ $result[0] }}"/>
+                                    <input class="form-control" name="points_used[]" type="number" min="0" value="{{ $result[2] }}"/>
                                 </td>
                             </tr>
                     @endforeach

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Profile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redis;
 use MultipleIterator;
 
 class DashboardPTOPointsController extends Controller
@@ -35,14 +36,23 @@ class DashboardPTOPointsController extends Controller
     }
 
     /**
-     * Update dashboard profile view.
-     *
-     *
+     * Update dashboard pto/points data view.
      *
      * @param Request $request
      */
     public function update(Request $request)
     {
-        dd($request->all());
+        $redis = Redis::connection();
+        $profile = Profile::find(auth()->user()->id);
+        $ptoMonths = array_map('intval', $request->request->get('pto_used', []));
+        $pointsMonths = array_map('intval', $request->request->get('points_used', []));
+        $sortedPtoMonths = $profile->sortMonths($ptoMonths);
+        $sortedPointsMonths = $profile->sortMonths($pointsMonths);
+        $profile->pto_usage = $sortedPtoMonths;
+        $profile->points_usage = $sortedPointsMonths;
+        $redis->set('message_' .  auth()->id(), 'Your PTO/Points data was successfully updated!');
+        $redis->expire('message_' . auth()->id(),5);
+        $profile->save();
+        return redirect('/dashboard');
     }
 }
