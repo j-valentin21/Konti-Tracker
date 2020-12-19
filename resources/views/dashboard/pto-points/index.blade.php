@@ -24,14 +24,29 @@
                         <th>Points Used</th>
                     </x-slot>
                     <x-slot name="table_row">
+                        <strong class="text-danger">{{ $errors->first('pto_used.*') }}</strong>
+                        <strong class="text-danger">{{ $errors->first('points_used.*') }}</strong>
                     @foreach ($results as $result)
                             <tr class="dashboard__table__row">
                                 <td class="font-weight-bolder">{{$result[1]}}</td>
                                 <td  class="dashboard__table__cell">
-                                    <input class="form-control" name="pto_used[]" type="number" min="0" value="{{ $result[0] }}"/>
+                                    <input class="form-control"
+                                           name="pto_used[]"
+                                           step=".25"
+                                           type="number"
+                                           min="0"
+                                           max="40"
+                                           value="{{ $result[0] }}"
+                                           required/>
                                 </td>
                                 <td class="dashboard__table__cell">
-                                    <input class="form-control" name="points_used[]" type="number" min="0" value="{{ $result[2] }}"/>
+                                    <input class="form-control"
+                                           name="points_used[]"
+                                           type="number"
+                                           min="0"
+                                           max="15"
+                                           value="{{ $result[2] }}"
+                                           required/>
                                 </td>
                             </tr>
                     @endforeach

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PTOPointsDataRequest;
 use App\Profile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
@@ -40,11 +41,11 @@ class DashboardPTOPointsController extends Controller
      *
      * @param Request $request
      */
-    public function update(Request $request)
+    public function update(PTOPointsDataRequest $request)
     {
         $redis = Redis::connection();
         $profile = Profile::find(auth()->user()->id);
-        $ptoMonths = array_map('intval', $request->request->get('pto_used', []));
+        $ptoMonths = array_map('floatval', $request->request->get('pto_used', []));
         $pointsMonths = array_map('intval', $request->request->get('points_used', []));
         $sortedPtoMonths = $profile->sortMonths($ptoMonths);
         $sortedPointsMonths = $profile->sortMonths($pointsMonths);
