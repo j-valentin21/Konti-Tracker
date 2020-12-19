@@ -106355,13 +106355,15 @@ var render = function() {
       _c("div", { staticClass: "pb-3 border__bottom--grey" }, [
         _c("div", { staticClass: "row align-items-center" }, [
           _c("div", { staticClass: "col-8" }, [
-            _c("p", { staticClass: "mb-2 dashboard__card__text " }, [
+            _c("h4", { staticClass: "mb-2 dashboard__card__header " }, [
               _vm._v("PTO")
             ]),
             _vm._v(" "),
-            _c("h4", { staticClass: "my-3 text-white" }, [
-              _vm._v(_vm._s(_vm.pto_value + " Days"))
-            ])
+            _c(
+              "p",
+              { staticClass: "dashboard__card__value my-3 mx-2 text-white" },
+              [_vm._v(_vm._s(_vm.pto_value + " Days"))]
+            )
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "col-4" }, [
@@ -106409,13 +106411,15 @@ var render = function() {
       _c("div", { staticClass: "py-3 border__bottom--grey" }, [
         _c("div", { staticClass: "row align-items-center" }, [
           _c("div", { staticClass: "col-8" }, [
-            _c("p", { staticClass: "mb-2 dashboard__card__text" }, [
+            _c("h4", { staticClass: "mb-2 dashboard__card__header" }, [
               _vm._v("Points")
             ]),
             _vm._v(" "),
-            _c("h4", { staticClass: "my-3 text-white" }, [
-              _vm._v(_vm._s(_vm.points_value))
-            ])
+            _c(
+              "p",
+              { staticClass: "dashboard__card__value my-3 mx-2 text-white" },
+              [_vm._v(_vm._s(_vm.points_value))]
+            )
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "col-4" }, [
