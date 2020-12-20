@@ -3,13 +3,13 @@
         @method('PUT')
         @csrf
         <table class="table dashboard__table pr-3">
-            <thead class="dashboard__table__head">
+            {{ $table_head }}
             <tr>
-                {{ $table_head }}
+                {{ $table_row }}
             </tr>
             </thead>
             <tbody class="dashboard__table__body">
-                {{ $table_row }}
+                {{ $table_body }}
             </tbody>
         </table>
         {{ $table_button }}

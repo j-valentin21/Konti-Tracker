@@ -121,58 +121,35 @@
                             <div class="col-lg-8">
                                 <div class="card dashboard__card mb-5">
                                     <div class="card-body">
-                                        <h4 class="card-title dashboard__card__title mb-4">PTO/Points activity</h4>
-{{--                                        <div class="table-responsive">--}}
-{{--                                            <table class="table table-centered">--}}
-{{--                                                <thead>--}}
-{{--                                                <tr class="dashboard__card__title">--}}
-{{--                                                    <th scope="col">Date</th>--}}
-{{--                                                    <th scope="col">Time</th>--}}
-{{--                                                    <th scope="col">Supervisor name</th>--}}
-{{--                                                    <th scope="col">PTO time requested</th>--}}
-{{--                                                    <th scope="col" colspan="2">Status</th>--}}
-{{--                                                </tr>--}}
-{{--                                                </thead>--}}
-{{--                                                <tbody class="dashboard__card__text">--}}
-{{--                                                <tr>--}}
-{{--                                                    <td>08/26/2020</td>--}}
-{{--                                                    <td>--}}
-{{--                                                        <a href="#" class="dashboard__card__text">8:20AM</a>--}}
-{{--                                                    </td>--}}
-{{--                                                    <td>Werner Berlin</td>--}}
-{{--                                                    <td>$ 125</td>--}}
-{{--                                                    <td><span class="badge">Paid</span></td>--}}
-{{--                                                </tr>--}}
-{{--                                                <tr>--}}
-{{--                                                    <td>08/24/2020</td>--}}
-{{--                                                    <td>--}}
-{{--                                                        <a href="#" class="dashboard__card__text">3:30PM</a>--}}
-{{--                                                    </td>--}}
-{{--                                                    <td>Robert Jordan</td>--}}
-{{--                                                    <td>$ 118</td>--}}
-{{--                                                    <td><span class="badge">Chargeback</span></td>--}}
-{{--                                                </tr>--}}
-{{--                                                <tr>--}}
-{{--                                                    <td>08/15/2020</td>--}}
-{{--                                                    <td>--}}
-{{--                                                        <a href="#" class="dashboard__card__text">10:20AM</a>--}}
-{{--                                                    </td>--}}
-{{--                                                    <td>Daniel Finch</td>--}}
-{{--                                                    <td>$ 115</td>--}}
-{{--                                                    <td></td>--}}
-{{--                                                </tr>--}}
-{{--                                                <tr>--}}
-{{--                                                    <td>08/15/2020</td>--}}
-{{--                                                    <td>--}}
-{{--                                                        <a href="#" class="dashboard__card__text">2:45PM</a>--}}
-{{--                                                    </td>--}}
-{{--                                                    <td>James Hawkins</td>--}}
-{{--                                                    <td>$ 121</td>--}}
-{{--                                                    <td><span class="badge">Refund</span></td>--}}
-{{--                                                </tr>--}}
-{{--                                                </tbody>--}}
-{{--                                            </table>--}}
-{{--                                        </div>--}}
+                                        <h4 class="card-title dashboard__card__title mb-4">Dashboard Activity</h4>
+                                        <div class="table-responsive">
+                                            <table class="table table-centered">
+                                                <thead>
+                                                <tr class="dashboard__card__title">
+                                                    <th scope="col">Date</th>
+                                                    <th scope="col">Time</th>
+                                                    <th scope="col">PTO Used</th>
+                                                    <th scope="col">Points</th>
+                                                    <th scope="col">Pending</th>
+                                                    <th scope="col">Reason for Request</th>
+                                                    <th scope="col">Supervisor name</th>
+                                                    <th scope="col" colspan="2">Status</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody class="dashboard__card__text">
+                                                <tr>
+                                                    <td>08/26/2020</td>
+                                                    <td>John Smith</td>
+                                                    <td>3.5 days</td>
+                                                    <td>2</td>
+                                                    <td>3</td>
+                                                    <td>COVID</td>
+                                                    <td class="dashboard__card__text">8:20AM</td>
+                                                    <td class="badge">PENDING</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                         <!-- ========== PAGINATION ========== -->
                                         <div class="mb-3">
                                             <ul class="pagination pagination-rounded justify-content-center mb-0">

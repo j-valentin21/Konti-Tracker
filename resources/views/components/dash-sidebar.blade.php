@@ -55,6 +55,14 @@
                     </a>
                 </li>
                 <li>
+                    <a href="{{ route('dashboard.activity.index') }}" class="sidebar__link hover__black">
+                        <svg class="icons icons--sidebar">
+                            <use href="{{ asset('svg/sprite.svg#icon-device-desktop') }}"></use>
+                        </svg>
+                        <span>Dashboard Activity</span>
+                    </a>
+                </li>
+                <li>
                     <a data-toggle="modal" href="#request-modal" class=" sidebar__link hover__black">
                         <svg class="icons icons--sidebar">
                             <use href="{{ asset('svg/sprite.svg#icon-airplane') }}"></use>

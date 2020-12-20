@@ -7,10 +7,18 @@
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 
     &__head {
-        background: linear-gradient(to left, #ebac00 18%, #ffae00 100%);
-        color: #ffffff;
         text-align: left;
         font-weight: bold;
+
+        &--black {
+            background: linear-gradient(to bottom right, #050505 27%, #303030 100%);
+            color: #ffffff;
+        }
+
+       &--orange {
+           background: linear-gradient(to left, #ebac00 18%, #ffae00 100%);
+           color: #ffffff;
+       }
     }
 
     &__body {
