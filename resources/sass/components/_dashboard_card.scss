@@ -1,5 +1,17 @@
 .dashboard__card {
     background-color: #1e2938;
+    border: 2px solid rgba(darkslategray, .5);
+
+    &__header {
+        color: #7f879c;
+        font-size: 1.25rem;
+        padding: 0.25rem .5rem;
+        font-weight: bolder;
+    }
+
+    &__value {
+        font-size: 1.25rem;
+    }
 
     &__dropdown {
         min-width: 13rem;

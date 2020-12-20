@@ -6,8 +6,8 @@
         <div class="pb-3 border__bottom--grey">
             <div class="row align-items-center">
                 <div class="col-8">
-                    <p class="mb-2 dashboard__card__text ">PTO</p>
-                    <h4  class="my-3 text-white">{{ `${pto_value} Days`}}</h4>
+                    <h4 class="mb-2 dashboard__card__header ">PTO</h4>
+                    <p  class="dashboard__card__value my-3 mx-2 text-white">{{ `${pto_value} Days`}}</p>
                 </div>
                 <div class="col-4">
                     <div class="text-right">
@@ -25,8 +25,8 @@
         <div class="py-3 border__bottom--grey">
             <div class="row align-items-center">
                 <div class="col-8">
-                    <p class="mb-2 dashboard__card__text">Points</p>
-                    <h4 class="my-3 text-white">{{ points_value }}</h4>
+                    <h4 class="mb-2 dashboard__card__header">Points</h4>
+                    <p class="dashboard__card__value my-3 mx-2 text-white">{{ points_value }}</p>
                 </div>
                 <div class="col-4">
                     <div class="text-right">
