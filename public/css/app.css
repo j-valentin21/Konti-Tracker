@@ -12726,10 +12726,18 @@ body {
 }
 
 .dashboard__table__head {
-  background: linear-gradient(to left, #ebac00 18%, #ffae00 100%);
-  color: #ffffff;
   text-align: left;
   font-weight: bold;
+}
+
+.dashboard__table__head--black {
+  background: linear-gradient(to bottom right, #050505 27%, #303030 100%);
+  color: #ffffff;
+}
+
+.dashboard__table__head--orange {
+  background: linear-gradient(to left, #ebac00 18%, #ffae00 100%);
+  color: #ffffff;
 }
 
 .dashboard__table__body {

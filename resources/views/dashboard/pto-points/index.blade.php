@@ -19,11 +19,14 @@
             <div class="dashboard__main-content  dashboard__main-content--pto">
                 <x-dashboard-table>
                     <x-slot name="table_head">
+                        <thead class="dashboard__table__head dashboard__table__head--orange">
+                    </x-slot>
+                    <x-slot name="table_row">
                         <th>Month</th>
                         <th>PTO Used</th>
                         <th>Points Used</th>
                     </x-slot>
-                    <x-slot name="table_row">
+                    <x-slot name="table_body">
                         <strong class="text-danger">{{ $errors->first('pto_used.*') }}</strong>
                         <strong class="text-danger">{{ $errors->first('points_used.*') }}</strong>
                     @foreach ($results as $result)
