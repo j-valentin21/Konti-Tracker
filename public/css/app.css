@@ -11946,6 +11946,12 @@ body {
 
 @media only screen and (max-width: 62.5em) {
   .sidebar {
+    height: 70%;
+  }
+}
+
+@media only screen and (max-width: 47.9em) {
+  .sidebar {
     height: 60%;
   }
 }
@@ -11971,7 +11977,7 @@ body {
 }
 
 .sidebar__menu {
-  padding: 0.75rem 1rem;
+  padding: 0.75rem 0.3rem;
   letter-spacing: 0.05em;
   pointer-events: none;
   cursor: default;
@@ -11983,11 +11989,17 @@ body {
 
 .sidebar__link {
   display: block;
-  padding: 0.625rem 1.5rem;
+  padding: 0.5rem 0.2rem;
   color: #7f879c;
   position: relative;
   font-size: 0.9rem;
   transition: all 0.4s;
+}
+
+@media only screen and (max-width: 62.5em) {
+  .sidebar__link {
+    padding: 0.75rem 1rem;
+  }
 }
 
 .dashboard__card {
@@ -12102,7 +12114,9 @@ body {
   margin-left: -1px;
   line-height: 1.25;
   color: #7e8396;
+  font-weight: bolder;
   background-color: #273344;
+  border: 1px solid rgba(47, 79, 79, 0.5);
   text-decoration: none;
 }
 

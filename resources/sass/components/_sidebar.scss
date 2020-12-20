@@ -17,6 +17,10 @@
     }
 
     @include respond(tab-land) {
+        height: 70%;
+    }
+
+    @include respond(tab-port) {
         height: 60%;
     }
 
@@ -42,7 +46,7 @@
     }
 
     &__menu {
-        padding: .75rem 1rem ;
+        padding: .75rem .3rem ;
         letter-spacing: .05em;
         pointer-events: none;
         cursor: default;
@@ -54,11 +58,15 @@
 
     &__link {
         display: block;
-        padding: .625rem 1.5rem;
+        padding: .5rem .2rem;
         color: #7f879c;
         position: relative;
         font-size: .9rem;
         transition: all .4s;
+
+        @include respond(tab-land) {
+            padding: .75rem 1rem;
+        }
     }
 }
 

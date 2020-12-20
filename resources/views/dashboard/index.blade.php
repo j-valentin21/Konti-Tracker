@@ -121,7 +121,7 @@
                             <div class="col-lg-8">
                                 <div class="card dashboard__card mb-5">
                                     <div class="card-body">
-                                        <h4 class="card-title dashboard__card__title mb-4">PTO/Points activity</h4>
+                                        <h4 class="card-title dashboard__card__title mb-4">Dashboard Activity</h4>
 {{--                                        <div class="table-responsive">--}}
 {{--                                            <table class="table table-centered">--}}
 {{--                                                <thead>--}}
