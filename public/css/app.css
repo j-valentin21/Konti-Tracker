@@ -12763,6 +12763,18 @@ body {
   font-size: 1.3rem;
 }
 
+.dashboard__table__activity-row {
+  border-bottom: 2px solid #dee2e6;
+}
+
+.dashboard__table__activity-row:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.dashboard__table__activity-row:last-of-type {
+  border-bottom: 2px solid #eba72b;
+}
+
 .dashboard__table__cell {
   border-left: 2px solid #cfd1d7;
 }

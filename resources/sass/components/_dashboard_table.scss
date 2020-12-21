@@ -43,6 +43,17 @@
             font-size: 1.3rem;
         }
     }
+    &__activity-row {
+        border-bottom: 2px solid #dee2e6;
+
+        &:nth-of-type(even) {
+            background-color: #f3f3f3;
+        }
+
+        &:last-of-type {
+            border-bottom: 2px solid $color-orange;
+        }
+    }
     &__cell {
         border-left: 2px solid #cfd1d7;
     }
