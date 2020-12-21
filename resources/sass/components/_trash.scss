@@ -1,0 +1,47 @@
+.trash {
+    height: 35px;
+    width: 50px;
+    position: absolute;
+    vertical-align: middle;
+    cursor: pointer;
+
+    &:hover {
+        .rotate {
+            -webkit-transform: rotate(-30deg);
+        }
+    }
+
+    @include respond(mobile-land) {
+        height: 30px;
+        width: 30px;
+    }
+
+    &__can,
+    &__lid{
+        background: url('/img/trash.png') 0 0 no-repeat;
+        position: absolute;
+        right: 17px;
+        top: 7px;
+
+        @include respond(mobile-land) {
+            right: 9px;
+        }
+    }
+
+    &__lid {
+        -webkit-transform-origin: -7% 100%;
+        -webkit-transition: -webkit-transform 250ms;
+        height: 6px;
+        width: 13px;
+        &:hover {
+            -webkit-transition: -webkit-transform 250ms;
+        }
+    }
+
+    &__can {
+        background-position: 0px -4px;
+        height: 16px;
+        width: 13px;
+        margin-top: 5px;
+    }
+}

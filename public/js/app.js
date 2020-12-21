@@ -23752,6 +23752,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
@@ -105939,7 +105946,9 @@ var staticRenderFns = [
               _vm._v(" "),
               _c("th", [_vm._v("PTO Used")]),
               _vm._v(" "),
-              _c("th", [_vm._v("Points")])
+              _c("th", [_vm._v("Points")]),
+              _vm._v(" "),
+              _c("th", [_vm._v("Delete")])
             ])
           ]
         ),
@@ -105952,7 +105961,15 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("td", [_vm._v("3")]),
             _vm._v(" "),
-            _c("td", [_vm._v("1")])
+            _c("td", [_vm._v("1")]),
+            _vm._v(" "),
+            _c("td", { staticClass: "pb-5" }, [
+              _c("button", { staticClass: "trash btn btn-danger" }, [
+                _c("span", { staticClass: "trash__lid rotate " }),
+                _vm._v(" "),
+                _c("span", { staticClass: "trash__can" })
+              ])
+            ])
           ])
         ])
       ]),

@@ -7,6 +7,7 @@
                     <th>Time</th>
                     <th>PTO Used</th>
                     <th>Points</th>
+                    <th>Delete</th>
                 </tr>
             </thead>
             <tbody class="dashboard__table__body">
@@ -15,6 +16,12 @@
                     <td>8:32AM</td>
                     <td>3</td>
                     <td>1</td>
+                    <td class="pb-5">
+                        <button class="trash btn btn-danger">
+                            <span class="trash__lid rotate "></span>
+                            <span class="trash__can"></span>
+                        </button>
+                    </td>
                 </tr>
             </tbody>
         </table>
