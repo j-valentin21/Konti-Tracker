@@ -23762,7 +23762,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['activity'],
   data: function data() {
-    return {};
+    return {
+      activities: this.activity
+    };
+  },
+  methods: {
+    deleteActivity: function deleteActivity(id) {
+      var _this = this;
+
+      var url = '/dashboard/activity/' + id;
+      axios["delete"](url).then(function (response) {
+        console.log(response.data);
+        _this.activities = response.data;
+      })["catch"](function (err) {
+        console.log(err);
+      });
+    }
   }
 });
 
@@ -105949,7 +105964,25 @@ var render = function() {
               _vm._v(" "),
               _c("td", [_vm._v(_vm._s(act.points))]),
               _vm._v(" "),
-              _vm._m(1, true)
+              _c("td", { staticClass: "pb-5" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "trash btn btn-danger",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        return _vm.deleteActivity(act.id)
+                      }
+                    }
+                  },
+                  [
+                    _c("span", { staticClass: "trash__lid rotate " }),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "trash__can" })
+                  ]
+                )
+              ])
             ]
           )
         }),
@@ -105958,12 +105991,12 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("table", { staticClass: "table dashboard__table pr-3" }, [
-      _vm._m(2),
+      _vm._m(1),
       _vm._v(" "),
       _c(
         "tbody",
         { staticClass: "dashboard__table__body" },
-        _vm._l(_vm.activity, function(act, index) {
+        _vm._l(_vm.activities, function(act, index) {
           return _c(
             "tr",
             { key: index, staticClass: "dashboard__table__activity-row" },
@@ -106005,18 +106038,6 @@ var staticRenderFns = [
         ])
       ]
     )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", { staticClass: "pb-5" }, [
-      _c("button", { staticClass: "trash btn btn-danger" }, [
-        _c("span", { staticClass: "trash__lid rotate " }),
-        _vm._v(" "),
-        _c("span", { staticClass: "trash__can" })
-      ])
-    ])
   },
   function() {
     var _vm = this

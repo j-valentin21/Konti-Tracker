@@ -20,4 +20,19 @@ class DashboardActivityController extends Controller
         $activity = User::find(auth()->user()->id)->activity;
         return view('dashboard.activity.index',['activity'=>$activity]);
     }
+
+    /**
+     * Display different activities executed throughout the application.
+     *
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function destroy($id)
+    {
+        Activity::find($id)->delete();
+        $results = User::find(auth()->user()->id)->activity;
+        return response()->json(['results' => $results]);
+    }
+
+
 }

@@ -42,6 +42,7 @@ Route::middleware(['auth', 'NotFirstTimeUser', 'verified'])->group(function () {
     Route::get('/dashboard/pto-points-data', 'Dashboard\DashboardPTOPointsController@index')->name('dashboard.PTOPoints.index');
     Route::put('/dashboard/pto-points-data', 'Dashboard\DashboardPTOPointsController@update')->name('dashboard.PTOPoints.update');
     Route::get('/dashboard/activity', 'Dashboard\DashboardActivityController@index')->name('dashboard.activity.index');
+    Route::delete('/dashboard/activity/{id}', 'Dashboard\DashboardActivityController@destroy')->name('dashboard.activity.destroy');
     Route::get('/dashboard/change-password', 'Dashboard\DashboardPasswordController@index')->name('dashboard.password.index');
     Route::put('/dashboard/update-password', 'Dashboard\DashboardPasswordController@update')->name('dashboard.password.update');
     Route::post('/dashboard/calendar', 'Dashboard\DashboardCalendarController@store')->name('calendar.store');

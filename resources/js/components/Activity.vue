@@ -17,7 +17,7 @@
                     <td>{{act.pto_used}}</td>
                     <td>{{act.points}}</td>
                     <td class="pb-5">
-                        <button class="trash btn btn-danger">
+                        <button type="button" @click="deleteActivity(act.id)" class="trash btn btn-danger">
                             <span class="trash__lid rotate "></span>
                             <span class="trash__can"></span>
                         </button>
@@ -36,7 +36,7 @@
             </tr>
             </thead>
             <tbody class="dashboard__table__body">
-                <tr  v-for="(act, index) in activity" :key="index" class="dashboard__table__activity-row">
+                <tr  v-for="(act, index) in activities" :key="index" class="dashboard__table__activity-row">
                     <td>{{act.pending}}</td>
                     <td>{{act.reason_for_request}}</td>
                     <td >{{act.supervisor_name}} </td>
@@ -52,12 +52,22 @@ export default {
 props:['activity'],
     data () {
         return {
-
+            activities:this.activity
         }
     },
+    methods: {
+        deleteActivity(id) {
+            const url = '/dashboard/activity/' + id
+            axios.delete(url).then((response) => {
+                console.log(response.data);
+                this.activities = response.data
 
-
-
+            })
+            .catch((err) => {
+                console.log(err)
+            });
+        },
+    }
 }
 </script>
 
