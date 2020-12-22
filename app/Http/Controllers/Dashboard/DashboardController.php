@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Dashboard;
+use App\Activity;
 use App\Http\Controllers\Controller;
 
 use App\Http\Requests\PTOFormRequest;
@@ -21,10 +22,11 @@ class DashboardController extends Controller
     {
         $redis = Redis::connection();
         $profile = Profile::find(auth()->user()->id);
+        $activity = Activity::find(auth()->user()->id);
         $profile->resetMonths();
         $message = $redis->get('message_' .  auth()->id());
         $redis->expire('message_' . auth()->id(),5);
-        return view('dashboard.index', ['message'=>$message, 'profile'=> $profile]);
+        return view('dashboard.index', ['message'=>$message, 'profile'=> $profile, 'activity'=> $activity]);
     }
     /**
      * Create Request for PTO day.
