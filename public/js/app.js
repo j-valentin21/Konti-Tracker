@@ -23759,7 +23759,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['activity'],
+  data: function data() {
+    return {};
+  }
+});
 
 /***/ }),
 
@@ -105924,88 +105929,114 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("form", { attrs: { method: "POST" } }, [
+    _c("table", { staticClass: "table dashboard__table pr-3" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "tbody",
+        { staticClass: "dashboard__table__body" },
+        _vm._l(_vm.activity, function(act, index) {
+          return _c(
+            "tr",
+            { key: index, staticClass: "dashboard__table__activity-row" },
+            [
+              _c("td", [_vm._v(_vm._s(act.date))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(act.time))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(act.pto_used))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(act.points))]),
+              _vm._v(" "),
+              _vm._m(1, true)
+            ]
+          )
+        }),
+        0
+      )
+    ]),
+    _vm._v(" "),
+    _c("table", { staticClass: "table dashboard__table pr-3" }, [
+      _vm._m(2),
+      _vm._v(" "),
+      _c(
+        "tbody",
+        { staticClass: "dashboard__table__body" },
+        _vm._l(_vm.activity, function(act, index) {
+          return _c(
+            "tr",
+            { key: index, staticClass: "dashboard__table__activity-row" },
+            [
+              _c("td", [_vm._v(_vm._s(act.pending))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(act.reason_for_request))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(act.supervisor_name) + " ")]),
+              _vm._v(" "),
+              _c("td", { staticClass: "badge" }, [_vm._v(_vm._s(act.status))])
+            ]
+          )
+        }),
+        0
+      )
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("form", { attrs: { method: "POST" } }, [
-      _c("table", { staticClass: "table dashboard__table pr-3" }, [
-        _c(
-          "thead",
-          {
-            staticClass: "dashboard__table__head dashboard__table__head--black"
-          },
-          [
-            _c("tr", { staticClass: "dashboard__table__activity-row" }, [
-              _c("th", [_vm._v("Date")]),
-              _vm._v(" "),
-              _c("th", [_vm._v("Time")]),
-              _vm._v(" "),
-              _c("th", [_vm._v("PTO Used")]),
-              _vm._v(" "),
-              _c("th", [_vm._v("Points")]),
-              _vm._v(" "),
-              _c("th", [_vm._v("Delete")])
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c("tbody", { staticClass: "dashboard__table__body" }, [
-          _c("tr", { staticClass: "dashboard__table__activity-row" }, [
-            _c("td", [_vm._v("12/20/20")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("8:32AM")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("3")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("1")]),
-            _vm._v(" "),
-            _c("td", { staticClass: "pb-5" }, [
-              _c("button", { staticClass: "trash btn btn-danger" }, [
-                _c("span", { staticClass: "trash__lid rotate " }),
-                _vm._v(" "),
-                _c("span", { staticClass: "trash__can" })
-              ])
-            ])
-          ])
+    return _c(
+      "thead",
+      { staticClass: "dashboard__table__head dashboard__table__head--black" },
+      [
+        _c("tr", { staticClass: "dashboard__table__activity-row" }, [
+          _c("th", [_vm._v("Date")]),
+          _vm._v(" "),
+          _c("th", [_vm._v("Time")]),
+          _vm._v(" "),
+          _c("th", [_vm._v("PTO Used")]),
+          _vm._v(" "),
+          _c("th", [_vm._v("Points")]),
+          _vm._v(" "),
+          _c("th", [_vm._v("Delete")])
         ])
-      ]),
-      _vm._v(" "),
-      _c("table", { staticClass: "table dashboard__table pr-3" }, [
-        _c(
-          "thead",
-          {
-            staticClass: "dashboard__table__head dashboard__table__head--black"
-          },
-          [
-            _c("tr", { staticClass: "dashboard__table__activity-row" }, [
-              _c("th", [_vm._v("Pending")]),
-              _vm._v(" "),
-              _c("th", [_vm._v("Reason For Request")]),
-              _vm._v(" "),
-              _c("th", [_vm._v("Supervisor Name")]),
-              _vm._v(" "),
-              _c("th", [_vm._v("Status")])
-            ])
-          ]
-        ),
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { staticClass: "pb-5" }, [
+      _c("button", { staticClass: "trash btn btn-danger" }, [
+        _c("span", { staticClass: "trash__lid rotate " }),
         _vm._v(" "),
-        _c("tbody", { staticClass: "dashboard__table__body" }, [
-          _c("tr", { staticClass: "dashboard__table__activity-row" }, [
-            _c("td", [_vm._v("3")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("COVID")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("John Smith ")]),
-            _vm._v(" "),
-            _c("td", { staticClass: "badge" }, [_vm._v("Approved")])
-          ])
-        ])
+        _c("span", { staticClass: "trash__can" })
       ])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "thead",
+      { staticClass: "dashboard__table__head dashboard__table__head--black" },
+      [
+        _c("tr", { staticClass: "dashboard__table__activity-row" }, [
+          _c("th", [_vm._v("Pending")]),
+          _vm._v(" "),
+          _c("th", [_vm._v("Reason For Request")]),
+          _vm._v(" "),
+          _c("th", [_vm._v("Supervisor Name")]),
+          _vm._v(" "),
+          _c("th", [_vm._v("Status")])
+        ])
+      ]
+    )
   }
 ]
 render._withStripped = true

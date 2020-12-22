@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Activity;
 use App\Http\Controllers\Controller;
 
+use App\User;
 use Illuminate\Http\Request;
 
 class DashboardActivityController extends Controller
@@ -15,6 +17,7 @@ class DashboardActivityController extends Controller
      */
     public function index()
     {
-        return view('dashboard.activity.index');
+        $activity = User::find(auth()->user()->id)->activity;
+        return view('dashboard.activity.index',['activity'=>$activity]);
     }
 }

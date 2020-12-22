@@ -11,11 +11,11 @@
                 </tr>
             </thead>
             <tbody class="dashboard__table__body">
-                <tr class="dashboard__table__activity-row">
-                    <td>12/20/20</td>
-                    <td>8:32AM</td>
-                    <td>3</td>
-                    <td>1</td>
+                <tr v-for="(act, index) in activity" :key="index"  class="dashboard__table__activity-row">
+                    <td>{{act.date}}</td>
+                    <td>{{act.time}}</td>
+                    <td>{{act.pto_used}}</td>
+                    <td>{{act.points}}</td>
                     <td class="pb-5">
                         <button class="trash btn btn-danger">
                             <span class="trash__lid rotate "></span>
@@ -36,11 +36,11 @@
             </tr>
             </thead>
             <tbody class="dashboard__table__body">
-                <tr class="dashboard__table__activity-row">
-                    <td>3</td>
-                    <td>COVID</td>
-                    <td >John Smith </td>
-                    <td class="badge">Approved</td>
+                <tr  v-for="(act, index) in activity" :key="index" class="dashboard__table__activity-row">
+                    <td>{{act.pending}}</td>
+                    <td>{{act.reason_for_request}}</td>
+                    <td >{{act.supervisor_name}} </td>
+                    <td class="badge">{{act.status}}</td>
                 </tr>
             </tbody>
         </table>
@@ -49,6 +49,14 @@
 
 <script>
 export default {
+props:['activity'],
+    data () {
+        return {
+
+        }
+    },
+
+
 
 }
 </script>

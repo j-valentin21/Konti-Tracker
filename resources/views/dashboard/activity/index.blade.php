@@ -17,7 +17,7 @@
         <x-dash-sidebar/>
         <div class="dashboard__main">
             <div class="dashboard__main-content  dashboard__main-content--pto">
-                <activity/>
+                <activity :activity="{{ $activity }}"/>
             </div>
         </div>
     </div>
