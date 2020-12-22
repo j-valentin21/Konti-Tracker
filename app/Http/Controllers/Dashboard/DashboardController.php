@@ -26,7 +26,7 @@ class DashboardController extends Controller
         $profile->resetMonths();
         $message = $redis->get('message_' .  auth()->id());
         $redis->expire('message_' . auth()->id(),5);
-        return view('dashboard.index', ['message'=>$message, 'profile'=> $profile, 'activity'=> $activity]);
+        return view('dashboard.index', ['message'=>$message, 'profile'=> $profile, 'activity', $activity]);
     }
     /**
      * Create Request for PTO day.
