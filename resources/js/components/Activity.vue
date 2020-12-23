@@ -10,8 +10,8 @@
                     <th>Delete</th>
                 </tr>
             </thead>
-            <tbody class="dashboard__table__body">
-                <tr v-for="(act, index) in activity" :key="index"  class="dashboard__table__activity-row">
+            <tbody class="dashboard__table__body" name="activity" is="transition-group">
+                <tr v-for="(act, index) in activities" :key="act.id"  class="dashboard__table__activity-row">
                     <td>{{act.date}}</td>
                     <td>{{act.time}}</td>
                     <td>{{act.pto_used}}</td>
@@ -35,8 +35,8 @@
                 <th>Status</th>
             </tr>
             </thead>
-            <tbody class="dashboard__table__body">
-                <tr  v-for="(act, index) in activities" :key="index" class="dashboard__table__activity-row">
+            <tbody class="dashboard__table__body" name="activity" is="transition-group">
+                <tr v-for="(act, index) in activities" :key="act.id" class="dashboard__table__activity-row">
                     <td>{{act.pending}}</td>
                     <td>{{act.reason_for_request}}</td>
                     <td >{{act.supervisor_name}} </td>
@@ -59,9 +59,7 @@ props:['activity'],
         deleteActivity(id) {
             const url = '/dashboard/activity/' + id
             axios.delete(url).then((response) => {
-                console.log(response.data);
-                this.activities = response.data
-
+                this.activities = response.data.results
             })
             .catch((err) => {
                 console.log(err)
@@ -71,6 +69,29 @@ props:['activity'],
 }
 </script>
 
-<style scoped>
+<style lang="css">
+.activity-enter-active {
+    animation: add-item 1s;
+}
 
+.activity-leave-active {
+    animation: add-item 1s reverse;
+}
+.list-move {
+    transition: transform 1s;
+}
+@keyframes add-item {
+    0% {
+        opacity: 0;
+        transform: translateX(150px);
+    }
+    50% {
+        opacity: 0.5;
+        transform: translateX(-10px) skewX(20deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
 </style>

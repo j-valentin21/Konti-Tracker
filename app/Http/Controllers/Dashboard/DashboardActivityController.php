@@ -34,5 +34,4 @@ class DashboardActivityController extends Controller
         return response()->json(['results' => $results]);
     }
 
-
 }
