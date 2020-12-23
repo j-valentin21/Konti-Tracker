@@ -139,12 +139,12 @@
                                                 <tbody class="dashboard__card__text">
                                                 <tr>
                                                     <td>08/26/2020</td>
-                                                    <td>John Smith</td>
+                                                    <td class="dashboard__card__text">8:20AM</td>
                                                     <td>3.5 days</td>
                                                     <td>2</td>
                                                     <td>3</td>
                                                     <td>COVID</td>
-                                                    <td class="dashboard__card__text">8:20AM</td>
+                                                    <td>John Smith</td>
                                                     <td class="badge">PENDING</td>
                                                 </tr>
                                                 </tbody>

@@ -11933,7 +11933,7 @@ body {
   position: absolute;
   top: 7.5rem;
   box-shadow: 0 0.75rem 1.5rem rgba(18, 38, 63, 0.03);
-  height: 75%;
+  height: 85%;
   border: 2px solid rgba(47, 79, 79, 0.5);
 }
 
@@ -12763,7 +12763,71 @@ body {
   font-size: 1.3rem;
 }
 
+.dashboard__table__activity-row {
+  border-bottom: 2px solid #dee2e6;
+}
+
+.dashboard__table__activity-row:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.dashboard__table__activity-row:last-of-type {
+  border-bottom: 2px solid #eba72b;
+}
+
 .dashboard__table__cell {
   border-left: 2px solid #cfd1d7;
+}
+
+.trash {
+  height: 35px;
+  width: 50px;
+  position: absolute;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.trash:hover .rotate {
+  -webkit-transform: rotate(-30deg);
+}
+
+@media only screen and (max-width: 36.5em) {
+  .trash {
+    height: 30px;
+    width: 30px;
+  }
+}
+
+.trash__can,
+.trash__lid {
+  background: url("/img/trash.png") 0 0 no-repeat;
+  position: absolute;
+  right: 17px;
+  top: 7px;
+}
+
+@media only screen and (max-width: 36.5em) {
+  .trash__can,
+  .trash__lid {
+    right: 9px;
+  }
+}
+
+.trash__lid {
+  -webkit-transform-origin: -7% 100%;
+  -webkit-transition: -webkit-transform 250ms;
+  height: 6px;
+  width: 13px;
+}
+
+.trash__lid:hover {
+  -webkit-transition: -webkit-transform 250ms;
+}
+
+.trash__can {
+  background-position: 0px -4px;
+  height: 16px;
+  width: 13px;
+  margin-top: 5px;
 }
 

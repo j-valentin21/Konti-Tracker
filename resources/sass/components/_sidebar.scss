@@ -8,7 +8,7 @@
     position: absolute;
     top: 7.5rem;
     box-shadow: 0 0.75rem 1.5rem rgba(18, 38, 63, 0.03);
-    height: 75%;
+    height: 85%;
     border: 2px solid rgba(darkslategray, .5);
 
     @include respond(laptop) {

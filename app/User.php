@@ -63,4 +63,13 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(PTORequest::class);
     }
+    /**
+     * Create relationship between user and requestPTO
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function activity()
+    {
+        return $this->hasMany(Activity::class);
+    }
 }
