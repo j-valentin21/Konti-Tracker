@@ -122,7 +122,7 @@
                                 <div class="card dashboard__card mb-5">
                                     <div class="card-body">
                                         <h4 class="card-title dashboard__card__title mb-4">Dashboard Activity</h4>
-                                        <dashboard-activity/>
+                                        <dashboard-activity :activity="{{ $activity }}"/>
                                         <request-pto-form :pto="{{ $profile->pto }}"/>
                                     </div>
                                 </div>

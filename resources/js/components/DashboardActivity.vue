@@ -14,15 +14,15 @@
             </tr>
             </thead>
             <tbody class="dashboard__card__text">
-            <tr>
-                <td>08/26/2020</td>
-                <td class="dashboard__card__text">8:20AM</td>
-                <td>3.5 days</td>
-                <td>2</td>
-                <td>3</td>
-                <td>COVID</td>
-                <td>John Smith</td>
-                <td class="badge">PENDING</td>
+            <tr v-for="(act, index) in activities" :key="act.id">
+                <td>{{act.date}}</td>
+                <td class="dashboard__card__text">{{act.time}}</td>
+                <td>{{act.pto_used}}</td>
+                <td>{{act.points}}</td>
+                <td>{{act.pending}}</td>
+                <td>{{act.reason_for_request}}</td>
+                <td>{{act.supervisor_name}}</td>
+                <td class="badge">{{act.status}}</td>
             </tr>
             </tbody>
         </table>
@@ -43,7 +43,12 @@
 
 <script>
 export default {
-name: "DashboardActivity"
+    props:['activity'],
+    data () {
+        return {
+            activities:this.activity
+        }
+    },
 }
 </script>
 

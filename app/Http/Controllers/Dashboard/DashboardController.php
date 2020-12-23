@@ -8,6 +8,7 @@ use App\Http\Requests\PTOFormRequest;
 use App\Jobs\ApprovePTORequestJob;
 use App\Profile;
 use App\PTORequest;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
 
@@ -22,12 +23,12 @@ class DashboardController extends Controller
     {
         $redis = Redis::connection();
         $profile = Profile::find(auth()->user()->id);
-        $activity = Activity::find(auth()->user()->id);
+        $activity = User::find(auth()->user()->id)->activity;
         $profile->getChartMonth();
         $profile->resetMonths();
         $message = $redis->get('message_' .  auth()->id());
         $redis->expire('message_' . auth()->id(),5);
-        return view('dashboard.index', ['message'=>$message, 'profile'=> $profile, 'activity', $activity]);
+        return view('dashboard.index', ['message'=>$message, 'profile'=> $profile, 'activity'=> $activity]);
     }
     /**
      * Create Request for PTO day.

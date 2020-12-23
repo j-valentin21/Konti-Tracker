@@ -24215,7 +24215,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "DashboardActivity"
+  props: ['activity'],
+  data: function data() {
+    return {
+      activities: this.activity
+    };
+  }
 });
 
 /***/ }),
@@ -106445,112 +106450,109 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "table-responsive" }, [
+    _c("table", { staticClass: "table table-centered" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "tbody",
+        { staticClass: "dashboard__card__text" },
+        _vm._l(_vm.activities, function(act, index) {
+          return _c("tr", { key: act.id }, [
+            _c("td", [_vm._v(_vm._s(act.date))]),
+            _vm._v(" "),
+            _c("td", { staticClass: "dashboard__card__text" }, [
+              _vm._v(_vm._s(act.time))
+            ]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(act.pto_used))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(act.points))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(act.pending))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(act.reason_for_request))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(act.supervisor_name))]),
+            _vm._v(" "),
+            _c("td", { staticClass: "badge" }, [_vm._v(_vm._s(act.status))])
+          ])
+        }),
+        0
+      )
+    ]),
+    _vm._v(" "),
+    _vm._m(1)
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "table-responsive" }, [
-      _c("table", { staticClass: "table table-centered" }, [
-        _c("thead", [
-          _c("tr", { staticClass: "dashboard__card__title" }, [
-            _c("th", { attrs: { scope: "col" } }, [_vm._v("Date")]),
-            _vm._v(" "),
-            _c("th", { attrs: { scope: "col" } }, [_vm._v("Time")]),
-            _vm._v(" "),
-            _c("th", { attrs: { scope: "col" } }, [_vm._v("PTO Used")]),
-            _vm._v(" "),
-            _c("th", { attrs: { scope: "col" } }, [_vm._v("Points")]),
-            _vm._v(" "),
-            _c("th", { attrs: { scope: "col" } }, [_vm._v("Pending")]),
-            _vm._v(" "),
-            _c("th", { attrs: { scope: "col" } }, [
-              _vm._v("Reason for Request")
-            ]),
-            _vm._v(" "),
-            _c("th", { attrs: { scope: "col" } }, [_vm._v("Supervisor name")]),
-            _vm._v(" "),
-            _c("th", { attrs: { scope: "col", colspan: "2" } }, [
-              _vm._v("Status")
-            ])
-          ])
-        ]),
+    return _c("thead", [
+      _c("tr", { staticClass: "dashboard__card__title" }, [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Date")]),
         _vm._v(" "),
-        _c("tbody", { staticClass: "dashboard__card__text" }, [
-          _c("tr", [
-            _c("td", [_vm._v("08/26/2020")]),
-            _vm._v(" "),
-            _c("td", { staticClass: "dashboard__card__text" }, [
-              _vm._v("8:20AM")
-            ]),
-            _vm._v(" "),
-            _c("td", [_vm._v("3.5 days")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("2")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("3")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("COVID")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("John Smith")]),
-            _vm._v(" "),
-            _c("td", { staticClass: "badge" }, [_vm._v("PENDING")])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "mb-3" }, [
-        _c(
-          "ul",
-          {
-            staticClass:
-              "pagination pagination-rounded justify-content-center mb-0"
-          },
-          [
-            _c("li", { staticClass: "pagination__item" }, [
-              _c(
-                "a",
-                { staticClass: "pagination__link", attrs: { href: "#" } },
-                [_vm._v("Previous")]
-              )
-            ]),
-            _vm._v(" "),
-            _c("li", { staticClass: "pagination__item" }, [
-              _c(
-                "a",
-                { staticClass: "pagination__link", attrs: { href: "#" } },
-                [_vm._v("1")]
-              )
-            ]),
-            _vm._v(" "),
-            _c("li", { staticClass: "pagination__item active" }, [
-              _c(
-                "a",
-                { staticClass: "pagination__link", attrs: { href: "#" } },
-                [_vm._v("2")]
-              )
-            ]),
-            _vm._v(" "),
-            _c("li", { staticClass: "pagination__item" }, [
-              _c(
-                "a",
-                { staticClass: "pagination__link", attrs: { href: "#" } },
-                [_vm._v("3")]
-              )
-            ]),
-            _vm._v(" "),
-            _c("li", { staticClass: "pagination__item" }, [
-              _c(
-                "a",
-                { staticClass: "pagination__link", attrs: { href: "#" } },
-                [_vm._v("Next")]
-              )
-            ])
-          ]
-        )
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Time")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("PTO Used")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Points")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Pending")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Reason for Request")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Supervisor name")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col", colspan: "2" } }, [_vm._v("Status")])
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "mb-3" }, [
+      _c(
+        "ul",
+        {
+          staticClass:
+            "pagination pagination-rounded justify-content-center mb-0"
+        },
+        [
+          _c("li", { staticClass: "pagination__item" }, [
+            _c("a", { staticClass: "pagination__link", attrs: { href: "#" } }, [
+              _vm._v("Previous")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("li", { staticClass: "pagination__item" }, [
+            _c("a", { staticClass: "pagination__link", attrs: { href: "#" } }, [
+              _vm._v("1")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("li", { staticClass: "pagination__item active" }, [
+            _c("a", { staticClass: "pagination__link", attrs: { href: "#" } }, [
+              _vm._v("2")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("li", { staticClass: "pagination__item" }, [
+            _c("a", { staticClass: "pagination__link", attrs: { href: "#" } }, [
+              _vm._v("3")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("li", { staticClass: "pagination__item" }, [
+            _c("a", { staticClass: "pagination__link", attrs: { href: "#" } }, [
+              _vm._v("Next")
+            ])
+          ])
+        ]
+      )
     ])
   }
 ]
