@@ -23,6 +23,7 @@ class DashboardController extends Controller
         $redis = Redis::connection();
         $profile = Profile::find(auth()->user()->id);
         $activity = Activity::find(auth()->user()->id);
+        $profile->getChartMonth();
         $profile->resetMonths();
         $message = $redis->get('message_' .  auth()->id());
         $redis->expire('message_' . auth()->id(),5);
