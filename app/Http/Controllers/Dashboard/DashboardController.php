@@ -23,13 +23,13 @@ class DashboardController extends Controller
     {
         $redis = Redis::connection();
         $profile = Profile::find(auth()->user()->id);
-        $activity = User::find(auth()->user()->id)->activity;
         $profile->getChartMonth();
         $profile->resetMonths();
         $message = $redis->get('message_' .  auth()->id());
         $redis->expire('message_' . auth()->id(),5);
-        return view('dashboard.index', ['message'=>$message, 'profile'=> $profile, 'activity'=> $activity]);
+        return view('dashboard.index', ['message'=>$message, 'profile'=> $profile]);
     }
+
     /**
      * Create Request for PTO day.
      *
@@ -55,6 +55,7 @@ class DashboardController extends Controller
         $request_pto->save();
         $profile->save();
     }
+
     /**
      * Update PTO or points on the dashboard view.
      *
@@ -87,6 +88,7 @@ class DashboardController extends Controller
         }
         $profile->save();
     }
+
     /**
      * Get data to update charts in dashboard.
      *
@@ -98,6 +100,7 @@ class DashboardController extends Controller
         $data = $profile->pto_usage;
         return response()->json($data);
     }
+
     /**
      * Get data to update points chart in dashboard.
      *
@@ -107,6 +110,18 @@ class DashboardController extends Controller
     {
         $profile = Profile::find(auth()->user()->id);
         $data = $profile->points_usage;
+        return response()->json($data);
+    }
+
+    /**
+     * Get data to view all activities in dashboard.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getActivityData()
+    {
+        $activity = Activity::latest()->where('user_id', auth()->user()->id )->with('user')->paginate(4);
+        $data = $activity;
         return response()->json($data);
     }
 }

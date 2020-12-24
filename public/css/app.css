@@ -12029,6 +12029,8 @@ body {
 .dashboard__card__text {
   color: #7f879c;
   padding: 0.25rem 0.5rem;
+  font-weight: bolder;
+  font-size: 1rem;
 }
 
 .dashboard__card__chart {
