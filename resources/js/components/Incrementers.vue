@@ -7,7 +7,7 @@
             <div class="row align-items-center">
                 <div class="col-8">
                     <h4 class="mb-2 dashboard__card__header ">PTO</h4>
-                    <p  class="dashboard__card__value my-3 mx-2 text-white">{{ `${pto_value} Days`}}</p>
+                    <p class="dashboard__card__value my-3 mx-2 text-white">{{ `${pto_value} Days`}}</p>
                 </div>
                 <div class="col-4">
                     <div class="text-right">
@@ -55,6 +55,8 @@ export default {
     data() {
         return {
             pto_value: this.pto,
+            pto_count: 0,
+            points_count: 0,
             points_value: this.points,
             pto_used: this.pto_usage,
             failure: false,
@@ -68,24 +70,28 @@ export default {
             if (this.pto_value < 40) {
                 this.showPTOButton = true
                 this.pto_value+= .25;
+                this.pto_count+= .25;
             }
         },
         decreasePTO:  function() {
             if(this.pto_value > 0) {
                 this.showPTOButton = true
                 this.pto_value-= .25;
+                this.pto_count-= .25;
             }
         },
         increasePoints: function() {
             if(this.points_value < 15) {
                 this.showPointsButton = true
                 this.points_value++;
+                this.points_count++
             }
         },
         decreasePoints:  function() {
             if(this.points_value > 0) {
                 this.showPointsButton = true
                 this.points_value--;
+                this.points_count--;
             }
         },
        changeSuccess: function() {

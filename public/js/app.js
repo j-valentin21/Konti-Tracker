@@ -24486,6 +24486,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       pto_value: this.pto,
+      pto_count: 0,
+      points_count: 0,
       points_value: this.points,
       pto_used: this.pto_usage,
       failure: false,
@@ -24499,24 +24501,28 @@ __webpack_require__.r(__webpack_exports__);
       if (this.pto_value < 40) {
         this.showPTOButton = true;
         this.pto_value += .25;
+        this.pto_count += .25;
       }
     },
     decreasePTO: function decreasePTO() {
       if (this.pto_value > 0) {
         this.showPTOButton = true;
         this.pto_value -= .25;
+        this.pto_count -= .25;
       }
     },
     increasePoints: function increasePoints() {
       if (this.points_value < 15) {
         this.showPointsButton = true;
         this.points_value++;
+        this.points_count++;
       }
     },
     decreasePoints: function decreasePoints() {
       if (this.points_value > 0) {
         this.showPointsButton = true;
         this.points_value--;
+        this.points_count--;
       }
     },
     changeSuccess: function changeSuccess() {
@@ -45918,7 +45924,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.activity-enter-active {\n    -webkit-animation: add-item 1s;\n            animation: add-item 1s;\n}\n.activity-leave-active {\n    animation: add-item 1s reverse;\n}\n.list-move {\n    transition: transform 1s;\n}\n@-webkit-keyframes add-item {\n0% {\n        opacity: 0;\n        transform: translateX(150px);\n}\n50% {\n        opacity: 0.5;\n        transform: translateX(-10px) skewX(20deg);\n}\n100% {\n        opacity: 1;\n        transform: translateX(0px);\n}\n}\n@keyframes add-item {\n0% {\n        opacity: 0;\n        transform: translateX(150px);\n}\n50% {\n        opacity: 0.5;\n        transform: translateX(-10px) skewX(20deg);\n}\n100% {\n        opacity: 1;\n        transform: translateX(0px);\n}\n}\n", ""]);
+exports.push([module.i, "\n.activity-enter-active {\n    -webkit-animation: add-item 1s;\n            animation: add-item 1s;\n}\n.activity-leave-active {\n    animation: add-item 1s reverse;\n    transition: transform 1s;\n}\n@-webkit-keyframes add-item {\n0% {\n        opacity: 0;\n        transform: translateX(150px);\n}\n50% {\n        opacity: 0.5;\n        transform: translateX(-10px) skewX(20deg);\n}\n100% {\n        opacity: 1;\n        transform: translateX(0px);\n}\n}\n@keyframes add-item {\n0% {\n        opacity: 0;\n        transform: translateX(150px);\n}\n50% {\n        opacity: 0.5;\n        transform: translateX(-10px) skewX(20deg);\n}\n100% {\n        opacity: 1;\n        transform: translateX(0px);\n}\n}\n", ""]);
 
 // exports
 
