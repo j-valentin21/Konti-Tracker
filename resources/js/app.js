@@ -36,6 +36,8 @@ Vue.component('weather', require('./components/Weather.vue').default);
 Vue.component('forecast', require('./components/Forecast.vue').default);
 Vue.component('request-pto-form', require('./components/RequestPTOForm.vue').default);
 Vue.component('activity', require('./components/Activity.vue').default);
+Vue.component('dashboard-activity', require('./components/DashboardActivity.vue').default);
+Vue.component('pagination', require('laravel-vue-pagination'));
 
 
 /**
