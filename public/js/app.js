@@ -24486,6 +24486,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       pto_value: this.pto,
+      pto_count: 0,
+      points_count: 0,
       points_value: this.points,
       pto_used: this.pto_usage,
       failure: false,
@@ -24499,24 +24501,28 @@ __webpack_require__.r(__webpack_exports__);
       if (this.pto_value < 40) {
         this.showPTOButton = true;
         this.pto_value += .25;
+        this.pto_count += .25;
       }
     },
     decreasePTO: function decreasePTO() {
       if (this.pto_value > 0) {
         this.showPTOButton = true;
         this.pto_value -= .25;
+        this.pto_count -= .25;
       }
     },
     increasePoints: function increasePoints() {
       if (this.points_value < 15) {
         this.showPointsButton = true;
         this.points_value++;
+        this.points_count++;
       }
     },
     decreasePoints: function decreasePoints() {
       if (this.points_value > 0) {
         this.showPointsButton = true;
         this.points_value--;
+        this.points_count--;
       }
     },
     changeSuccess: function changeSuccess() {
@@ -45918,7 +45924,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.activity-enter-active {\n    -webkit-animation: add-item 1s;\n            animation: add-item 1s;\n}\n.activity-leave-active {\n    animation: add-item 1s reverse;\n}\n.list-move {\n    transition: transform 1s;\n}\n@-webkit-keyframes add-item {\n0% {\n        opacity: 0;\n        transform: translateX(150px);\n}\n50% {\n        opacity: 0.5;\n        transform: translateX(-10px) skewX(20deg);\n}\n100% {\n        opacity: 1;\n        transform: translateX(0px);\n}\n}\n@keyframes add-item {\n0% {\n        opacity: 0;\n        transform: translateX(150px);\n}\n50% {\n        opacity: 0.5;\n        transform: translateX(-10px) skewX(20deg);\n}\n100% {\n        opacity: 1;\n        transform: translateX(0px);\n}\n}\n", ""]);
+exports.push([module.i, "\n.activity-enter-active {\n    -webkit-animation: add-item 1s;\n            animation: add-item 1s;\n}\n.activity-leave-active {\n    animation: add-item 1s reverse;\n    transition: transform 1s;\n}\n@-webkit-keyframes add-item {\n0% {\n        opacity: 0;\n        transform: translateX(150px);\n}\n50% {\n        opacity: 0.5;\n        transform: translateX(-10px) skewX(20deg);\n}\n100% {\n        opacity: 1;\n        transform: translateX(0px);\n}\n}\n@keyframes add-item {\n0% {\n        opacity: 0;\n        transform: translateX(150px);\n}\n50% {\n        opacity: 0.5;\n        transform: translateX(-10px) skewX(20deg);\n}\n100% {\n        opacity: 1;\n        transform: translateX(0px);\n}\n}\n", ""]);
 
 // exports
 
@@ -45956,7 +45962,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.page-item {\n    margin: 0 3px;\n    border: none;\n    text-decoration: none;\n}\n.page-link {\n    position: relative;\n    display: block;\n    padding: .5rem .75rem;\n    margin-left: -1px;\n    line-height: 1.25;\n    color: #7e8396;\n    font-weight: bolder;\n    background-color: #273344;\n    border: 1px solid darkslategray;\n    text-decoration: none;\n}\n.page-link:hover {\n    text-decoration: none;\n    color: #212529;\n    background-color: orange;\n    border-color: black;\n}\n.page-item.active .page-link {\n    z-index: 3;\n    color: #212529;\n    background-color: orange;\n    border-color: black;\n}\n", ""]);
+exports.push([module.i, "\n.page-item {\n    margin: 0 3px;\n    border: none;\n    text-decoration: none;\n}\n.page-link {\n    position: relative;\n    display: block;\n    padding: .5rem .75rem;\n    margin-left: -1px;\n    line-height: 1.25;\n    color: #7e8396;\n    font-weight: bolder;\n    background-color: #273344;\n    border: 1px solid darkslategray;\n    text-decoration: none;\n}\n.page-link:hover {\n    text-decoration: none;\n    color: #212529;\n    background-color: orange;\n    border-color: black;\n}\n.page-item.active .page-link {\n    z-index: 3;\n    color: #212529;\n    background-color: orange;\n    border-color: black;\n}\n.fade-enter-active {\n    transition: all 1.5s ease;\n}\n.fade-leave-active {\n    transition: all 0.3s ease;\n}\n.fade-enter, .fade-leave-to {\n    position: absolute;\n    opacity: 0;\n}\n", ""]);
 
 // exports
 
@@ -107102,36 +107108,45 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "table-responsive" }, [
-    _c("table", { staticClass: "table table-centered" }, [
-      _vm._m(0),
-      _vm._v(" "),
-      _c(
-        "tbody",
-        { staticClass: "dashboard__card__text" },
-        _vm._l(_vm.activities.data, function(act) {
-          return _c("tr", { key: act.id }, [
-            _c("td", [_vm._v(_vm._s(act.date))]),
-            _vm._v(" "),
-            _c("td", { staticClass: "dashboard__card__text" }, [
-              _vm._v(_vm._s(act.time))
-            ]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(act.pto_used))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(act.points))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(act.pending))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(act.reason_for_request))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(act.supervisor_name))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(act.status))])
-          ])
-        }),
-        0
-      )
-    ]),
+    _c(
+      "table",
+      { staticClass: "table table-centered" },
+      [
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "transition-group",
+          {
+            tag: "tbody",
+            staticClass: "dashboard__card__text",
+            attrs: { name: "fade" }
+          },
+          _vm._l(_vm.activities.data, function(act) {
+            return _c("tr", { key: act.id }, [
+              _c("td", [_vm._v(_vm._s(act.date))]),
+              _vm._v(" "),
+              _c("td", { staticClass: "dashboard__card__text" }, [
+                _vm._v(_vm._s(act.time))
+              ]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(act.pto_used))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(act.points))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(act.pending))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(act.reason_for_request))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(act.supervisor_name))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(act.status))])
+            ])
+          }),
+          0
+        )
+      ],
+      1
+    ),
     _vm._v(" "),
     _c("div", { staticClass: "mb-3" }, [
       _c(

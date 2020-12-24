@@ -76,10 +76,9 @@ props:['activity'],
 
 .activity-leave-active {
     animation: add-item 1s reverse;
-}
-.list-move {
     transition: transform 1s;
 }
+
 @keyframes add-item {
     0% {
         opacity: 0;

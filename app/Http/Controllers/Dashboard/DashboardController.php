@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Dashboard;
 use App\Activity;
+use App\Events\PtoPointsHasBeenUpdatedEvent;
 use App\Http\Controllers\Controller;
 
 use App\Http\Requests\PTOFormRequest;
@@ -87,6 +88,7 @@ class DashboardController extends Controller
             $profile->points = $request->points_value;
         }
         $profile->save();
+        event(new PtoPointsHasBeenUpdatedEvent(auth()->user()->id, $request->points_count,$request->pto_count));
     }
 
     /**

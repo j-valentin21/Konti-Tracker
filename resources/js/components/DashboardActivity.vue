@@ -13,7 +13,7 @@
                     <th>Status</th>
                 </tr>
             </thead>
-            <tbody class="dashboard__card__text">
+            <tbody class="dashboard__card__text" name="fade" is="transition-group">
                 <tr v-for="act in activities.data" :key="act.id">
                     <td>{{act.date}}</td>
                     <td class="dashboard__card__text">{{act.time}}</td>
@@ -91,5 +91,19 @@ export default {
     color: #212529;
     background-color: orange;
     border-color: black;
+}
+
+
+.fade-enter-active {
+    transition: all 1.5s ease;
+}
+
+.fade-leave-active {
+    transition: all 0.3s ease;
+}
+
+.fade-enter, .fade-leave-to {
+    position: absolute;
+    opacity: 0;
 }
 </style>
