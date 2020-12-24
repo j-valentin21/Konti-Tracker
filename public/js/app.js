@@ -45956,7 +45956,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.page-item {\n    margin: 0 3px;\n    border: none;\n    text-decoration: none;\n}\n.page-link {\n    position: relative;\n    display: block;\n    padding: .5rem .75rem;\n    margin-left: -1px;\n    line-height: 1.25;\n    color: #7e8396;\n    font-weight: bolder;\n    background-color: #273344;\n    border: 1px solid darkslategray;\n    text-decoration: none;\n}\n.page-link:hover {\n    text-decoration: none;\n    color: #212529;\n    background-color: orange;\n    border-color: black;\n}\n.page-item.active .page-link {\n    z-index: 3;\n    color: #212529;\n    background-color: orange;\n    border-color: black;\n}\n", ""]);
+exports.push([module.i, "\n.page-item {\n    margin: 0 3px;\n    border: none;\n    text-decoration: none;\n}\n.page-link {\n    position: relative;\n    display: block;\n    padding: .5rem .75rem;\n    margin-left: -1px;\n    line-height: 1.25;\n    color: #7e8396;\n    font-weight: bolder;\n    background-color: #273344;\n    border: 1px solid darkslategray;\n    text-decoration: none;\n}\n.page-link:hover {\n    text-decoration: none;\n    color: #212529;\n    background-color: orange;\n    border-color: black;\n}\n.page-item.active .page-link {\n    z-index: 3;\n    color: #212529;\n    background-color: orange;\n    border-color: black;\n}\n.fade-enter-active {\n    transition: all 1.5s ease;\n}\n.fade-leave-active {\n    transition: all 0.3s ease;\n}\n.fade-enter, .fade-leave-to {\n    position: absolute;\n    opacity: 0;\n}\n", ""]);
 
 // exports
 
@@ -107102,36 +107102,45 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "table-responsive" }, [
-    _c("table", { staticClass: "table table-centered" }, [
-      _vm._m(0),
-      _vm._v(" "),
-      _c(
-        "tbody",
-        { staticClass: "dashboard__card__text" },
-        _vm._l(_vm.activities.data, function(act) {
-          return _c("tr", { key: act.id }, [
-            _c("td", [_vm._v(_vm._s(act.date))]),
-            _vm._v(" "),
-            _c("td", { staticClass: "dashboard__card__text" }, [
-              _vm._v(_vm._s(act.time))
-            ]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(act.pto_used))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(act.points))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(act.pending))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(act.reason_for_request))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(act.supervisor_name))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(act.status))])
-          ])
-        }),
-        0
-      )
-    ]),
+    _c(
+      "table",
+      { staticClass: "table table-centered" },
+      [
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "transition-group",
+          {
+            tag: "tbody",
+            staticClass: "dashboard__card__text",
+            attrs: { name: "fade" }
+          },
+          _vm._l(_vm.activities.data, function(act) {
+            return _c("tr", { key: act.id }, [
+              _c("td", [_vm._v(_vm._s(act.date))]),
+              _vm._v(" "),
+              _c("td", { staticClass: "dashboard__card__text" }, [
+                _vm._v(_vm._s(act.time))
+              ]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(act.pto_used))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(act.points))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(act.pending))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(act.reason_for_request))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(act.supervisor_name))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(act.status))])
+            ])
+          }),
+          0
+        )
+      ],
+      1
+    ),
     _vm._v(" "),
     _c("div", { staticClass: "mb-3" }, [
       _c(
