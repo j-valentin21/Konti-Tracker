@@ -45,6 +45,15 @@ export default {
             activities: {},
         }
     },
+    created() {
+        Fire.$on('SubmitCount', () => {
+            return new Promise(function(resolve, reject) {
+                setTimeout(resolve, 3000);
+                    }).then( response => {
+                        this.getResults();
+                    });
+            });
+    },
     mounted() {
         this.getResults();
     },

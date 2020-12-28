@@ -24217,16 +24217,27 @@ __webpack_require__.r(__webpack_exports__);
       activities: {}
     };
   },
+  created: function created() {
+    var _this = this;
+
+    Fire.$on('SubmitCount', function () {
+      return new Promise(function (resolve, reject) {
+        setTimeout(resolve, 3000);
+      }).then(function (response) {
+        _this.getResults();
+      });
+    });
+  },
   mounted: function mounted() {
     this.getResults();
   },
   methods: {
     getResults: function getResults() {
-      var _this = this;
+      var _this2 = this;
 
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
       axios.get('/dashboard/get-activity?page=' + page).then(function (response) {
-        _this.activities = response.data;
+        _this2.activities = response.data;
       });
     }
   }
