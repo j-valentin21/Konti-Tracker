@@ -8,6 +8,7 @@
                     <th>PTO Used</th>
                     <th>Points</th>
                     <th>Pending</th>
+                    <th>Dates Requested</th>
                     <th>Reason for Request</th>
                     <th>Supervisor name</th>
                     <th>Status</th>
@@ -20,6 +21,7 @@
                     <td>{{act.pto_used}}</td>
                     <td>{{act.points}}</td>
                     <td>{{act.pending}}</td>
+                    <td>{{act.dates_requested}}</td>
                     <td>{{act.reason_for_request}}</td>
                     <td>{{act.supervisor_name}}</td>
                     <td>{{act.status}}</td>

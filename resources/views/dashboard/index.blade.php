@@ -123,10 +123,10 @@
                                     <div class="card-body">
                                         <h4 class="card-title dashboard__card__title mb-4">Dashboard Activity</h4>
                                         <dashboard-activity/>
-                                        <request-pto-form :pto="{{ $profile->pto }}"/>
                                     </div>
                                 </div>
                             </div>
+                            <request-pto-form :pto="{{ $profile->pto }}"/>
                         </div><!-- END ROW -->
                     </div> <!-- END OF CONTAINER-FLUID -->
                 </div> <!-- END OF ROW -->

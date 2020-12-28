@@ -151,7 +151,7 @@ export default {
         submitPTOForm() {
             axios.post("/dashboard", this.$data)
                 .then( response => {
-                    window.location.href = '/dashboard';
+
                 })
                 .catch(error => this.errors.record(error.response.data.errors))
         },

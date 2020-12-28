@@ -24211,6 +24211,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -25002,9 +25004,7 @@ __webpack_require__.r(__webpack_exports__);
     submitPTOForm: function submitPTOForm() {
       var _this = this;
 
-      axios.post("/dashboard", this.$data).then(function (response) {
-        window.location.href = '/dashboard';
-      })["catch"](function (error) {
+      axios.post("/dashboard", this.$data).then(function (response) {})["catch"](function (error) {
         return _this.errors.record(error.response.data.errors);
       });
     }
@@ -107146,6 +107146,8 @@ var render = function() {
               _vm._v(" "),
               _c("td", [_vm._v(_vm._s(act.pending))]),
               _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(act.dates_requested))]),
+              _vm._v(" "),
               _c("td", [_vm._v(_vm._s(act.reason_for_request))]),
               _vm._v(" "),
               _c("td", [_vm._v(_vm._s(act.supervisor_name))]),
@@ -107205,6 +107207,8 @@ var staticRenderFns = [
         _c("th", [_vm._v("Points")]),
         _vm._v(" "),
         _c("th", [_vm._v("Pending")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Dates Requested")]),
         _vm._v(" "),
         _c("th", [_vm._v("Reason for Request")]),
         _vm._v(" "),
