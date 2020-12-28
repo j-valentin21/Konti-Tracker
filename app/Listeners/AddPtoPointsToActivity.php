@@ -3,8 +3,10 @@
 namespace App\Listeners;
 
 use App\Activity;
+use Carbon\Carbon;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
+
 
 class AddPtoPointsToActivity
 {
@@ -17,18 +19,17 @@ class AddPtoPointsToActivity
      */
     public function handle($event)
     {
-
-        $activity = new Activity();
-        $activity->user_id = $event->userId;
-        $activity->date = "2020-08-05";
-        $activity->time= "12:54:22";
-        $activity->pto_used = $event->pto;
-        $activity->points = $event->points;
-        $activity->pending = 0;
-        $activity->reason_for_request = "N/A";
-        $activity->supervisor_name = "Admin";
-        $activity->status = "ACCEPTED";
-        $activity->save();
-
+        $dateTime = Carbon::now();
+        Activity::create([
+            'user_id' => $event->userId,
+            'date' => $dateTime->format("y-m-d"),
+            'time' => $dateTime->toTimeString(),
+            'pto_used' => $event->pto,
+            'points' => $event->points,
+            'pending' => 0,
+            'reason_for_request' => "N/A",
+            'supervisor_name' => "Admin",
+            'status' => "ACCEPTED",
+        ]);
     }
 }
