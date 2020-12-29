@@ -25004,7 +25004,9 @@ __webpack_require__.r(__webpack_exports__);
     submitPTOForm: function submitPTOForm() {
       var _this = this;
 
-      axios.post("/dashboard", this.$data).then(function (response) {})["catch"](function (error) {
+      axios.post("/dashboard", this.$data).then(function (response) {
+        window.location.href = '/dashboard';
+      })["catch"](function (error) {
         return _this.errors.record(error.response.data.errors);
       });
     }

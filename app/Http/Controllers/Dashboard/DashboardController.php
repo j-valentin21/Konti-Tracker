@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Controllers\Dashboard;
+
 use App\Activity;
 use App\Events\PtoPointsHasBeenUpdatedEvent;
 use App\Events\RequestPtoTickedHasBeenSubmittedEvent;
 use App\Http\Controllers\Controller;
-
 use App\Http\Requests\PTOFormRequest;
 use App\Jobs\ApprovePTORequestJob;
 use App\Profile;

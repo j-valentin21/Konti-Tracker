@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Jobs;
-use App\User;
 
+use App\Events\RequestPtoTickedHasBeenApproved;
+use App\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -45,5 +46,6 @@ class ApprovePTORequestJob implements ShouldQueue
         $approve = $user->profile->pending - $this->ptoDays;
         $user->profile->pending = $approve;
         $user->profile->save();
+        event(new RequestPtoTickedHasBeenApproved($this->userId));
     }
 }
