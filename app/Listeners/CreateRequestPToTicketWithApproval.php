@@ -20,19 +20,20 @@ class CreateRequestPToTicketWithApproval
      */
     public function handle(RequestPtoTickedHasBeenApproved $event)
     {
-        $ptoRequest = PTORequest::oldest()->where('user_id', $event->userId)->get();
+        $ptoRequest = PTORequest::oldest()->where('user_id', $event->userId)->get()->first();
         $dateTime = Carbon::now();
         Activity::create([
             'user_id' => $event->userId,
             'date' => $dateTime->format("y-m-d"),
             'time' => $dateTime->toTimeString(),
-            'pto_used' => $ptoRequest[0]->pto_days,
+            'pto_used' => $ptoRequest->pto_days,
             'points' => 0,
-            'pending' => $ptoRequest[0]->pto_days,
-            'dates_requested' => $ptoRequest[0]->dates,
-            'reason_for_request' => $ptoRequest[0]->reason_for_request,
+            'pending' => $ptoRequest->pto_days,
+            'dates_requested' => $ptoRequest->dates,
+            'reason_for_request' => $ptoRequest->reason_for_request,
             'supervisor_name' => "Admin",
             'status' => "APPROVED",
         ]);
+        PTORequest::find($ptoRequest->id)->delete();
     }
 }
