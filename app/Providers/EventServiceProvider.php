@@ -3,7 +3,11 @@
 namespace App\Providers;
 
 use App\Events\PtoPointsHasBeenUpdatedEvent;
+use App\Events\RequestPtoTickedHasBeenSubmittedEvent;
+use App\Events\RequestPtoTickedHasBeenApproved;
 use App\Listeners\AddPtoPointsToActivity;
+use App\Listeners\CreateRequestPToTicket;
+use App\Listeners\CreateRequestPToTicketWithApproval;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -22,6 +26,12 @@ class EventServiceProvider extends ServiceProvider
         ],
         PtoPointsHasBeenUpdatedEvent::class => [
             AddPtoPointsToActivity::class,
+        ],
+        RequestPtoTickedHasBeenSubmittedEvent::class => [
+            CreateRequestPToTicket::class,
+        ],
+        RequestPtoTickedHasBeenApproved::class => [
+            CreateRequestPToTicketWithApproval::class,
         ],
     ];
 

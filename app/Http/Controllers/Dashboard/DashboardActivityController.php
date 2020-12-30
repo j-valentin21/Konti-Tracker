@@ -17,7 +17,7 @@ class DashboardActivityController extends Controller
      */
     public function index()
     {
-        $activity = User::find(auth()->user()->id)->activity;
+        $activity =  Activity::latest()->where('user_id', auth()->user()->id )->get();
         return view('dashboard.activity.index',['activity'=>$activity]);
     }
 

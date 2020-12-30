@@ -5,7 +5,7 @@
                 <tr class="dashboard__table__activity-row">
                     <th>Date</th>
                     <th>Time</th>
-                    <th>PTO Used</th>
+                    <th>PTO</th>
                     <th>Points</th>
                     <th>Delete</th>
                 </tr>
@@ -65,7 +65,7 @@ props:['activity'],
                 console.log(err)
             });
         },
-    }
+    },
 }
 </script>
 

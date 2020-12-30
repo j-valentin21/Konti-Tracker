@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers\Dashboard;
+
 use App\Activity;
 use App\Events\PtoPointsHasBeenUpdatedEvent;
+use App\Events\RequestPtoTickedHasBeenSubmittedEvent;
 use App\Http\Controllers\Controller;
-
 use App\Http\Requests\PTOFormRequest;
 use App\Jobs\ApprovePTORequestJob;
 use App\Profile;
@@ -52,9 +53,10 @@ class DashboardController extends Controller
         $redis->set('message_' .  auth()->id(), 'Your PTO request has been successfully created! Awaiting approval for your request');
         $redis->expire('message_' . auth()->id(),5);
         ApprovePTORequestJob::dispatch(auth()->user()->id, $request->pto_days)
-            ->delay(now()->addMinutes(15));
+            ->delay(now()->addMinutes(1));
         $request_pto->save();
         $profile->save();
+        event(new RequestPtoTickedHasBeenSubmittedEvent($request_pto));
     }
 
     /**
@@ -100,7 +102,8 @@ class DashboardController extends Controller
     {
         $profile = Profile::find(auth()->user()->id);
         $data = $profile->pto_usage;
-        return response()->json($data);
+        $pto = $profile->pto;
+        return response()->json([$data,$pto]);
     }
 
     /**

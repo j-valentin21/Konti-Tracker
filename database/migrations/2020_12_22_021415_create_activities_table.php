@@ -21,6 +21,7 @@ class CreateActivitiesTable extends Migration
             $table->float('pto_used')->nullable();
             $table->integer('points')->nullable();
             $table->float('pending')->nullable();
+            $table->string('dates_requested')->nullable();
             $table->string('reason_for_request', 100)->nullable();
             $table->string('supervisor_name', 100)->nullable();
             $table->string('status', 10)->nullable();

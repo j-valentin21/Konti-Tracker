@@ -5,9 +5,10 @@
                 <tr class="dashboard__card__title">
                     <th>Date</th>
                     <th>Time</th>
-                    <th>PTO Used</th>
+                    <th>PTO</th>
                     <th>Points</th>
                     <th>Pending</th>
+                    <th>Dates Requested</th>
                     <th>Reason for Request</th>
                     <th>Supervisor name</th>
                     <th>Status</th>
@@ -20,6 +21,7 @@
                     <td>{{act.pto_used}}</td>
                     <td>{{act.points}}</td>
                     <td>{{act.pending}}</td>
+                    <td>{{act.dates_requested}}</td>
                     <td>{{act.reason_for_request}}</td>
                     <td>{{act.supervisor_name}}</td>
                     <td>{{act.status}}</td>
@@ -44,6 +46,15 @@ export default {
         return {
             activities: {},
         }
+    },
+    created() {
+        Fire.$on('SubmitCount', () => {
+            return new Promise(function(resolve, reject) {
+                setTimeout(resolve, 3000);
+                    }).then( response => {
+                        this.getResults();
+                    });
+            });
     },
     mounted() {
         this.getResults();
@@ -95,15 +106,14 @@ export default {
 
 
 .fade-enter-active {
-    transition: all 1.5s ease;
-}
-
-.fade-leave-active {
-    transition: all 0.3s ease;
+    animation: flipInX 1s;
+    backface-visibility: visible !important;
 }
 
 .fade-enter, .fade-leave-to {
     position: absolute;
     opacity: 0;
 }
+
+
 </style>

@@ -27,6 +27,7 @@ class AddPtoPointsToActivity
             'pto_used' => $event->pto,
             'points' => $event->points,
             'pending' => 0,
+            'dates_requested' => "N/A",
             'reason_for_request' => "N/A",
             'supervisor_name' => "Admin",
             'status' => "ACCEPTED",

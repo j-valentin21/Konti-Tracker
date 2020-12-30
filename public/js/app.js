@@ -23810,7 +23810,7 @@ __webpack_require__.r(__webpack_exports__);
 
       var uri = "/dashboard/pto-chart";
       axios.get(uri).then(function (response) {
-        _this.barData = [response.data['Jan'], response.data['Feb'], response.data['Mar'], response.data['Apr'], response.data['May'], response.data['June'], response.data['July'], response.data['Aug'], response.data['Sept'], response.data['Oct'], response.data['Nov'], response.data['Dec']];
+        _this.barData = [response.data[0]['Jan'], response.data[0]['Feb'], response.data[0]['Mar'], response.data[0]['Apr'], response.data[0]['May'], response.data[0]['June'], response.data[0]['July'], response.data[0]['Aug'], response.data[0]['Sept'], response.data[0]['Oct'], response.data[0]['Nov'], response.data[0]['Dec']];
       })["catch"](function (err) {
         console.log(err);
       });
@@ -24211,22 +24211,35 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       activities: {}
     };
   },
+  created: function created() {
+    var _this = this;
+
+    Fire.$on('SubmitCount', function () {
+      return new Promise(function (resolve, reject) {
+        setTimeout(resolve, 3000);
+      }).then(function (response) {
+        _this.getResults();
+      });
+    });
+  },
   mounted: function mounted() {
     this.getResults();
   },
   methods: {
     getResults: function getResults() {
-      var _this = this;
+      var _this2 = this;
 
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
       axios.get('/dashboard/get-activity?page=' + page).then(function (response) {
-        _this.activities = response.data;
+        _this2.activities = response.data;
       });
     }
   }
@@ -24942,6 +24955,13 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['pto'],
+  created: function created() {
+    var _this = this;
+
+    Fire.$on('SubmitCount', function () {
+      _this.getActualPTO();
+    });
+  },
   data: function data() {
     return {
       actualPTO: this.pto,
@@ -24989,12 +25009,21 @@ __webpack_require__.r(__webpack_exports__);
       this.selectDate = dateStr !== '';
     },
     submitPTOForm: function submitPTOForm() {
-      var _this = this;
+      var _this2 = this;
 
       axios.post("/dashboard", this.$data).then(function (response) {
         window.location.href = '/dashboard';
       })["catch"](function (error) {
-        return _this.errors.record(error.response.data.errors);
+        return _this2.errors.record(error.response.data.errors);
+      });
+    },
+    getActualPTO: function getActualPTO() {
+      var _this3 = this;
+
+      axios.get("/dashboard/pto-chart").then(function (response) {
+        _this3.actualPTO = response.data[1];
+      })["catch"](function (error) {
+        return _this3.errors.record(error.response.data.errors);
       });
     }
   },
@@ -45962,7 +45991,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.page-item {\n    margin: 0 3px;\n    border: none;\n    text-decoration: none;\n}\n.page-link {\n    position: relative;\n    display: block;\n    padding: .5rem .75rem;\n    margin-left: -1px;\n    line-height: 1.25;\n    color: #7e8396;\n    font-weight: bolder;\n    background-color: #273344;\n    border: 1px solid darkslategray;\n    text-decoration: none;\n}\n.page-link:hover {\n    text-decoration: none;\n    color: #212529;\n    background-color: orange;\n    border-color: black;\n}\n.page-item.active .page-link {\n    z-index: 3;\n    color: #212529;\n    background-color: orange;\n    border-color: black;\n}\n.fade-enter-active {\n    transition: all 1.5s ease;\n}\n.fade-leave-active {\n    transition: all 0.3s ease;\n}\n.fade-enter, .fade-leave-to {\n    position: absolute;\n    opacity: 0;\n}\n", ""]);
+exports.push([module.i, "\n.page-item {\n    margin: 0 3px;\n    border: none;\n    text-decoration: none;\n}\n.page-link {\n    position: relative;\n    display: block;\n    padding: .5rem .75rem;\n    margin-left: -1px;\n    line-height: 1.25;\n    color: #7e8396;\n    font-weight: bolder;\n    background-color: #273344;\n    border: 1px solid darkslategray;\n    text-decoration: none;\n}\n.page-link:hover {\n    text-decoration: none;\n    color: #212529;\n    background-color: orange;\n    border-color: black;\n}\n.page-item.active .page-link {\n    z-index: 3;\n    color: #212529;\n    background-color: orange;\n    border-color: black;\n}\n.fade-enter-active {\n    -webkit-animation: flipInX 1s;\n            animation: flipInX 1s;\n    -webkit-backface-visibility: visible !important;\n            backface-visibility: visible !important;\n}\n.fade-enter, .fade-leave-to {\n    position: absolute;\n    opacity: 0;\n}\n\n\n", ""]);
 
 // exports
 
@@ -106816,7 +106845,7 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("th", [_vm._v("Time")]),
           _vm._v(" "),
-          _c("th", [_vm._v("PTO Used")]),
+          _c("th", [_vm._v("PTO")]),
           _vm._v(" "),
           _c("th", [_vm._v("Points")]),
           _vm._v(" "),
@@ -107135,6 +107164,8 @@ var render = function() {
               _vm._v(" "),
               _c("td", [_vm._v(_vm._s(act.pending))]),
               _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(act.dates_requested))]),
+              _vm._v(" "),
               _c("td", [_vm._v(_vm._s(act.reason_for_request))]),
               _vm._v(" "),
               _c("td", [_vm._v(_vm._s(act.supervisor_name))]),
@@ -107189,11 +107220,13 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Time")]),
         _vm._v(" "),
-        _c("th", [_vm._v("PTO Used")]),
+        _c("th", [_vm._v("PTO")]),
         _vm._v(" "),
         _c("th", [_vm._v("Points")]),
         _vm._v(" "),
         _c("th", [_vm._v("Pending")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Dates Requested")]),
         _vm._v(" "),
         _c("th", [_vm._v("Reason for Request")]),
         _vm._v(" "),
