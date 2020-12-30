@@ -16,8 +16,8 @@ export default{
         fetchTasks() {
             let uri = `/dashboard/pto-chart`;
             axios.get(uri).then(response => {
-                this.barData = [response.data['Jan'], response.data['Feb'], response.data['Mar'], response.data['Apr'], response.data['May'], response.data['June'],
-                    response.data['July'], response.data['Aug'], response.data['Sept'], response.data['Oct'], response.data['Nov'], response.data['Dec']]
+                this.barData = [response.data[0]['Jan'], response.data[0]['Feb'], response.data[0]['Mar'], response.data[0]['Apr'], response.data[0]['May'], response.data[0]['June'],
+                    response.data[0]['July'], response.data[0]['Aug'], response.data[0]['Sept'], response.data[0]['Oct'], response.data[0]['Nov'], response.data[0]['Dec']]
             })
             .catch((err) => {
                 console.log(err)

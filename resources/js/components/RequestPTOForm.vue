@@ -96,6 +96,11 @@ import { Errors } from '../error.js'
 
 export default {
     props:['pto'],
+    created() {
+        Fire.$on('SubmitCount', () => {
+            this.getActualPTO();
+        });
+    },
     data () {
         return {
             actualPTO: this.pto,
@@ -152,6 +157,13 @@ export default {
             axios.post("/dashboard", this.$data)
                 .then( response => {
                     window.location.href = '/dashboard';
+                })
+                .catch(error => this.errors.record(error.response.data.errors))
+        },
+        getActualPTO() {
+            axios.get("/dashboard/pto-chart")
+                .then( response => {
+                   this.actualPTO = response.data[1];
                 })
                 .catch(error => this.errors.record(error.response.data.errors))
         },

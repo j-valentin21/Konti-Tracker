@@ -102,7 +102,8 @@ class DashboardController extends Controller
     {
         $profile = Profile::find(auth()->user()->id);
         $data = $profile->pto_usage;
-        return response()->json($data);
+        $pto = $profile->pto;
+        return response()->json([$data,$pto]);
     }
 
     /**

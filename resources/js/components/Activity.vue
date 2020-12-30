@@ -65,7 +65,7 @@ props:['activity'],
                 console.log(err)
             });
         },
-    }
+    },
 }
 </script>
 

@@ -23810,7 +23810,7 @@ __webpack_require__.r(__webpack_exports__);
 
       var uri = "/dashboard/pto-chart";
       axios.get(uri).then(function (response) {
-        _this.barData = [response.data['Jan'], response.data['Feb'], response.data['Mar'], response.data['Apr'], response.data['May'], response.data['June'], response.data['July'], response.data['Aug'], response.data['Sept'], response.data['Oct'], response.data['Nov'], response.data['Dec']];
+        _this.barData = [response.data[0]['Jan'], response.data[0]['Feb'], response.data[0]['Mar'], response.data[0]['Apr'], response.data[0]['May'], response.data[0]['June'], response.data[0]['July'], response.data[0]['Aug'], response.data[0]['Sept'], response.data[0]['Oct'], response.data[0]['Nov'], response.data[0]['Dec']];
       })["catch"](function (err) {
         console.log(err);
       });
@@ -24955,6 +24955,13 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['pto'],
+  created: function created() {
+    var _this = this;
+
+    Fire.$on('SubmitCount', function () {
+      _this.getActualPTO();
+    });
+  },
   data: function data() {
     return {
       actualPTO: this.pto,
@@ -25002,12 +25009,21 @@ __webpack_require__.r(__webpack_exports__);
       this.selectDate = dateStr !== '';
     },
     submitPTOForm: function submitPTOForm() {
-      var _this = this;
+      var _this2 = this;
 
       axios.post("/dashboard", this.$data).then(function (response) {
         window.location.href = '/dashboard';
       })["catch"](function (error) {
-        return _this.errors.record(error.response.data.errors);
+        return _this2.errors.record(error.response.data.errors);
+      });
+    },
+    getActualPTO: function getActualPTO() {
+      var _this3 = this;
+
+      axios.get("/dashboard/pto-chart").then(function (response) {
+        _this3.actualPTO = response.data[1];
+      })["catch"](function (error) {
+        return _this3.errors.record(error.response.data.errors);
       });
     }
   },
