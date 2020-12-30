@@ -5,7 +5,7 @@
                 <tr class="dashboard__card__title">
                     <th>Date</th>
                     <th>Time</th>
-                    <th>PTO Used</th>
+                    <th>PTO</th>
                     <th>Points</th>
                     <th>Pending</th>
                     <th>Dates Requested</th>

@@ -26,7 +26,7 @@ class CreateRequestPToTicketWithApproval
             'user_id' => $event->userId,
             'date' => $dateTime->format("y-m-d"),
             'time' => $dateTime->toTimeString(),
-            'pto_used' => $ptoRequest->pto_days,
+            'pto_used' => "-" . $ptoRequest->pto_days,
             'points' => 0,
             'pending' => $ptoRequest->pto_days,
             'dates_requested' => $ptoRequest->dates,

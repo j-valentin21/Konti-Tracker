@@ -23,7 +23,7 @@ class CreateRequestPToTicket
             'user_id' => $event->pto_request->user_id,
             'date' => $dateTime->format("y-m-d"),
             'time' => $dateTime->toTimeString(),
-            'pto_used' => $event->pto_request->pto_days,
+            'pto_used' =>"-" . $event->pto_request->pto_days,
             'points' => 0,
             'pending' => $event->pto_request->pto_days,
             'dates_requested' => $event->pto_request->dates,
