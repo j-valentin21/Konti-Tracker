@@ -106,15 +106,14 @@ export default {
 
 
 .fade-enter-active {
-    transition: all 1.5s ease;
-}
-
-.fade-leave-active {
-    transition: all 0.3s ease;
+    animation: flipInX 1s;
+    backface-visibility: visible !important;
 }
 
 .fade-enter, .fade-leave-to {
     position: absolute;
     opacity: 0;
 }
+
+
 </style>
