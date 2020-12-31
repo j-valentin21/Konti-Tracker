@@ -23759,12 +23759,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['activity'],
   data: function data() {
     return {
-      activities: this.activity
+      activities: {}
     };
+  },
+  mounted: function mounted() {
+    this.getResults();
   },
   methods: {
     deleteActivity: function deleteActivity(id) {
@@ -23773,8 +23784,21 @@ __webpack_require__.r(__webpack_exports__);
       var url = '/dashboard/activity/' + id;
       axios["delete"](url).then(function (response) {
         _this.activities = response.data.results;
+        console.log(response.data);
       })["catch"](function (err) {
         console.log(err);
+      });
+    },
+    getResults: function getResults() {
+      var _this2 = this;
+
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      axios.get('/dashboard/get-activity?page=' + page, {
+        params: {
+          activity: 10
+        }
+      }).then(function (response) {
+        _this2.activities = response.data;
       });
     }
   }
@@ -45953,7 +45977,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.activity-enter-active {\n    -webkit-animation: add-item 1s;\n            animation: add-item 1s;\n}\n.activity-leave-active {\n    animation: add-item 1s reverse;\n    transition: transform 1s;\n}\n@-webkit-keyframes add-item {\n0% {\n        opacity: 0;\n        transform: translateX(150px);\n}\n50% {\n        opacity: 0.5;\n        transform: translateX(-10px) skewX(20deg);\n}\n100% {\n        opacity: 1;\n        transform: translateX(0px);\n}\n}\n@keyframes add-item {\n0% {\n        opacity: 0;\n        transform: translateX(150px);\n}\n50% {\n        opacity: 0.5;\n        transform: translateX(-10px) skewX(20deg);\n}\n100% {\n        opacity: 1;\n        transform: translateX(0px);\n}\n}\n", ""]);
+exports.push([module.i, "\n.activity-enter-active {\n    -webkit-animation: flipInX 1s;\n            animation: flipInX 1s;\n    -webkit-backface-visibility: visible !important;\n            backface-visibility: visible !important;\n}\n.activity-enter, .activity-leave-to {\n    position: absolute;\n    opacity: 0;\n}\n", ""]);
 
 // exports
 
@@ -106755,7 +106779,7 @@ var render = function() {
             staticClass: "dashboard__table__body",
             attrs: { name: "activity" }
           },
-          _vm._l(_vm.activities, function(act, index) {
+          _vm._l(_vm.activities.data, function(act, index) {
             return _c(
               "tr",
               { key: act.id, staticClass: "dashboard__table__activity-row" },
@@ -106796,6 +106820,35 @@ var render = function() {
       1
     ),
     _vm._v(" "),
+    _c("div", { staticClass: "mb-3" }, [
+      _c(
+        "ul",
+        {
+          staticClass:
+            "pagination pagination-rounded justify-content-center mb-0"
+        },
+        [
+          _c(
+            "pagination",
+            {
+              attrs: { data: _vm.activities },
+              on: { "pagination-change-page": _vm.getResults }
+            },
+            [
+              _c("span", { attrs: { slot: "prev-nav" }, slot: "prev-nav" }, [
+                _vm._v("< Previous")
+              ]),
+              _vm._v(" "),
+              _c("span", { attrs: { slot: "next-nav" }, slot: "next-nav" }, [
+                _vm._v("Next >")
+              ])
+            ]
+          )
+        ],
+        1
+      )
+    ]),
+    _vm._v(" "),
     _c(
       "table",
       { staticClass: "table dashboard__table pr-3" },
@@ -106809,7 +106862,7 @@ var render = function() {
             staticClass: "dashboard__table__body",
             attrs: { name: "activity" }
           },
-          _vm._l(_vm.activities, function(act, index) {
+          _vm._l(_vm.activities.data, function(act, index) {
             return _c(
               "tr",
               { key: act.id, staticClass: "dashboard__table__activity-row" },
