@@ -17,8 +17,7 @@ class DashboardActivityController extends Controller
      */
     public function index()
     {
-        $activity =  Activity::latest()->where('user_id', auth()->user()->id )->get();
-        return view('dashboard.activity.index',['activity'=>$activity]);
+        return view('dashboard.activity.index');
     }
 
     /**
@@ -30,7 +29,7 @@ class DashboardActivityController extends Controller
     public function destroy($id)
     {
         Activity::find($id)->delete();
-        $results = User::find(auth()->user()->id)->activity;
+        $results = Activity::latest()->where('user_id', auth()->user()->id )->paginate(10);
         return response()->json(['results' => $results]);
     }
 
