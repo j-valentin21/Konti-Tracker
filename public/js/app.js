@@ -23768,10 +23768,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['user_id'],
   data: function data() {
     return {
-      activities: {}
+      activities: {},
+      userId: this.user_id
     };
   },
   mounted: function mounted() {
@@ -23784,13 +23789,26 @@ __webpack_require__.r(__webpack_exports__);
       var url = '/dashboard/activity/' + id;
       axios["delete"](url).then(function (response) {
         _this.activities = response.data.results;
-        console.log(response.data);
+      })["catch"](function (err) {
+        console.log(err);
+      });
+    },
+    deleteAllActivity: function deleteAllActivity(id) {
+      var _this2 = this;
+
+      var url = '/dashboard/activity/' + id;
+      axios["delete"](url, {
+        params: {
+          deleteAll: true
+        }
+      }).then(function (response) {
+        _this2.activities = response.data.results;
       })["catch"](function (err) {
         console.log(err);
       });
     },
     getResults: function getResults() {
-      var _this2 = this;
+      var _this3 = this;
 
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
       axios.get('/dashboard/get-activity?page=' + page, {
@@ -23798,7 +23816,7 @@ __webpack_require__.r(__webpack_exports__);
           activity: 10
         }
       }).then(function (response) {
-        _this2.activities = response.data;
+        _this3.activities = response.data;
       });
     }
   }
@@ -45977,7 +45995,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.activity-enter-active {\n    -webkit-animation: flipInX 1s;\n            animation: flipInX 1s;\n    -webkit-backface-visibility: visible !important;\n            backface-visibility: visible !important;\n}\n.activity-enter, .activity-leave-to {\n    position: absolute;\n    opacity: 0;\n}\n", ""]);
+exports.push([module.i, "\n.activity-enter-active {\n    -webkit-animation: fadeIn 1.25s;\n            animation: fadeIn 1.25s;\n    -webkit-backface-visibility: visible !important;\n            backface-visibility: visible !important;\n}\n.activity-enter, .activity-leave-to {\n    position: absolute;\n    opacity: 0;\n}\n", ""]);
 
 // exports
 
@@ -106881,7 +106899,23 @@ var render = function() {
         )
       ],
       1
-    )
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "text-center" }, [
+      _c(
+        "button",
+        {
+          staticClass: "form__wizard__btn form__wizard__btn--red mt-4",
+          attrs: { type: "button" },
+          on: {
+            click: function($event) {
+              return _vm.deleteAllActivity(_vm.userId)
+            }
+          }
+        },
+        [_vm._v("Delete All")]
+      )
+    ])
   ])
 }
 var staticRenderFns = [

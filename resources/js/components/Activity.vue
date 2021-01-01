@@ -53,14 +53,19 @@
                 </tr>
             </tbody>
         </table>
+        <div class="text-center">
+            <button type="button" @click="deleteAllActivity(userId)" class="form__wizard__btn form__wizard__btn--red mt-4">Delete All</button>
+        </div>
     </form>
 </template>
 
 <script>
 export default {
+    props:['user_id'],
     data () {
         return {
             activities: {},
+            userId: this.user_id
         }
     },
     mounted() {
@@ -71,7 +76,19 @@ export default {
             const url = '/dashboard/activity/' + id
             axios.delete(url).then((response) => {
                 this.activities = response.data.results
-                console.log(response.data);
+            })
+            .catch((err) => {
+                console.log(err)
+            });
+        },
+        deleteAllActivity(id) {
+            const url = '/dashboard/activity/' + id
+            axios.delete(url, {
+                params: {
+                    deleteAll: true
+                }
+            }).then((response) => {
+                this.activities = response.data.results
             })
             .catch((err) => {
                 console.log(err)
@@ -93,7 +110,7 @@ export default {
 <style lang="css">
 
 .activity-enter-active {
-    animation: flipInX 1s;
+    animation: fadeIn 1.25s;
     backface-visibility: visible !important;
 }
 
