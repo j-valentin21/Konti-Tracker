@@ -4,33 +4,38 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Activity;
 use App\Http\Controllers\Controller;
-
-use App\User;
 use Illuminate\Http\Request;
 
 class DashboardActivityController extends Controller
 {
     /**
-     * Display different activities executed throughout the application.
+     * View all activities.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
     {
-        return view('dashboard.activity.index');
+        $userId = auth()->user()->id;
+        return view('dashboard.activity.index',['userId' => $userId]);
     }
 
     /**
-     * Display different activities executed throughout the application.
+     * Delete one or all activities associated with user.
      *
-     * @param $id
+     * @param int $id
+     * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function destroy($id)
+    public function destroy(int $id, request $request)
     {
-        Activity::find($id)->delete();
-        $results = Activity::latest()->where('user_id', auth()->user()->id )->paginate(10);
-        return response()->json(['results' => $results]);
+        if(!empty($request->deleteAll)) {
+            Activity::where('user_id', auth()->user()->id )->delete();
+            $results = Activity::latest()->where('user_id', auth()->user()->id )->paginate(10);
+            return response()->json(['results' => $results]);
+        } else {
+            Activity::find($id)->delete();
+            $results = Activity::latest()->where('user_id', auth()->user()->id )->paginate(10);
+            return response()->json(['results' => $results]);
+        }
     }
-
 }
