@@ -1,11 +1,19 @@
 <!-- ========== NAV BAR ========== -->
 <nav class="dashboard__nav">
-    <div class="navbar__dash">
-        <div class="container-fluid">
-            <div class="float-right mt-3 mt-sm-2">
+        <div class="navbar__dash">
+            <div class="ml-4">
+                <a class="navbar__dash__logo navi"  href="/">
+                    <img src="{{ asset('img/konti_logo.png') }}" alt="Konti-Tracker logo" height="80">
+                </a>
+                <menu-btn></menu-btn>
+            </div>
+            <div class="navbar__links justify-content-end">
+                <svg class="icons ">
+                    <use href="{{ asset('svg/sprite.svg#icon-bell') }}"></use>
+                </svg>
                 <!-- ========== NAVBAR IMAGE DROPDOWN ========== -->
-                <div class="dropdown d-inline-block mr-4">
-                    <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div class="dropdown d-inline-block">
+                    <button type="button" class="btn mr-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     @if(isset(auth()->user()->profile->avatar))
                         <img class="rounded-circle navbar__img d-xl-inline-block"
                              src="{{ Storage::disk('s3')->url(auth()->user()->profile->avatar) }}"
@@ -48,14 +56,7 @@
                 </div>
             </div>
             <!-- LOGO/MENU -->
-            <div class="ml-4">
-                <a class="navbar__dash__logo"  href="/">
-                    <img src="{{ asset('img/konti_logo.png') }}" alt="Konti-Tracker logo" height="80">
-                </a>
-                <menu-btn></menu-btn>
-            </div>
         </div>
-    </div>
     <!-- NAVBAR TITLE -->
     <div class="navbar__title">
         <div class="d-flex justify-content-lg-center justify-content-start">

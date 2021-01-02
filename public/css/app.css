@@ -11540,12 +11540,22 @@ body {
 .navbar__dash {
   background-color: rgba(0, 0, 0, 0.4);
   height: 11vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 @media only screen and (max-width: 25em) {
   .navbar__dash__logo {
     display: none;
   }
+}
+
+.navbar__links {
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  width: 30%;
 }
 
 .navbar__img {
@@ -11575,13 +11585,6 @@ body {
   margin: 0rem 0rem 0.5rem 2rem;
 }
 
-@media only screen and (max-width: 25em) {
-  .navbar__menu {
-    margin: 0rem;
-    margin-top: 1.25rem;
-  }
-}
-
 .navbar__menu__global {
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
@@ -11596,12 +11599,30 @@ body {
   top: 1.4rem;
 }
 
+@media only screen and (max-width: 25em) {
+  .navbar__menu__global--top {
+    top: 0.2rem;
+  }
+}
+
 .navbar__menu__global--middle {
   top: 2.25rem;
 }
 
+@media only screen and (max-width: 25em) {
+  .navbar__menu__global--middle {
+    top: 1rem;
+  }
+}
+
 .navbar__menu__global--bottom {
   top: 3rem;
+}
+
+@media only screen and (max-width: 25em) {
+  .navbar__menu__global--bottom {
+    top: 1.75rem;
+  }
 }
 
 @media only screen and (max-width: 47.9em) {

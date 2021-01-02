@@ -115,12 +115,22 @@
 .navbar__dash {
     background-color: rgba(0, 0, 0, 0.4);
     height: 11vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
     &__logo {
         @include respond(mobile-port) {
             display: none;
         }
     }
+}
+
+.navbar__links {
+    display: flex;
+    align-items: center;
+    align-self: stretch;
+    width: 30%;
 }
 
 .navbar__img {
@@ -147,10 +157,7 @@
     height: 1.75rem;
     margin: 0rem 0rem .5rem 2rem;
 
-    @include respond(mobile-port) {
-        margin: 0rem;
-        margin-top: 1.25rem;
-    }
+
 
     &__global {
         backface-visibility: hidden;
@@ -162,14 +169,26 @@
 
         &--top {
             top: 1.4rem;
+
+            @include respond(mobile-port) {
+               top: .2rem;
+            }
         }
 
         &--middle {
             top: 2.25rem;
+
+            @include respond(mobile-port) {
+                top: 1rem;
+            }
         }
 
         &--bottom {
             top: 3rem;
+
+            @include respond(mobile-port) {
+                top: 1.75rem;
+            }
         }
     }
 }
