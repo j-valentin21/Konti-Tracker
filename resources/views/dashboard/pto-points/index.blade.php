@@ -63,4 +63,5 @@
             </div>
         </div>
     </div>
+    <request-pto-form :pto="{{ auth()->user()->profile->pto }}"/>
 @endsection
