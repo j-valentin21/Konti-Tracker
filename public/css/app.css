@@ -11274,6 +11274,74 @@ body {
   }
 }
 
+@-webkit-keyframes ring {
+  0% {
+    transform: rotate(35deg);
+  }
+
+  12.5% {
+    transform: rotate(-30deg);
+  }
+
+  25% {
+    transform: rotate(25deg);
+  }
+
+  37.5% {
+    transform: rotate(-20deg);
+  }
+
+  50% {
+    transform: rotate(15deg);
+  }
+
+  62.5% {
+    transform: rotate(-10deg);
+  }
+
+  75% {
+    transform: rotate(5deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes ring {
+  0% {
+    transform: rotate(35deg);
+  }
+
+  12.5% {
+    transform: rotate(-30deg);
+  }
+
+  25% {
+    transform: rotate(25deg);
+  }
+
+  37.5% {
+    transform: rotate(-20deg);
+  }
+
+  50% {
+    transform: rotate(15deg);
+  }
+
+  62.5% {
+    transform: rotate(-10deg);
+  }
+
+  75% {
+    transform: rotate(5deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
 .border__bottom--grey {
   border-bottom: 1px solid #364458;
 }
@@ -11549,6 +11617,21 @@ body {
   .navbar__dash__logo {
     display: none;
   }
+}
+
+.navbar__icon-container {
+  background-color: #1e2938;
+  width: 4rem;
+  height: 3rem;
+  border-radius: 5%;
+  border: 1px solid rgba(58, 159, 191, 0.8);
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+  cursor: pointer;
+}
+
+.navbar__icon-container::after {
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .navbar__links {
@@ -11980,7 +12063,7 @@ body {
 .icons {
   height: 2rem;
   fill: #7f879c;
-  width: 30%;
+  width: 3rem;
 }
 
 .icons--sidebar {
@@ -11998,6 +12081,34 @@ body {
   .icon__menu {
     display: inline;
   }
+}
+
+.icon__nav {
+  height: 2rem;
+  fill: #ffffff;
+  width: 100%;
+  padding: 0.1rem;
+}
+
+.icon__nav-animation {
+  -webkit-animation: ring 1.5s ease;
+          animation: ring 1.5s ease;
+}
+
+.badge__count::after {
+  position: absolute;
+  right: 10%;
+  top: 1.75%;
+  content: attr(data-count);
+  font-size: 75%;
+  padding: 0.6rem;
+  border-radius: 999px;
+  line-height: 0.75em;
+  color: black;
+  background: rgba(235, 167, 43, 0.85);
+  text-align: center;
+  min-width: 1rem;
+  font-weight: bold;
 }
 
 .sidebar {

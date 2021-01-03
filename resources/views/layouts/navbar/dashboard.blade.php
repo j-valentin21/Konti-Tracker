@@ -8,9 +8,18 @@
                 <menu-btn></menu-btn>
             </div>
             <div class="navbar__links justify-content-end">
-                <svg class="icons ">
-                    <use href="{{ asset('svg/sprite.svg#icon-bell') }}"></use>
-                </svg>
+                <div class="navbar__icon-container">
+                    @if($profile)
+                        <svg class="icon__nav icon__nav-animation  mt-2">
+                            <use href="{{ asset('svg/sprite.svg#icon-bell2') }}"></use>
+                        </svg>
+                        <span class="badge__count" data-count="10"> </span>
+                    @else
+                        <svg class="icon__nav mt-2">
+                            <use href="{{ asset('svg/sprite.svg#icon-bell2') }}"></use>
+                        </svg>
+                    @endif
+                </div>
                 <!-- ========== NAVBAR IMAGE DROPDOWN ========== -->
                 <div class="dropdown d-inline-block">
                     <button type="button" class="btn mr-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
