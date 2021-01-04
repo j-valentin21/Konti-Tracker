@@ -27,22 +27,27 @@
 }
 
 .icon__nav-animation {
-    animation: ring 1.5s ease;
+    animation: ring 3.5s;
 }
 
 .badge__count::after {
     position:absolute;
-    right:10%;
-    top:1.75%;
+    right: -5px;
+    top: -7px;
+    width: 20px;
+    height: 20px;
     content: attr(data-count);
-    font-size:75%;
-    padding: 0.6rem;
-    border-radius:999px;
-    line-height:.75em;
+    font-size: .75rem;
+    border-radius: 50%;
     color: black;
-    background:rgba($color-orange,.85);
-    text-align:center;
-    min-width:1rem;
-    font-weight:bold;
+    background: rgba($color-orange,.85);
+    text-align: center;
+    font-weight: bold;
+
+    @include respond(tab-port) {
+        width: 15px;
+        height: 15px;
+        font-size: .75rem;
+    }
 }
 
