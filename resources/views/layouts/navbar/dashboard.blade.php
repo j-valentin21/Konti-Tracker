@@ -5,7 +5,7 @@
                 <a class="navbar__dash__logo navi"  href="/">
                     <img src="{{ asset('img/konti_logo.png') }}" alt="Konti-Tracker logo" height="80">
                 </a>
-                <menu-btn></menu-btn>
+                <menu-btn/>
             </div>
             <div class="navbar__links justify-content-end">
                 <!-- ========== NOTIFICATION ICON ========== -->
@@ -19,7 +19,52 @@
                             <span class="badge__count" data-count="10"> </span>
                             <div class="dropdown-menu notification" aria-labelledby="dropdownMenuButton">
                                 <h3 class="notification__title">NOTIFICATIONS</h3>
-                                <div class="notification__message">
+                                <div class="notification__message notification__message-1">
+                                    <div class="notification__alert">
+                                        <div>
+                                            <span class="notification__name">Sasha</span>
+                                            approved your PTO request.
+                                        </div>
+                                    </div>
+                                    <div class="notification__time">now</div>
+                                </div>
+                                <div class="notification__message notification__message-2">
+                                    <div class="notification__alert">
+                                        <div>
+                                            <span class="notification__name">Sasha</span>
+                                            approved your PTO request.
+                                        </div>
+                                    </div>
+                                    <div class="notification__time">now</div>
+                                </div>
+                                <div class="notification__message notification__message-3">
+                                    <div class="notification__alert">
+                                        <div>
+                                            <span class="notification__name">Sasha</span>
+                                            approved your PTO request.
+                                        </div>
+                                    </div>
+                                    <div class="notification__time">now</div>
+                                </div>
+                                <div class="notification__message notification__message-4">
+                                    <div class="notification__alert">
+                                        <div>
+                                            <span class="notification__name">Sasha</span>
+                                            approved your PTO request.
+                                        </div>
+                                    </div>
+                                    <div class="notification__time">now</div>
+                                </div>
+                                <div class="notification__message notification__message-5">
+                                    <div class="notification__alert">
+                                        <div>
+                                            <span class="notification__name">Sasha</span>
+                                            approved your PTO request.
+                                        </div>
+                                    </div>
+                                    <div class="notification__time">now</div>
+                                </div>
+                                <div class="notification__message notification__message-6">
                                     <div class="notification__alert">
                                         <div>
                                             <span class="notification__name">Sasha</span>

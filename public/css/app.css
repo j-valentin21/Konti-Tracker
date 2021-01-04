@@ -11342,6 +11342,38 @@ body {
   }
 }
 
+@-webkit-keyframes rotateZ {
+  0% {
+    opacity: 0;
+    transform: translateZ(290px);
+  }
+
+  80% {
+    transform: translateZ(10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateZ(0);
+  }
+}
+
+@keyframes rotateZ {
+  0% {
+    opacity: 0;
+    transform: translateZ(290px);
+  }
+
+  80% {
+    transform: translateZ(10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateZ(0);
+  }
+}
+
 .border__bottom--grey {
   border-bottom: 1px solid #364458;
 }
@@ -13049,6 +13081,7 @@ body {
   background: white;
   width: 95%;
   padding: 0% 10px;
+  opacity: 0;
 }
 
 .notification__title {
@@ -13085,8 +13118,6 @@ body {
 }
 
 .notification__alert {
-  display: flex;
-  align-items: center;
   color: #000000;
   text-transform: uppercase;
   font-size: 0.65rem;
@@ -13098,6 +13129,66 @@ body {
   font-size: 11px;
   letter-spacing: 1px;
   color: #000000;
+}
+
+.notification .notification__message-1 {
+  transform-origin: top center;
+  -webkit-animation: rotateZ 300ms 60ms ease-in-out forwards;
+          animation: rotateZ 300ms 60ms ease-in-out forwards;
+}
+
+.notification .notification__message-2 {
+  transform-origin: top center;
+  -webkit-animation: rotateZ 300ms 120ms ease-in-out forwards;
+          animation: rotateZ 300ms 120ms ease-in-out forwards;
+}
+
+.notification .notification__message-3 {
+  transform-origin: top center;
+  -webkit-animation: rotateZ 300ms 180ms ease-in-out forwards;
+          animation: rotateZ 300ms 180ms ease-in-out forwards;
+}
+
+.notification .notification__message-4 {
+  transform-origin: top center;
+  -webkit-animation: rotateZ 300ms 240ms ease-in-out forwards;
+          animation: rotateZ 300ms 240ms ease-in-out forwards;
+}
+
+.notification .notification__message-5 {
+  transform-origin: top center;
+  -webkit-animation: rotateZ 300ms 300ms ease-in-out forwards;
+          animation: rotateZ 300ms 300ms ease-in-out forwards;
+}
+
+.notification .notification__message-6 {
+  transform-origin: top center;
+  -webkit-animation: rotateZ 300ms 360ms ease-in-out forwards;
+          animation: rotateZ 300ms 360ms ease-in-out forwards;
+}
+
+.notification .notification__message-7 {
+  transform-origin: top center;
+  -webkit-animation: rotateZ 300ms 420ms ease-in-out forwards;
+          animation: rotateZ 300ms 420ms ease-in-out forwards;
+}
+
+.notification .notification__message-8 {
+  transform-origin: top center;
+  -webkit-animation: rotateZ 300ms 480ms ease-in-out forwards;
+          animation: rotateZ 300ms 480ms ease-in-out forwards;
+}
+
+.notification .notification__message-9 {
+  transform-origin: top center;
+  -webkit-animation: rotateZ 300ms 540ms ease-in-out forwards;
+          animation: rotateZ 300ms 540ms ease-in-out forwards;
+}
+
+.notification .notification__message-10 {
+  transform-origin: top center;
+  -webkit-animation: rotateZ 300ms 600ms ease-in-out forwards;
+          animation: rotateZ 300ms 600ms ease-in-out forwards;
 }
 
 .notification__name {
