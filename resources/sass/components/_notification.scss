@@ -61,7 +61,7 @@
         color: $color-black;
     }
 
-    @for $i from 1 through 10 {
+    @for $i from 0 through 9 {
         .notification__message-#{$i} {
             transform-origin: top center;
             animation: rotateZ 300ms ($i * 60ms) ease-in-out forwards

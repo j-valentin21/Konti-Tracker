@@ -13131,6 +13131,12 @@ body {
   color: #000000;
 }
 
+.notification .notification__message-0 {
+  transform-origin: top center;
+  -webkit-animation: rotateZ 300ms 0ms ease-in-out forwards;
+          animation: rotateZ 300ms 0ms ease-in-out forwards;
+}
+
 .notification .notification__message-1 {
   transform-origin: top center;
   -webkit-animation: rotateZ 300ms 60ms ease-in-out forwards;
@@ -13183,12 +13189,6 @@ body {
   transform-origin: top center;
   -webkit-animation: rotateZ 300ms 540ms ease-in-out forwards;
           animation: rotateZ 300ms 540ms ease-in-out forwards;
-}
-
-.notification .notification__message-10 {
-  transform-origin: top center;
-  -webkit-animation: rotateZ 300ms 600ms ease-in-out forwards;
-          animation: rotateZ 300ms 600ms ease-in-out forwards;
 }
 
 .notification__name {

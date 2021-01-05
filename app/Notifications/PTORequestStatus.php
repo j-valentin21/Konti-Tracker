@@ -53,18 +53,18 @@ class PTORequestStatus extends Notification
                     ->line('Thank you for using our application!');
     }
 
-    /**
-     * Get the database representation of the notification.
-     *
-     * @return array
-     */
-    public function toDatabase()
-    {
-        return [
-            'name' => 'Admin',
-            'message' => 'Your PTO request has been approved for the following days:' . $this->dates
-        ];
-    }
+//    /**
+//     * Get the database representation of the notification.
+//     *
+//     * @return array
+//     */
+//    public function toDatabase()
+//    {
+//        return [
+//            'name' => 'Admin',
+//            'message' => 'Your PTO request has been approved for the following days:' . $this->dates
+//        ];
+//    }
 
     /**
      * Get the array representation of the notification.
@@ -75,7 +75,8 @@ class PTORequestStatus extends Notification
     public function toArray($notifiable)
     {
         return [
-            //
+            'name' => 'Admin',
+            'message' => ' approved your request for the following days:' . $this->dates
         ];
     }
 }

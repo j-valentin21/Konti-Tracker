@@ -10,69 +10,26 @@
             <div class="navbar__links justify-content-end">
                 <!-- ========== NOTIFICATION ICON ========== -->
                 <div class="navbar__icon-container">
-                    @if($profile)
+                    @if(auth()->user()->notifications->count())
                         <div class="dropdown dropleft">
                             <svg class="icon__nav icon__nav-animation   mt-2" id="dropdownMenuButton" data-toggle="dropdown"
                                  aria-haspopup="true" aria-expanded="false">
                                 <use href="{{ asset('svg/sprite.svg#icon-bell2') }}"></use>
                             </svg>
-                            <span class="badge__count" data-count="10"> </span>
+                            <span class="badge__count" data-count="{{ auth()->user()->notifications->count() }}"> </span>
                             <div class="dropdown-menu notification" aria-labelledby="dropdownMenuButton">
                                 <h3 class="notification__title">NOTIFICATIONS</h3>
-                                <div class="notification__message notification__message-1">
-                                    <div class="notification__alert">
-                                        <div>
-                                            <span class="notification__name">Sasha</span>
-                                            approved your PTO request.
+                                @foreach (auth()->user()->notifications as $notification)
+                                    <div class="notification__message notification__message-{{ $loop->index }}">
+                                        <div class="notification__alert">
+                                            <div>
+                                                <span class="notification__name">{{ $notification->data['name'] }}</span>
+                                                {{ $notification->data['message'] }}
+                                            </div>
                                         </div>
+                                        <div class="notification__time">now</div>
                                     </div>
-                                    <div class="notification__time">now</div>
-                                </div>
-                                <div class="notification__message notification__message-2">
-                                    <div class="notification__alert">
-                                        <div>
-                                            <span class="notification__name">Sasha</span>
-                                            approved your PTO request.
-                                        </div>
-                                    </div>
-                                    <div class="notification__time">now</div>
-                                </div>
-                                <div class="notification__message notification__message-3">
-                                    <div class="notification__alert">
-                                        <div>
-                                            <span class="notification__name">Sasha</span>
-                                            approved your PTO request.
-                                        </div>
-                                    </div>
-                                    <div class="notification__time">now</div>
-                                </div>
-                                <div class="notification__message notification__message-4">
-                                    <div class="notification__alert">
-                                        <div>
-                                            <span class="notification__name">Sasha</span>
-                                            approved your PTO request.
-                                        </div>
-                                    </div>
-                                    <div class="notification__time">now</div>
-                                </div>
-                                <div class="notification__message notification__message-5">
-                                    <div class="notification__alert">
-                                        <div>
-                                            <span class="notification__name">Sasha</span>
-                                            approved your PTO request.
-                                        </div>
-                                    </div>
-                                    <div class="notification__time">now</div>
-                                </div>
-                                <div class="notification__message notification__message-6">
-                                    <div class="notification__alert">
-                                        <div>
-                                            <span class="notification__name">Sasha</span>
-                                            approved your PTO request.
-                                        </div>
-                                    </div>
-                                    <div class="notification__time">now</div>
-                                </div>
+                                @endforeach
                                 <div class=" ml-1 notification__link">
                                     <a href="#">
                                         View all notifications
