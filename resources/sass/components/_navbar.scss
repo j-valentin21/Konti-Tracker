@@ -115,12 +115,39 @@
 .navbar__dash {
     background-color: rgba(0, 0, 0, 0.4);
     height: 11vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
     &__logo {
         @include respond(mobile-port) {
             display: none;
         }
     }
+}
+
+.navbar__icon-container  {
+    position: relative;
+    background-color: #1e2938;
+    width: 4rem;
+    height: 3rem;
+    border-radius: 5%;
+    border:1px solid rgba(#3a9fbf,.8);
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px,
+    rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+    cursor: pointer;
+}
+
+.navbar__icon-container::after {
+    color: #fff;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.navbar__links {
+    display: flex;
+    align-items: center;
+    align-self: stretch;
+    width: 30%;
 }
 
 .navbar__img {
@@ -147,10 +174,7 @@
     height: 1.75rem;
     margin: 0rem 0rem .5rem 2rem;
 
-    @include respond(mobile-port) {
-        margin: 0rem;
-        margin-top: 1.25rem;
-    }
+
 
     &__global {
         backface-visibility: hidden;
@@ -162,15 +186,26 @@
 
         &--top {
             top: 1.4rem;
+
+            @include respond(mobile-port) {
+               top: .2rem;
+            }
         }
 
         &--middle {
             top: 2.25rem;
+
+            @include respond(mobile-port) {
+                top: 1rem;
+            }
         }
 
         &--bottom {
             top: 3rem;
+
+            @include respond(mobile-port) {
+                top: 1.75rem;
+            }
         }
     }
 }
-

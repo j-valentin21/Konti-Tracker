@@ -25,11 +25,18 @@ class DashboardController extends Controller
     {
         $redis = Redis::connection();
         $profile = Profile::find(auth()->user()->id);
+        $count = auth()->user()->notifications->count();
+        $notifications = Auth()->user()->notifications()->limit(8)->get();
         $profile->getChartMonth();
         $profile->resetMonths();
         $message = $redis->get('message_' .  auth()->id());
         $redis->expire('message_' . auth()->id(),5);
-        return view('dashboard.index', ['message'=>$message, 'profile'=> $profile]);
+        return view('dashboard.index', [
+            'message'=>$message,
+            'profile'=> $profile,
+            'notifications' => $notifications,
+            'count' => $count
+        ]);
     }
 
     /**

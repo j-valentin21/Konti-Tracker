@@ -20,5 +20,6 @@
                 <activity :user_id="{{ $userId }}"/>
             </div>
         </div>
+        <request-pto-form :pto="{{ auth()->user()->profile->pto }}"/>
     </div>
 @endsection

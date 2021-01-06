@@ -3,7 +3,9 @@
 namespace App\Listeners;
 
 use App\Activity;
+use App\User;
 use App\Events\RequestPtoTickedHasBeenApproved;
+use App\Notifications\PTORequestStatus;
 use App\PTORequest;
 use Carbon\Carbon;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -21,6 +23,7 @@ class CreateRequestPToTicketWithApproval
     public function handle(RequestPtoTickedHasBeenApproved $event)
     {
         $ptoRequest = PTORequest::oldest()->where('user_id', $event->userId)->get()->first();
+        $user = User::find($event->userId);
         $dateTime = Carbon::now();
         Activity::create([
             'user_id' => $event->userId,
@@ -34,6 +37,7 @@ class CreateRequestPToTicketWithApproval
             'supervisor_name' => "Admin",
             'status' => "APPROVED",
         ]);
+        $user->notify(new PTORequestStatus($ptoRequest->dates));
         PTORequest::find($ptoRequest->id)->delete();
     }
 }

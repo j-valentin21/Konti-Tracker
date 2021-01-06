@@ -1,7 +1,7 @@
 .icons {
     height: 2rem;
     fill: $color-dark-grey;
-    width: 30%;
+    width: 3rem;
 
     &--sidebar{
         width: 20%;
@@ -16,6 +16,38 @@
 
     @include respond(tab-land) {
         display: inline;
+    }
+}
+
+.icon__nav {
+    height: 2rem;
+    fill: $color-white;
+    width: 100%;
+    padding: .1rem;
+}
+
+.icon__nav-animation {
+    animation: ring 3.5s;
+}
+
+.badge__count::after {
+    position:absolute;
+    right: -5px;
+    top: -7px;
+    width: 20px;
+    height: 20px;
+    content: attr(data-count);
+    font-size: .75rem;
+    border-radius: 50%;
+    color: black;
+    background: rgba($color-orange,.85);
+    text-align: center;
+    font-weight: bold;
+
+    @include respond(tab-port) {
+        width: 15px;
+        height: 15px;
+        font-size: .75rem;
     }
 }
 
