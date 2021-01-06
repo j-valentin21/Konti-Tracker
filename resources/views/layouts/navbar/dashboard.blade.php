@@ -10,16 +10,16 @@
             <div class="navbar__links justify-content-end">
                 <!-- ========== NOTIFICATION ICON ========== -->
                 <div class="navbar__icon-container">
-                    @if(auth()->user()->notifications->count())
+                    @if($count)
                         <div class="dropdown dropleft">
                             <svg class="icon__nav icon__nav-animation   mt-2" id="dropdownMenuButton" data-toggle="dropdown"
                                  aria-haspopup="true" aria-expanded="false">
                                 <use href="{{ asset('svg/sprite.svg#icon-bell2') }}"></use>
                             </svg>
-                            <span class="badge__count" data-count="{{ auth()->user()->notifications->count() }}"> </span>
+                            <span class="badge__count" data-count="{{ $count }}"> </span>
                             <div class="dropdown-menu notification" aria-labelledby="dropdownMenuButton">
                                 <h3 class="notification__title">NOTIFICATIONS</h3>
-                                @foreach (auth()->user()->notifications as $notification)
+                                @foreach ($notifications as $notification)
                                     <div class="notification__message notification__message-{{ $loop->index }}">
                                         <div class="notification__alert">
                                             <div>
@@ -27,7 +27,7 @@
                                                 {{ $notification->data['message'] }}
                                             </div>
                                         </div>
-                                        <div class="notification__time">now</div>
+                                        <div class="notification__time">{{ $notification->created_at->diffForHumans() }}</div>
                                     </div>
                                 @endforeach
                                 <div class=" ml-1 notification__link">
