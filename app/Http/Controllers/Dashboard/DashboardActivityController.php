@@ -15,8 +15,10 @@ class DashboardActivityController extends Controller
      */
     public function index()
     {
+        $count = auth()->user()->notifications->count();
+        $notifications = Auth()->user()->notifications()->limit(8)->get();
         $userId = auth()->user()->id;
-        return view('dashboard.activity.index',['userId' => $userId]);
+        return view('dashboard.activity.index',['userId' => $userId, 'count'=>$count, 'notifications' => $notifications]);
     }
 
     /**

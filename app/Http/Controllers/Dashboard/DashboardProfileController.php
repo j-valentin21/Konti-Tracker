@@ -21,7 +21,9 @@ class DashboardProfileController extends Controller
     public function index()
     {
 
-        return view('dashboard.profile.index');
+        $count = auth()->user()->notifications->count();
+        $notifications = Auth()->user()->notifications()->limit(8)->get();
+        return view('dashboard.profile.index', ['count'=>$count, 'notifications' => $notifications]);
     }
 
     /**
