@@ -13084,6 +13084,10 @@ body {
   opacity: 0;
 }
 
+.notification__message:hover {
+  background-color: #eba72b;
+}
+
 .notification__title {
   width: 95%;
   font-size: 15px;
@@ -13122,13 +13126,21 @@ body {
   text-transform: uppercase;
   font-size: 0.65rem;
   letter-spacing: 0.12em;
+  width: 60%;
 }
 
 .notification__time {
-  padding: 10px;
-  font-size: 11px;
+  padding: 5px;
+  font-size: 10px;
   letter-spacing: 1px;
   color: #000000;
+}
+
+@media only screen and (max-width: 36.5em) {
+  .notification__time {
+    font-size: 9px;
+    padding-left: 10px;
+  }
 }
 
 .notification .notification__message-0 {

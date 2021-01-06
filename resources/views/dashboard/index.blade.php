@@ -71,54 +71,10 @@
                             </div>
                         </div>
                     </div>
-                    <!-- ========== ROW START/NOTIFICATIONS ========== -->
+                    <!-- ========== DASHBOARD ACTIVITY ========== -->
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-lg-4 mb-4">
-                                <div class="card dashboard__card">
-                                    <div class="card-body">
-                                        <h4 class="card-title dashboard__card__title mb-4">Notifications</h4>
-{{--                                        <ul>--}}
-{{--                                            <li>--}}
-{{--                                                <a href="#">--}}
-{{--                                                    <div class="media">--}}
-{{--                                                        <div class="media-body overflow-hidden">--}}
-{{--                                                            <h5 class=" mb-1 text-white">Paul</h5>--}}
-{{--                                                            <p class="text-truncate mb-0 dashboard__card__text border__bottom--grey mb-2">Hey! there I'm available</p>--}}
-{{--                                                        </div>--}}
-{{--                                                    </div>--}}
-{{--                                                </a>--}}
-{{--                                            </li>--}}
-{{--                                            <li>--}}
-{{--                                                <a href="#">--}}
-{{--                                                    <div class="media">--}}
-{{--                                                        <div class="media-body overflow-hidden">--}}
-{{--                                                            <h5 class=" mb-1 text-white">Brody</h5>--}}
-{{--                                                            <p class="text-truncate mb-0 dashboard__card__text border__bottom--grey mb-4">This day is available</p>--}}
-{{--                                                        </div>--}}
-{{--                                                    </div>--}}
-{{--                                                </a>--}}
-{{--                                            </li>--}}
-{{--                                            <li>--}}
-{{--                                                <a href="#">--}}
-{{--                                                    <div class="media">--}}
-{{--                                                        <div class="media-body overflow-hidden">--}}
-{{--                                                            <h5 class=" mb-1 text-white">Isaiah</h5>--}}
-{{--                                                            <p class="text-truncate mb-0 dashboard__card__text border__bottom--grey mb-4">This day is available</p>--}}
-{{--                                                        </div>--}}
-{{--                                                    </div>--}}
-{{--                                                </a>--}}
-{{--                                            </li>--}}
-{{--                                        </ul>--}}
-
-                                        <div class="text-center">
-                                            <a href="#" class="btn__submit">Load More</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- ========== DASHBOARD ACTIVITY ========== -->
-                            <div class="col-lg-8">
+                            <div class="col-lg-12">
                                 <div class="card dashboard__card mb-5">
                                     <div class="card-body">
                                         <h4 class="card-title dashboard__card__title mb-4">Dashboard Activity</h4>
