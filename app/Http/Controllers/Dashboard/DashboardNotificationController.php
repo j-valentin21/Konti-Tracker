@@ -16,6 +16,7 @@ class DashboardNotificationController extends Controller
     {
         $count = auth()->user()->notifications->count();
         $notifications = Auth()->user()->notifications()->limit(8)->get();
-        return view('dashboard.notification.index',['count'=>$count, 'notifications' => $notifications]);
+        $userId = auth()->user()->id;
+        return view('dashboard.notification.index',['count'=>$count, 'notifications' => $notifications, 'userId' => $userId]);
     }
 }
