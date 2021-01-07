@@ -24839,6 +24839,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -24881,6 +24883,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['user_id'],
   data: function data() {
@@ -24925,6 +24928,9 @@ __webpack_require__.r(__webpack_exports__);
         _this3.notifications = response.data;
         console.log(_this3.notifications);
       });
+    },
+    formatDate: function formatDate(date) {
+      return moment__WEBPACK_IMPORTED_MODULE_0___default()(date).fromNow();
     }
   }
 });
@@ -108154,7 +108160,9 @@ var render = function() {
                 _vm._v(" "),
                 _c("td", [_vm._v(_vm._s(notification.data["message"]))]),
                 _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(notification) + " ")]),
+                _c("td", [
+                  _vm._v(_vm._s(_vm.formatDate(notification.created_at)) + " ")
+                ]),
                 _vm._v(" "),
                 _c("td", { staticClass: "pb-5" }, [
                   _c(
@@ -108242,7 +108250,7 @@ var staticRenderFns = [
         _c("tr", { staticClass: "dashboard__table__activity-row" }, [
           _c("th", [_vm._v("Supervisor Name")]),
           _vm._v(" "),
-          _c("th", [_vm._v("Status")]),
+          _c("th", [_vm._v("message")]),
           _vm._v(" "),
           _c("th", [_vm._v("Time")]),
           _vm._v(" "),

@@ -17,7 +17,6 @@ class DashboardNotificationController extends Controller
         $count = auth()->user()->notifications->count();
         $notifications = auth()->user()->notifications()->paginate(10);
         $userId = auth()->user()->id;
-        $time = auth()->user()->notifications()->get();
         return view('dashboard.notification.index',[
             'count'=>$count,
             'notifications' => $notifications,

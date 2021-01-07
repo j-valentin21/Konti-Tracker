@@ -4,7 +4,7 @@
             <thead class="dashboard__table__head dashboard__table__head--black">
             <tr class="dashboard__table__activity-row">
                 <th>Supervisor Name</th>
-                <th>Status</th>
+                <th>message</th>
                 <th>Time</th>
                 <th>Delete</th>
             </tr>
@@ -13,7 +13,7 @@
             <tr v-for="(notification, index) in notifications.data" :key="notification.id" class="dashboard__table__activity-row">
                 <td>{{ notification.data['name']}}</td>
                 <td>{{ notification.data['message'] }}</td>
-                <td >{{ notification }} </td>
+                <td >{{ formatDate(notification.created_at) }} </td>
                 <td class="pb-5">
                     <button type="button" @click="deleteNotification(index)" class="trash btn btn-danger">
                         <span class="trash__lid rotate "></span>
@@ -41,6 +41,8 @@
 </template>
 
 <script>
+import moment from 'moment';
+
 export default {
     props:['user_id'],
     data () {
@@ -82,6 +84,9 @@ export default {
                 this.notifications = response.data;
                 console.log(this.notifications);
             });
+        },
+        formatDate(date) {
+           return moment(date).fromNow()
         }
     },
 }
