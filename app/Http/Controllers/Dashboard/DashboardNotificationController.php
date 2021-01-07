@@ -15,8 +15,33 @@ class DashboardNotificationController extends Controller
     public function index()
     {
         $count = auth()->user()->notifications->count();
-        $notifications = Auth()->user()->notifications()->limit(8)->get();
+        $notifications = auth()->user()->notifications()->paginate(10);
         $userId = auth()->user()->id;
-        return view('dashboard.notification.index',['count'=>$count, 'notifications' => $notifications, 'userId' => $userId]);
+        $time = auth()->user()->notifications()->get();
+        return view('dashboard.notification.index',[
+            'count'=>$count,
+            'notifications' => $notifications,
+            'userId' => $userId,
+        ]);
+    }
+
+    /**
+     * Delete one or all notifications associated with user.
+     *
+     * @param int $id
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function destroy(int $id, request $request)
+    {
+        if(!empty($request->deleteAll)) {
+            auth()->user()->notifications()->delete();
+            $results = auth()->user()->notifications()->paginate(4);
+            return response()->json(['results' => $results]);
+        } else {
+            auth()->user()->notifications->find($id)->delete();
+            $results = auth()->user()->notifications()->paginate(4);
+            return response()->json(['results' => $results]);
+        }
     }
 }

@@ -142,4 +142,19 @@ class DashboardController extends Controller
         $data = $activity;
         return response()->json($data);
     }
+
+    /**
+     * Get data to render all notifications in view.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getNotificationsData(request $request)
+    {
+//        $notifications = Auth()->user()->notifications()->limit(8)->get();
+//        $activity = Activity::latest()->where('user_id', auth()->user()->id )->with('user')->paginate($pagination);
+        $notifications = auth()->user()->notifications()->paginate(10);
+        $data = $notifications;
+        return response()->json($data);
+    }
 }
