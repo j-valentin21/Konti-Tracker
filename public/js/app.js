@@ -24901,7 +24901,7 @@ __webpack_require__.r(__webpack_exports__);
 
       var url = '/dashboard/notifications/' + id;
       axios["delete"](url).then(function (response) {
-        _this.activities = response.data.results;
+        _this.notifications = response.data.results;
       })["catch"](function (err) {
         console.log(err);
       });
@@ -24926,7 +24926,6 @@ __webpack_require__.r(__webpack_exports__);
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
       axios.get('/dashboard/get-notifications?page=' + page).then(function (response) {
         _this3.notifications = response.data;
-        console.log(_this3.notifications);
       });
     },
     formatDate: function formatDate(date) {
@@ -108160,7 +108159,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("td", [_vm._v(_vm._s(notification.data["message"]))]),
                 _vm._v(" "),
-                _c("td", [
+                _c("td", { staticClass: "badge" }, [
                   _vm._v(_vm._s(_vm.formatDate(notification.created_at)) + " ")
                 ]),
                 _vm._v(" "),
@@ -108168,11 +108167,11 @@ var render = function() {
                   _c(
                     "button",
                     {
-                      staticClass: "trash btn btn-danger",
+                      staticClass: "trash btn",
                       attrs: { type: "button" },
                       on: {
                         click: function($event) {
-                          return _vm.deleteNotification(index)
+                          return _vm.deleteNotification(notification.id)
                         }
                       }
                     },
@@ -108250,7 +108249,7 @@ var staticRenderFns = [
         _c("tr", { staticClass: "dashboard__table__activity-row" }, [
           _c("th", [_vm._v("Supervisor Name")]),
           _vm._v(" "),
-          _c("th", [_vm._v("message")]),
+          _c("th", [_vm._v("Message")]),
           _vm._v(" "),
           _c("th", [_vm._v("Time")]),
           _vm._v(" "),

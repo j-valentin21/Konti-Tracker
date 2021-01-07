@@ -27,11 +27,11 @@ class DashboardNotificationController extends Controller
     /**
      * Delete one or all notifications associated with user.
      *
-     * @param int $id
+     * @param  $id
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function destroy(int $id, request $request)
+    public function destroy( $id, request $request)
     {
         if(!empty($request->deleteAll)) {
             auth()->user()->notifications()->delete();

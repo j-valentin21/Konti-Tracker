@@ -4,7 +4,7 @@
             <thead class="dashboard__table__head dashboard__table__head--black">
             <tr class="dashboard__table__activity-row">
                 <th>Supervisor Name</th>
-                <th>message</th>
+                <th>Message</th>
                 <th>Time</th>
                 <th>Delete</th>
             </tr>
@@ -13,9 +13,9 @@
             <tr v-for="(notification, index) in notifications.data" :key="notification.id" class="dashboard__table__activity-row">
                 <td>{{ notification.data['name']}}</td>
                 <td>{{ notification.data['message'] }}</td>
-                <td >{{ formatDate(notification.created_at) }} </td>
+                <td class="badge" >{{ formatDate(notification.created_at) }} </td>
                 <td class="pb-5">
-                    <button type="button" @click="deleteNotification(index)" class="trash btn btn-danger">
+                    <button type="button" @click="deleteNotification(notification.id)" class="trash btn">
                         <span class="trash__lid rotate "></span>
                         <span class="trash__can"></span>
                     </button>
@@ -58,7 +58,7 @@ export default {
         deleteNotification(id) {
             const url = '/dashboard/notifications/' + id
             axios.delete(url).then((response) => {
-                this.activities = response.data.results
+                this.notifications = response.data.results
             })
                 .catch((err) => {
                     console.log(err)
@@ -82,7 +82,6 @@ export default {
 
              .then(response => {
                 this.notifications = response.data;
-                console.log(this.notifications);
             });
         },
         formatDate(date) {

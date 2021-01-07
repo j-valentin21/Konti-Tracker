@@ -4,6 +4,7 @@
     position: absolute;
     vertical-align: middle;
     cursor: pointer;
+    background: linear-gradient(to bottom, #ff0505 79%, #650606 100%);
 
     &:hover {
         .rotate {

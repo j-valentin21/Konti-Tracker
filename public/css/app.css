@@ -12538,7 +12538,7 @@ body {
 }
 
 .form__wizard__btn--red {
-  background-image: linear-gradient(to right, #f70d1a, red);
+  background: linear-gradient(to bottom, #ff0505 79%, #650606 100%);
 }
 
 .form__wizard__btn--red:hover {
@@ -13015,6 +13015,7 @@ body {
   position: absolute;
   vertical-align: middle;
   cursor: pointer;
+  background: linear-gradient(to bottom, #ff0505 79%, #650606 100%);
 }
 
 .trash:hover .rotate {
