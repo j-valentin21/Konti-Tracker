@@ -13,7 +13,8 @@ class DatabaseSeeder extends Seeder
     {
          $this->call([
              ProfileSeeder::class,
-             CalendarSeeder::class
+             CalendarSeeder::class,
+             ActivitySeeder::class
          ]);
     }
 }
