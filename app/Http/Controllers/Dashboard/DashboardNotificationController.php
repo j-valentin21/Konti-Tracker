@@ -35,11 +35,11 @@ class DashboardNotificationController extends Controller
     {
         if(!empty($request->deleteAll)) {
             auth()->user()->notifications()->delete();
-            $results = auth()->user()->notifications()->paginate(4);
+            $results = auth()->user()->notifications()->paginate(10);
             return response()->json(['results' => $results]);
         } else {
             auth()->user()->notifications->find($id)->delete();
-            $results = auth()->user()->notifications()->paginate(4);
+            $results = auth()->user()->notifications()->paginate(10);
             return response()->json(['results' => $results]);
         }
     }
