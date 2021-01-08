@@ -14,7 +14,8 @@ class DatabaseSeeder extends Seeder
          $this->call([
              ProfileSeeder::class,
              CalendarSeeder::class,
-             ActivitySeeder::class
+             ActivitySeeder::class,
+             PTORequestSeeder::class
          ]);
     }
 }

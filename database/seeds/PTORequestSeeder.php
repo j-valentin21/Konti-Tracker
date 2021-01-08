@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class ProfileSeeder extends Seeder
+class PTORequestSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,6 @@ class ProfileSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Profile::class, 10000)->create();
+        factory(App\PTORequest::class, 10000)->create();
     }
 }

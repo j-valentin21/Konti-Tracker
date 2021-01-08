@@ -14,7 +14,7 @@ class ActivitySeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Activity::class, 50)->create();
+        factory(App\Activity::class, 10000)->create();
         //Insert one entry to the Database
 //        DB::table('activities')->insert([
 //            'user_id' => 1,
