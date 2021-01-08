@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Notifications\DatabaseNotification;
 
-class PTORequestSeeder extends Seeder
+class NotificationSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +12,6 @@ class PTORequestSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\PTORequest::class, 100)->create();
+        factory(DatabaseNotification::class, 50)->create();
     }
 }

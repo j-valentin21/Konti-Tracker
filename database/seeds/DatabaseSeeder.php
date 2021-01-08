@@ -15,7 +15,8 @@ class DatabaseSeeder extends Seeder
              ProfileSeeder::class,
              CalendarSeeder::class,
              ActivitySeeder::class,
-             PTORequestSeeder::class
+             PTORequestSeeder::class,
+             NotificationSeeder::class
          ]);
     }
 }
