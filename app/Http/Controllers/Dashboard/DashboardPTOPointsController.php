@@ -21,6 +21,8 @@ class DashboardPTOPointsController extends Controller
         $profile = Profile::find(auth()->user()->id);
         $ptoDays = $profile->pto_usage;
         $points = $profile->points_usage;
+        $count = auth()->user()->notifications->count();
+        $notifications = Auth()->user()->notifications()->limit(8)->get();
         $month = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
             'August', 'September', 'October', 'November', 'December'];
         $ptoMonths = array('Jan' => $ptoDays['Jan'], 'Feb' => $ptoDays['Feb'], 'Mar' => $ptoDays['Mar'], 'Apr' => $ptoDays['Apr'],
@@ -33,7 +35,7 @@ class DashboardPTOPointsController extends Controller
         $results->attachIterator( new \ArrayIterator($ptoMonths));
         $results->attachIterator( new \ArrayIterator($month));
         $results->attachIterator( new \ArrayIterator($pointMonths));
-        return view('dashboard.pto-points.index', ['results'=> $results]);
+        return view('dashboard.pto-points.index', ['results'=> $results, 'count'=>$count, 'notifications' => $notifications]);
     }
 
     /**

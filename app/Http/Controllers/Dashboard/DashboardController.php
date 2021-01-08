@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Redis;
 class DashboardController extends Controller
 {
     /**
-     * Show the dashboard view.
+     * view the dashboard route.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
@@ -26,8 +26,7 @@ class DashboardController extends Controller
         $redis = Redis::connection();
         $profile = Profile::find(auth()->user()->id);
         $count = auth()->user()->notifications->count();
-        $notifications = Auth()->user()->notifications()->limit(8)->get();
-        $profile->getChartMonth();
+        $notifications = auth()->user()->notifications()->limit(8)->get();
         $profile->resetMonths();
         $message = $redis->get('message_' .  auth()->id());
         $redis->expire('message_' . auth()->id(),5);
@@ -140,6 +139,19 @@ class DashboardController extends Controller
         }
         $activity = Activity::latest()->where('user_id', auth()->user()->id )->with('user')->paginate($pagination);
         $data = $activity;
+        return response()->json($data);
+    }
+
+    /**
+     * Get data to render all notifications in view.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getNotificationsData(request $request)
+    {
+        $notifications = auth()->user()->notifications()->paginate(10);
+        $data = $notifications;
         return response()->json($data);
     }
 }

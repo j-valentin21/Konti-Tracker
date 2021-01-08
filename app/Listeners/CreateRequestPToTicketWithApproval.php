@@ -37,6 +37,11 @@ class CreateRequestPToTicketWithApproval
             'supervisor_name' => "Admin",
             'status' => "APPROVED",
         ]);
+        $month =  $user->profile->getChartMonth();
+        $months = $user->profile->pto_usage;
+        $months[$month] = $ptoRequest->pto_days + $months[$month];
+        $user->profile->pto_usage = $months;
+        $user->profile->save();
         $user->notify(new PTORequestStatus($ptoRequest->dates));
         PTORequest::find($ptoRequest->id)->delete();
     }

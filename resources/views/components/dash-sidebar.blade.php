@@ -47,14 +47,6 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/" class="sidebar__link hover__black">
-                        <svg class="icons icons--sidebar">
-                            <use href="{{ asset('svg/sprite.svg#icon-bell') }}"></use>
-                        </svg>
-                        <span>Notifications</span>
-                    </a>
-                </li>
-                <li>
                     <a href="{{ route('dashboard.activity.index') }}" class="sidebar__link hover__black">
                         <svg class="icons icons--sidebar">
                             <use href="{{ asset('svg/sprite.svg#icon-device-desktop') }}"></use>

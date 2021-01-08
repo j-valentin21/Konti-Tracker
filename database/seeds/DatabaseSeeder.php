@@ -11,6 +11,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-         $this->call(ActivitySeeder::class);
+         $this->call([
+             ProfileSeeder::class,
+             CalendarSeeder::class,
+             ActivitySeeder::class,
+             PTORequestSeeder::class,
+             NotificationSeeder::class
+         ]);
     }
 }

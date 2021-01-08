@@ -31,7 +31,7 @@
                                     </div>
                                 @endforeach
                                 <div class=" ml-1 notification__link">
-                                    <a href="#">
+                                    <a href="{{ route('dashboard.notification.index') }}">
                                         View all notifications
                                     </a>
                                 </div>

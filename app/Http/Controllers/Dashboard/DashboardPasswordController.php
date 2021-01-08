@@ -20,7 +20,9 @@ class DashboardPasswordController extends Controller
      */
     public function index()
     {
-        return view('dashboard.password.index');
+        $count = auth()->user()->notifications->count();
+        $notifications = Auth()->user()->notifications()->limit(8)->get();
+        return view('dashboard.password.index', ['count'=>$count, 'notifications' => $notifications]);
     }
 
     /**
