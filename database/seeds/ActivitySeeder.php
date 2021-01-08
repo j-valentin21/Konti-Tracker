@@ -14,6 +14,7 @@ class ActivitySeeder extends Seeder
      */
     public function run()
     {
+        //Insert one entry to the Database
         DB::table('activities')->insert([
             'user_id' => 1,
             'date' => '2020-11-08',

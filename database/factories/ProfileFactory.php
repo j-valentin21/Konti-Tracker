@@ -9,7 +9,6 @@ use Faker\Generator as Faker;
 $factory->define(Profile::class, function (Faker $faker) {
     return [
         'user_id' => factory(User::class),
-        'avatar' => 'test.png',
         'position' => $faker->word,
         'pto' => $faker->numberBetween($min =0, $max = 40),
         'points'=> $faker->numberBetween($min =0, $max = 15),
