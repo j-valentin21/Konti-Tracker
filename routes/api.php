@@ -20,7 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 //Route::get('/weather-current', function () {
-//    $weatherKey = config('services.openweather.key');
+//    $weatherKey = config('Services.openweather.key');
 //    $response = Http::get("api.openweathermap.org/data/2.5/weather?q=allentown&appid=$weatherKey");
 //    return $response->json();
 //});

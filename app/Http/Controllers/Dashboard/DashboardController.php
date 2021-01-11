@@ -17,21 +17,26 @@ use Illuminate\Support\Facades\Redis;
 class DashboardController extends Controller
 {
     /**
-     * view the dashboard route.
+     * View the dashboard route.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(): \Illuminate\Contracts\Support\Renderable
     {
-        $redis = Redis::connection();
-        $profile = Profile::find(auth()->user()->id);
-        $count = auth()->user()->notifications->count();
-        $notifications = auth()->user()->notifications()->limit(8)->get();
-        $profile->resetMonths();
-        $message = $redis->get('message_' .  auth()->id());
-        $redis->expire('message_' . auth()->id(),5);
+        try {
+            $redis = Redis::connection();
+            $profile = Profile::find(auth()->user()->id);
+            $count = auth()->user()->notifications->count();
+            $notifications = auth()->user()->notifications()->limit(8)->get();
+            $profile->resetMonths();
+            $message = $redis->get('message_' .  auth()->id());
+            $redis->expire('message_' . auth()->id(),5);
+        } catch(\Exception $e ) {
+            dd($e);
+            abort(404);
+        }
+
         return view('dashboard.index', [
-            'message'=>$message,
+            'message'=> $message,
             'profile'=> $profile,
             'notifications' => $notifications,
             'count' => $count
@@ -39,9 +44,9 @@ class DashboardController extends Controller
     }
 
     /**
-     * Create Request for PTO day.
+     * Create request for PTO day.
      *
-     * @param Request $request
+     * @param PTOFormRequest $request
      */
     public function create(PTOFormRequest $request)
     {
