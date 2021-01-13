@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
-
 use App\Http\Requests\UpdatePasswordRequest;
+use App\Services\NotificationService;
 use App\User;
+use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -16,22 +18,24 @@ class DashboardPasswordController extends Controller
     /**
      * Show the dashboard password view.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return Renderable
      */
-    public function index()
+    public function index(): Renderable
     {
-        $count = auth()->user()->notifications->count();
-        $notifications = Auth()->user()->notifications()->limit(8)->get();
-        return view('dashboard.password.index', ['count'=>$count, 'notifications' => $notifications]);
+        $notifications = (new NotificationService())->userNotifications(auth()->user()->id);
+        return view('dashboard.password.index',[
+            'count' => $notifications['count'],
+            'notifications' => $notifications['notifications']
+        ]);
     }
 
     /**
      * Update old password to new password.
      *
      * @param UpdatePasswordRequest $request
-     * @return String
+     * @return RedirectResponse
      */
-    public function update(UpdatePasswordRequest $request)
+    public function update(UpdatePasswordRequest $request): RedirectResponse
     {
         $redis = Redis::connection();
         $hashedPassword = Auth::user()->password;

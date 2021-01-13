@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Dashboard;
 use App\Calendar;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\CalendarResource;
+use App\Services\NotificationService;
+use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,13 +16,15 @@ class DashboardCalendarController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return Renderable
      */
-    public function index()
+    public function index(): Renderable
     {
-        $count = auth()->user()->notifications->count();
-        $notifications = Auth()->user()->notifications()->limit(8)->get();
-        return view('dashboard.calendar.index',['count'=>$count, 'notifications' => $notifications]);
+        $notifications = (new NotificationService())->userNotifications(auth()->user()->id);
+        return view('dashboard.calendar.index',[
+            'count'=> $notifications['count'],
+            'notifications' => $notifications['notifications']
+        ]);
     }
 
     /**
@@ -29,7 +33,7 @@ class DashboardCalendarController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return JsonResponse
      */
-    public function store(Request $request)
+    public function store(Request $request): JsonResponse
     {
         $new_calendar = Calendar::create($request->all());
         $new_calendar->user_id = auth()->id();
@@ -43,10 +47,10 @@ class DashboardCalendarController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Calendar  $calendar
+     * @param Calendar $calendar
      * @return \Illuminate\Http\Response
      */
-    public function show(Calendar $calendar)
+    public function show(Calendar $calendar): \Illuminate\Http\Response
     {
         return response($calendar, Response::HTTP_OK);
     }
@@ -55,10 +59,10 @@ class DashboardCalendarController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Calendar  $calendar
+     * @param Calendar $calendar
      * @return JsonResponse
      */
-    public function update(Request $request, Calendar $calendar)
+    public function update(Request $request, Calendar $calendar): JsonResponse
     {
         $calendar->user_id = auth()->id();
         $calendar->update($request->all());
@@ -75,7 +79,7 @@ class DashboardCalendarController extends Controller
      * @return \Illuminate\Http\Response
      *
      */
-    public function destroy(Calendar $calendar)
+    public function destroy(Calendar $calendar): \Illuminate\Http\Response
     {
         $calendar->delete();
         return response(['message' => 'Your Event has been successfully removed']);
@@ -86,7 +90,7 @@ class DashboardCalendarController extends Controller
      *
      * @return JsonResponse
      */
-    public function getCalendarData()
+    public function getCalendarData(): JsonResponse
     {
         $calendar = Calendar::where("user_id", "=", auth()->id())->get();
         $resource = CalendarResource::collection($calendar);

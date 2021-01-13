@@ -147,7 +147,7 @@ class DashboardController extends Controller
         if(!empty($request->activity)) {
             $pagination = 10;
         } else {
-            $pagination = 4;
+            $pagination = 5;
         }
         $activity = Activity::latest()->where('user_id', auth()->user()->id )->with('user')->paginate($pagination);
         $data = $activity;

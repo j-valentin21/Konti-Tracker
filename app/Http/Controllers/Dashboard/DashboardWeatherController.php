@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Services\NotificationService;
 use Illuminate\Contracts\Support\Renderable;
 
 
@@ -15,8 +16,10 @@ class DashboardWeatherController extends Controller
      */
     public function index(): Renderable
     {
-        $count = auth()->user()->notifications->count();
-        $notifications = Auth()->user()->notifications()->limit(8)->get();
-        return view('dashboard.weather.index',['count'=>$count, 'notifications' => $notifications]);
+        $notifications = (new NotificationService())->userNotifications(auth()->user()->id);
+        return view('dashboard.weather.index',[
+            'count' => $notifications['count'],
+            'notifications' => $notifications['notifications']
+        ]);
     }
 }

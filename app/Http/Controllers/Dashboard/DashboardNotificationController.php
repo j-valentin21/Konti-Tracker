@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class DashboardNotificationController extends Controller
@@ -10,9 +12,9 @@ class DashboardNotificationController extends Controller
     /**
      * View all notifications.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return Renderable
      */
-    public function index()
+    public function index(): Renderable
     {
         $count = auth()->user()->notifications->count();
         $notifications = auth()->user()->notifications()->paginate(10);
@@ -29,9 +31,9 @@ class DashboardNotificationController extends Controller
      *
      * @param  $id
      * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
-    public function destroy( $id, request $request)
+    public function destroy( $id, request $request): JsonResponse
     {
         if(!empty($request->deleteAll)) {
             auth()->user()->notifications()->delete();

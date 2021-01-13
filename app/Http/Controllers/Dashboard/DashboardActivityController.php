@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Activity;
 use App\Http\Controllers\Controller;
+use App\Services\NotificationService;
+use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class DashboardActivityController extends Controller
@@ -11,14 +14,17 @@ class DashboardActivityController extends Controller
     /**
      * View all activities.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return Renderable
      */
-    public function index()
+    public function index(): Renderable
     {
-        $count = auth()->user()->notifications->count();
-        $notifications = Auth()->user()->notifications()->limit(8)->get();
         $userId = auth()->user()->id;
-        return view('dashboard.activity.index',['userId' => $userId, 'count'=>$count, 'notifications' => $notifications]);
+        $notifications = (new NotificationService())->userNotifications(auth()->user()->id);
+        return view('dashboard.activity.index',[
+            'count'=> $notifications['count'],
+            'notifications' => $notifications['notifications'],
+            'userId' => $userId
+        ]);
     }
 
     /**
@@ -26,13 +32,13 @@ class DashboardActivityController extends Controller
      *
      * @param int $id
      * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
-    public function destroy(int $id, request $request)
+    public function destroy(int $id, request $request): JsonResponse
     {
         if(!empty($request->deleteAll)) {
             Activity::where('user_id', auth()->user()->id )->delete();
-            $results = Activity::latest()->where('user_id', auth()->user()->id )->paginate(10);
+            $results = [];
             return response()->json(['results' => $results]);
         } else {
             Activity::find($id)->delete();

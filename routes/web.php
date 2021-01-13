@@ -49,7 +49,7 @@ Route::middleware(['auth', 'NotFirstTimeUser', 'verified'])->group(function () {
     Route::get('/dashboard/activity', 'Dashboard\DashboardActivityController@index')->name('dashboard.activity.index');
     Route::delete('/dashboard/activity/{id}', 'Dashboard\DashboardActivityController@destroy')->name('dashboard.activity.destroy');
     Route::get('/dashboard/change-password', 'Dashboard\DashboardPasswordController@index')->name('dashboard.password.index');
-    Route::put('/dashboard/update-password', 'Dashboard\DashboardPasswordController@update')->name('dashboard.password.update');
+    Route::put('/dashboard/change-password', 'Dashboard\DashboardPasswordController@update')->name('dashboard.password.update');
     Route::post('/dashboard/calendar', 'Dashboard\DashboardCalendarController@store')->name('calendar.store');
     Route::get('/dashboard/calendar', 'Dashboard\DashboardCalendarController@index')->name('calendar.index');
     Route::get('/dashboard/calendar/events', 'Dashboard\DashboardCalendarController@getCalendarData')->name('calendar.getCalendarData');

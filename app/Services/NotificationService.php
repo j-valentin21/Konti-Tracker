@@ -14,7 +14,7 @@ class NotificationService
      */
     public function userNotifications($user_id):array
     {
-        return Cache::remember('NOTIFICATIONS_' . $user_id, Carbon::now()->addMinutes(15), function() use ($user_id) {
+        return Cache::remember('NOTIFICATIONS_' . $user_id, Carbon::now()->addMinutes(15), function() {
               $count = auth()->user()->notifications->count();
               $notifications = auth()->user()->notifications()->limit(8)->get();
               return compact('count', 'notifications');

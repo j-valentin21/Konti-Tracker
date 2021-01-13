@@ -5,24 +5,26 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PTOPointsDataRequest;
 use App\Profile;
+use App\Services\NotificationService;
+use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Redis;
 use MultipleIterator;
 
 class DashboardPTOPointsController extends Controller
 {
     /**
-     * Show dashboard weather view.
+     * Show dashboard PTO/points view.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return Renderable
      */
-    public function index()
+    public function index(): Renderable
     {
         $profile = Profile::find(auth()->user()->id);
         $ptoDays = $profile->pto_usage;
         $points = $profile->points_usage;
-        $count = auth()->user()->notifications->count();
-        $notifications = Auth()->user()->notifications()->limit(8)->get();
+        $notifications = (new NotificationService())->userNotifications(auth()->user()->id);
         $month = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
             'August', 'September', 'October', 'November', 'December'];
         $ptoMonths = array('Jan' => $ptoDays['Jan'], 'Feb' => $ptoDays['Feb'], 'Mar' => $ptoDays['Mar'], 'Apr' => $ptoDays['Apr'],
@@ -35,15 +37,21 @@ class DashboardPTOPointsController extends Controller
         $results->attachIterator( new \ArrayIterator($ptoMonths));
         $results->attachIterator( new \ArrayIterator($month));
         $results->attachIterator( new \ArrayIterator($pointMonths));
-        return view('dashboard.pto-points.index', ['results'=> $results, 'count'=>$count, 'notifications' => $notifications]);
+        return view('dashboard.pto-points.index', [
+            'results' => $results,
+            'count' => $notifications['count'],
+            'notifications' => $notifications['notifications']
+        ]);
     }
 
     /**
      * Update dashboard pto/points data view.
      *
-     * @param Request $request
+     * @param PTOPointsDataRequest $request
+     *
+     * @return Redirector
      */
-    public function update(PTOPointsDataRequest $request)
+    public function update(PTOPointsDataRequest $request): Redirector
     {
         $redis = Redis::connection();
         $profile = Profile::find(auth()->user()->id);
