@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class DashboardNotificationController extends Controller
 {
@@ -36,10 +37,12 @@ class DashboardNotificationController extends Controller
     public function destroy( $id, request $request): JsonResponse
     {
         if(!empty($request->deleteAll)) {
+            Cache::forget('NOTIFICATIONS_' . auth()->user()->id);
             auth()->user()->notifications()->delete();
             $results = auth()->user()->notifications()->paginate(10);
             return response()->json(['results' => $results]);
         } else {
+            Cache::forget('NOTIFICATIONS_' . auth()->user()->id);
             auth()->user()->notifications->find($id)->delete();
             $results = auth()->user()->notifications()->paginate(10);
             return response()->json(['results' => $results]);
