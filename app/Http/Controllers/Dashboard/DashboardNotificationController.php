@@ -3,16 +3,19 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class DashboardNotificationController extends Controller
 {
     /**
      * View all notifications.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return Renderable
      */
-    public function index()
+    public function index(): Renderable
     {
         $count = auth()->user()->notifications->count();
         $notifications = auth()->user()->notifications()->paginate(10);
@@ -29,15 +32,17 @@ class DashboardNotificationController extends Controller
      *
      * @param  $id
      * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
-    public function destroy( $id, request $request)
+    public function destroy( $id, request $request): JsonResponse
     {
         if(!empty($request->deleteAll)) {
+            Cache::forget('NOTIFICATIONS_' . auth()->user()->id);
             auth()->user()->notifications()->delete();
             $results = auth()->user()->notifications()->paginate(10);
             return response()->json(['results' => $results]);
         } else {
+            Cache::forget('NOTIFICATIONS_' . auth()->user()->id);
             auth()->user()->notifications->find($id)->delete();
             $results = auth()->user()->notifications()->paginate(10);
             return response()->json(['results' => $results]);

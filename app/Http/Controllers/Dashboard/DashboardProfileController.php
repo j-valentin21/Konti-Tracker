@@ -5,8 +5,11 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProfileRequest;
 use App\Profile;
+use App\Services\NotificationService;
 use App\User;
+use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Storage;
 
@@ -16,14 +19,15 @@ class DashboardProfileController extends Controller
      * Show the dashboard profile view.
      *
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return Renderable
      */
-    public function index()
+    public function index(): Renderable
     {
-
-        $count = auth()->user()->notifications->count();
-        $notifications = Auth()->user()->notifications()->limit(8)->get();
-        return view('dashboard.profile.index', ['count'=>$count, 'notifications' => $notifications]);
+        $notifications = (new NotificationService())->userNotifications(auth()->user()->id);
+        return view('dashboard.profile.index',[
+            'count' => $notifications['count'],
+            'notifications' => $notifications['notifications']
+        ]);
     }
 
     /**
@@ -31,9 +35,9 @@ class DashboardProfileController extends Controller
      *
      *
      * @param ProfileRequest $request
-     * @return \Illuminate\Routing\Redirector
+     * @return Redirector
      */
-    public function update(ProfileRequest $request)
+    public function update(ProfileRequest $request): Redirector
     {
         $redis = Redis::connection();
         $profile = Profile::find(auth()->user()->id);
@@ -65,9 +69,9 @@ class DashboardProfileController extends Controller
      *
      *
      * @param Request $request
-     * @return \Illuminate\Routing\Redirector
+     * @return Redirector
      */
-    public function destroy(Request $request)
+    public function destroy(Request $request): Redirector
     {
         $profile = Profile::find(auth()->user()->id);
         $img = $profile->avatar;

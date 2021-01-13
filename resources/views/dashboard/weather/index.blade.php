@@ -4,7 +4,7 @@
     <script src="{{asset('js/scripts/skycons.js')}}"></script>
 @endsection
 
-@section('title', "Profile")
+@section('title', "Weather")
 
 @section('class', 'dashboard')
 
