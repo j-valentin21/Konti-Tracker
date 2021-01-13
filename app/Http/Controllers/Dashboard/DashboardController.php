@@ -10,23 +10,30 @@ use App\Http\Requests\PTOFormRequest;
 use App\Jobs\ApprovePTORequestJob;
 use App\Profile;
 use App\PTORequest;
-use App\User;
+use App\Services\NotificationService;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
 
 class DashboardController extends Controller
 {
+    private $notificationService;
+
+    public function __construct(NotificationService $notificationService)
+    {
+        $this->notificationService = $notificationService;
+    }
+
     /**
      * View the dashboard route.
      *
      */
-    public function index(): \Illuminate\Contracts\Support\Renderable
+    public function index()
     {
         try {
             $redis = Redis::connection();
             $profile = Profile::find(auth()->user()->id);
-            $count = auth()->user()->notifications->count();
-            $notifications = auth()->user()->notifications()->limit(8)->get();
+            $notifications = $this->notificationService->userNotifications(auth()->user()->id);
             $profile->resetMonths();
             $message = $redis->get('message_' .  auth()->id());
             $redis->expire('message_' . auth()->id(),5);
@@ -38,8 +45,8 @@ class DashboardController extends Controller
         return view('dashboard.index', [
             'message'=> $message,
             'profile'=> $profile,
-            'notifications' => $notifications,
-            'count' => $count
+            'notifications' => $notifications['notifications'],
+            'count' => $notifications['count']
         ]);
     }
 
@@ -107,9 +114,9 @@ class DashboardController extends Controller
     /**
      * Get data to update charts in dashboard.
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
-    public function getPTOChartData()
+    public function getPTOChartData(): JsonResponse
     {
         $profile = Profile::find(auth()->user()->id);
         $data = $profile->pto_usage;
@@ -120,9 +127,9 @@ class DashboardController extends Controller
     /**
      * Get data to update points chart in dashboard.
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
-    public function getPointsChartData()
+    public function getPointsChartData(): JsonResponse
     {
         $profile = Profile::find(auth()->user()->id);
         $data = $profile->points_usage;
@@ -133,9 +140,9 @@ class DashboardController extends Controller
      * Get data to view all activities in dashboard.
      *
      * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
-    public function getActivityData(request $request)
+    public function getActivityData(request $request): JsonResponse
     {
         if(!empty($request->activity)) {
             $pagination = 10;
@@ -151,9 +158,9 @@ class DashboardController extends Controller
      * Get data to render all notifications in view.
      *
      * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
-    public function getNotificationsData(request $request)
+    public function getNotificationsData(request $request): JsonResponse
     {
         $notifications = auth()->user()->notifications()->paginate(10);
         $data = $notifications;
