@@ -17,13 +17,6 @@ use Illuminate\Support\Facades\Redis;
 
 class DashboardController extends Controller
 {
-    private $notificationService;
-
-    public function __construct(NotificationService $notificationService)
-    {
-        $this->notificationService = $notificationService;
-    }
-
     /**
      * View the dashboard route.
      *
@@ -33,7 +26,7 @@ class DashboardController extends Controller
         try {
             $redis = Redis::connection();
             $profile = Profile::find(auth()->user()->id);
-            $notifications = $this->notificationService->userNotifications(auth()->user()->id);
+            $notifications = (new NotificationService())->userNotifications(auth()->user()->id);
             $profile->resetMonths();
             $message = $redis->get('message_' .  auth()->id());
             $redis->expire('message_' . auth()->id(),5);

@@ -24,17 +24,16 @@ export default{
             })
         },
     },
+    watch: {
+        lineData: function(val) {
+            this.lineChartData.datasets[0].data = this.lineData
+            this.lineChart.update();
+        },
+    },
     created() {
         this.fetchTasks();
         Fire.$on('SubmitCount', () => {
-            let timer = setInterval(() => {
-                this.fetchTasks()
-                this.lineChartData.datasets[0].data = this.lineData
-                this.lineChart.update()
-            }, 1000);
-            setTimeout(() => {
-                clearInterval(timer);
-            },2000)
+            this.fetchTasks()
         });
     },
     mounted() {

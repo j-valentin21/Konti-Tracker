@@ -23858,21 +23858,18 @@ __webpack_require__.r(__webpack_exports__);
       });
     }
   },
+  watch: {
+    barData: function barData(val) {
+      this.barChartData.datasets[0].data = this.barData;
+      this.barChart.update();
+    }
+  },
   created: function created() {
     var _this2 = this;
 
     this.fetchTasks();
     Fire.$on('SubmitCount', function () {
-      var timer = setInterval(function () {
-        _this2.fetchTasks();
-
-        _this2.barChartData.datasets[0].data = _this2.barData;
-
-        _this2.barChart.update();
-      }, 1000);
-      setTimeout(function () {
-        clearInterval(timer);
-      }, 2000);
+      _this2.fetchTasks();
     });
   },
   mounted: function mounted() {
@@ -24653,21 +24650,18 @@ __webpack_require__.r(__webpack_exports__);
       });
     }
   },
+  watch: {
+    lineData: function lineData(val) {
+      this.lineChartData.datasets[0].data = this.lineData;
+      this.lineChart.update();
+    }
+  },
   created: function created() {
     var _this2 = this;
 
     this.fetchTasks();
     Fire.$on('SubmitCount', function () {
-      var timer = setInterval(function () {
-        _this2.fetchTasks();
-
-        _this2.lineChartData.datasets[0].data = _this2.lineData;
-
-        _this2.lineChart.update();
-      }, 1000);
-      setTimeout(function () {
-        clearInterval(timer);
-      }, 2000);
+      _this2.fetchTasks();
     });
   },
   mounted: function mounted() {
