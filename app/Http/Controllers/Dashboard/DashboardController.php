@@ -130,24 +130,6 @@ class DashboardController extends Controller
     }
 
     /**
-     * Get data to view all activities in dashboard.
-     *
-     * @param Request $request
-     * @return JsonResponse
-     */
-    public function getActivityData(request $request): JsonResponse
-    {
-        if(!empty($request->activity)) {
-            $pagination = 10;
-        } else {
-            $pagination = 5;
-        }
-        $activity = Activity::latest()->where('user_id', auth()->user()->id )->with('user')->paginate($pagination);
-        $data = $activity;
-        return response()->json($data);
-    }
-
-    /**
      * Get data to render all notifications in view.
      *
      * @param Request $request
