@@ -18,10 +18,6 @@ Route::get('/', function () {
     return view('index');
 })->name('index');
 
-//Route::get('/students', function () {
-//    return Student::all();
-//});
-
 Auth::routes(['verify' => true]);
 
 Route::middleware(['auth', 'firstTimeUser', 'verified'])->group(function () {

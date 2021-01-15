@@ -93,7 +93,7 @@ export default {
     },
     methods: {
         fetchWeather() {
-            let uri = `/api/weather-daily?lat=${this.location.lat}&lon=${this.location.lon}&exclude=minutely,hourly,alerts&units=imperial`;
+            let uri = `/api/weather?lat=${this.location.lat}&lon=${this.location.lon}&exclude=minutely,hourly,alerts&units=imperial`;
             axios.get(uri).then(response => {
                 this.currentTemperature.actual = Math.round(response.data.current.temp);
                 this.currentTemperature.feels = Math.round(response.data.current.feels_like);
