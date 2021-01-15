@@ -25334,7 +25334,7 @@ __webpack_require__.r(__webpack_exports__);
     fetchWeather: function fetchWeather() {
       var _this2 = this;
 
-      var uri = "/api/weather-daily?lat=".concat(this.location.lat, "&lon=").concat(this.location.lon, "&exclude=minutely,hourly,alerts&units=imperial");
+      var uri = "/api/weather?lat=".concat(this.location.lat, "&lon=").concat(this.location.lon, "&exclude=minutely,hourly,alerts&units=imperial");
       axios.get(uri).then(function (response) {
         _this2.currentTemperature.actual = Math.round(response.data.current.temp);
         _this2.currentTemperature.feels = Math.round(response.data.current.feels_like);
