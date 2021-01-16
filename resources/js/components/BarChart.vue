@@ -24,17 +24,16 @@ export default{
             })
         },
     },
+    watch: {
+        barData:function(val) {
+            this.barChartData.datasets[0].data = this.barData
+            this.barChart.update();
+        },
+    },
     created() {
         this.fetchTasks();
         Fire.$on('SubmitCount', () => {
-           let timer = setInterval(() => {
-                this.fetchTasks()
-                this.barChartData.datasets[0].data = this.barData
-                this.barChart.update()
-                }, 1000);
-           setTimeout(() => {
-               clearInterval(timer);
-           },2000)
+            this.fetchTasks()
         });
     },
     mounted() {
