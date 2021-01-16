@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Nunito);@import url(https://fonts.googleapis.com/css?family=Fira+Sans);@charset "UTF-8";
 
 /*!
  * Bootstrap v4.5.0 (https://getbootstrap.com/)
@@ -11374,6 +11374,26 @@ body {
   }
 }
 
+@-webkit-keyframes move-twink-back {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: -10000px 5000px;
+  }
+}
+
+@keyframes move-twink-back {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: -10000px 5000px;
+  }
+}
+
 .border__bottom--grey {
   border-bottom: 1px solid #364458;
 }
@@ -13218,5 +13238,194 @@ body {
   text-transform: uppercase;
   font-size: 0.7em;
   letter-spacing: 0.12em;
+}
+
+.error-page {
+  font-family: "Fira Sans", sans-serif;
+  color: white;
+  position: relative;
+  margin: 0 auto;
+  width: 85%;
+  height: 100vh;
+  padding-bottom: 25vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+@media only screen and (max-width: 47.9em) {
+  .error-page {
+    flex-direction: column;
+    padding-bottom: 0vh;
+  }
+}
+
+.error-page__background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(#0C0E10, #446182);
+}
+
+.error-page__ground {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 25vh;
+  background: #567d46;
+}
+
+@media only screen and (max-width: 47.9em) {
+  .error-page__ground {
+    height: 2vh;
+  }
+}
+
+.error-page__header {
+  text-align: center;
+  font-size: 9rem;
+  line-height: 1.3em;
+  margin: 2rem 0 0.5rem 0;
+  padding: 0;
+  text-shadow: 0 0 1rem #fefefe;
+}
+
+@media only screen and (max-width: 47.9em) {
+  .error-page__header {
+    font-size: 11rem;
+    line-height: 1.15;
+    margin: 0;
+  }
+}
+
+.error-page__subheading {
+  text-align: center;
+  max-width: 480px;
+  font-size: 1.5rem;
+  line-height: 1.15em;
+  padding: 0 1rem;
+  margin: 0 auto;
+}
+
+@media only screen and (max-width: 47.9em) {
+  .error-page__subheading {
+    font-size: 1.75rem;
+    line-height: 1.15;
+    max-width: 100%;
+  }
+}
+
+.error-page__left-section,
+.error-page__right-section {
+  position: relative;
+}
+
+.error-page__left-section {
+  width: 40%;
+}
+
+@media only screen and (max-width: 47.9em) {
+  .error-page__left-section {
+    width: 100%;
+    height: 40%;
+    position: absolute;
+    top: 0;
+  }
+}
+
+.error-page__right-section {
+  width: 50%;
+}
+
+@media only screen and (max-width: 47.9em) {
+  .error-page__right-section {
+    width: 100%;
+    height: 60%;
+    position: absolute;
+    bottom: 0;
+  }
+}
+
+.error-page__inner-content {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@media only screen and (max-width: 47.9em) {
+  .error-page__inner-content {
+    position: relative;
+    padding: 1rem 0;
+  }
+}
+
+.error-page__svgimg {
+  position: absolute;
+  bottom: 0px;
+  padding-top: 10vh;
+  padding-left: 1vh;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.error-page__svgimg--bench-legs {
+  fill: tan;
+}
+
+.error-page__svgimg--top-bench,
+.error-page__svgimg--bottom-bench {
+  stroke: #000000;
+  stroke-width: 1px;
+  fill: #5B3E2B;
+}
+
+.error-page__svgimg--bottom-bench path:nth-child(1) {
+  fill: #432d20;
+}
+
+.error-page__svgimg--lamp-details {
+  fill: #202425;
+}
+
+.error-page__svgimg--lamp-accent {
+  fill: #2c3133;
+}
+
+.error-page__svgimg--lamp-light {
+  fill: #EFEFEF;
+}
+
+.error-page__svgimg--light-gradient {
+  fill: #2c3133;
+}
+
+.error-page__svgimg--lamp-bottom {
+  fill: #757575;
+}
+
+.error-page__stars,
+.error-page__twinkling {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.error-page__stars {
+  background: #000 url(http://www.script-tutorials.com/demos/360/images/stars.png) repeat top center;
+  z-index: 0;
+}
+
+.error-page__twinkling {
+  background: transparent url(http://www.script-tutorials.com/demos/360/images/twinkling.png) repeat top center;
+  z-index: 0;
+  -webkit-animation: move-twink-back 200s linear infinite;
+          animation: move-twink-back 200s linear infinite;
 }
 

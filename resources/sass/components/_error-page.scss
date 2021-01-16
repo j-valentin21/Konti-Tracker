@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans');
+
+.error-page {
+        font-family: "Fira Sans", sans-serif ;
+        color: white;
+        position: relative;
+        margin: 0 auto;
+        width: 85%;
+        height: 100vh;
+        padding-bottom: 25vh;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+
+    @include respond(tab-port) {
+        flex-direction: column;
+        padding-bottom: 0vh;
+    }
+
+    &__background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(#0C0E10, #446182);
+    }
+
+    &__ground {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 25vh;
+        background: #567d46;
+
+        @include respond(tab-port) {
+            height: 2vh;
+        }
+    }
+
+    &__header {
+        text-align: center;
+        font-size: 9rem;
+        line-height: 1.3em;
+        margin: 2rem 0 0.5rem 0;
+        padding: 0;
+        text-shadow: 0 0 1rem #fefefe;
+
+        @include respond(tab-port) {
+            font-size: 11rem;
+            line-height: 1.15;
+            margin: 0;
+        }
+    }
+
+    &__subheading {
+        text-align: center;
+        max-width: 480px;
+        font-size: 1.5rem;
+        line-height: 1.15em;
+        padding: 0 1rem;
+        margin: 0 auto;
+
+        @include respond(tab-port) {
+            font-size: 1.75rem;
+            line-height: 1.15;
+            max-width: 100%;
+        }
+    }
+
+    &__left-section,
+    &__right-section, {
+        position: relative
+    }
+
+
+    &__left-section {
+        width: 40%;
+
+        @include respond(tab-port) {
+            width: 100%;
+            height: 40%;
+            position: absolute;
+            top: 0;
+        }
+    }
+
+    &__right-section {
+        width: 50%;
+
+        @include respond(tab-port) {
+            width: 100%;
+            height: 60%;
+            position: absolute;
+            bottom: 0;
+        }
+    }
+
+    &__inner-content {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+
+        @include respond(tab-port) {
+            position: relative;
+            padding: 1rem 0;
+        }
+    }
+
+    &__svgimg {
+        position: absolute;
+        bottom: 0px;
+        padding-top: 10vh;
+        padding-left: 1vh;
+        max-width: 100%;
+        max-height: 100%;
+
+        &--bench-legs {
+            fill: tan;
+        }
+
+        &--top-bench,
+        &--bottom-bench{
+            stroke: $color-black;
+            stroke-width: 1px;
+            fill: #5B3E2B;
+        }
+
+        &--bottom-bench path:nth-child(1) {
+            fill: darken(#5B3E2B,7%)
+        }
+
+        &--lamp-details {
+            fill: #202425;
+        }
+
+        &--lamp-accent {
+            fill: lighten(#202425, 5%);
+        }
+
+        &--lamp-light {
+            fill: #EFEFEF
+        }
+
+        &--light-gradient {
+            fill: lighten(#202425, 5%);
+        }
+
+        &--lamp-bottom {
+            fill:#757575;
+        }
+    }
+
+    &__stars,
+    &__twinkling {
+        position:absolute;
+        top:0;
+        left:0;
+        right:0;
+        bottom:0;
+        width:100%;
+        height:100%;
+        display:block;
+    }
+
+    &__stars {
+        background:#000 url(http://www.script-tutorials.com/demos/360/images/stars.png) repeat top center;
+        z-index:0;
+    }
+
+    &__twinkling {
+        background:transparent url(http://www.script-tutorials.com/demos/360/images/twinkling.png) repeat top center;
+        z-index:0;
+
+        animation:move-twink-back 200s linear infinite;
+    }
+}
