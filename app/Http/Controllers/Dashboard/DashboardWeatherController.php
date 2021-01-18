@@ -16,10 +16,14 @@ class DashboardWeatherController extends Controller
      */
     public function index(): Renderable
     {
-        $notifications = (new NotificationService())->userNotifications(auth()->user()->id);
-        return view('dashboard.weather.index',[
-            'count' => $notifications['count'],
-            'notifications' => $notifications['notifications']
-        ]);
+        try {
+            $notifications = (new NotificationService())->userNotifications(auth()->user()->id);
+            return view('dashboard.weather.index',[
+                'count' => $notifications['count'],
+                'notifications' => $notifications['notifications']
+            ]);
+        } catch(\Exception $e ) {
+            return view('errors.404');
+        }
     }
 }

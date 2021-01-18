@@ -6,7 +6,7 @@
     <div class="container-fluid">
         <div class="modal fade bd-example-modal-lg profile" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg modal-dialog-centered form__wizard__modal">
-                <div class="modal-content ">
+                <div class="modal-content">
                     <div class="row">
                         <div class="col-12">
                             <section class="form__wizard">
@@ -25,7 +25,7 @@
                             </ol>
                         </div>
                         <div class="col-sm-8">
-                            <form method="POST" action="{{ route('profile.post') }}">
+                            <form method="POST" action="{{ route('profile.create') }}">
                                 @csrf
                                 <!-- ========== POSITION ========== -->
                                 <div class="form-group mb-4">

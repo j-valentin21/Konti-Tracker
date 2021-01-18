@@ -21,12 +21,12 @@ Route::get('/', function () {
 Auth::routes(['verify' => true]);
 
 Route::middleware(['auth', 'firstTimeUser', 'verified'])->group(function () {
-    Route::get('/register/build-your-profile', 'ProfileController@create')->name('profile');
-    Route::post('/register/build-your-profile', 'ProfileController@post')->name('profile.post');
-    Route::get('/register/avatar', 'AvatarController@create')->name('avatar');
-    Route::post('/register/avatar', 'AvatarController@post')->name('avatar.post');
+    Route::get('/register/build-your-profile', 'ProfileController@index')->name('profile.index');
+    Route::post('/register/build-your-profile', 'ProfileController@create')->name('profile.create');
+    Route::get('/register/avatar', 'AvatarController@index')->name('avatar.index');
+    Route::post('/register/avatar', 'AvatarController@create')->name('avatar.create');
     Route::delete('/register/remove-avatar', 'AvatarController@destroy')->name('avatar.destroy');
-    Route::get('/register/confirmation', 'ConfirmationController@create')->name('confirmation');
+    Route::get('/register/confirmation', 'ConfirmationController@index')->name('confirmation.index');
     Route::post('/register/store', 'ConfirmationController@store')->name('confirmation.store');
 });
 

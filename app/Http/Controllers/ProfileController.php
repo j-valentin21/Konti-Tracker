@@ -3,37 +3,39 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Profile;
 use App\Http\Requests\FirstTimeRegistrationRequest;
-use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Redis;
 
 class ProfileController extends Controller
 {
     /**
-     * Show build-your-profile page.
+     * View build-your-profile page.
      *
-     * @param Request $request
      * @return Renderable
      */
-    public function create(Request $request)
+    public function index(): Renderable
     {
-        $redis = Redis::connection();
-        $profile = unserialize($redis->get('profile_' . auth()->id()));
-        return view('auth.profile.build-your-profile',compact('profile', $profile));
+        try {
+            $redis = Redis::connection();
+            $profile = unserialize($redis->get('profile_' . auth()->id()));
+            return view('auth.profile.build-your-profile',compact('profile', $profile));
+        } catch(\Exception $e ) {
+            return view('errors.404');
+        }
     }
 
     /**
-     * Post Request to store build-your-profile info in redis session
+     * Create profile and store in redis session
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return Redirector
+     * @param FirstTimeRegistrationRequest $request
+     * @return RedirectResponse
      */
-    public function post(FirstTimeRegistrationRequest $request)
+    public function create(FirstTimeRegistrationRequest $request): RedirectResponse
     {
         $redis = Redis::connection();
-
         $validated = $request->validated();
 
         if (empty($redis->get('profile_' . auth()->id()))) {
@@ -47,7 +49,6 @@ class ProfileController extends Controller
             $redis->set('profile_'. auth()->id(), serialize($profile));
             $redis->expire('profile_' . auth()->id(), $profile->expireDate());
         }
-
         return redirect('/register/avatar');
     }
 }
