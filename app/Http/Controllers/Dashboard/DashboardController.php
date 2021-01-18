@@ -31,8 +31,7 @@ class DashboardController extends Controller
             $message = $redis->get('message_' .  auth()->id());
             $redis->expire('message_' . auth()->id(),5);
         } catch(\Exception $e ) {
-            dd($e);
-            abort(404);
+            return view('errors.404');
         }
 
         return view('dashboard.index', [

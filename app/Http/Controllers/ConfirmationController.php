@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
 
@@ -11,23 +12,26 @@ class ConfirmationController extends Controller
     /**
      * Show confirmation view
      *
-     * @param Request $request
      * @return Renderable
      */
-    public function create(Request $request)
+    public function index(): Renderable
     {
-        $redis = Redis::connection();
-        $profile = unserialize($redis->get('profile_' . auth()->id()));
-        return view('auth.profile.confirmation',compact('profile',$profile));
+        try {
+            $redis = Redis::connection();
+            $profile = unserialize($redis->get('profile_' . auth()->id()));
+            return view('auth.profile.confirmation', compact('profile', $profile));
+        } catch(\Exception $e) {
+            return view('errors.404');
+        }
     }
 
     /**
      * Store profile
      *
      * @param Request $request
-     * @return \Illuminate\Routing\Redirector
+     * @return RedirectResponse
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $redis = Redis::connection();
         $profile = unserialize($redis->get('profile_' . auth()->id()));

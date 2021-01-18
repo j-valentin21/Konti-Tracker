@@ -88,7 +88,7 @@
                 </div>
             </div>
         </div>
-    <!-- NAVBAR TITLE -->
+    <!-- ========== NAVBAR TITLE ========== -->
     <div class="navbar__title">
         <div class="d-flex justify-content-lg-center justify-content-start">
             <h4 class="ml-4 text-white">@yield('content')</h4>

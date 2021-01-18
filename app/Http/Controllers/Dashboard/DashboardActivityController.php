@@ -18,13 +18,17 @@ class DashboardActivityController extends Controller
      */
     public function index(): Renderable
     {
-        $userId = auth()->user()->id;
-        $notifications = (new NotificationService())->userNotifications(auth()->user()->id);
-        return view('dashboard.activity.index',[
-            'count'=> $notifications['count'],
-            'notifications' => $notifications['notifications'],
-            'userId' => $userId
-        ]);
+        try {
+            $userId = auth()->user()->id;
+            $notifications = (new NotificationService())->userNotifications(auth()->user()->id);
+            return view('dashboard.activity.index',[
+                'count'=> $notifications['count'],
+                'notifications' => $notifications['notifications'],
+                'userId' => $userId
+            ]);
+        } catch(\Exception $e ) {
+            return view('errors.404');
+        }
     }
 
     /**

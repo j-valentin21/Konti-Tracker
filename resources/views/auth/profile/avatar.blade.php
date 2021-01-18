@@ -28,14 +28,14 @@
                         <div class="col-sm-8">
                             <!-- ========== AVATAR ========== -->
                             @if(isset($profile->avatar))
-                                <h6 class="form__wizard__label">Avatar</h6>
+                                <h6 class="form__wizard__heading">Avatar</h6>
                                 <img class="img-fluid my-3 form__wizard__img" alt="Avatar" src="{{ Storage::disk('s3')->url($profile->avatar) }}"/>
                             @endif
                               <!-- ========== UPLOAD IMAGE ========== -->
-                            <form method="POST" action="{{ route('avatar.post') }}" enctype="multipart/form-data">
+                            <form method="POST" action="{{ route('avatar.create') }}" enctype="multipart/form-data">
                                 @csrf
                             @if(!isset($profile->avatar))
-                                <label class="form__wizard__label" for="image" class="text-break">{{ __('Upload Image') }}</label>
+                                <label for="image" class="text-break form__wizard__heading ">{{ __('Upload Image') }}</label>
                                 <input
                                     type="file" {{ (!empty($profile->avatar)) ? "disabled" : ''}}
                                     accept="image/x-png,image/gif,image/jpeg, image/svg image/jpg"
@@ -58,7 +58,7 @@
                                 <!-- ========== NEXT/BACK BUTTON ========== -->
                             @if(isset($profile->avatar))
                                 <div class="my-3 text-center text-sm-right">
-                                    <a href="{{ route('profile') }}">
+                                    <a href="{{ route('profile.index') }}">
                                         <button type="button" class="form__wizard__btn form__wizard__btn--orange mr-2">{{ __('Back') }}</button>
                                     </a>
                                     <button type="submit" class="form__wizard__btn form__wizard__btn--orange">
@@ -67,7 +67,7 @@
                                 </div>
                             @else
                                 <div class="text-center text-sm-right">
-                                    <a href="{{ route('profile') }}">
+                                    <a href="{{ route('profile.index') }}">
                                         <button type="button" class="form__wizard__btn form__wizard__btn--orange mr-2">{{ __('Back') }}</button>
                                     </a>
                                     <button type="submit" class="form__wizard__btn form__wizard__btn--orange">

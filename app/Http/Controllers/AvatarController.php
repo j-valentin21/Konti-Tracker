@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\FormUploadRequest;
 use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Redis;
@@ -12,26 +13,29 @@ use Illuminate\Support\Facades\Storage;
 class AvatarController extends Controller
 {
     /**
-     * Show Avatar view.
+     * Show avatar view.
      *
-     * @param Request $request
      * @return Renderable
      */
-    public function create(Request $request)
+    public function index(): Renderable
     {
-        $redis = Redis::connection();
-        $profile = unserialize($redis->get('profile_' . auth()->id()));
-        return view('auth.profile.avatar',compact('profile', $profile));
+        try {
+            $redis = Redis::connection();
+            $profile = unserialize($redis->get('profile_' . auth()->id()));
+            return view('auth.profile.avatar',compact('profile', $profile));
+        } catch(\Exception $e ) {
+            return view('errors.404');
+        }
     }
 
     /**
-     * Post Request to store image in session
+     * Get image and store it in session.
      *
      *
-     * @param Request $request
-     * @return Redirector
+     * @param FormUploadRequest $request
+     * @return RedirectResponse
      */
-    public function post(FormUploadRequest $request)
+    public function create(FormUploadRequest $request): RedirectResponse
     {
         $redis = Redis::connection();
         $profile = unserialize($redis->get('profile_' . auth()->id()));
@@ -50,7 +54,6 @@ class AvatarController extends Controller
                 $redis->expire('profile_' . auth()->id(), $profile->expireDate());
             }
         }
-
         return redirect('/register/confirmation');
     }
 
@@ -58,9 +61,9 @@ class AvatarController extends Controller
      * Destroy image in session
      *
      * @param Request $request
-     * @return Redirector
+     * @return RedirectResponse
      */
-    public function destroy(Request $request)
+    public function destroy(Request $request): RedirectResponse
     {
         $redis = Redis::connection();
         $profile = unserialize($redis->get('profile_' . auth()->id()));

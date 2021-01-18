@@ -17,14 +17,18 @@ class DashboardNotificationController extends Controller
      */
     public function index(): Renderable
     {
-        $count = auth()->user()->notifications->count();
-        $notifications = auth()->user()->notifications()->paginate(10);
-        $userId = auth()->user()->id;
-        return view('dashboard.notification.index',[
-            'count'=>$count,
-            'notifications' => $notifications,
-            'userId' => $userId,
-        ]);
+        try {
+            $count = auth()->user()->notifications->count();
+            $notifications = auth()->user()->notifications()->paginate(10);
+            $userId = auth()->user()->id;
+            return view('dashboard.notification.index',[
+                'count'=>$count,
+                'notifications' => $notifications,
+                'userId' => $userId,
+            ]);
+        } catch(\Exception $e ) {
+            return view('errors.404');
+        }
     }
 
     /**
