@@ -11799,9 +11799,10 @@ body {
 }
 
 .carousel__heading {
-  color: #eba72b;
   font-size: 3rem;
   font-weight: 700;
+  color: #eba72b;
+  text-shadow: 2px 2px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
 @media only screen and (max-width: 31.25em) {
@@ -11851,6 +11852,7 @@ body {
 .footer__primary {
   display: inline-block;
   border-bottom: 2px solid #eba72b;
+  color: #000000;
 }
 
 .footer__link {
@@ -11887,6 +11889,10 @@ body {
   .konti-cards .w-25 {
     width: 15% !important;
   }
+}
+
+.konti-cards__title {
+  color: #000000;
 }
 
 .hover__black {
@@ -11945,6 +11951,9 @@ body {
 .pto__heading {
   border-bottom: 2px solid #eba72b;
   display: inline-block;
+  color: #eba72b;
+  font-size: 1.75rem;
+  text-shadow: 3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
 .modal__header {

@@ -1,6 +1,6 @@
 <!-- CAROUSEL -->
 <header id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-    <div class="carousel-inner carousel__height">
+    <section class="carousel-inner carousel__height">
         <figure class="carousel-item active">
             <img src="{{ asset('img/car.jpg') }}" class="d-block w-100 carousel__height--img" alt="car">
             <figcaption class="carousel-caption mb-5">
@@ -22,7 +22,7 @@
                 <p class="carousel__text lead">Save your PTO days for your next beautiful vacation.</p>
             </figcaption>
         </figure>
-    </div>
+    </section>
     <!-- CAROUSEL CONTROLS -->
     <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
