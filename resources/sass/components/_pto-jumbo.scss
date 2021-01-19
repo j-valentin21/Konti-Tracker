@@ -1,5 +1,4 @@
 .pto {
-
     background: linear-gradient(to bottom, #d1d6da, #9fa4a8);
 
     &__img {
@@ -10,5 +9,13 @@
     &__heading {
         border-bottom:2px solid $color-orange;
         display: inline-block;
+        color: $color-orange;
+        font-size: 1.75rem;
+        text-shadow:
+            3px 3px 0 #000,
+            -1px -1px 0 #000,
+            1px -1px 0 #000,
+            -1px 1px 0 #000,
+            1px 1px 0 #000;
     }
 }
