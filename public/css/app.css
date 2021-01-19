@@ -13444,24 +13444,50 @@ body {
 }
 
 .features {
-  background-color: white;
+  background-color: #f8f8ff;
 }
 
 .features__header {
-  font-size: 40px;
-  line-height: 40px;
+  position: relative;
+  height: 7vh;
+  background-color: #eba72b;
+  border-bottom-left-radius: 60% 20%;
+  border-bottom-right-radius: 60% 20%;
+  font-size: 2.5rem;
+  line-height: 2.5rem;
   font-weight: 900;
   text-transform: uppercase;
-  margin: 3rem;
+  margin: 2rem;
+  text-align: center;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+}
+
+@media only screen and (max-width: 62.5em) {
+  .features__header {
+    font-size: 2rem;
+  }
+}
+
+@media only screen and (max-width: 36.5em) {
+  .features__header {
+    height: 5vh;
+  }
 }
 
 .features__bg-img {
-  background-image: url(/images/hello.png?649493e9e3634054250cb0c0485a4d26);
+  background-image: url(/images/mobile.png?a3ba402cb9a0c5aa45e64e93277d798e);
   z-index: -1;
 }
 
+@media only screen and (max-width: 62.5em) {
+  .features__bg-img {
+    background-image: url(/images/mobile-sm.png?5c4fc2a471d9d5106678f5dcab92bd94);
+  }
+}
+
 .features__bg-row {
-  background-position: 80% 50%;
+  background-position: 90% 50%;
   background-attachment: scroll;
   background-repeat: no-repeat;
   margin-bottom: 3rem;
@@ -13469,12 +13495,18 @@ body {
 
 .features__item {
   max-width: 430px;
-  border: 1px solid #e3e3e3;
-  box-shadow: 0px 5px 7px 0px rgba(0, 0, 0, 0.07);
+  border: 1px solid darkgrey;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
   background: rgba(211, 211, 211, 0.7);
   padding: 40px 30px;
   margin-bottom: 4rem;
   margin-left: 6rem;
+}
+
+@media only screen and (max-width: 36.5em) {
+  .features__item {
+    margin-left: 0rem;
+  }
 }
 
 .features__item::before {
@@ -13485,6 +13517,12 @@ body {
   width: 35px;
   height: 2px;
   background-color: #000000;
+}
+
+@media only screen and (max-width: 36.5em) {
+  .features__item::before {
+    content: none;
+  }
 }
 
 .features__item::after {
@@ -13501,8 +13539,15 @@ body {
   z-index: 1;
 }
 
+@media only screen and (max-width: 36.5em) {
+  .features__item::after {
+    content: none;
+  }
+}
+
 .features__item-header {
-  font-size: 24px;
+  font-size: 20px;
+  font-weight: bold;
   line-height: 24px;
   font-family: "Playfair Display", serif;
 }
@@ -13520,10 +13565,22 @@ body {
   content: "0" counter(number);
   position: absolute;
   left: 1rem;
-  top: 4rem;
-  font-size: 40px;
+  top: 4.25rem;
+  font-size: 2.5rem;
   color: #eba72b;
   font-weight: 900;
   transform: translateY(-50%);
+}
+
+@media only screen and (max-width: 47.9em) {
+  .features__list::before {
+    font-size: 2.1rem;
+  }
+}
+
+@media only screen and (max-width: 36.5em) {
+  .features__list::before {
+    content: none;
+  }
 }
 
