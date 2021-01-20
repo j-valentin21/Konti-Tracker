@@ -3,7 +3,8 @@
 
     &__img {
         border-radius: 50%;
-        width: 12%;
+        width: 15%;
+        animation: pulse 2.5s infinite;
     }
 
     &__heading {
@@ -12,10 +13,10 @@
         color: $color-orange;
         font-size: 1.75rem;
         text-shadow:
-            3px 3px 0 #000,
-            -1px -1px 0 #000,
-            1px -1px 0 #000,
-            -1px 1px 0 #000,
-            1px 1px 0 #000;
+            1px 1px 0 #000,
+            -.5px -.5px 0 #000,
+            .5px -.5px 0 #000,
+            -.5px .5px 0 #000,
+            .5px .5px 0 #000;
     }
 }

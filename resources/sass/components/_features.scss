@@ -1,9 +1,10 @@
 .features {
     background-color: #f8f8ff;
+    margin-top: 3rem;
 
     &__header {
         position: relative;
-        height: 7vh;
+        height: 6%;
         background-color: $color-orange;
         border-bottom-left-radius: 60% 20%;
         border-bottom-right-radius: 60% 20%;
@@ -13,8 +14,6 @@
         text-transform: uppercase;
         margin: 2rem;
         text-align: center;
-        padding-right: 1rem;
-        padding-top: 0.5rem;
 
         @include respond(tab-land) {
             font-size: 2rem;

@@ -1,13 +1,13 @@
 <!-- NAVBAR -->
-<nav id="navbar__bg" class="navbar navbar-expand navbar sticky-top bg-white pl-5" >
+<nav id="navbar__bg" class="navbar navbar-expand navbar sticky-top bg-white" >
     <a class="navbar-brand navbar__logo"><img class="navbar__logo--img" src="{{ asset('img/konti_logo.png') }}" alt="konti-tracker logo"></a>
         <ul class="navbar-nav ml-auto">
             @guest
-                <li class="nav-item active">
+                <li class="nav-item active mt-3">
                     <a class="nav-link navbar__link hover__black" data-toggle="modal" data-target="#loginmodal">Login</a>
                 </li>
                 @if (Route::has('register'))
-                    <li class="nav-item active">
+                    <li class="nav-item active mt-3">
                         <a class="nav-link navbar__link hover__black text-center" href="{{ route('register') }}">Register <span class="sr-only">(current)</span></a>
                     </li>
                 @endif
@@ -21,7 +21,6 @@
                        aria-expanded="false" v-pre>
                         {{ Auth::user()->name }} <span class="caret"></span>
                     </a>
-
                     <div class="dropdown-menu dropdown-menu-right " aria-labelledby="navbarDropdown">
                         @if(Auth::user()->firstTimeUser === 1)
                             <a class="dropdown-item hover__black bg-warning" href="{{ route('profile') }}">Finish your profile</a>
