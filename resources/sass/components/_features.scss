@@ -1,21 +1,40 @@
 .features {
-    background-color: white;
+    background-color: #f8f8ff;
+    margin-top: 3rem;
 
     &__header {
-        font-size: 40px;
-        line-height: 40px;
+        position: relative;
+        height: 6%;
+        background-color: $color-orange;
+        border-bottom-left-radius: 60% 20%;
+        border-bottom-right-radius: 60% 20%;
+        font-size: 2.5rem;
+        line-height: 2.5rem;
         font-weight: 900;
         text-transform: uppercase;
-        margin: 3rem;
+        margin: 2rem;
+        text-align: center;
+
+        @include respond(tab-land) {
+            font-size: 2rem;
+        }
+
+        @include respond(mobile-land) {
+           height: 5vh;
+        }
     }
 
     &__bg-img {
-        background-image: url("../img/hello.png");
+        background-image: url("../img/mobile.png");
         z-index: -1;
+
+        @include respond(tab-land) {
+            background-image: url("../img/mobile-sm.png");
+        }
     }
 
     &__bg-row {
-        background-position: 80% 50%;
+        background-position: 90% 50%;
         background-attachment: scroll;
         background-repeat: no-repeat;
         margin-bottom: 3rem;
@@ -23,12 +42,16 @@
 
     &__item {
         max-width: 430px;
-        border: 1px solid rgb(227, 227, 227);
-        box-shadow: 0px 5px 7px 0px rgba(0, 0, 0, 0.07);
+        border: 1px solid darkgrey;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
         background: rgba(lightgrey,.7);
         padding: 40px 30px;
         margin-bottom: 4rem;
         margin-left: 6rem;
+
+        @include respond(mobile-land) {
+            margin-left: 0rem;
+        }
 
         &::before {
             content: "";
@@ -38,6 +61,10 @@
             width: 35px;
             height: 2px;
             background-color: $color-black;
+
+            @include respond(mobile-land) {
+               content: none;
+            }
         }
 
         &::after {
@@ -52,11 +79,16 @@
             border-radius: 50%;
             margin-top: -7px;
             z-index: 1;
+
+            @include respond(mobile-land) {
+               content: none;
+            }
         }
     }
 
     &__item-header {
-        font-size: 24px;
+        font-size: 20px;
+        font-weight: bold;
         line-height: 24px;
         font-family: 'Playfair Display', serif;
     }
@@ -72,13 +104,19 @@
            content: "0"counter(number);
            position: absolute;
            left: 1rem;
-           top:4rem;
-           font-size: 40px;
+           top: 4.25rem;
+           font-size: 2.5rem;
            color: $color-orange;
            font-weight: 900;
-           -ms-transform: translateY(-50%);
-           -webkit-transform: translateY(-50%);
            transform: translateY(-50%);
+
+           @include respond(tab-port) {
+               font-size: 2.1rem;
+           }
+
+           @include respond(mobile-land) {
+              content: none;
+           }
        }
     }
 }

@@ -1,20 +1,16 @@
 .navbar__logo {
     position: absolute;
     top: 0;
+    left: 8rem;
     background-color: $color-black;
-    margin: 0rem;
     z-index: 10;
     color: $color-orange;
-    margin-left: 10rem;
     transition: all .5s ease-in;
     height: auto;
 
-    @include respond(laptop) {
-        margin-left: 8rem;
-    }
-
     @include respond(tab-land) {
         height: 20vh;
+        left: 6rem;
         &--img {
             height: 20vh;
         }
@@ -25,16 +21,36 @@
         &--img {
             height: 13vh;
         }
+    }
 
-        margin-left: 6rem;
+    @include respond(mobile-land) {
+        height: 12vh;
+        left: 4rem;
+        top: 2rem;
+        &--img {
+            height: 10vh;
+        }
+    }
+
+    @include respond(pixel2) {
+        margin-top: 0rem;
+        &--img {
+            height: 12vh;
+        }
     }
 
     @include respond(ipad) {
         &--img {
-            height: 15vh;
+            height: 12vh;
         }
-        height: 15vh;
-        margin-left:6rem;
+        height: 12vh;
+    }
+
+    @include respond(horizontal-view) {
+        height: 25vh;
+        &--img {
+            height: 25vh;
+        }
     }
 }
 
@@ -42,7 +58,7 @@
     transition: all .75s ease-in;
     transform: scale(.5);
     margin-left: 0rem;
-    top: -4.1rem;
+    top: -3.1rem;
     padding: 0rem 5rem;
     left: 0rem;
     height: 21.5vh;
@@ -50,6 +66,7 @@
     @include respond(laptop) {
         padding: 0rem 4rem;
         height: 10rem;
+        margin-top: .5rem;
         &--img {
             height: 100%;
         }
@@ -57,8 +74,8 @@
 
     @include respond(tab-land) {
         padding: 0rem 3.5rem;
-        height: 16.5vh;
-        margin-top: 1rem;
+        height: 15vh;
+        margin-top: 1.25rem;
     }
 
     @include respond(tab-port) {
@@ -69,22 +86,18 @@
 
     @include respond(mobile-land) {
         transform: scale(.7);
-        margin-top: 1.3rem;
+        margin-top: 1.75rem;
     }
 
     @include respond(mobile-port) {
-        transform: scale(.65);
-        margin-top: 2rem;
+        transform: scale(.75);
+        margin-top: 2.5rem;
         padding: 0rem 2rem;
-        height: 6.75rem;
+        height: 6rem;
     }
 
     @include respond(laptop-touch) {
         height: 17vh;
-    }
-
-    @include respond(pixel2) {
-        margin-top: 1.6rem;
     }
 
     @include respond(ipad) {
@@ -99,6 +112,7 @@
     background-color: $color-orange !important;
     color: $color-black !important;
     transition: all .75s ease-out;
+    height: 5rem;
 }
 
 .navbar__link {
@@ -173,8 +187,6 @@
     width: 2.3rem;
     height: 1.75rem;
     margin: 0rem 0rem .5rem 2rem;
-
-
 
     &__global {
         backface-visibility: hidden;

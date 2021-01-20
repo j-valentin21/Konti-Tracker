@@ -15,7 +15,7 @@
             <div class="col-12 col-md-11 mx-auto mb-5">
                 <x-carousel/>
                 <section class="jumbotron mt-4 mt-sm-0 pto">
-                    <img class="img-fluid pto__img " src="{{ asset('img/new.jpg') }}" alt="'New' icon">
+                    <img class="img-fluid pto__img" src="{{ asset('img/new.jpg') }}" alt="'New' icon">
                     <div class="text-center">
                         <h3 class="pto__heading">PTO Purchase Program</h3>
                         <p class="lead">You can purchase up to 10 days of additional PTO</p>
@@ -35,13 +35,12 @@
                         <div class="row features__bg-row features__bg-img">
                             <div class="container">
                                 <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="features__counter">
+                                    <div class="col-lg-6">
+                                        <section class="features__counter">
                                             <div class="features__list">
-                                                <article class="features__item">
+                                                <article class="features__item mt-5">
                                                     <h3 class="features__item-header">Calendar</h3>
-                                                    <p>You have access to a fully functional calendar. This allows you to keep track of all the important things in your life.
-                                                        All holidays are integrated into to the calendar so you know exactly when you have a day off.</p>
+                                                    <p>You have access to a fully functional calendar. This allows you to keep track of all the important events in your life.</p>
                                                 </article>
                                             </div>
                                             <div class="features__list">
@@ -56,7 +55,7 @@
                                                     <p>Schedule your PTO days with your supervisor/manager directly from the dashboard within minutes </p>
                                                 </article>
                                             </div>
-                                        </div>
+                                        </section>
                                     </div>
                                 </div>
                             </div>

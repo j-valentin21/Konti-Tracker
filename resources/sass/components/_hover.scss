@@ -2,6 +2,7 @@
     color: $color-black;
     overflow: hidden;
     position: relative;
+    cursor: pointer;
     transition: all .3s ease-in;
 
     &::before,

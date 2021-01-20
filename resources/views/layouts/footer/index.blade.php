@@ -6,7 +6,7 @@
             <div class="d-flex justify-content-around">
                 @guest
                     <a class="footer__link hover__black" href="#">HOME</a>
-                    <a class="footer__link hover__black" href="{{ route('register') }}">SIGNUP/REGISTER</a>
+                    <a class="footer__link hover__black" href="{{ route('register') }}">REGISTER</a>
                     <a class="footer__link hover__black" data-toggle="modal" data-target="#loginmodal">SIGN IN</a>
                     <a class="footer__link hover__black" href="#">CONTACT US</a>
                 @else

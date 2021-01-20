@@ -7,8 +7,8 @@ use App\Http\Requests\PTOPointsDataRequest;
 use App\Profile;
 use App\Services\NotificationService;
 use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Redis;
 use MultipleIterator;
 
@@ -53,9 +53,9 @@ class DashboardPTOPointsController extends Controller
      *
      * @param PTOPointsDataRequest $request
      *
-     * @return Redirector
+     * @return RedirectResponse
      */
-    public function update(PTOPointsDataRequest $request): Redirector
+    public function update(PTOPointsDataRequest $request): RedirectResponse
     {
         $redis = Redis::connection();
         $profile = Profile::find(auth()->user()->id);
