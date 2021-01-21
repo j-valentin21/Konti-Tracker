@@ -11718,12 +11718,6 @@ body {
   align-items: center;
 }
 
-@media only screen and (max-width: 25em) {
-  .navbar__dash__logo {
-    display: none;
-  }
-}
-
 .navbar__icon-container {
   position: relative;
   background-color: #1e2938;
@@ -12678,6 +12672,18 @@ body {
 .auth {
   background: linear-gradient(to bottom, #ff8008, #ffc837) no-repeat;
   height: 100vh;
+}
+
+@media only screen and (max-height: 24em) and (min-width: 30em) {
+  .auth {
+    height: 100%;
+  }
+}
+
+@media only screen and (max-height: 40em) and (min-width: 44em) {
+  .auth {
+    height: 100%;
+  }
 }
 
 .auth__container {

@@ -152,12 +152,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    &__logo {
-        @include respond(mobile-port) {
-            display: none;
-        }
-    }
 }
 
 .navbar__icon-container  {

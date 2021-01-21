@@ -1,9 +1,6 @@
 @extends('layouts.master')
-
 @section('title', "Password Reset")
-
 @section('class', 'auth')
-
 @section('body-header')
     @include("layouts.navbar.auth")
 @endsection
