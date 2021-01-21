@@ -1,9 +1,6 @@
 @extends('layouts.master')
-
 @section('title', "Registration")
-
 @section('class', 'registration')
-
 @section('body-content')
 
 <div class="d-flex justify-content-end">

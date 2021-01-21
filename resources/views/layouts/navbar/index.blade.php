@@ -1,5 +1,5 @@
 <!-- NAVBAR -->
-<nav id="navbar__bg" class="navbar navbar-expand navbar sticky-top bg-white" >
+<nav id="navbar__bg" class="navbar navbar-expand navbar sticky-top bg-white">
     <a class="navbar-brand navbar__logo"><img class="navbar__logo--img" src="{{ asset('img/konti_logo.png') }}" alt="konti-tracker logo"></a>
         <ul class="navbar-nav ml-auto">
             @guest
@@ -23,7 +23,7 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right " aria-labelledby="navbarDropdown">
                         @if(Auth::user()->firstTimeUser === 1)
-                            <a class="dropdown-item hover__black bg-warning" href="{{ route('profile') }}">Finish your profile</a>
+                            <a class="dropdown-item hover__black bg-warning" href="{{ route('profile.index') }}">Finish your profile</a>
                         @else
                             <a class="dropdown-item hover__black" href="{{ route('dashboard.index') }}">Dashboard</a>
                         @endif

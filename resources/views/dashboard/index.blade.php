@@ -1,13 +1,8 @@
 @extends('layouts.master')
-
 @section('title', "Dashboard")
-
 @section('class', 'dashboard')
-
 @section('content', "DASHBOARD")
-
 @section('id', 'app')
-
 @section('body-header')
     @include("layouts.navbar.dashboard")
 @endsection
@@ -25,7 +20,7 @@
                 </x-alert-success>
             @endif
                 <div class="row mb-3">
-                    <div class="col-xl-3">
+                    <section class="col-xl-3">
                         <div class="card dashboard__card mb-4">
                             <div class="card-body">
                                 <incrementers :points="{{ $profile->points }}"
@@ -39,49 +34,49 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </section>
 
                     <div class="col-xl-9">
-                        <div class="card dashboard__card">
+                        <section class="card dashboard__card">
                             <div class="card-body">
                                 <h4 class="card-title dashboard__card__title mb-4">PTO usage</h4>
                                 <bar-chart/>
                             </div>
-                        </div>
+                        </section>
                     </div>
                 </div>
                 <!-- ========== END ROW ========== -->
 
                 <!-- ========== ROW START/POINTS PER MONTH ========== -->
                 <div class="row">
-                    <div class="col-lg-6 mb-4">
+                    <section class="col-lg-6 mb-4">
                         <div class="card dashboard__card">
                             <div class="card-body">
                                 <h4 class="card-title dashboard__card__title mb-4">Points per month</h4>
                                 <line-chart/>
                             </div>
                         </div>
-                    </div>
+                    </section>
                     <!-- ========== PENDING ========== -->
                     <div class="col-lg-6 mb-4">
-                        <div class="card dashboard__card">
+                        <section class="card dashboard__card">
                             <div class="card-body">
                                 <h4 class="card-title dashboard__card__title mb-4">Pending</h4>
                                 <pie-chart :pending="{{ $profile->pending }}" :pto="{{ $profile->pto }}" />
                             </div>
-                        </div>
+                        </section>
                     </div>
                     <!-- ========== DASHBOARD ACTIVITY ========== -->
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-lg-12">
+                            <section class="col-lg-12">
                                 <div class="card dashboard__card mb-5">
                                     <div class="card-body">
                                         <h4 class="card-title dashboard__card__title mb-4">Dashboard Activity</h4>
                                         <dashboard-activity/>
                                     </div>
                                 </div>
-                            </div>
+                            </section>
                             <request-pto-form :pto="{{ $profile->pto }}"/>
                         </div><!-- END ROW -->
                     </div> <!-- END OF CONTAINER-FLUID -->

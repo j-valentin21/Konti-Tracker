@@ -1,3 +1,5 @@
+@import "base/fonts";
+
 .registration {
     width: 100vw;
     height: 100%;
@@ -14,6 +16,14 @@
         @include respond(tab-port) {
             width: 100%;
         }
+
+        @include respond(horizontal-view-sm) {
+            height: 100%;
+        }
+
+        @include respond(horizontal-view-md) {
+            height: 100%;
+        }
     }
 
     &__title {
@@ -21,11 +31,11 @@
         padding: 0rem;
         font-weight: 900;
         color: $color-light-black;
-        font-family: 'Roboto', sans-serif;
-        font-size: 2rem;
+        font-family: 'grand_halva', sans-serif;
+        font-size: 3rem;
         text-transform: uppercase;
         text-align: center;
-        margin-bottom: 2.5rem;
+        margin-bottom: 3rem;
 
         @include respond(tab-port) {
             padding: 3rem;

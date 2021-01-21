@@ -1,30 +1,29 @@
 @extends('layouts.master')
-
 @section('title', "Avatar")
 
 @section('body-content')
-    <div class="container-fluid">
+    <main class="container-fluid">
         <div class="modal fade bd-example-modal-lg profile" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg modal-dialog-centered form__wizard__modal">
                 <div class="modal-content">
                     <!-- ========== HEADER========== -->
-                    <div class="row">
+                    <section class="row">
                         <div class="col-12">
-                            <section class="form__wizard">
+                            <figure class="form__wizard">
                                 <img class="form__wizard__header-img" src="{{ asset('img/luxury_car.jpg') }}" alt="luxury car">
-                                <h3 class="form__wizard__header">Welcome to Konti-Tracker</h3>
-                            </section>
+                                <figcaption class="form__wizard__header">Welcome to Konti-Tracker</figcaption>
+                            </figure>
                         </div>
-                    </div>
+                    </section>
                     <div class="row p-5">
                         <!-- ========== STEPS ========== -->
-                        <div class="col-sm-4">
+                        <section class="col-sm-4">
                             <ol class="form__wizard__steps">
                                 <li class="mb-4">Build Your Profile</li>
                                 <li class="mb-4 form__wizard__steps--active-middle">Avatar</li>
                                 <li class="mb-4">Confirmation</li>
                             </ol>
-                        </div>
+                        </section>
                         <div class="col-sm-8">
                             <!-- ========== AVATAR ========== -->
                             @if(isset($profile->avatar))
@@ -46,8 +45,8 @@
 
                                 @error('avatar')
                                 <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                    <strong>{{ $message }}</strong>
+                                </span>
                                 @enderror
                                 <small
                                     id="fileHelp"
@@ -91,7 +90,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </main>
 @stop
 @section('body-scripts')
     <script

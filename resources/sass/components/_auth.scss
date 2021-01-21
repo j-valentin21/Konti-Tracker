@@ -2,6 +2,14 @@
     background: linear-gradient(to bottom, #ff8008, #ffc837) no-repeat;
     height: 100vh;
 
+    @include respond(horizontal-view-sm) {
+       height: 100%;
+    }
+
+    @include respond(horizontal-view-md) {
+        height: 100%;
+    }
+
     &__container {
         height: 80vh;
         display: flex;

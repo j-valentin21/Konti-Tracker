@@ -1,9 +1,6 @@
 @extends('layouts.master')
-
 @section('title', "Konti-Tracker")
-
 @section('class', 'homepage__bg')
-
 @section('body-header')
     @include("layouts.navbar.index")
 @endsection

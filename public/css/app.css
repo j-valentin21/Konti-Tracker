@@ -11561,21 +11561,21 @@ body {
   }
 
   .navbar__logo--img {
-    height: 10vh;
+    height: 11vh;
   }
 }
 
-@media only screen and (min-height: 45.5em) and (min-width: 25em) {
+@media only screen and (min-height: 45.5em) and (max-width: 25em) {
   .navbar__logo {
     margin-top: 0rem;
   }
 
   .navbar__logo--img {
-    height: 12vh;
+    height: 11vh;
   }
 }
 
-@media only screen and (min-height: 63.75em) and (min-width: 47.8em) {
+@media only screen and (min-height: 62em) and (max-width: 49em) {
   .navbar__logo {
     height: 12vh;
   }
@@ -11585,7 +11585,27 @@ body {
   }
 }
 
-@media only screen and (min-height: 22em) and (min-width: 39em) {
+@media only screen and (min-height: 40em) and (max-width: 18em) {
+  .navbar__logo {
+    left: 2rem;
+  }
+
+  .navbar__logo--img {
+    height: 10vh;
+  }
+}
+
+@media only screen and (max-height: 24em) and (min-width: 30em) {
+  .navbar__logo {
+    height: 25vh;
+  }
+
+  .navbar__logo--img {
+    height: 25vh;
+  }
+}
+
+@media only screen and (max-height: 40em) and (min-width: 44em) {
   .navbar__logo {
     height: 25vh;
   }
@@ -11649,18 +11669,31 @@ body {
   }
 }
 
-@media only screen and (min-height: 59.25em) and (min-width: 80em) {
+@media only screen and (min-height: 59.25em) and (max-width: 80em) {
   .navbar__alt {
     height: 17vh;
   }
 }
 
-@media only screen and (min-height: 63.75em) and (min-width: 47.8em) {
+@media only screen and (min-height: 62em) and (max-width: 49em) {
   .navbar__alt {
     transform: scale(0.5);
     margin-top: 1rem;
     padding: 0rem 3rem;
     height: 12vh;
+  }
+}
+
+@media only screen and (min-height: 85em) and (max-width: 65em) {
+  .navbar__alt {
+    height: 12vh;
+  }
+}
+
+@media only screen and (max-height: 40em) and (min-width: 44em) {
+  .navbar__alt {
+    height: 25vh;
+    transform: scale(0.75);
   }
 }
 
@@ -11683,12 +11716,6 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-@media only screen and (max-width: 25em) {
-  .navbar__dash__logo {
-    display: none;
-  }
 }
 
 .navbar__icon-container {
@@ -11858,7 +11885,7 @@ body {
 
 @media only screen and (max-width: 47.9em) {
   .footer__link {
-    height: 2vh;
+    height: 2%;
   }
 }
 
@@ -11870,7 +11897,7 @@ body {
   }
 }
 
-@media only screen and (min-height: 22em) and (min-width: 39em) {
+@media only screen and (max-height: 24em) and (min-width: 30em) {
   .footer__link {
     height: 2%;
   }
@@ -11987,6 +12014,12 @@ body {
   background-color: #000000;
 }
 
+@font-face {
+  font-family: "grand_halva";
+  src: url(/fonts/grand_halva-webfont.woff?d41d8cd98f00b204e9800998ecf8427e) format("woff");
+  src: url(/fonts/grand_halva-webfont.woff2?d41d8cd98f00b204e9800998ecf8427e) format("woff2");
+}
+
 .registration {
   width: 100vw;
   height: 100%;
@@ -12008,16 +12041,28 @@ body {
   }
 }
 
+@media only screen and (max-height: 24em) and (min-width: 30em) {
+  .registration__container {
+    height: 100%;
+  }
+}
+
+@media only screen and (max-height: 40em) and (min-width: 44em) {
+  .registration__container {
+    height: 100%;
+  }
+}
+
 .registration__title {
   margin: 0rem;
   padding: 0rem;
   font-weight: 900;
   color: #222;
-  font-family: "Roboto", sans-serif;
-  font-size: 2rem;
+  font-family: "grand_halva", sans-serif;
+  font-size: 3rem;
   text-transform: uppercase;
   text-align: center;
-  margin-bottom: 2.5rem;
+  margin-bottom: 3rem;
 }
 
 @media only screen and (max-width: 47.9em) {
@@ -12431,6 +12476,18 @@ body {
   }
 }
 
+@media only screen and (max-height: 24em) and (min-width: 30em) {
+  .form__wizard__img {
+    height: 40%;
+  }
+}
+
+@media only screen and (max-height: 40em) and (min-width: 44em) {
+  .form__wizard__img {
+    height: 40%;
+  }
+}
+
 .form__wizard__img-text {
   margin-bottom: 5rem;
 }
@@ -12563,6 +12620,18 @@ body {
   }
 }
 
+@media only screen and (max-height: 24em) and (min-width: 30em) {
+  .form__wizard__btn {
+    width: 40%;
+  }
+}
+
+@media only screen and (max-height: 40em) and (min-width: 44em) {
+  .form__wizard__btn {
+    width: 40%;
+  }
+}
+
 .form__wizard__btn--orange {
   background-image: linear-gradient(to right, #eba72b, #eeb345);
 }
@@ -12627,6 +12696,18 @@ body {
 .auth {
   background: linear-gradient(to bottom, #ff8008, #ffc837) no-repeat;
   height: 100vh;
+}
+
+@media only screen and (max-height: 24em) and (min-width: 30em) {
+  .auth {
+    height: 100%;
+  }
+}
+
+@media only screen and (max-height: 40em) and (min-width: 44em) {
+  .auth {
+    height: 100%;
+  }
 }
 
 .auth__container {

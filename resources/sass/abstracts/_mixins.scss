@@ -31,18 +31,30 @@
     }
     //Width and Height
     @if $breakpoint == laptop-touch {
-        @media only screen and (min-height: 59.25em) and (min-width: 80em) {@content};  //1280px x 950px
+        @media only screen and (min-height: 59.25em) and (max-width: 80em) {@content};  //1280px x 950px
     }
 
     @if $breakpoint == pixel2 {
-        @media only screen and (min-height: 45.5em) and (min-width: 25em) {@content};  //410px x 725px
+        @media only screen and (min-height: 45.5em) and (max-width: 25em) {@content};  //410px x 725px
     }
 
     @if $breakpoint == ipad {
-        @media only screen and (min-height: 63.75em) and (min-width: 47.8em) {@content};  //765px x 1020px
+        @media only screen and (min-height: 62em) and (max-width: 49em) {@content};  //765px x 1020px
     }
 
-    @if $breakpoint == horizontal-view {
-        @media only screen and (min-height: 22em) and (min-width: 39em) {@content};  //640px x 360px
+    @if $breakpoint == ipad-pro {
+        @media only screen and (min-height: 85em) and (max-width: 65em) {@content};  //1024px x 1366px
+    }
+
+    @if $breakpoint == galaxy-fold {
+        @media only screen and (min-height: 40em) and (max-width: 18em) {@content};  //280px x 653px
+    }
+    //Horizontal view
+    @if $breakpoint == horizontal-view-sm {
+        @media only screen and (max-height: 24em) and (min-width: 30em) {@content};  //640px x 360px
+    }
+
+    @if $breakpoint == horizontal-view-md {
+        @media only screen and (max-height: 40em) and (min-width: 44em) {@content};  //704px x 640px
     }
 }
