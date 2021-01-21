@@ -16,14 +16,14 @@
         width: 20%;
 
         @include respond(tab-port) {
-            height: 2vh;
+            height: 2%;
         }
 
         @include respond(mobile-port) {
             width: fit-content;
         }
 
-        @include respond(horizontal-view) {
+        @include respond(horizontal-view-sm) {
             height: 2%;
         }
     }

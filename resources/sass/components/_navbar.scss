@@ -28,14 +28,14 @@
         left: 4rem;
         top: 2rem;
         &--img {
-            height: 10vh;
+            height: 11vh;
         }
     }
 
     @include respond(pixel2) {
         margin-top: 0rem;
         &--img {
-            height: 12vh;
+            height: 11vh;
         }
     }
 
@@ -46,7 +46,21 @@
         height: 12vh;
     }
 
-    @include respond(horizontal-view) {
+    @include respond(galaxy-fold) {
+        &--img {
+            height: 10vh;
+        }
+       left: 2rem;
+    }
+
+    @include respond(horizontal-view-sm) {
+        height: 25vh;
+        &--img {
+            height: 25vh;
+        }
+    }
+
+    @include respond(horizontal-view-md) {
         height: 25vh;
         &--img {
             height: 25vh;
@@ -106,6 +120,17 @@
         padding: 0rem 3rem;
         height: 12vh;
     }
+
+    @include respond(ipad-pro) {
+        height: 12vh;
+    }
+
+    @include respond(horizontal-view-md) {
+        height: 25vh;
+        transform: scale(.75);
+    }
+
+
 }
 
 .navbar__bg {
