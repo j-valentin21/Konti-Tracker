@@ -148,10 +148,18 @@
 //********************
 .navbar__dash {
     background-color: rgba(0, 0, 0, 0.4);
-    height: 11vh;
+    height: 12vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @include respond(horizontal-view-sm) {
+        height: 15vh;
+    }
+
+    @include respond(horizontal-view-md) {
+        height: 15vh;
+    }
 }
 
 .navbar__icon-container  {
@@ -201,6 +209,10 @@
     width: 2.3rem;
     height: 1.75rem;
     margin: 0rem 0rem .5rem 2rem;
+
+    @include respond(mobile-port) {
+        height: 1.3rem;
+    }
 
     &__global {
         backface-visibility: hidden;

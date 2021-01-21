@@ -20,10 +20,10 @@
         height: 70%;
     }
 
-    @include respond(tab-port) {
-        height: 60%;
+    @include respond(ipad-pro) {
+        max-height: 55%;
+        top: 15.5rem
     }
-
 
     &__img {
         padding: .5rem;
