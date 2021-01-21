@@ -11605,7 +11605,7 @@ body {
   }
 }
 
-@media only screen and (max-height: 28em) and (min-width: 45em) {
+@media only screen and (max-height: 40em) and (min-width: 44em) {
   .navbar__logo {
     height: 25vh;
   }
@@ -11690,7 +11690,7 @@ body {
   }
 }
 
-@media only screen and (max-height: 28em) and (min-width: 45em) {
+@media only screen and (max-height: 40em) and (min-width: 44em) {
   .navbar__alt {
     height: 25vh;
     transform: scale(0.75);
@@ -12020,6 +12020,12 @@ body {
   background-color: #000000;
 }
 
+@font-face {
+  font-family: "grand_halva";
+  src: url(/fonts/grand_halva-webfont.woff?d41d8cd98f00b204e9800998ecf8427e) format("woff");
+  src: url(/fonts/grand_halva-webfont.woff2?d41d8cd98f00b204e9800998ecf8427e) format("woff2");
+}
+
 .registration {
   width: 100vw;
   height: 100%;
@@ -12041,16 +12047,28 @@ body {
   }
 }
 
+@media only screen and (max-height: 24em) and (min-width: 30em) {
+  .registration__container {
+    height: 100%;
+  }
+}
+
+@media only screen and (max-height: 40em) and (min-width: 44em) {
+  .registration__container {
+    height: 100%;
+  }
+}
+
 .registration__title {
   margin: 0rem;
   padding: 0rem;
   font-weight: 900;
   color: #222;
-  font-family: "Roboto", sans-serif;
-  font-size: 2rem;
+  font-family: "grand_halva", sans-serif;
+  font-size: 3rem;
   text-transform: uppercase;
   text-align: center;
-  margin-bottom: 2.5rem;
+  margin-bottom: 3rem;
 }
 
 @media only screen and (max-width: 47.9em) {

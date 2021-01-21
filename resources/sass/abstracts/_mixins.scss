@@ -55,6 +55,6 @@
     }
 
     @if $breakpoint == horizontal-view-md {
-        @media only screen and (max-height: 28em) and (min-width: 45em) {@content};  //731px x 441px
+        @media only screen and (max-height: 40em) and (min-width: 44em) {@content};  //704px x 640px
     }
 }
