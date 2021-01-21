@@ -1,29 +1,28 @@
 @extends('layouts.master')
-
 @section('title', "Confirmation")
 
 @section('body-content')
-    <div class="container-fluid">
+    <main class="container-fluid">
         <div class="modal fade bd-example-modal-lg profile" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg modal-dialog-centered form__wizard__modal">
                 <div class="modal-content">
-                    <div class="row">
+                    <section class="row">
                         <div class="col-12">
-                            <section class="form__wizard">
+                            <figure class="form__wizard">
                                 <img class="form__wizard__header-img" src="{{ asset('img/luxury_car.jpg') }}" alt="luxury car">
-                                <h3 class="form__wizard__header">Welcome to Konti-Tracker</h3>
-                            </section>
+                                <figcaption class="form__wizard__header">Welcome to Konti-Tracker</figcaption>
+                            </figure>
                         </div>
-                    </div>
+                    </section>
                     <div class="row p-5">
                         <!-- ========== STEPS ========== -->
-                        <div class="col-sm-4">
+                        <section class="col-sm-4">
                             <ol class="form__wizard__steps">
                                 <li class="mb-4">Build Your Profile</li>
                                 <li class="mb-4">Avatar</li>
                                 <li class="mb-4 form__wizard__steps--active-bottom">Confirmation</li>
                             </ol>
-                        </div>
+                        </section>
                         <section class="col-sm-8">
                             <h1>Review Profile Details</h1>
                             <form action="{{ route('confirmation.store') }}" method="POST" >
@@ -70,7 +69,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </main>
 @endsection
 @section('body-scripts')
     <script

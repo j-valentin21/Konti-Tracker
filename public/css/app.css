@@ -12476,6 +12476,18 @@ body {
   }
 }
 
+@media only screen and (max-height: 24em) and (min-width: 30em) {
+  .form__wizard__img {
+    height: 40%;
+  }
+}
+
+@media only screen and (max-height: 40em) and (min-width: 44em) {
+  .form__wizard__img {
+    height: 40%;
+  }
+}
+
 .form__wizard__img-text {
   margin-bottom: 5rem;
 }
@@ -12605,6 +12617,18 @@ body {
   .form__wizard__btn {
     width: 50%;
     margin-top: 2rem;
+  }
+}
+
+@media only screen and (max-height: 24em) and (min-width: 30em) {
+  .form__wizard__btn {
+    width: 40%;
+  }
+}
+
+@media only screen and (max-height: 40em) and (min-width: 44em) {
+  .form__wizard__btn {
+    width: 40%;
   }
 }
 
