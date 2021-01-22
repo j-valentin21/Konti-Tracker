@@ -27,7 +27,7 @@
                         <svg class="icons icons--sidebar">
                             <use href="{{ asset('svg/sprite.svg#icon-home3') }}"></use>
                         </svg>
-                        <span>Home</span>
+                        <span>Dashboard</span>
                     </a>
                 </li>
                 <li>
