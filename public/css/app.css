@@ -12410,6 +12410,27 @@ body {
   box-shadow: 0px 10px 20px rgba(235, 167, 43, 0.15);
 }
 
+@media (hover: none) {
+  .btn__step:hover {
+    color: #494949;
+    width: 2rem;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 90%;
+    background: #ffffff;
+    border: 3px solid #494949;
+    display: inline-block;
+    transition: all 0.4s ease 0s;
+    transform: none;
+    box-shadow: none;
+  }
+
+  .btn__step:active {
+    transform: translateY(-3px);
+    background-color: #eba72b;
+  }
+}
+
 .btn__submit {
   color: #494949;
   width: 6rem;
@@ -12438,6 +12459,33 @@ body {
 .btn__submit:active {
   transform: translateY(1px);
   box-shadow: 0px 10px 20px rgba(235, 167, 43, 0.15);
+}
+
+@media (hover: none) {
+  .btn__submit:hover {
+    color: #494949;
+    width: 6rem;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 2%;
+    background: #ffffff;
+    display: inline-block;
+    transition: all 0.25s ease 0s;
+    margin: 0 auto;
+    box-shadow: none;
+    border: none;
+  }
+
+  .btn__submit:active {
+    border: 1px solid #494949;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(235, 167, 43, 0.25);
+    color: #212529;
+    text-decoration: none;
+    background: #f6b93b;
+    transition: all 0.4s ease 0s;
+    font-weight: 900;
+  }
 }
 
 .pagination__item {

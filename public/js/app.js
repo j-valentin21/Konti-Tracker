@@ -24874,9 +24874,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['user_id'],
@@ -46133,7 +46130,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.page-item {\n    margin: 0 3px;\n    border: none;\n    text-decoration: none;\n}\n.page-link {\n    position: relative;\n    display: block;\n    padding: .5rem .75rem;\n    margin-left: -1px;\n    line-height: 1.25;\n    color: #7e8396;\n    font-weight: bolder;\n    background-color: #273344;\n    border: 1px solid darkslategray;\n    text-decoration: none;\n}\n.page-link:hover {\n    text-decoration: none;\n    color: #212529;\n    background-color: orange;\n    border-color: black;\n}\n.page-item.active .page-link {\n    z-index: 3;\n    color: #212529;\n    background-color: orange;\n    border-color: black;\n}\n.fade-enter-active {\n    -webkit-animation: flipInX 1s;\n            animation: flipInX 1s;\n    -webkit-backface-visibility: visible !important;\n            backface-visibility: visible !important;\n}\n.fade-enter, .fade-leave-to {\n    position: absolute;\n    opacity: 0;\n}\n\n\n", ""]);
+exports.push([module.i, "\n@media (hover: none) {\n.page-link:hover { color: inherit;\n}\n}\n.page-item {\n    margin: 0 3px;\n    border: none;\n    text-decoration: none;\n}\n.page-link {\n    position: relative;\n    display: block;\n    padding: .5rem .75rem;\n    margin-left: -1px;\n    line-height: 1.25;\n    color: #7e8396;\n    font-weight: bolder;\n    background-color: #273344;\n    border: 1px solid darkslategray;\n    text-decoration: none;\n}\n.page-link:hover {\n    text-decoration: none;\n    color: #212529;\n    background-color: orange;\n    border-color: black;\n}\n.page-item.active .page-link {\n    z-index: 3;\n    color: #212529;\n    background-color: orange;\n    border-color: black;\n}\n.fade-enter-active {\n    -webkit-animation: flipInX 1s;\n            animation: flipInX 1s;\n    -webkit-backface-visibility: visible !important;\n            backface-visibility: visible !important;\n}\n.fade-enter, .fade-leave-to {\n    position: absolute;\n    opacity: 0;\n}\n\n\n", ""]);
 
 // exports
 
@@ -46171,7 +46168,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.notification-enter-active {\n    -webkit-animation: fadeIn 1.25s;\n            animation: fadeIn 1.25s;\n    -webkit-backface-visibility: visible !important;\n            backface-visibility: visible !important;\n}\n.notification-enter, .notification-leave-to {\n    position: absolute;\n    opacity: 0;\n}\n\n", ""]);
+exports.push([module.i, "\n@media (hover: none) {\na:hover { color: inherit;\n}\n}\n.notification-enter-active {\n    -webkit-animation: fadeIn 1.25s;\n            animation: fadeIn 1.25s;\n    -webkit-backface-visibility: visible !important;\n            backface-visibility: visible !important;\n}\n.notification-enter, .notification-leave-to {\n    position: absolute;\n    opacity: 0;\n}\n\n", ""]);
 
 // exports
 
@@ -107420,13 +107417,13 @@ var render = function() {
         "ul",
         {
           staticClass:
-            "pagination pagination-rounded justify-content-center mb-0"
+            "pagination pagination-rounded justify-content-center mb-0 overflow-hidden"
         },
         [
           _c(
             "pagination",
             {
-              attrs: { data: _vm.activities },
+              attrs: { limit: 2, data: _vm.activities },
               on: { "pagination-change-page": _vm.getResults }
             },
             [
@@ -108190,25 +108187,13 @@ var render = function() {
         "ul",
         {
           staticClass:
-            "pagination pagination-rounded justify-content-center mb-0"
+            "pagination pagination-rounded justify-content-center mb-0 overflow-hidden"
         },
         [
-          _c(
-            "pagination",
-            {
-              attrs: { data: _vm.notifications },
-              on: { "pagination-change-page": _vm.getResults }
-            },
-            [
-              _c("span", { attrs: { slot: "prev-nav" }, slot: "prev-nav" }, [
-                _vm._v("< Previous")
-              ]),
-              _vm._v(" "),
-              _c("span", { attrs: { slot: "next-nav" }, slot: "next-nav" }, [
-                _vm._v("Next >")
-              ])
-            ]
-          )
+          _c("pagination", {
+            attrs: { limit: 2, data: _vm.notifications },
+            on: { "pagination-change-page": _vm.getResults }
+          })
         ],
         1
       )

@@ -25,11 +25,8 @@
         </table>
 
         <div class="mb-3">
-            <ul class="pagination pagination-rounded justify-content-center mb-0">
-                <pagination :data="notifications" @pagination-change-page="getResults">
-                    <span slot="prev-nav">&lt; Previous</span>
-                    <span slot="next-nav">Next &gt;</span>
-                </pagination>
+            <ul class="pagination pagination-rounded justify-content-center mb-0 overflow-hidden">
+                <pagination :limit= 2 :data="notifications" @pagination-change-page="getResults"></pagination>
             </ul>
         </div>
 
@@ -92,6 +89,9 @@ export default {
 </script>
 
 <style lang="css">
+@media (hover: none) {
+    a:hover { color: inherit; }
+}
 
 .notification-enter-active {
     animation: fadeIn 1.25s;

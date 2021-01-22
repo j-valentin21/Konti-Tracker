@@ -30,8 +30,8 @@
         </table>
 <!--         ========== PAGINATION ==========-->
         <div class="mb-3">
-            <ul class="pagination pagination-rounded justify-content-center mb-0">
-                <pagination :data="activities" @pagination-change-page="getResults">
+            <ul class="pagination pagination-rounded justify-content-center mb-0 overflow-hidden">
+                <pagination :limit= 2 :data="activities" @pagination-change-page="getResults">
                     <span slot="prev-nav">&lt; Previous</span>
                     <span slot="next-nav">Next &gt;</span>
                 </pagination>
@@ -71,6 +71,10 @@ export default {
 </script>
 
 <style lang="css">
+
+@media (hover: none) {
+    .page-link:hover { color: inherit; }
+}
 .page-item {
     margin: 0 3px;
     border: none;
