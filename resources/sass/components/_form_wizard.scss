@@ -3,6 +3,18 @@
     box-sizing: border-box;
     position: relative;
 
+    &__title {
+        margin: 0rem;
+        padding: 0rem;
+        font-weight: 900;
+        color: $color-light-black;
+        font-family: 'grand_halva', sans-serif;
+        font-size: 2.25rem;
+        text-transform: uppercase;
+        margin-bottom: 3rem;
+    }
+
+
     &__modal {
         max-width: 80%;
 

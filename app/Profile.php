@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Profile extends Model
@@ -12,13 +13,14 @@ class Profile extends Model
      * @var array
      */
     protected $fillable = [
-        'position','pto', 'points','avatar','user_id,'
+        'position','pto', 'points','avatar','user_id','date_of_employment'
     ];
 
     protected $casts = [
         'pto_usage' => 'array',
         'points_usage' => 'array'
     ];
+
     /**
      * Returns an integer that gives you a two day expiration date.
      *
@@ -28,6 +30,7 @@ class Profile extends Model
     {
         return 60*60*24*2;
     }
+
     /**
      * Create an array of months to be stored in the database and return the current month.
      *
@@ -75,7 +78,6 @@ class Profile extends Model
     }
 
     public function sortMonths($data) {
-
         return array('Jan' => $data[0], 'Feb' => $data[1], 'Mar' => $data[2], 'Apr' => $data[3], 'May' => $data[4], 'June' => $data[5],
             'July' => $data[6], 'Aug' => $data[7], 'Sept' => $data[8], 'Oct' => $data[9], 'Nov' => $data[10], 'Dec' => $data[11]);
     }

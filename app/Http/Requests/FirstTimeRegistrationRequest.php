@@ -24,9 +24,10 @@ class FirstTimeRegistrationRequest extends FormRequest
     public function rules()
     {
         return [
-            'position' => 'required| max:50',
+            'position' => 'required|max:50',
             'pto' => 'required|integer|between:0,40',
             'points' => 'required|integer|between:0,15',
+            'date_of_employment' => 'required|date',
         ];
     }
 }

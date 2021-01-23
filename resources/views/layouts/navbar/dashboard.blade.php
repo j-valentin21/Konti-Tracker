@@ -58,6 +58,11 @@
                         <span class="text-white d-none d-xl-inline-block ml-1">{{ auth()->user()->name }}</span>
                     </button>
                     <div class="dropdown-menu dropdown-menu-right dashboard__card dashboard__card__dropdown">
+                        <a class="dropdown-item dashboard__card__text hover__black mb-1" href="{{ route('index') }}">
+                            <svg class="icons">
+                                <use href="{{ asset('svg/sprite.svg#icon-home2') }}"></use>
+                            </svg> Home
+                        </a>
                         <a class="dropdown-item dashboard__card__text hover__black mb-1" href="{{ route('dashboard.profile.index') }}">
                             <svg class="icons">
                                 <use href="{{ asset('svg/sprite.svg#icon-user') }}"></use>

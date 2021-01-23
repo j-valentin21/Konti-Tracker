@@ -25,6 +25,14 @@
         top: 15.5rem
     }
 
+    @include respond(horizontal-view-sm) {
+        height: 150vh;
+    }
+
+    @include respond(horizontal-view-md) {
+        height: 100vh;
+    }
+
     &__img {
         padding: .5rem;
     }
@@ -38,6 +46,7 @@
     &__text {
         color:$color-dark-grey;
         font-size: 1rem;
+        margin: 0;
     }
 
     &__name {

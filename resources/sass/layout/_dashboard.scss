@@ -47,7 +47,8 @@
             }
 
             @include respond(mobile-land-bp2) {
-                padding:1.5rem 1%;
+                padding: .5rem 2%;
+                margin: 0rem;
             }
         }
         &--pto {

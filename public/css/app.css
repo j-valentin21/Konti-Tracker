@@ -1,5 +1,11 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);@import url(https://fonts.googleapis.com/css?family=Fira+Sans);@charset "UTF-8";
 
+@font-face {
+  font-family: "grand_halva";
+  src: url(/fonts/grand_halva-webfont.woff?d41d8cd98f00b204e9800998ecf8427e) format("woff");
+  src: url(/fonts/grand_halva-webfont.woff2?d41d8cd98f00b204e9800998ecf8427e) format("woff2");
+}
+
 /*!
  * Bootstrap v4.5.0 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors
@@ -11475,7 +11481,8 @@ body {
 
 @media only screen and (max-width: 31.25em) {
   .dashboard__main-content--grey {
-    padding: 1.5rem 1%;
+    padding: 0.5rem 2%;
+    margin: 0rem;
   }
 }
 
@@ -12031,12 +12038,6 @@ body {
   background-color: #000000;
 }
 
-@font-face {
-  font-family: "grand_halva";
-  src: url(/fonts/grand_halva-webfont.woff?d41d8cd98f00b204e9800998ecf8427e) format("woff");
-  src: url(/fonts/grand_halva-webfont.woff2?d41d8cd98f00b204e9800998ecf8427e) format("woff2");
-}
-
 .registration {
   width: 100vw;
   height: 100%;
@@ -12254,7 +12255,7 @@ body {
 
 @media only screen and (max-width: 47.9em) {
   .badge__count::after {
-    width: 15px;
+    width: 20px;
     height: 15px;
     font-size: 0.75rem;
   }
@@ -12294,6 +12295,18 @@ body {
   }
 }
 
+@media only screen and (max-height: 24em) and (min-width: 30em) {
+  .sidebar {
+    height: 150vh;
+  }
+}
+
+@media only screen and (max-height: 40em) and (min-width: 44em) {
+  .sidebar {
+    height: 100vh;
+  }
+}
+
 .sidebar__img {
   padding: 0.5rem;
 }
@@ -12307,6 +12320,7 @@ body {
 .sidebar__text {
   color: #7f879c;
   font-size: 1rem;
+  margin: 0;
 }
 
 .sidebar__name {
@@ -12517,6 +12531,17 @@ body {
   background-color: #e3e3e3;
   box-sizing: border-box;
   position: relative;
+}
+
+.form__wizard__title {
+  margin: 0rem;
+  padding: 0rem;
+  font-weight: 900;
+  color: #222;
+  font-family: "grand_halva", sans-serif;
+  font-size: 2.25rem;
+  text-transform: uppercase;
+  margin-bottom: 3rem;
 }
 
 .form__wizard__modal {
@@ -12923,6 +12948,18 @@ body {
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));
 }
 
+@media only screen and (min-height: 62em) and (max-width: 49em) {
+  .weather__container {
+    min-height: 75vh;
+  }
+}
+
+@media only screen and (min-height: 85em) and (max-width: 65em) {
+  .weather__container {
+    min-height: 70vh;
+  }
+}
+
 .weather__header {
   display: flex;
   justify-content: center;
@@ -13126,6 +13163,12 @@ body {
   border: none;
   box-shadow: 1px 1px 1px;
   transition: all 0.2s;
+}
+
+@media only screen and (max-width: 25em) {
+  .pto_modal__button {
+    width: 30%;
+  }
 }
 
 .pto_modal__button--black {
@@ -13415,7 +13458,7 @@ body {
   align-items: center;
   background-color: white;
   text-transform: uppercase;
-  font-size: 0.7em;
+  font-size: 0.9em;
   letter-spacing: 0.12em;
 }
 
