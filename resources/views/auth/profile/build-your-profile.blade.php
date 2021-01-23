@@ -80,6 +80,24 @@
                                         <label for="position" class="registration__label">{{ __('How many points do you have?') }}</label>
                                     @endif
                                 </div>
+                                <!-- ========== DATE OF EMPLOYMENT ========== -->
+                                <div class="form-group mb-4">
+                                    <input id="date_of_employment"
+                                           type="date"
+                                           class="form-input registration__input @error('date_of_employment') is-invalid @enderror"
+                                           name="date_of_employment"
+                                           placeholder="Date of employment"
+                                           value="{{ $profile->date_of_employment ?? "" }}"
+                                           required>
+                                    @error('date_of_employment')
+                                    <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                    @enderror
+                                    @if (!$errors->has('date_of_employment'))
+                                        <label for="position" class="registration__label">{{ __('Date of employment') }}</label>
+                                    @endif
+                                </div>
                                 <!-- ========== BUTTON ========== -->
                                 <div class="text-center text-sm-right">
                                     <button type="submit" class="form__wizard__btn form__wizard__btn--orange">

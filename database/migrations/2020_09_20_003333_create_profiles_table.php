@@ -16,6 +16,7 @@ class CreateProfilesTable extends Migration
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->nullable()->index();
+            $table->date('date_of_employment')->nullable();
             $table->string('position')->nullable();
             $table->float('pto', 5, 2)->nullable();
             $table->tinyInteger('points')->nullable();

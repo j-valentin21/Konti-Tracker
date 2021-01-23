@@ -12254,7 +12254,7 @@ body {
 
 @media only screen and (max-width: 47.9em) {
   .badge__count::after {
-    width: 15px;
+    width: 20px;
     height: 15px;
     font-size: 0.75rem;
   }
@@ -12294,6 +12294,18 @@ body {
   }
 }
 
+@media only screen and (max-height: 24em) and (min-width: 30em) {
+  .sidebar {
+    height: 150vh;
+  }
+}
+
+@media only screen and (max-height: 40em) and (min-width: 44em) {
+  .sidebar {
+    height: 100vh;
+  }
+}
+
 .sidebar__img {
   padding: 0.5rem;
 }
@@ -12307,6 +12319,7 @@ body {
 .sidebar__text {
   color: #7f879c;
   font-size: 1rem;
+  margin: 0;
 }
 
 .sidebar__name {
@@ -13126,6 +13139,12 @@ body {
   border: none;
   box-shadow: 1px 1px 1px;
   transition: all 0.2s;
+}
+
+@media only screen and (max-width: 25em) {
+  .pto_modal__button {
+    width: 30%;
+  }
 }
 
 .pto_modal__button--black {

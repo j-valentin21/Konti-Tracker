@@ -59,6 +59,10 @@
         box-shadow: 1px 1px 1px;
         transition: all .2s;
 
+        @include respond(mobile-port) {
+            width: 30%
+        }
+
         &--black {
             background-image: linear-gradient(to right,$color-black, #222);
             color: $color-white;

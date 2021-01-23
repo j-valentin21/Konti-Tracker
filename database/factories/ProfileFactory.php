@@ -10,6 +10,7 @@ $factory->define(Profile::class, function (Faker $faker) {
     return [
         'user_id' => factory(User::class),
         'position' => $faker->word,
+        'date_of_employment' => $faker->date(),
         'pto' => $faker->numberBetween($min =0, $max = 40),
         'points'=> $faker->numberBetween($min =0, $max = 15),
         'pto_usage'=>  [
@@ -38,6 +39,5 @@ $factory->define(Profile::class, function (Faker $faker) {
             'Nov' => $faker->numberBetween($min =0, $max = 5),
             'Dec' => $faker->numberBetween($min =0, $max = 5),
         ],
-
     ];
 });

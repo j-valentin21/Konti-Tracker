@@ -40,6 +40,10 @@
                                         <td>Points:</td>
                                         <td><strong>{{$profile->points ?? ""}}</strong></td>
                                     </tr>
+                                    <tr>
+                                        <td>Date of employment:</td>
+                                        <td><strong>{{$profile->date_of_employment ?? ""}}</strong></td>
+                                    </tr>
                                     @if(isset($profile->avatar))
                                         <tr>
                                             <td>Avatar:</td>

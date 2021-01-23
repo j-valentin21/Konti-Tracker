@@ -28,7 +28,7 @@
                 </tr>
             </tbody>
         </table>
-<!--         ========== PAGINATION ==========-->
+<!--========== PAGINATION ==========-->
         <div class="mb-3">
             <ul class="pagination pagination-rounded justify-content-center mb-0 overflow-hidden">
                 <pagination :limit= 2 :data="activities" @pagination-change-page="getResults">
@@ -69,12 +69,7 @@ export default {
     }
 }
 </script>
-
 <style lang="css">
-
-@media (hover: none) {
-    .page-link:hover { color: inherit; }
-}
 .page-item {
     margin: 0 3px;
     border: none;
@@ -108,7 +103,6 @@ export default {
     border-color: black;
 }
 
-
 .fade-enter-active {
     animation: flipInX 1s;
     backface-visibility: visible !important;
@@ -118,6 +112,4 @@ export default {
     position: absolute;
     opacity: 0;
 }
-
-
 </style>
