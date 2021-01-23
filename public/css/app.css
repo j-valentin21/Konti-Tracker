@@ -11481,7 +11481,8 @@ body {
 
 @media only screen and (max-width: 31.25em) {
   .dashboard__main-content--grey {
-    padding: 1.5rem 1%;
+    padding: 0.5rem 2%;
+    margin: 0rem;
   }
 }
 
@@ -12947,6 +12948,18 @@ body {
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));
 }
 
+@media only screen and (min-height: 62em) and (max-width: 49em) {
+  .weather__container {
+    min-height: 75vh;
+  }
+}
+
+@media only screen and (min-height: 85em) and (max-width: 65em) {
+  .weather__container {
+    min-height: 70vh;
+  }
+}
+
 .weather__header {
   display: flex;
   justify-content: center;
@@ -13445,7 +13458,7 @@ body {
   align-items: center;
   background-color: white;
   text-transform: uppercase;
-  font-size: 0.7em;
+  font-size: 0.9em;
   letter-spacing: 0.12em;
 }
 

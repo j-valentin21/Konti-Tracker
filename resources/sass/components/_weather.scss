@@ -10,6 +10,14 @@
         flex-direction: column;
         min-height: 98vh;
         background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, .1));
+
+        @include respond(ipad) {
+           min-height: 75vh;
+        }
+
+        @include respond(ipad-pro) {
+            min-height: 70vh;
+        }
     }
 
     &__header {
