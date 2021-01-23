@@ -1,5 +1,11 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);@import url(https://fonts.googleapis.com/css?family=Fira+Sans);@charset "UTF-8";
 
+@font-face {
+  font-family: "grand_halva";
+  src: url(/fonts/grand_halva-webfont.woff?d41d8cd98f00b204e9800998ecf8427e) format("woff");
+  src: url(/fonts/grand_halva-webfont.woff2?d41d8cd98f00b204e9800998ecf8427e) format("woff2");
+}
+
 /*!
  * Bootstrap v4.5.0 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors
@@ -12031,12 +12037,6 @@ body {
   background-color: #000000;
 }
 
-@font-face {
-  font-family: "grand_halva";
-  src: url(/fonts/grand_halva-webfont.woff?d41d8cd98f00b204e9800998ecf8427e) format("woff");
-  src: url(/fonts/grand_halva-webfont.woff2?d41d8cd98f00b204e9800998ecf8427e) format("woff2");
-}
-
 .registration {
   width: 100vw;
   height: 100%;
@@ -12530,6 +12530,17 @@ body {
   background-color: #e3e3e3;
   box-sizing: border-box;
   position: relative;
+}
+
+.form__wizard__title {
+  margin: 0rem;
+  padding: 0rem;
+  font-weight: 900;
+  color: #222;
+  font-family: "grand_halva", sans-serif;
+  font-size: 2.25rem;
+  text-transform: uppercase;
+  margin-bottom: 3rem;
 }
 
 .form__wizard__modal {

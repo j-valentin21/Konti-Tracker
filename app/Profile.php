@@ -22,15 +22,6 @@ class Profile extends Model
     ];
 
     /**
-     * Get formatted version of "Date_of_employment.
-     *
-     */
-    public function getDateOfEmploymentAttribute($value)
-    {
-        return $this->attributes['date_of_employment'] = (new Carbon($value))->format('m/d/y');
-    }
-
-    /**
      * Returns an integer that gives you a two day expiration date.
      *
      * @return int

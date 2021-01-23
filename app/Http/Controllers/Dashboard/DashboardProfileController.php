@@ -8,8 +8,8 @@ use App\Profile;
 use App\Services\NotificationService;
 use App\User;
 use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Storage;
 
@@ -17,7 +17,6 @@ class DashboardProfileController extends Controller
 {
     /**
      * Show the dashboard profile view.
-     *
      *
      * @return Renderable
      */
@@ -37,11 +36,10 @@ class DashboardProfileController extends Controller
     /**
      * Update dashboard profile view.
      *
-     *
      * @param ProfileRequest $request
-     * @return Redirector
+     * @return RedirectResponse
      */
-    public function update(ProfileRequest $request): Redirector
+    public function update(ProfileRequest $request): RedirectResponse
     {
         $redis = Redis::connection();
         $profile = Profile::find(auth()->user()->id);
@@ -71,11 +69,10 @@ class DashboardProfileController extends Controller
     /**
      * Destroy image in profile view.
      *
-     *
      * @param Request $request
-     * @return Redirector
+     * @return RedirectResponse
      */
-    public function destroy(Request $request): Redirector
+    public function destroy(Request $request): RedirectResponse
     {
         $profile = Profile::find(auth()->user()->id);
         $img = $profile->avatar;

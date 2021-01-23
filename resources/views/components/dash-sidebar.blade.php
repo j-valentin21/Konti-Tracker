@@ -17,7 +17,7 @@
                 <a href="#" class=" text-white sidebar__name">{{ auth()->user()->name  ?? "" }}</a>
                 <p class="sidebar__text mb-0 ">{{ auth()->user()->profile->position ?? "" }}</p>
                 <p class="sidebar__text"> Date of employment:</p>
-                <span class="sidebar__text">{{ auth()->user()->profile->date_of_employment ?? "" }}</span>
+                <span class="sidebar__text">{{ date('m-d-Y', strtotime(auth()->user()->profile->date_of_employment))  ?? "" }}</span>
             </div>
         </div>
         <!-- ========== SIDEBAR MENU ========== -->

@@ -15,13 +15,13 @@
 @section('body-content')
     <div class="container-fluid">
         <x-dash-sidebar/>
-
         <div class="dashboard__main">
             <div class="dashboard__main-content  dashboard__main-content--grey">
                 <form method="POST" action="{{ route('dashboard.profile.update') }}" enctype="multipart/form-data">
                 @method('PUT')
                 @csrf
                     <div class="container dashboard__form">
+                        <h5 class="form__wizard__title">Profile</h5>
                         <!-- ========== NAME ========== -->
                         <div class="form-group my-4">
                             <input id="name"
@@ -61,7 +61,7 @@
                             @endif
                         </div>
                     <!-- ========== POSITION ========== -->
-                        <div class="form-group mb-4 " >
+                        <div class="form-group mb-4">
                             <input id="position"
                                    type="text"
                                    class="form-input registration__input registration__input--profile @error('position') is-invalid @enderror"
@@ -114,9 +114,27 @@
                                 <label for="position" class="registration__label">{{ __('Points') }}</label>
                             @endif
                         </div>
+                        <!-- ========== DATE OF EMPLOYMENT ========== -->
+                        <div class="form-group mb-5">
+                            <input id="date_of_employment"
+                                   type="date"
+                                   class="form-input registration__input @error('date_of_employment') is-invalid @enderror"
+                                   name="date_of_employment"
+                                   placeholder="Date of employment"
+                                   value="{{  auth()->user()->profile->date_of_employment }}"
+                                   required>
+                            @error('date_of_employment')
+                            <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                            @if (!$errors->has('date_of_employment'))
+                                <label for="position" class="registration__label">{{ __('Date of employment') }}</label>
+                            @endif
+                        </div>
                         <!-- ========== AVATAR ========== -->
                         @if(!isset(auth()->user()->profile->avatar))
-                            <label class="form__wizard__label" for="image" class="text-break">{{ __('Upload Avatar') }}</label>
+                            <label class="form__wizard__title" for="image" class="text-break">{{ __('Upload Avatar') }}</label>
                             <input
                                 type="file" {{ (!empty(auth()->user()->profile->avatar)) ? "disabled" : ''}}
                                 accept="image/x-png,image/gif,image/jpeg, image/svg image/jpg"
@@ -146,10 +164,10 @@
                 </form>
                 <!-- ========== REMOVE AVATAR  ========== -->
                 @if(isset(auth()->user()->profile->avatar))
-                    <div class="my-3 mr-5">
-                        <h5 class="form__wizard__label">Avatar</h5>
+                    <figure class="my-3 mr-5">
+                        <h5 class="form__wizard__title">Avatar</h5>
                         <img class=" my-3 mx-3  form__wizard__img" alt="Avatar" src="{{ Storage::disk('s3')->url(auth()->user()->profile->avatar) }}">
-                    </div>
+                    </figure>
                     <form method="POST" action="{{ route('dashboard.profile.destroy') }}">
                         @method('DELETE')
                         @csrf
