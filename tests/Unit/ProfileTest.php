@@ -4,15 +4,16 @@ namespace Tests\Unit;
 
 use App\Profile;
 use App\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
+
 use Tests\TestCase;
 
 class ProfileTest extends TestCase
 {
-    use RefreshDatabase;
+    use DatabaseTransactions;
 
     /**
-     * Test to check it expireDate method is calculating properly.
+     * Test to check if expireDate method is calculating properly.
      *
      */
     public function test_Expire_Date_Method():void
@@ -24,7 +25,7 @@ class ProfileTest extends TestCase
     }
 
     /**
-     * Test to check it expireDate method is calculating properly.
+     * Test to check if correct month for charts is returning properly.
      *
      */
     public function test_Get_Bar_Chart_Month():void
@@ -63,5 +64,27 @@ class ProfileTest extends TestCase
         $this->assertEquals($reset, $profile->pto_usage);
         $this->assertEquals($reset, $profile->points_usage);
         $this->assertGreaterThan($year_count, $profile->user->year_count);
+    }
+
+    /**
+     * Test to check if correct month for charts is returning properly.
+     *
+     */
+    public function test_sort_months():void
+    {
+        $user = factory(User::class)->create();
+        $profile = factory(Profile::class)->create();
+
+        $unsortedMonths = array(5 => 6, 0 => 4, 2 => 0, 8 => 0, 3 => 0, 7 => 0,
+            9 => 6, 11 => 4, 10 => 10, 1 => 4, 4 => 5, 6 => 4);
+
+        $sortedMonths = array(0 => 4, 1 => 4, 2 => 0, 3 => 0, 4 => 5,  5 => 6,
+            6 => 4, 7 => 0, 8 => 10, 9 => 6, 10 => 10, 11 => 4,);
+        $sorted = $profile->sortMonths($unsortedMonths);
+
+        $this->assertEquals($sorted['Jan'], $sortedMonths[0]);
+        $this->assertEquals($sorted['Apr'], $sortedMonths[3]);
+        $this->assertEquals($sorted['July'], $sortedMonths[6]);
+        $this->assertEquals($sorted['Dec'], $sortedMonths[11]);
     }
 }

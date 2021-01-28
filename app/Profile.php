@@ -26,7 +26,7 @@ class Profile extends Model
      *
      * @return int
      */
-    public function expireDate()
+    public function expireDate():int
     {
         return 60*60*24*2;
     }
@@ -36,7 +36,7 @@ class Profile extends Model
      *
      * @return string
      */
-    public function getChartMonth()
+    public function getChartMonth(): string
     {
         if ($this->pto_usage === null || $this->points_usage === null) {
             $months = array('Jan' => 0, 'Feb' => 0, 'Mar' => 0, 'Apr' => 0, 'May' => 0, 'June' => 0,
@@ -77,7 +77,13 @@ class Profile extends Model
         }
     }
 
-    public function sortMonths($data) {
+    /**
+     * Sort months based on number of array.
+     * @param $data
+     * @return array
+     */
+    public function sortMonths($data):array
+    {
         return array('Jan' => $data[0], 'Feb' => $data[1], 'Mar' => $data[2], 'Apr' => $data[3], 'May' => $data[4], 'June' => $data[5],
             'July' => $data[6], 'Aug' => $data[7], 'Sept' => $data[8], 'Oct' => $data[9], 'Nov' => $data[10], 'Dec' => $data[11]);
     }
