@@ -4,17 +4,14 @@ namespace Tests\Feature;
 
 use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\FirstTimeUser;
-use App\User;
 use App\Profile;
+use App\User;
 use Illuminate\Auth\Middleware\EnsureEmailIsVerified;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
-
 class FirstTimeRegistrationTest extends TestCase
 {
-
-    use RefreshDatabase;
+    use DatabaseTransactions;
 
     public function test_Build_Your_Profile_View_Is_Working_Properly():void
     {
@@ -23,6 +20,7 @@ class FirstTimeRegistrationTest extends TestCase
         $response = $this->get('/register/build-your-profile');
 
         $response->assertSuccessful();
+        $response->assertStatus(200);
     }
 
     public function test_Avatar_View_Is_Working_Properly():void
@@ -64,40 +62,21 @@ class FirstTimeRegistrationTest extends TestCase
         $response->assertRedirect('/');
     }
 
-    public function test_Only_First_Time_User_Can_Access_Build_Your_Profile_Page():void
+    public function test_User_Can_Post_On_Build_Your_Profile_Page():void
     {
-        $this->actingAs($user = factory(User::class)->make());
+        $this->withoutMiddleware([FirstTimeUser::class]);
+        $user = factory(User::class)->create();
 
-        $this->assertEquals(
-            Route::getRoutes()->getByName('profile')->gatherMiddleware(),
-            ['web','auth','firstTimeUser','verified']
-        );
-        $this->assertEquals('1', $user->firstTimeUser);
-        $this->assertAuthenticatedAs($user);
-    }
+        $response = $this->actingAs($user)
+            ->post('/register/build-your-profile',[
+                'user_id' => factory(User::class),
+                'position' => 'hello',
+                'date_of_employment' =>"2020-02-01",
+                'pto' => 5,
+                'points'=> 5,
+            ]);
 
-    public function test_Only_First_Time_User_Can_Access_Avatar_Page()
-    {
-        $this->actingAs($user = factory(User::class)->make());
-
-        $this->assertEquals(
-            Route::getRoutes()->getByName('avatar')->gatherMiddleware(),
-            ['web','auth','firstTimeUser', 'verified']
-        );
-        $this->assertEquals('1', $user->firstTimeUser);
-        $this->assertAuthenticatedAs($user);
-    }
-
-    public function test_Only_First_Time_User_Can_Access_Confirmation_Page()
-    {
-        $this->actingAs($user = factory(User::class)->make());
-
-        $this->assertEquals(
-            Route::getRoutes()->getByName('confirmation')->gatherMiddleware(),
-            ['web','auth','firstTimeUser', 'verified']
-        );
-        $this->assertEquals('1', $user->firstTimeUser);
-        $this->assertAuthenticatedAs($user);
+        $response->assertRedirect('/register/avatar');
     }
 }
 

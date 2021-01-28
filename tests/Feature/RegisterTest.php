@@ -10,24 +10,15 @@ class RegisterTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /**
-     * The registration form can be displayed.
-     *
-     * @return void
-     */
-    public function test_Register_Page_Can_Be_Viewed()
+
+    public function test_Register_Page_Can_Be_Viewed():void
     {
         $response = $this->get('/register');
 
         $response->assertStatus(200);
     }
 
-    /**
-     * A valid user can be registered.
-     *
-     * @return void
-     */
-    public function test_Registers_A_Valid_User()
+    public function test_Registers_A_Valid_User():void
     {
         $user = factory(User::class)->make();
 
@@ -43,12 +34,7 @@ class RegisterTest extends TestCase
         $this->assertAuthenticated();
     }
 
-    /**
-     * An invalid user is not registered.
-     *
-     * @return void
-     */
-    public function test_Does_Not_Register_An_Invalid_User()
+    public function test_Does_Not_Register_An_Invalid_User():void
     {
         $user = factory(User::class)->make();
 
