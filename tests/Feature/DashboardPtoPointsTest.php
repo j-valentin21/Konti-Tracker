@@ -10,7 +10,7 @@ class DashboardPtoPointsTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function test_Build_Your_Profile_View_Is_Working_Properly():void
+    public function test_Dashboard_Pto_Points_Can_view_Properly():void
     {
         $user = factory(User::class)->create();
 
@@ -22,7 +22,6 @@ class DashboardPtoPointsTest extends TestCase
 
     public function test_Guest_Cannot_Access_Dashboard_PtoPoints_View():void
     {
-
         $response = $this->get('/dashboard/pto-points-data');
 
         $response->assertRedirect('/');

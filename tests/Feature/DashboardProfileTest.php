@@ -13,7 +13,6 @@ class DashboardProfileTest extends TestCase
 
     public function test_Guest_Cannot_Access_Dashboard_Profile_View():void
     {
-
         $response = $this->get('/dashboard/profile');
 
         $response->assertRedirect('/');

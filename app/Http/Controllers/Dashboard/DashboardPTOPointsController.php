@@ -52,7 +52,6 @@ class DashboardPTOPointsController extends Controller
      * Update dashboard pto/points data view.
      *
      * @param PTOPointsDataRequest $request
-     *
      * @return RedirectResponse
      */
     public function update(PTOPointsDataRequest $request): RedirectResponse
