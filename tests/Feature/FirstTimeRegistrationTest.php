@@ -4,7 +4,6 @@ namespace Tests\Feature;
 
 use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\FirstTimeUser;
-use App\Profile;
 use App\User;
 use Illuminate\Auth\Middleware\EnsureEmailIsVerified;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -19,7 +18,6 @@ class FirstTimeRegistrationTest extends TestCase
 
         $response = $this->get('/register/build-your-profile');
 
-        $response->assertSuccessful();
         $response->assertStatus(200);
     }
 
@@ -69,7 +67,6 @@ class FirstTimeRegistrationTest extends TestCase
 
         $response = $this->actingAs($user)
             ->post('/register/build-your-profile',[
-                'user_id' => factory(User::class),
                 'position' => 'hello',
                 'date_of_employment' =>"2020-02-01",
                 'pto' => 5,

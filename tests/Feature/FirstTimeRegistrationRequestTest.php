@@ -4,13 +4,13 @@ namespace Tests\Feature;
 
 use App\Http\Requests\FirstTimeRegistrationRequest;
 use Faker\Factory;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Validation\Validator;
 use Tests\TestCase;
 
 class FirstTimeRegistrationRequestTest extends TestCase
 {
-    use RefreshDatabase;
+    use DatabaseTransactions;
 
     /** @var FirstTimeRegistrationRequest */
     private $rules;
@@ -37,19 +37,30 @@ class FirstTimeRegistrationRequestTest extends TestCase
                 'passed' => false,
                 'data' => [
                     'points' => $faker->numberBetween(0,15),
-                    'pto' => $faker->numberBetween(0, 40)
+                    'pto' => $faker->numberBetween(0, 40),
+                    'date_of_employment' => $faker->date(),
                 ]
             ],
             'request_should_fail_when_no_points_is_provided' => [
                 'passed' => false,
                 'data' => [
                     'position' => $faker->word,
-                    'pto' => $faker->numberBetween(0, 40)
+                    'pto' => $faker->numberBetween(0, 40),
+                    'date_of_employment' => $faker->date(),
                 ]
             ],
             'request_should_fail_when_no_pto_is_provided' => [
                 'passed' => false,
                 'data' => [
+                    'position' => $faker->word,
+                    'points' => $faker->numberBetween(0, 15),
+                    'date_of_employment' => $faker->date(),
+                ]
+            ],
+            'request_should_fail_when_no_date_of_employment_is_provided' => [
+                'passed' => false,
+                'data' => [
+                    'pto' => $faker->numberBetween(0, 40),
                     'position' => $faker->word,
                     'points' => $faker->numberBetween(0, 15)
                 ]
@@ -89,7 +100,8 @@ class FirstTimeRegistrationRequestTest extends TestCase
                 'data' => [
                     'position' => $faker->word(),
                     'pto' => $faker->numberBetween(0,40),
-                    'points' => $faker->numberBetween(0,15)
+                    'points' => $faker->numberBetween(0,15),
+                    'date_of_employment' => $faker->date(),
                 ]
             ]
         ];
