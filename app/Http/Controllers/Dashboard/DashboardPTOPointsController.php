@@ -60,8 +60,7 @@ class DashboardPTOPointsController extends Controller
         $redis = Redis::connection();
         $profile = Profile::find(auth()->user()->id);
         $ptoMonths = array_map('floatval', $request->request->get('pto_used', []));
-        dd($ptoMonths);
-        $pointsMonths = array_map('intval', $request->request->get('points_used', []));;
+        $pointsMonths = array_map('intval', $request->request->get('points_used', []));
         $profile->pto_usage = $profile->sortMonths($ptoMonths);
         $profile->points_usage = $profile->sortMonths($pointsMonths);
         $redis->set('message_' .  auth()->id(), 'Your PTO/Points data was successfully updated!');
