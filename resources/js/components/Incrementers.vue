@@ -99,8 +99,7 @@ export default {
                 Fire.$emit('Successflash');
             })
             .catch((err) => {
-                this.failure = true
-                this.changeFailure()
+                Fire.$emit('Failureflash');
             })
         },
     }

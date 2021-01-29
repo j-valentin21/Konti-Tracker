@@ -2,7 +2,7 @@
     <div v-if="success_Check" class="col-sm-12">
         <div class="alert fade alert__success alert-dismissible text-left brk-library-rendered rendered show">
             <div class="d-flex">
-                <button type="button" class="close" data-dismiss="alert" @click="failure">
+                <button type="button" class="close" data-dismiss="alert" @click="showFalse">
                     <span aria-hidden="true" class="mb-5">
                         <svg class="alert__icon alert__icon--x">
                             <use href="http://127.0.0.1:8000/svg/sprite.svg#icon-times"></use>
@@ -15,7 +15,7 @@
                         <use href="http://127.0.0.1:8000/svg/sprite.svg#icon-check_circle_outline"></use>
                     </svg>
                 </span>
-                <slot> <strong class="font__weight-semibold pr-3">Your profile has been successfully updated!</strong></slot>
+                <slot> <strong class="alert__message pr-3">Your profile has been successfully updated!</strong></slot>
             </div>
         </div>
     </div>
@@ -37,7 +37,7 @@ export default {
         });
     },
     methods: {
-        failure: function() {
+        showFalse: function() {
             this.success_Check = false
         }
     }

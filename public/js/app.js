@@ -24318,11 +24318,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "FailureFlash",
-  props: ['failure'],
   data: function data() {
     return {
-      failure_Check: this.failure
+      failure_Check: false
     };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    this.failure_Check = false;
+    Fire.$on('Failureflash', function () {
+      _this.failure_Check = true;
+    });
+  },
+  methods: {
+    showFalse: function showFalse() {
+      this.failure_Check = false;
+    }
   }
 });
 
@@ -24576,15 +24588,11 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     submitCount: function submitCount() {
-      var _this = this;
-
       axios.put("/dashboard", this.$data).then(function (response) {
         Fire.$emit('SubmitCount');
         Fire.$emit('Successflash');
       })["catch"](function (err) {
-        _this.failure = true;
-
-        _this.changeFailure();
+        Fire.$emit('Failureflash');
       });
     }
   }
@@ -25194,7 +25202,7 @@ __webpack_require__.r(__webpack_exports__);
     });
   },
   methods: {
-    failure: function failure() {
+    showFalse: function showFalse() {
       this.success_Check = false;
     }
   }
@@ -107489,7 +107497,8 @@ var render = function() {
               "button",
               {
                 staticClass: "close",
-                attrs: { type: "button", "data-dismiss": "alert" }
+                attrs: { type: "button", "data-dismiss": "alert" },
+                on: { click: _vm.showFalse }
               },
               [
                 _c(
@@ -107526,10 +107535,9 @@ var render = function() {
             ]),
             _vm._v(" "),
             _vm._t("default", [
-              _c("strong", { staticClass: "font__weight-semibold" }, [
-                _vm._v("Please try again at a later time.")
-              ]),
-              _vm._v(".")
+              _c("strong", { staticClass: "alert__message" }, [
+                _vm._v("Please try again at a later time.....")
+              ])
             ])
           ],
           2
@@ -108688,7 +108696,7 @@ var render = function() {
                   {
                     staticClass: "close",
                     attrs: { type: "button", "data-dismiss": "alert" },
-                    on: { click: _vm.failure }
+                    on: { click: _vm.showFalse }
                   },
                   [
                     _c(
@@ -108726,7 +108734,7 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _vm._t("default", [
-                  _c("strong", { staticClass: "font__weight-semibold pr-3" }, [
+                  _c("strong", { staticClass: "alert__message pr-3" }, [
                     _vm._v("Your profile has been successfully updated!")
                   ])
                 ])

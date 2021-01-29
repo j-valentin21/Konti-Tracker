@@ -1,10 +1,4 @@
 .alert {
-
-    //padding: 0;
-    //
-    //@include respond(laptop) {
-    //    padding: 0.75rem 1.25rem;
-    //}
     &::before {
         content: '';
         position: absolute;
@@ -83,6 +77,10 @@
         margin-right: 0;
         min-width: 20px;
         text-align: center;
+    }
+
+    &__message {
+        font-size: 1.2rem;
     }
 
 }
