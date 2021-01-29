@@ -4,17 +4,15 @@ namespace Tests\Feature;
 
 use App\Calendar;
 use App\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
 class DashboardCalendarTest extends TestCase
 {
-    use RefreshDatabase;
+    use DatabaseTransactions;
 
     public function test_Guest_Cannot_Access_Dashboard_Calendar_View():void
     {
-
         $response = $this->get('/dashboard/calendar');
 
         $response->assertRedirect('/');
@@ -27,7 +25,6 @@ class DashboardCalendarTest extends TestCase
 
          $this->actingAs($user)
             ->delete('/dashboard/calendar/' . $user->id);
-
 
         $this->assertcount(0, Calendar::all());
     }
@@ -46,7 +43,6 @@ class DashboardCalendarTest extends TestCase
 
          $this->actingAs($user)
             ->post('/dashboard/calendar',$input);
-
 
         $this->assertCount(1, Calendar::all());
     }
