@@ -2,7 +2,7 @@
     <div v-if="success_Check" class="col-sm-12">
         <div class="alert fade alert__success alert-dismissible text-left brk-library-rendered rendered show">
             <div class="d-flex">
-                <button type="button" class="close" data-dismiss="alert">
+                <button type="button" class="close" data-dismiss="alert" @click="failure">
                     <span aria-hidden="true" class="mb-5">
                         <svg class="alert__icon alert__icon--x">
                             <use href="http://127.0.0.1:8000/svg/sprite.svg#icon-times"></use>
@@ -25,15 +25,21 @@
 
 export default {
     name: "SuccessFlash",
-    props : ['success'],
     data() {
         return {
-            success_Check: this.success,
+            success_Check: false
         }
     },
+    mounted() {
+        this.success_Check = false
+        Fire.$on('Successflash', () => {
+            this.success_Check = true
+        });
+    },
+    methods: {
+        failure: function() {
+            this.success_Check = false
+        }
+    }
 }
 </script>
-
-<style scoped>
-
-</style>

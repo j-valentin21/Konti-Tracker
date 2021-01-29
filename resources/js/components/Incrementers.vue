@@ -1,7 +1,5 @@
 <template>
     <div>
-        <success-flash v-if="success" :success="success"/>
-        <failure-flash v-if="failure" :failure="failure"/>
         <h4 class="card-title dashboard__card__title  mb-4">Overview</h4>
         <div class="pb-3 border__bottom--grey">
             <div class="row align-items-center">
@@ -94,30 +92,13 @@ export default {
                 this.points_count--;
             }
         },
-       changeSuccess: function() {
-            return new Promise(function(resolve, reject) {
-            setTimeout(resolve, 7000);
-            }).then( response => {
-            this.success = false;
-            });
-        },
-        changeFailure: function() {
-            return new Promise(function(resolve, reject) {
-                setTimeout(resolve, 7000);
-            }).then( response => {
-                this.failure = false;
-            });
-        },
         submitCount() {
             axios.put("/dashboard",this.$data)
             .then( response => {
-               this.success = true
-               this.changeSuccess()
                 Fire.$emit('SubmitCount');
+                Fire.$emit('Successflash');
             })
-
             .catch((err) => {
-                console.log(err)
                 this.failure = true
                 this.changeFailure()
             })

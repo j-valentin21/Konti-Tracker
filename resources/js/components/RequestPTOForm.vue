@@ -2,10 +2,10 @@
     <div class="modal fade pto_modal" id="request-modal" data-backdrop="static" data-keyboard="false" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg pto_modal__dialog">
             <div class="modal-content pto_modal__content">
-                <div class="modal-header pto_modal__header text-center">
+                <header class="modal-header pto_modal__header text-center">
                     <h5 class="modal-title w-100 pto_modal__title" id="staticBackdropLabel">Request PTO Day</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
-                </div>
+                </header>
                 <div class="modal-body pto">
                     <div class="container">
                         <form method="POST" @submit.prevent = 'submitPTOForm' @keydown="errors.clear($event.target.name)">
@@ -45,7 +45,6 @@
                                             <div class="col-sm-6 mt-3 mt-sm-3 text-center text-sm-left">
                                                 <time class="font-weight-bold font-italic" datetime="2020-07-07">{{date}}</time>
                                             </div>
-
                                             <div class="col-sm-3">
                                                 <label for="start_times">Start Time</label>
                                                 <flat-pickr
@@ -57,7 +56,6 @@
                                                     placeholder="Select time">
                                                 </flat-pickr>
                                             </div>
-
                                             <div class="col-sm-3">
                                                 <label for="end_times">End Time</label>
                                                 <flat-pickr
@@ -77,7 +75,6 @@
                             <strong v-if="errors.has('start_times')" v-text="errors.get('start_times')" class="text-danger"></strong>
                             <br>
                             <strong v-if="errors.has('end_times')" v-text="errors.get('end_times')" class="text-danger"></strong>
-
                             <div class="text-center text-sm-right mt-3">
                                 <button type="submit" class="pto_modal__button pto_modal__button--black">Submit</button>
                             </div>
