@@ -9,7 +9,7 @@
                        class="form-control"
                        name="email"
                        autocomplete="email" autofocus>
-                <strong v-if="errors.has('email')" v-text="errors.get('email')" class="help is-danger"></strong>
+                <strong v-if="errors.has('email')" v-text="errors.get('email')" class="help is-danger text-danger"></strong>
             </div>
 
             <div class="form-group">
@@ -21,7 +21,7 @@
                        name="password"
                        required
                        autocomplete="current-password">
-                <strong v-if="errors.has('password')" v-text="errors.get('password')" class="help is-danger"></strong>
+                <strong v-if="errors.has('password')" v-text="errors.get('password')" class="help is-danger text-danger"></strong>
             </div>
 
             <a class="btn btn-link" href="/password/reset">

@@ -107970,7 +107970,7 @@ var render = function() {
           _vm._v(" "),
           _vm.errors.has("email")
             ? _c("strong", {
-                staticClass: "help is-danger",
+                staticClass: "help is-danger text-danger",
                 domProps: { textContent: _vm._s(_vm.errors.get("email")) }
               })
             : _vm._e()
@@ -108009,7 +108009,7 @@ var render = function() {
           _vm._v(" "),
           _vm.errors.has("password")
             ? _c("strong", {
-                staticClass: "help is-danger",
+                staticClass: "help is-danger text-danger",
                 domProps: { textContent: _vm._s(_vm.errors.get("password")) }
               })
             : _vm._e()
