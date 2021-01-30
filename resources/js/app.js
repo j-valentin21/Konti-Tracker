@@ -28,6 +28,7 @@ Vue.component('menu-btn', require('./components/MenuBtn.vue').default);
 Vue.component('incrementers', require('./components/Incrementers.vue').default);
 Vue.component('success-flash', require('./components/SuccessFlash.vue').default);
 Vue.component('failure-flash', require('./components/FailureFlash.vue').default);
+Vue.component('failure-flash-form', require('./components/FailureFlashForm.vue').default);
 Vue.component('bar-chart', require('./components/BarChart.vue').default);
 Vue.component('line-chart', require('./components/LineChart.vue').default);
 Vue.component('pie-chart', require('./components/PieChart.vue').default);

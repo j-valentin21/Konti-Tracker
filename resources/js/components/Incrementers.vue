@@ -5,7 +5,7 @@
             <div class="row align-items-center">
                 <div class="col-8">
                     <h4 class="mb-2 dashboard__card__header ">PTO</h4>
-                    <p class="dashboard__card__value my-3 mx-2 text-white">{{ `${pto_value} Days`}}</p>
+                    <p class="dashboard__card__value my-3 mx-2 text-white">{{ `${ pto_value } Days`}}</p>
                 </div>
                 <div class="col-4">
                     <div class="text-right">
@@ -99,7 +99,9 @@ export default {
                 Fire.$emit('Successflash');
             })
             .catch((err) => {
-                Fire.$emit('Failureflash');
+                Fire.$emit('Failureflash',{
+                    message: "An issue updating your profile has occurred. Please try again at a later time."
+                });
             })
         },
     }

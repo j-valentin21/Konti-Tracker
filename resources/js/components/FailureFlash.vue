@@ -1,5 +1,5 @@
 <template>
-    <div v-if="failure_Check" class="col-sm-12">
+    <div v-if="failureCheck" class="col-sm-12">
         <div class="alert fade alert__danger alert-dismissible text-left brk-library-rendered rendered show">
             <button type="button" class="close" data-dismiss="alert" @click="showFalse">
                 <span aria-hidden="true" class="mb-5">
@@ -14,7 +14,7 @@
                     <use href="http://127.0.0.1:8000/svg/sprite.svg#icon-dangerous"></use>
                 </svg>
             </span>
-            <slot><strong class="alert__message">Please try again at a later time.....</strong></slot>
+            <slot><strong class="alert__message">{{ message }}</strong></slot>
         </div>
     </div>
 </template>
@@ -24,23 +24,21 @@ export default {
     name: "FailureFlash",
     data() {
         return {
-            failure_Check: false
+            failureCheck: false,
+            message: ""
         }
     },
     mounted() {
-        this.failure_Check = false
-        Fire.$on('Failureflash', () => {
-            this.failure_Check = true
+        this.failureCheck = false
+        Fire.$on('Failureflash', (event) => {
+            this.failureCheck = true
+            this.message = event.message
         });
     },
     methods: {
         showFalse: function() {
-            this.failure_Check = false
+            this.failureCheck = false
         }
     }
 }
 </script>
-
-<style scoped>
-
-</style>

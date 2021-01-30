@@ -52,36 +52,28 @@ class DashboardController extends Controller
      */
     public function create(PTOFormRequest $request): RedirectResponse
     {
-        try {
-            $redis = Redis::connection();
-            $profile = Profile::find(auth()->user()->id);
-            //Add user input to request form
-            $request_pto = (new PTORequest())->fill($request->validated());
-            $request_pto->user_id = auth()->user()->id;
-            $request_pto->start_times = $request->start_times;
-            $request_pto->end_times = $request->end_times;
-            //Remove days requested from pto dashboard.
-            $pto_used = $profile->pto - $request->pto_days;
-            $profile->pto = $pto_used;
-            $profile->pending = $profile->pending + $request->pto_days;
-            //Set redis message if everything works correctly
-            $redis->set('message_' . auth()->id(), 'Your PTO request has been successfully created! Awaiting approval for your request');
-            $redis->expire('message_' . auth()->id(), 5);
-            //Send job to queue to mimic supervisor/employee interaction for request
-            ApprovePTORequestJob::dispatch(auth()->user()->id, $request->pto_days)
-                ->delay(now()->addMinutes(10));
-            //Save to database
-            $request_pto->save();
-            $profile->save();
-            //Create entry for activity log
-            event(new RequestPtoTickedHasBeenSubmittedEvent($request_pto));
-
-        } catch(\Exception $e ) {
-            $redis = Redis::connection();
-            $redis->set('message_' . auth()->id(), 'Your PTO request cannot be processed at this time. Please try again at a later time.');
-            $redis->expire('message_' . auth()->id(), 5);
-            return redirect('/dashboard');
-        }
+        $redis = Redis::connection();
+        $profile = Profile::find(auth()->user()->id);
+        //Add user input to request form
+        $request_pto = (new PTORequest())->fill($request->validated());
+        $request_pto->user_id = auth()->user()->id;
+        $request_pto->start_times = $request->start_times;
+        $request_pto->end_times = $request->end_times;
+        //Remove days requested from pto dashboard.
+        $pto_used = $profile->pto - $request->pto_days;
+        $profile->pto = $pto_used;
+        $profile->pending = $profile->pending + $request->pto_days;
+        //Set redis message if everything works correctly
+        $redis->set('message_' . auth()->id(), 'Your PTO request has been successfully created! Awaiting approval for your request');
+        $redis->expire('message_' . auth()->id(), 5);
+        //Send job to queue to mimic supervisor/employee interaction for request
+        ApprovePTORequestJob::dispatch(auth()->user()->id, $request->pto_days)
+            ->delay(now()->addMinutes(10));
+        //Save to database
+        $request_pto->save();
+        $profile->save();
+        //Create entry for activity log
+        event(new RequestPtoTickedHasBeenSubmittedEvent($request_pto));
     }
 
     /**

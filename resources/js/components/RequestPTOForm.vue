@@ -8,6 +8,8 @@
                 </header>
                 <div class="modal-body pto">
                     <div class="container">
+                        <failure-flash-form></failure-flash-form>
+                        <!-- ========== PTO REQUEST FORM ========== -->
                         <form method="POST" @submit.prevent = 'submitPTOForm' @keydown="errors.clear($event.target.name)">
                             <div class="form-group">
                                 <label for="pto-consumed" class="control-label pto_modal__label mr-3 mt-3">How much PTO days do you want to use?</label>
@@ -155,15 +157,25 @@ export default {
                 .then( response => {
                     window.location.href = '/dashboard';
                 })
-                .catch(error => this.errors.record(error.response.data.errors))
+                .catch(error => {
+                    this.errors.record(error.response.data.errors)
+                    Fire.$emit('Failureflash-form',{
+                        message: "An issue creating your PTO request form has occurred. Please try again at a later time."
+                    });
+                })
         },
         getActualPTO() {
-            axios.get("/dashboard/pto-chart")
+            axios.get("/dashboard/pto-char")
                 .then( response => {
                    this.actualPTO = response.data[1];
                 })
-                .catch(error => this.errors.record(error.response.data.errors))
+                .catch(error => {
+                    this.errors.record(error.response.data.errors)
+                })
         },
+        showFalse: function() {
+            this.failureCheck = false
+        }
     },
     components: {
         flatPickr
