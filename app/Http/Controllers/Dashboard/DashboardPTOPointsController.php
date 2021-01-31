@@ -42,19 +42,23 @@ class DashboardPTOPointsController extends Controller
      * Update dashboard pto/points data view.
      *
      * @param PTOPointsDataRequest $request
-     * @return RedirectResponse
+     * @return RedirectResponse|Renderable
      */
-    public function update(PTOPointsDataRequest $request): RedirectResponse
+    public function update(PTOPointsDataRequest $request)
     {
-        $redis = Redis::connection();
-        $profile = Profile::find(auth()->user()->id);
-        $ptoMonths = array_map('floatval', $request->request->get('pto_used', []));
-        $pointsMonths = array_map('intval', $request->request->get('points_used', []));
-        $profile->pto_usage = $profile->sortMonths($ptoMonths);
-        $profile->points_usage = $profile->sortMonths($pointsMonths);
-        $redis->set('message_' .  auth()->id(), 'Your PTO/Points data was successfully updated!');
-        $redis->expire('message_' . auth()->id(),5);
-        $profile->save();
-        return redirect('/dashboard');
+        try {
+            $redis = Redis::connection();
+            $profile = Profile::find(auth()->user()->id);
+            $ptoMonths = array_map('floatval', $request->request->get('pto_used', []));
+            $pointsMonths = array_map('intval', $request->request->get('points_used', []));
+            $profile->pto_usage = $profile->sortMonths($ptoMonths);
+            $profile->points_usage = $profile->sortMonths($pointsMonths);
+            $redis->set('message_' .  auth()->id(), 'Your PTO/Points data was successfully updated!');
+            $redis->expire('message_' . auth()->id(),5);
+            $profile->save();
+            return redirect('/dashboard');
+        } catch(\Exception $e ) {
+            return redirect()->back()->with('errorMsg', 'An issue occurred trying to update your PTO/Points. Please try again at a later time.');
+        }
     }
 }
