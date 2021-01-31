@@ -1,5 +1,5 @@
 <template>
-    <div v-if="success_Check" class="col-sm-12">
+    <div v-if="successCheck" class="col-sm-12">
         <div class="alert fade alert__success alert-dismissible text-left brk-library-rendered rendered show">
             <div class="d-flex">
                 <button type="button" class="close" data-dismiss="alert" @click="showFalse">
@@ -15,7 +15,7 @@
                         <use href="http://127.0.0.1:8000/svg/sprite.svg#icon-check_circle_outline"></use>
                     </svg>
                 </span>
-                <slot> <strong class="alert__message pr-3">Your profile has been successfully updated!</strong></slot>
+                <slot> <strong class="alert__message pr-3">{{ message }}</strong></slot>
             </div>
         </div>
     </div>
@@ -27,18 +27,20 @@ export default {
     name: "SuccessFlash",
     data() {
         return {
-            success_Check: false
+            message: '',
+            successCheck: false
         }
     },
     mounted() {
-        this.success_Check = false
-        Fire.$on('Successflash', () => {
-            this.success_Check = true
+        this.successCheck = false
+        Fire.$on('Successflash', (event) => {
+            this.successCheck = true
+            this.message = event.message
         });
     },
     methods: {
         showFalse: function() {
-            this.success_Check = false
+            this.successCheck = false
         }
     }
 }

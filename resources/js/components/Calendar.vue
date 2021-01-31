@@ -1,6 +1,7 @@
 <template>
     <div class="row justify-content-center">
         <failure-flash></failure-flash>
+        <success-flash></success-flash>
         <div class="col-12 mb-5">
             <form @submit.prevent>
                 <div class="form-group">
@@ -57,9 +58,6 @@ export default {
     },
     data() {
         return {
-            success: false,
-            failure: false,
-            message: "",
             calendarEvents: [],
             calendarOptions: {
                 plugins: [ dayGridPlugin, interactionPlugin],
@@ -202,8 +200,9 @@ export default {
                 .then(resp => {
                     this.resetForm();
                     this.componentKey++;
-                    this.message = resp.data.message;
-                    this.success = true;
+                    Fire.$emit('Successflash',{
+                        message: "Your event has been successfully added."
+                    });
                 })
                 .catch(err => {
                     Fire.$emit('Failureflash',{
@@ -220,8 +219,9 @@ export default {
                 this.resetForm();
                 this.addingMode = !this.addingMode;
                 this.componentKey++;
-                this.message = resp.data.message;
-                this.success = true;
+                Fire.$emit('Successflash',{
+                    message: "Your event has been updated successfully."
+                });
             })
             .catch(err => {
                 Fire.$emit('Failureflash',{
@@ -236,8 +236,9 @@ export default {
                 this.resetForm();
                 this.addingMode = !this.addingMode;
                 this.componentKey++;
-                this.message = resp.data.message;
-                this.success = true;
+                Fire.$emit('Successflash',{
+                    message: "Your event has been successfully deleted."
+                });
             })
             .catch(err => {
                 Fire.$emit('Failureflash',{
