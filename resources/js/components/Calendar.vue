@@ -1,11 +1,6 @@
 <template>
     <div class="row justify-content-center">
-        <success-flash v-if="success" :success="success">
-            <strong class="font__weight-semibold pr-3">{{message}}</strong>
-        </success-flash>
-        <failure-flash v-if="failure" :failure="failure">
-            <strong class="font__weight-semibold pr-3 ml-2">{{message}}</strong>
-        </failure-flash>
+        <failure-flash></failure-flash>
         <div class="col-12 mb-5">
             <form @submit.prevent>
                 <div class="form-group">
@@ -82,7 +77,7 @@ export default {
                 events: [
                     {
                         title  : "New Year's Day",
-                        start  : `${this.getYear()}-01-05`,
+                        start  : `${this.getYear()}-01-01`,
                     },
                     {
                         title  : 'MLK Day',
@@ -211,10 +206,10 @@ export default {
                     this.success = true;
                 })
                 .catch(err => {
-                    this.message = "Unable to add new event. Please try again at a later time."
-                    this.failure = true;
+                    Fire.$emit('Failureflash',{
+                        message: "An issue adding a new event has occurred. Please try again at a later time."
+                    });
                 });
-
         },
         updateEvent() {
         axios
@@ -229,8 +224,9 @@ export default {
                 this.success = true;
             })
             .catch(err => {
-                this.message = "Unable to update event. Please try again at a later time."
-                this.failure = true
+                Fire.$emit('Failureflash',{
+                    message: "An issue updating your event has occurred. Please try again at a later time."
+                });
             });
         },
         deleteEvent() {
@@ -244,8 +240,9 @@ export default {
                 this.success = true;
             })
             .catch(err => {
-                this.message = "Unable to delete event. Please try again at a later time."
-                this.failure = true
+                Fire.$emit('Failureflash',{
+                    message: "An issue deleting your event has occurred. Please try again at a later time."
+                });
             });
         },
         resetForm() {
