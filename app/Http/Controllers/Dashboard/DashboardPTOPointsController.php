@@ -23,21 +23,11 @@ class DashboardPTOPointsController extends Controller
     {
         try {
             $profile = Profile::find(auth()->user()->id);
-            $ptoDays = $profile->pto_usage;
-            $points = $profile->points_usage;
             $notifications = (new NotificationService())->userNotifications(auth()->user()->id);
-            $month = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
-                'August', 'September', 'October', 'November', 'December'];
-            $ptoMonths = array('Jan' => $ptoDays['Jan'], 'Feb' => $ptoDays['Feb'], 'Mar' => $ptoDays['Mar'], 'Apr' => $ptoDays['Apr'],
-                'May' => $ptoDays['May'], 'June' => $ptoDays['June'], 'July' => $ptoDays['July'], 'Aug' => $ptoDays['Aug'],
-                'Sept' => $ptoDays['Sept'], 'Oct' => $ptoDays['Oct'], 'Nov' => $ptoDays['Nov'], 'Dec' => $ptoDays['Dec']);
-            $pointMonths = array('Jan' => $points['Jan'], 'Feb' => $points['Feb'], 'Mar' => $points['Mar'], 'Apr' => $points['Apr'],
-                'May' => $points['May'], 'June' => $points['June'], 'July' => $points['July'], 'Aug' => $points['Aug'],
-                'Sept' => $points['Sept'], 'Oct' => $points['Oct'], 'Nov' => $points['Nov'], 'Dec' => $points['Dec']);
             $results = new MultipleIterator();
-            $results->attachIterator( new \ArrayIterator($ptoMonths));
-            $results->attachIterator( new \ArrayIterator($month));
-            $results->attachIterator( new \ArrayIterator($pointMonths));
+            $results->attachIterator( new \ArrayIterator($profile->sortMonthsByMonth($profile->pto_usage)));
+            $results->attachIterator( new \ArrayIterator($profile->fullMonths()));
+            $results->attachIterator( new \ArrayIterator($profile->sortMonthsByMonth($profile->points_usage)));
             return view('dashboard.pto-points.index', [
                 'results' => $results,
                 'count' => $notifications['count'],
