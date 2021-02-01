@@ -1,13 +1,11 @@
 <template>
     <div>
-        <success-flash v-if="success" :success="success"/>
-        <failure-flash v-if="failure" :failure="failure"/>
         <h4 class="card-title dashboard__card__title  mb-4">Overview</h4>
         <div class="pb-3 border__bottom--grey">
             <div class="row align-items-center">
                 <div class="col-8">
                     <h4 class="mb-2 dashboard__card__header ">PTO</h4>
-                    <p class="dashboard__card__value my-3 mx-2 text-white">{{ `${pto_value} Days`}}</p>
+                    <p class="dashboard__card__value my-3 mx-2 text-white">{{ `${ pto_value } Days`}}</p>
                 </div>
                 <div class="col-4">
                     <div class="text-right">
@@ -94,32 +92,16 @@ export default {
                 this.points_count--;
             }
         },
-       changeSuccess: function() {
-            return new Promise(function(resolve, reject) {
-            setTimeout(resolve, 7000);
-            }).then( response => {
-            this.success = false;
-            });
-        },
-        changeFailure: function() {
-            return new Promise(function(resolve, reject) {
-                setTimeout(resolve, 7000);
-            }).then( response => {
-                this.failure = false;
-            });
-        },
         submitCount() {
             axios.put("/dashboard",this.$data)
             .then( response => {
-               this.success = true
-               this.changeSuccess()
                 Fire.$emit('SubmitCount');
+                Fire.$emit('Successflash');
             })
-
             .catch((err) => {
-                console.log(err)
-                this.failure = true
-                this.changeFailure()
+                Fire.$emit('Failureflash',{
+                    message: "An issue updating your profile has occurred. Please try again at a later time."
+                });
             })
         },
     }

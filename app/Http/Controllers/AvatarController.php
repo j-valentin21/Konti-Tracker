@@ -6,7 +6,6 @@ use App\Http\Requests\FormUploadRequest;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Storage;
 
@@ -30,7 +29,6 @@ class AvatarController extends Controller
 
     /**
      * Get image and store it in session.
-     *
      *
      * @param FormUploadRequest $request
      * @return RedirectResponse

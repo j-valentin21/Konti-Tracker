@@ -11482,7 +11482,7 @@ body {
 @media only screen and (max-width: 31.25em) {
   .dashboard__main-content--grey {
     padding: 0.5rem 2%;
-    margin: 0rem;
+    margin: 1rem;
   }
 }
 
@@ -12930,6 +12930,10 @@ body {
   margin-right: 0;
   min-width: 20px;
   text-align: center;
+}
+
+.alert__message {
+  font-size: 1.2rem;
 }
 
 .weather {

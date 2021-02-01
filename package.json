@@ -33,6 +33,7 @@
         "moment": "^2.29.1",
         "places.js": "^1.19.0",
         "vue-chartjs": "^3.5.1",
+        "vue-confirm-dialog": "^1.0.2",
         "vue-flatpickr-component": "^8.1.6"
     }
 }

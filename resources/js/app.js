@@ -3,11 +3,17 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+
+// import VueConfirmDialog from "@fullcalendar/vue/dist/main.global";
+
 require('./bootstrap');
 
+import Vue from 'vue'
 window.Vue = require('vue');
-
 window.Fire = new Vue();
+
+import VueConfirmDialog from 'vue-confirm-dialog'
+Vue.use(VueConfirmDialog);
 
 require('chart.js');
 require('places.js');
@@ -28,6 +34,7 @@ Vue.component('menu-btn', require('./components/MenuBtn.vue').default);
 Vue.component('incrementers', require('./components/Incrementers.vue').default);
 Vue.component('success-flash', require('./components/SuccessFlash.vue').default);
 Vue.component('failure-flash', require('./components/FailureFlash.vue').default);
+Vue.component('failure-flash-form', require('./components/FailureFlashForm.vue').default);
 Vue.component('bar-chart', require('./components/BarChart.vue').default);
 Vue.component('line-chart', require('./components/LineChart.vue').default);
 Vue.component('pie-chart', require('./components/PieChart.vue').default);
@@ -39,6 +46,7 @@ Vue.component('activity', require('./components/Activity.vue').default);
 Vue.component('dashboard-activity', require('./components/DashboardActivity.vue').default);
 Vue.component('notification', require('./components/Notification.vue').default);
 Vue.component('pagination', require('laravel-vue-pagination'));
+Vue.component('vue-confirm-dialog', VueConfirmDialog.default);
 
 
 /**

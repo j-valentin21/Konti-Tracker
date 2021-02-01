@@ -27,7 +27,7 @@ class ProfileRequest extends FormRequest
             'name' => 'string| max:100',
             'email' => 'required|unique:users,email,'.auth()->user()->id,
             'position' => 'max:50',
-            'pto' => 'integer|between:0,40',
+            'pto' => 'numeric|between:0,40',
             'points' => 'integer|between:0,15',
             'avatar' => 'max:2000|mimes:jpg,png,jpeg,svg,gif',
             'date_of_employment' => 'date'

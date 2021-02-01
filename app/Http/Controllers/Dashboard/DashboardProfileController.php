@@ -41,44 +41,52 @@ class DashboardProfileController extends Controller
      */
     public function update(ProfileRequest $request): RedirectResponse
     {
-        $redis = Redis::connection();
-        $profile = Profile::find(auth()->user()->id);
-        $user = User::find(auth()->user()->id);
+        try {
+            $redis = Redis::connection();
+            $profile = Profile::find(auth()->user()->id);
+            $user = User::find(auth()->user()->id);
 
-        $validated = $request->validated();
+            $validated = $request->validated();
 
-        $user->fill($validated);
-        $profile->fill($validated);
+            $user->fill($validated);
+            $profile->fill($validated);
 
-        if(!isset($request->avatar)) {
-            $user->save();
-            $profile->save();
-            $redis->set('message_' .  auth()->id(), 'Your profile was successfully updated!');
-            return redirect('/dashboard');
-        } else {
-            $url = $request->file('avatar')->store('avatar', 's3');
-            Storage::disk('s3')->setVisibility($url, 'public');
-            $profile->update(['avatar'=>$url]);
-            $user->save();
-            $profile->save();
-            $redis->set('message_' .  auth()->id(), 'Your profile was successfully updated!');
-            return redirect('/dashboard');
+            if(!isset($request->avatar)) {
+                $user->save();
+                $profile->save();
+                $redis->set('message_' .  auth()->id(), 'Your profile was successfully updated!');
+                return redirect('/dashboard');
+            } else {
+                $url = $request->file('avatar')->store('avatar', 's3');
+                Storage::disk('s3')->setVisibility($url, 'public');
+                $profile->update(['avatar'=>$url]);
+                $user->save();
+                $profile->save();
+                $redis->set('message_' .  auth()->id(), 'Your profile was successfully updated!');
+                return redirect('/dashboard');
+            }
+        } catch(\Exception $e ) {
+            return redirect()->back()->with('errorMsg', 'An issue occurred trying to update your profile. Please try again at a later time.');
         }
+
     }
 
     /**
      * Destroy image in profile view.
      *
-     * @param Request $request
      * @return RedirectResponse
      */
-    public function destroy(Request $request): RedirectResponse
+    public function destroy(): RedirectResponse
     {
-        $profile = Profile::find(auth()->user()->id);
-        $img = $profile->avatar;
-        Storage::disk('s3')->delete($img);
-        $profile->avatar = null;
-        $profile->save();
-        return redirect('/dashboard/profile');
+        try{
+            $profile = Profile::find(auth()->user()->id);
+            $img = $profile->avatar;
+            Storage::disk('s3')->delete($img);
+            $profile->avatar = null;
+            $profile->save();
+            return redirect('/dashboard/profile');
+        } catch(\Exception $e ) {
+            return redirect()->back()->with('errorMsg', 'An issue occurred trying to delete your profile. Please try again at a later time.');
+        }
     }
 }

@@ -1,11 +1,8 @@
 <template>
     <div class="row justify-content-center">
-        <success-flash v-if="success" :success="success">
-            <strong class="font__weight-semibold pr-3">{{message}}</strong>
-        </success-flash>
-        <failure-flash v-if="failure" :failure="failure">
-            <strong class="font__weight-semibold pr-3 ml-2">{{message}}</strong>
-        </failure-flash>
+        <failure-flash></failure-flash>
+        <success-flash></success-flash>
+        <vue-confirm-dialog></vue-confirm-dialog>
         <div class="col-12 mb-5">
             <form @submit.prevent>
                 <div class="form-group">
@@ -43,7 +40,7 @@
             </form>
         </div>
         <div class="col-12">
-            <Fullcalendar :key="componentKey"  :options="calendarOptions"/>
+            <Fullcalendar ref="fullCalendar"  :options="calendarOptions"/>
         </div>
     </div>
 </template>
@@ -62,9 +59,7 @@ export default {
     },
     data() {
         return {
-            success: false,
-            failure: false,
-            message: "",
+            componentKeys: this.componentKey,
             calendarEvents: [],
             calendarOptions: {
                 plugins: [ dayGridPlugin, interactionPlugin],
@@ -82,7 +77,7 @@ export default {
                 events: [
                     {
                         title  : "New Year's Day",
-                        start  : `${this.getYear()}-01-05`,
+                        start  : `${this.getYear()}-01-01`,
                     },
                     {
                         title  : 'MLK Day',
@@ -166,24 +161,35 @@ export default {
             };
         },
         eventDrop: function(info) {
-            if (!confirm(`Are you sure you want to move ${info.event.title} to date ${info.event.startStr}`)) {
-                info.revert();
-            } else {
-                let startDate = info.event.startStr;
-                let endDate = info.event.endStr;
-                if (endDate === '') {
-                    endDate = startDate
-                }
-                this.indexToUpdate = info.event.id;
+            this.$confirm(
+                {
+                    message: `Are you sure you want to move ${info.event.title} to date ${info.event.startStr}?`,
+                    button: {
+                        no: 'No',
+                        yes: 'Yes'
+                    },
+                    callback: confirm => {
+                        if (confirm) {
+                            let startDate = info.event.startStr;
+                            let endDate = info.event.endStr;
+                            if (endDate === '') {
+                                endDate = startDate
+                            }
+                            this.indexToUpdate = info.event.id;
 
-                this.newEvent = {
-                    event_name: info.event.title,
-                    start_date: startDate,
-                    end_date: endDate
-                };
-                this.updateEvent();
-                this.addingMode = false;
-            }
+                            this.newEvent = {
+                                event_name: info.event.title,
+                                start_date: startDate,
+                                end_date: endDate
+                            };
+                            this.updateEvent();
+                            this.addingMode = false;
+                        } else {
+                            info.revert();
+                        }
+                    }
+                }
+            )
         },
         selectionClick: function(selectionInfo ) {
             this.addingMode = true
@@ -206,15 +212,16 @@ export default {
                 })
                 .then(resp => {
                     this.resetForm();
-                    this.componentKey++;
-                    this.message = resp.data.message;
-                    this.success = true;
+                    this.$refs.fullCalendar.getApi().refetchEvents()
+                    Fire.$emit('Successflash',{
+                        message: "Your event has been successfully added."
+                    });
                 })
                 .catch(err => {
-                    this.message = "Unable to add new event. Please try again at a later time."
-                    this.failure = true;
+                    Fire.$emit('Failureflash',{
+                        message: "An issue adding a new event has occurred. Please try again at a later time."
+                    });
                 });
-
         },
         updateEvent() {
         axios
@@ -224,13 +231,15 @@ export default {
             .then(resp => {
                 this.resetForm();
                 this.addingMode = !this.addingMode;
-                this.componentKey++;
-                this.message = resp.data.message;
-                this.success = true;
+                this.$refs.fullCalendar.getApi().refetchEvents()
+                Fire.$emit('Successflash',{
+                    message: "Your event has been updated successfully."
+                });
             })
             .catch(err => {
-                this.message = "Unable to update event. Please try again at a later time."
-                this.failure = true
+                Fire.$emit('Failureflash',{
+                    message: "An issue updating your event has occurred. Please try again at a later time."
+                });
             });
         },
         deleteEvent() {
@@ -239,13 +248,15 @@ export default {
             .then(resp => {
                 this.resetForm();
                 this.addingMode = !this.addingMode;
-                this.componentKey++;
-                this.message = resp.data.message;
-                this.success = true;
+                this.$refs.fullCalendar.getApi().refetchEvents()
+                Fire.$emit('Successflash',{
+                    message: "Your event has been successfully deleted."
+                });
             })
             .catch(err => {
-                this.message = "Unable to delete event. Please try again at a later time."
-                this.failure = true
+                Fire.$emit('Failureflash',{
+                    message: "An issue deleting your event has occurred. Please try again at a later time."
+                });
             });
         },
         resetForm() {
@@ -261,6 +272,26 @@ export default {
             let date = new Date();
             return date.getFullYear()
         },
+    },
+    handleClick(){
+        this.$confirm(
+            {
+                message: `Are you sure?`,
+                button: {
+                    no: 'No',
+                    yes: 'Yes'
+                },
+                /**
+                 * Callback Function
+                 * @param {Boolean} confirm
+                 */
+                callback: confirm => {
+                    if (confirm) {
+                        // ... do something
+                    }
+                }
+            }
+        )
     },
 
     watch: {

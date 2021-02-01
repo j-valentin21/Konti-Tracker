@@ -2,7 +2,6 @@
 
 namespace App;
 
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Profile extends Model
@@ -79,13 +78,36 @@ class Profile extends Model
 
     /**
      * Sort months based on number of array.
-     * @param $data
+     * @param $data //PTO or points array name
      * @return array
      */
     public function sortMonths($data):array
     {
         return array('Jan' => $data[0], 'Feb' => $data[1], 'Mar' => $data[2], 'Apr' => $data[3], 'May' => $data[4], 'June' => $data[5],
             'July' => $data[6], 'Aug' => $data[7], 'Sept' => $data[8], 'Oct' => $data[9], 'Nov' => $data[10], 'Dec' => $data[11]);
+    }
+
+    /**
+     * Sort months based on month.
+     * @param $profile  //PTO or points array name
+     * @return array
+     */
+    public function sortMonthsByMonth($profile): array
+    {
+        return array('Jan' => $profile['Jan'], 'Feb' => $profile['Feb'], 'Mar' => $profile['Mar'], 'Apr' => $profile['Apr'], 'May' => $profile['May'],
+            'June' => $profile['June'], 'July' => $profile['July'], 'Aug' => $profile['Aug'], 'Sept' => $profile['Sept'], 'Oct' => $profile['Oct'],
+            'Nov' => $profile['Nov'], 'Dec' => $profile['Dec']);
+    }
+
+    /**
+     * Arrange months in order with full name.
+     *
+     * @return array
+     */
+    public function fullMonths(): array
+    {
+        return ['January', 'February', 'March', 'April', 'May', 'June', 'July',
+            'August', 'September', 'October', 'November', 'December'];
     }
 
     public function user()

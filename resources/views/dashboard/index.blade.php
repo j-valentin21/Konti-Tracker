@@ -19,6 +19,9 @@
                     <strong class="font__weight-semibold">{{$message}}</strong>
                 </x-alert-success>
             @endif
+            <!-- ========== Success/Failure alerts ========== -->
+                <div><success-flash/></div>
+                <div><failure-flash/></div>
                 <div class="row mb-3">
                     <section class="col-xl-3">
                         <div class="card dashboard__card mb-4">

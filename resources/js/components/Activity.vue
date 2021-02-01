@@ -1,5 +1,7 @@
 <template>
-    <form method="POST">
+    <div>
+        <failure-flash></failure-flash>
+        <vue-confirm-dialog></vue-confirm-dialog>
         <table class="table dashboard__table pr-3">
             <thead class="dashboard__table__head dashboard__table__head--black">
                 <tr class="dashboard__table__activity-row">
@@ -25,16 +27,11 @@
                 </tr>
             </tbody>
         </table>
-
         <div class="mb-3">
             <ul class="pagination pagination-rounded justify-content-center mb-0">
-                <pagination :data="activities" @pagination-change-page="getResults">
-                    <span slot="prev-nav">&lt; Previous</span>
-                    <span slot="next-nav">Next &gt;</span>
-                </pagination>
+                <pagination :limit= 2 :data="activities" @pagination-change-page="getResults"></pagination>
             </ul>
         </div>
-
         <table class="table dashboard__table pr-3">
             <thead class="dashboard__table__head dashboard__table__head--black">
             <tr class="dashboard__table__activity-row">
@@ -56,7 +53,7 @@
         <div class="text-center">
             <button type="button" @click="deleteAllActivity(userId)" class="form__wizard__btn form__wizard__btn--red mt-4">Delete All</button>
         </div>
-    </form>
+    </div>
 </template>
 
 <script>
@@ -78,21 +75,38 @@ export default {
                 this.activities = response.data.results
             })
             .catch((err) => {
-                console.log(err)
+                Fire.$emit('Failureflash',{
+                    message: "An issue deleting your activity has occurred. Please try again at a later time."
+                });
             });
         },
         deleteAllActivity(id) {
             const url = '/dashboard/activity/' + id
-            axios.delete(url, {
-                params: {
-                    deleteAll: true
+            this.$confirm(
+                {
+                    message: `Are you sure you want to delete all your activities?`,
+                    button: {
+                        no: 'No',
+                        yes: 'Yes'
+                    },
+                    callback: confirm => {
+                        if (confirm) {
+                            axios.delete(url, {
+                                params: {
+                                    deleteAll: true
+                                }
+                            }).then((response) => {
+                                this.activities = response.data.results
+                            })
+                            .catch((err) => {
+                                Fire.$emit('Failureflash',{
+                                    message: "An issue deleting all your activities has occurred. Please try again at a later time."
+                                });
+                            });
+                        }
+                    }
                 }
-            }).then((response) => {
-                this.activities = response.data.results
-            })
-            .catch((err) => {
-                console.log(err)
-            });
+            )
         },
         getResults(page = 1) {
             axios.get('/dashboard/get-activity?page=' + page, {
@@ -101,6 +115,11 @@ export default {
                 }
             }) .then(response => {
                 this.activities = response.data;
+            })
+            .catch((err) => {
+                Fire.$emit('Failureflash',{
+                    message: "An issue retrieving your activities has occurred. Please try again at a later time."
+                });
             });
         }
     },
@@ -108,6 +127,10 @@ export default {
 </script>
 
 <style lang="css">
+
+.pagination {
+    overflow: hidden;
+}
 
 .activity-enter-active {
     animation: fadeIn 1.25s;

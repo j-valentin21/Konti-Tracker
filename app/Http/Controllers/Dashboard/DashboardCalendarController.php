@@ -44,7 +44,6 @@ class DashboardCalendarController extends Controller
         $new_calendar->save();
         return response()->json([
             'data' => new CalendarResource($new_calendar),
-            'message' => 'Successfully added new event!',
         ]);
     }
 
@@ -72,7 +71,6 @@ class DashboardCalendarController extends Controller
         $calendar->update($request->all());
         return response()->json([
             'data' => new CalendarResource($calendar),
-            'message' => 'Successfully updated event!',
         ]);
     }
 
@@ -80,17 +78,14 @@ class DashboardCalendarController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  $calendar
-     * @return \Illuminate\Http\Response
-     *
      */
-    public function destroy(Calendar $calendar): \Illuminate\Http\Response
+    public function destroy(Calendar $calendar)
     {
         $calendar->delete();
-        return response(['message' => 'Your Event has been successfully removed']);
     }
 
     /**
-     * Get data to update points chart in dashboard.
+     * Get data to update calendar.
      *
      * @return JsonResponse
      */

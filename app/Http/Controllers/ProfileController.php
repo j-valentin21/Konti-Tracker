@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use App\Profile;
 use App\Http\Requests\FirstTimeRegistrationRequest;
 use Illuminate\Support\Facades\Redis;

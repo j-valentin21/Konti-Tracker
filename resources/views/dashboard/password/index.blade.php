@@ -36,7 +36,7 @@
                                         <use href="{{asset('svg/sprite.svg#icon-dangerous')}}"></use>
                                     </svg>
                                 </span>
-                                <strong class="font__weight-semibold">{{session('errorMsg')}}</strong>
+                                <strong class="alert_message">{{ session('errorMsg') }}</strong>
                             </div>
                         </div>
                     @endif

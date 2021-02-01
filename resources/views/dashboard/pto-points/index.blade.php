@@ -17,6 +17,26 @@
         <x-dash-sidebar/>
         <div class="dashboard__main">
             <div class="dashboard__main-content  dashboard__main-content--pto">
+                @if(session('errorMsg'))
+                    <div class="col-sm-12">
+                        <div class="alert fade alert__danger alert-dismissible text-left brk-library-rendered rendered show">
+                            <button type="button" class="close" data-dismiss="alert">
+                                    <span aria-hidden="true" class="mb-5">
+                                        <svg class="alert__icon alert__icon--x_red">
+                                            <use href="{{asset('svg/sprite.svg#icon-times')}}"></use>
+                                        </svg>
+                                    </span>
+                                <span class="sr-only">Close</span>
+                            </button>
+                            <span class="alert__start">
+                                    <svg class="alert__icon alert__icon--danger">
+                                        <use href="{{asset('svg/sprite.svg#icon-dangerous')}}"></use>
+                                    </svg>
+                                </span>
+                            <strong class="alert__message">{{ session('errorMsg') }}</strong>
+                        </div>
+                    </div>
+                @endif
                 <x-dashboard-table>
                     <x-slot name="table_head">
                         <thead class="dashboard__table__head dashboard__table__head--orange">
