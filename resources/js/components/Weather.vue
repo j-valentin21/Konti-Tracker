@@ -1,6 +1,7 @@
 <template>
     <div class="weather" :style="image">
         <div class="weather__container">
+            <failure-flash></failure-flash>
             <header class="weather__header">
                 <input type="search" id="address" class="weather__header-text" placeholder="Search for a city..." />
                 <p hidden>Selected: <strong id="address-value">none</strong></p>
@@ -138,7 +139,9 @@ export default {
                 }
             })
             .catch((err) => {
-                console.log(err)
+                Fire.$emit('Failureflash',{
+                    message: "An issue updating your weather has occurred. Please try again at a later time."
+                });
             })
         },
         getDate(timestamp) {
@@ -155,9 +158,3 @@ export default {
     },
 }
 </script>
-
-<style scoped>
-/*lang="css"*/
-
-
-</style>
