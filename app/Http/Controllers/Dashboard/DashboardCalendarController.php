@@ -71,7 +71,6 @@ class DashboardCalendarController extends Controller
         $calendar->update($request->all());
         return response()->json([
             'data' => new CalendarResource($calendar),
-            'message' => 'Successfully updated event!',
         ]);
     }
 
@@ -86,7 +85,7 @@ class DashboardCalendarController extends Controller
     }
 
     /**
-     * Get data to update points chart in dashboard.
+     * Get data to update calendar.
      *
      * @return JsonResponse
      */

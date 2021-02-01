@@ -39,7 +39,7 @@
             </form>
         </div>
         <div class="col-12">
-            <Fullcalendar :key="componentKey"  :options="calendarOptions"/>
+            <Fullcalendar ref="fullCalendar"  :options="calendarOptions"/>
         </div>
     </div>
 </template>
@@ -58,6 +58,7 @@ export default {
     },
     data() {
         return {
+            componentKeys: this.componentKey,
             calendarEvents: [],
             calendarOptions: {
                 plugins: [ dayGridPlugin, interactionPlugin],
@@ -199,7 +200,7 @@ export default {
                 })
                 .then(resp => {
                     this.resetForm();
-                    this.componentKey++;
+                    this.$refs.fullCalendar.getApi().refetchEvents()
                     Fire.$emit('Successflash',{
                         message: "Your event has been successfully added."
                     });
@@ -218,7 +219,7 @@ export default {
             .then(resp => {
                 this.resetForm();
                 this.addingMode = !this.addingMode;
-                this.componentKey++;
+                this.$refs.fullCalendar.getApi().refetchEvents()
                 Fire.$emit('Successflash',{
                     message: "Your event has been updated successfully."
                 });
@@ -235,7 +236,7 @@ export default {
             .then(resp => {
                 this.resetForm();
                 this.addingMode = !this.addingMode;
-                this.componentKey++;
+                this.$refs.fullCalendar.getApi().refetchEvents()
                 Fire.$emit('Successflash',{
                     message: "Your event has been successfully deleted."
                 });
