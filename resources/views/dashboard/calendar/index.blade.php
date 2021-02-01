@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', "Profile")
+@section('title', "Calendar")
 
 @section('class', 'dashboard')
 

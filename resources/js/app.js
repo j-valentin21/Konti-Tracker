@@ -3,11 +3,17 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+
+// import VueConfirmDialog from "@fullcalendar/vue/dist/main.global";
+
 require('./bootstrap');
 
+import Vue from 'vue'
 window.Vue = require('vue');
-
 window.Fire = new Vue();
+
+import VueConfirmDialog from 'vue-confirm-dialog'
+Vue.use(VueConfirmDialog);
 
 require('chart.js');
 require('places.js');
@@ -40,6 +46,7 @@ Vue.component('activity', require('./components/Activity.vue').default);
 Vue.component('dashboard-activity', require('./components/DashboardActivity.vue').default);
 Vue.component('notification', require('./components/Notification.vue').default);
 Vue.component('pagination', require('laravel-vue-pagination'));
+Vue.component('vue-confirm-dialog', VueConfirmDialog.default);
 
 
 /**

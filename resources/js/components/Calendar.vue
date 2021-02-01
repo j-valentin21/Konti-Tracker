@@ -2,6 +2,7 @@
     <div class="row justify-content-center">
         <failure-flash></failure-flash>
         <success-flash></success-flash>
+        <vue-confirm-dialog></vue-confirm-dialog>
         <div class="col-12 mb-5">
             <form @submit.prevent>
                 <div class="form-group">
@@ -160,24 +161,35 @@ export default {
             };
         },
         eventDrop: function(info) {
-            if (!confirm(`Are you sure you want to move ${info.event.title} to date ${info.event.startStr}`)) {
-                info.revert();
-            } else {
-                let startDate = info.event.startStr;
-                let endDate = info.event.endStr;
-                if (endDate === '') {
-                    endDate = startDate
-                }
-                this.indexToUpdate = info.event.id;
+            this.$confirm(
+                {
+                    message: `Are you sure you want to move ${info.event.title} to date ${info.event.startStr}?`,
+                    button: {
+                        no: 'No',
+                        yes: 'Yes'
+                    },
+                    callback: confirm => {
+                        if (confirm) {
+                            let startDate = info.event.startStr;
+                            let endDate = info.event.endStr;
+                            if (endDate === '') {
+                                endDate = startDate
+                            }
+                            this.indexToUpdate = info.event.id;
 
-                this.newEvent = {
-                    event_name: info.event.title,
-                    start_date: startDate,
-                    end_date: endDate
-                };
-                this.updateEvent();
-                this.addingMode = false;
-            }
+                            this.newEvent = {
+                                event_name: info.event.title,
+                                start_date: startDate,
+                                end_date: endDate
+                            };
+                            this.updateEvent();
+                            this.addingMode = false;
+                        } else {
+                            info.revert();
+                        }
+                    }
+                }
+            )
         },
         selectionClick: function(selectionInfo ) {
             this.addingMode = true
@@ -260,6 +272,26 @@ export default {
             let date = new Date();
             return date.getFullYear()
         },
+    },
+    handleClick(){
+        this.$confirm(
+            {
+                message: `Are you sure?`,
+                button: {
+                    no: 'No',
+                    yes: 'Yes'
+                },
+                /**
+                 * Callback Function
+                 * @param {Boolean} confirm
+                 */
+                callback: confirm => {
+                    if (confirm) {
+                        // ... do something
+                    }
+                }
+            }
+        )
     },
 
     watch: {
