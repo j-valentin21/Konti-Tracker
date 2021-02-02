@@ -1,20 +1,4 @@
 .carousel__height {
-    //@include respond(tab-port) {
-    //   height: 65vh;
-    //}
-    //
-    //@include respond(mobile-land) {
-    //    height: 50vh;
-    // }
-    //
-    // @include respond(mobile-land-bp2) {
-    //    height: 45vh;
-    // }
-    //
-    // @include respond(mobile-port) {
-    //    height: 35vh;
-    // }
-
     &--img {
         max-height: 80vh;
         object-fit: cover;

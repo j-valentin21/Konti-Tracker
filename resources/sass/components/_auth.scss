@@ -17,6 +17,17 @@
         align-items: center;
         padding: 0;
         margin: 0;
+
+        &--reset {
+            @include respond(horizontal-view-sm) {
+                height: 150vh;
+            }
+
+            @include respond(horizontal-view-md) {
+                height: 150vh;
+            }
+        }
+
     }
 
     &__nav {

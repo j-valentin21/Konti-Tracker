@@ -96,7 +96,9 @@ export default {
             axios.put("/dashboard",this.$data)
             .then( response => {
                 Fire.$emit('SubmitCount');
-                Fire.$emit('Successflash');
+                Fire.$emit('Successflash', {
+                    message: "Your profile has been successfully updated."
+                });
             })
             .catch((err) => {
                 Fire.$emit('Failureflash',{

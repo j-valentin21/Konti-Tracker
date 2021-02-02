@@ -1,5 +1,7 @@
 <template>
     <div>
+        <vue-confirm-dialog></vue-confirm-dialog>
+        <failure-flash></failure-flash>
         <table class="table dashboard__table pr-3">
             <thead class="dashboard__table__head dashboard__table__head--black">
             <tr class="dashboard__table__activity-row">
@@ -34,7 +36,6 @@
             <button type="button" @click="deleteAllNotifications(userId)" class="form__wizard__btn form__wizard__btn--red mt-4">Delete All</button>
         </div>
     </div>
-
 </template>
 
 <script>
@@ -57,28 +58,50 @@ export default {
             axios.delete(url).then((response) => {
                 this.notifications = response.data.results
             })
-                .catch((err) => {
-                    console.log(err)
+            .catch((err) => {
+                Fire.$emit('Failureflash',{
+                    message: "An issue deleting  your notification has occurred. Please try again at a later time."
                 });
+            });
         },
         deleteAllNotifications(id) {
             const url = '/dashboard/notifications/' + id
-            axios.delete(url, {
-                params: {
-                    deleteAll: true
+            this.$confirm(
+                {
+                    message: `Are you sure you want to delete all your notifications?`,
+                    button: {
+                        no: 'No',
+                        yes: 'Yes'
+                    },
+                    callback: confirm => {
+                        if (confirm) {
+                            axios.delete(url, {
+                                params: {
+                                    deleteAll: true
+                                }
+                            }).then((response) => {
+                                this.notifications = response.data.results
+                            })
+                            .catch((err) => {
+                                Fire.$emit('Failureflash',{
+                                    message: "An issue deleting all your notifications has occurred. Please try again at a later time."
+                                });
+                            });
+                        }
+                    }
                 }
-            }).then((response) => {
-                this.notifications = response.data.results
-            })
-                .catch((err) => {
-                    console.log(err)
-                });
+            )
         },
         getResults(page = 1) {
             axios.get('/dashboard/get-notifications?page=' + page)
 
              .then(response => {
                 this.notifications = response.data;
+            })
+            .catch((err) => {
+                Fire.$emit('Failureflash',{
+                    message: "An issue retriving your notifications has occurred. Please try again at a later time."
+                });
             });
         },
         formatDate(date) {
@@ -102,5 +125,4 @@ export default {
     position: absolute;
     opacity: 0;
 }
-
 </style>

@@ -50,6 +50,9 @@
         @media only screen and (min-height: 40em) and (max-width: 18em) {@content};  //280px x 653px
     }
     //Horizontal view
+    @if $breakpoint == horizontal-view-fold {
+        @media only screen and (max-height: 17.8em) and (min-width: 40.6em) {@content};  //650px x 285px
+    }
     @if $breakpoint == horizontal-view-sm {
         @media only screen and (max-height: 24em) and (min-width: 30em) {@content};  //640px x 360px
     }

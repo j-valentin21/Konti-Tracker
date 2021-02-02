@@ -1,13 +1,8 @@
 @extends('layouts.master')
-
 @section('title', "Profile")
-
 @section('class', 'dashboard')
-
 @section('content', "UPDATE PASSWORD")
-
 @section('id', 'app')
-
 @section('body-header')
     @include("layouts.navbar.dashboard")
 @endsection

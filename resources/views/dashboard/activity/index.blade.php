@@ -1,13 +1,8 @@
 @extends('layouts.master')
-
 @section('title', "Dashboard Activity")
-
 @section('class', 'dashboard')
-
 @section('content', "DASHBOARD ACTIVITY")
-
 @section('id', 'app')
-
 @section('body-header')
     @include("layouts.navbar.dashboard")
 @endsection
