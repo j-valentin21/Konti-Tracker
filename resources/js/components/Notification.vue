@@ -58,9 +58,11 @@ export default {
             axios.delete(url).then((response) => {
                 this.notifications = response.data.results
             })
-                .catch((err) => {
-                    console.log(err)
+            .catch((err) => {
+                Fire.$emit('Failureflash',{
+                    message: "An issue deleting  your notification has occurred. Please try again at a later time."
                 });
+            });
         },
         deleteAllNotifications(id) {
             const url = '/dashboard/notifications/' + id
@@ -95,6 +97,11 @@ export default {
 
              .then(response => {
                 this.notifications = response.data;
+            })
+            .catch((err) => {
+                Fire.$emit('Failureflash',{
+                    message: "An issue retriving your notifications has occurred. Please try again at a later time."
+                });
             });
         },
         formatDate(date) {
@@ -118,5 +125,4 @@ export default {
     position: absolute;
     opacity: 0;
 }
-
 </style>
