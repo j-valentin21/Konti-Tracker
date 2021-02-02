@@ -1,13 +1,8 @@
 @extends('layouts.master')
-
 @section('title', "Calendar")
-
 @section('class', 'dashboard')
-
 @section('content', "CALENDAR")
-
 @section('id', 'app')
-
 @section('body-header')
     @include("layouts.navbar.dashboard")
 @endsection

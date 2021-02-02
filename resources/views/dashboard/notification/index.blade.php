@@ -1,13 +1,8 @@
 @extends('layouts.master')
-
 @section('title', "Notifications")
-
 @section('class', 'dashboard')
-
 @section('content', "NOTIFICATIONS")
-
 @section('id', 'app')
-
 @section('body-header')
     @include("layouts.navbar.dashboard")
 @endsection

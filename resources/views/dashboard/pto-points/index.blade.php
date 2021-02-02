@@ -1,13 +1,8 @@
 @extends('layouts.master')
-
 @section('title', "PTO/Points data")
-
 @section('class', 'dashboard')
-
 @section('content', "PTO/POINTS DATA")
-
 @section('id', 'app')
-
 @section('body-header')
     @include("layouts.navbar.dashboard")
 @endsection

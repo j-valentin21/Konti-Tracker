@@ -1,17 +1,11 @@
 @extends('layouts.master')
-
 @section('head-extra')
     <script src="{{asset('js/scripts/skycons.js')}}"></script>
 @endsection
-
 @section('title', "Weather")
-
 @section('class', 'dashboard')
-
 @section('content', "WEATHER")
-
 @section('id', 'app')
-
 @section('body-header')
     @include("layouts.navbar.dashboard")
 @endsection

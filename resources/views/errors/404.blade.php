@@ -1,5 +1,4 @@
 @extends('layouts.master')
-
 @section('id', 'app')
 
 @section('body-content')

@@ -16,13 +16,13 @@
         max-width: 190px;
     }
 
-    @include respond(tab-land) {
-        height: 70%;
-    }
-
     @include respond(ipad-pro) {
         max-height: 55%;
         top: 15.5rem
+    }
+
+    @include respond(mobile-port) {
+        height: 80%;
     }
 
     @include respond(horizontal-view-sm) {
@@ -30,7 +30,11 @@
     }
 
     @include respond(horizontal-view-md) {
-        height: 100vh;
+        height: 150vh;
+    }
+
+    @include respond(horizontal-view-fold) {
+        height: 200vh;
     }
 
     &__img {

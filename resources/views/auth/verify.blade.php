@@ -1,9 +1,6 @@
 @extends('layouts.master')
-
 @section('title', "Email Verification")
-
 @section('class', 'auth')
-
 @section('body-header')
     @include("layouts.navbar.verify")
 @endsection

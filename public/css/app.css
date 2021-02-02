@@ -12282,16 +12282,16 @@ body {
   }
 }
 
-@media only screen and (max-width: 62.5em) {
-  .sidebar {
-    height: 70%;
-  }
-}
-
 @media only screen and (min-height: 85em) and (max-width: 65em) {
   .sidebar {
     max-height: 55%;
     top: 15.5rem;
+  }
+}
+
+@media only screen and (max-width: 25em) {
+  .sidebar {
+    height: 80%;
   }
 }
 
@@ -12303,7 +12303,13 @@ body {
 
 @media only screen and (max-height: 40em) and (min-width: 44em) {
   .sidebar {
-    height: 100vh;
+    height: 150vh;
+  }
+}
+
+@media only screen and (max-height: 17.8em) and (min-width: 40.6em) {
+  .sidebar {
+    height: 200vh;
   }
 }
 
