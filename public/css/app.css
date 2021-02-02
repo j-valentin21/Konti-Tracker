@@ -12816,6 +12816,18 @@ body {
   margin: 0;
 }
 
+@media only screen and (max-height: 24em) and (min-width: 30em) {
+  .auth__container--reset {
+    height: 150vh;
+  }
+}
+
+@media only screen and (max-height: 40em) and (min-width: 44em) {
+  .auth__container--reset {
+    height: 150vh;
+  }
+}
+
 .auth__nav {
   background-color: #000000;
 }

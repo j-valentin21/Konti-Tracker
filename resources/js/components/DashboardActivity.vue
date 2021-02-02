@@ -28,7 +28,7 @@
                 </tr>
             </tbody>
         </table>
-<!--========== PAGINATION ==========-->
+    <!--========== PAGINATION ==========-->
         <div class="mb-3">
             <ul class="pagination pagination-rounded justify-content-center mb-0 overflow-hidden">
                 <pagination :limit= 2 :data="activities" @pagination-change-page="getResults">
@@ -50,21 +50,26 @@ export default {
     created() {
         Fire.$on('SubmitCount', () => {
             return new Promise(function(resolve, reject) {
-                setTimeout(resolve, 3000);
-                    }).then( response => {
-                        this.getResults();
-                    });
-            });
+            setTimeout(resolve, 3000);
+                }).then( response => {
+                    this.getResults();
+                });
+        });
     },
     mounted() {
         this.getResults();
     },
     methods: {
         getResults(page = 1) {
-            axios.get('/dashboard/get-activity?page=' + page)
-                .then(response => {
-                    this.activities = response.data;
+        axios.get('/dashboard/get-activity?page=' + page)
+            .then(response => {
+                this.activities = response.data;
+            })
+            .catch((err) => {
+                Fire.$emit('Failureflash',{
+                    message: "An issue retrieving your activities has occurred. Please try again another time."
                 });
+            });
         }
     }
 }

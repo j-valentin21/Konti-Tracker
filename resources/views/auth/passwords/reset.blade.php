@@ -10,7 +10,7 @@
 
 @section('body-content')
 <div class="container">
-    <div class="row justify-content-center auth__container">
+    <div class="row justify-content-center auth__container auth__container--reset">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header auth__header">{{ __('Reset Password') }}</div>
