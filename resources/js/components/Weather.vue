@@ -110,31 +110,31 @@ export default {
 
                 switch (this.conditions) {
                     case "Clouds":
-                        this.image = {backgroundImage: "url(http://127.0.0.1:8000/img/cloudy.jpg)"}
+                        this.image = {backgroundImage: "url(/img/cloudy.jpg)"}
                         break;
                     case "Thunderstorm":
-                        this.image = {backgroundImage: "url(http://127.0.0.1:8000/img/thunderstorm.jpg)"}
+                        this.image = {backgroundImage: "url(/img/thunderstorm.jpg)"}
                         break;
                     case "Drizzle":
-                        this.image = {backgroundImage: "url(http://127.0.0.1:8000/img/drizzle.jpg)"}
+                        this.image = {backgroundImage: "url(/img/drizzle.jpg)"}
                         break;
                     case "Rain":
-                        this.image = {backgroundImage: "url(http://127.0.0.1:8000/img/rain.jpg)"}
+                        this.image = {backgroundImage: "url(/img/rain.jpg)"}
                         break;
                     case "Snow":
-                        this.image = {backgroundImage: "url(http://127.0.0.1:8000/img/snow.jpg)"}
+                        this.image = {backgroundImage: "url(/img/snow.jpg)"}
                         break;
                     case "Clear":
-                        this.image = {backgroundImage: "url(http://127.0.0.1:8000/img/clear.jpg)"}
+                        this.image = {backgroundImage: "url(/img/clear.jpg)"}
                         break;
                     case "Fog":
-                        this.image = {backgroundImage: "url(http://127.0.0.1:8000/img/fog.jpg)"}
+                        this.image = {backgroundImage: "url(/img/fog.jpg)"}
                         break;
                     case "Tornado":
-                        this.image = {backgroundImage: "url(http://127.0.0.1:8000/img/tornado.jpg)"}
+                        this.image = {backgroundImage: "url(/img/tornado.jpg)"}
                         break;
                     default:
-                        this.image = {backgroundImage: "url(http://127.0.0.1:8000/img/cloudy.jpg)"}
+                        this.image = {backgroundImage: "url(/img/cloudy.jpg)"}
                         break;
                 }
             })
