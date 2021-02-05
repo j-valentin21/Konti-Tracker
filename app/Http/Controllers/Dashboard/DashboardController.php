@@ -48,9 +48,8 @@ class DashboardController extends Controller
      * Create request for PTO day/days.
      *
      * @param PTOFormRequest $request
-     * @return RedirectResponse
      */
-    public function create(PTOFormRequest $request): RedirectResponse
+    public function create(PTOFormRequest $request)
     {
         $redis = Redis::connection();
         $profile = Profile::find(auth()->user()->id);
