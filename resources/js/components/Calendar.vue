@@ -52,14 +52,12 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
 
 export default {
-    props:['componentKey'],
     name: 'Calendar',
     components: {
         Fullcalendar
     },
     data() {
         return {
-            componentKeys: this.componentKey,
             calendarEvents: [],
             calendarOptions: {
                 plugins: [ dayGridPlugin, interactionPlugin],
@@ -128,7 +126,8 @@ export default {
                 eventSources: [
                     {
                         events(start, callback) {
-                            axios.get('http://127.0.0.1:8000/dashboard/calendar/events/').then(response => {
+                            let baseURL = `${window.location.protocol}//${window.location.host}`
+                            axios.get(`${baseURL}/dashboard/calendar/events/`).then(response => {
                                 callback(response.data.resource)
                             })
                         }
@@ -273,27 +272,6 @@ export default {
             return date.getFullYear()
         },
     },
-    handleClick(){
-        this.$confirm(
-            {
-                message: `Are you sure?`,
-                button: {
-                    no: 'No',
-                    yes: 'Yes'
-                },
-                /**
-                 * Callback Function
-                 * @param {Boolean} confirm
-                 */
-                callback: confirm => {
-                    if (confirm) {
-                        // ... do something
-                    }
-                }
-            }
-        )
-    },
-
     watch: {
         indexToUpdate() {
             return this.indexToUpdate;

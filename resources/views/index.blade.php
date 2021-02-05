@@ -69,7 +69,7 @@
 @endsection
 <!-- SCRIPTS -->
 @section('body-scripts')
-    <script src="{{ asset('js/scripts/intersection_observer/index.js') }}"></script>
+    <script src="{{ asset('js/intersection.js') }}"></script>
 @endsection
 
 

@@ -5,14 +5,14 @@
                 <button type="button" class="close" data-dismiss="alert" @click="showFalse">
                     <span aria-hidden="true" class="mb-5">
                         <svg class="alert__icon alert__icon--x">
-                            <use href="http://127.0.0.1:8000/svg/sprite.svg#icon-times"></use>
+                            <use href="/svg/sprite.svg#icon-times"></use>
                         </svg>
                     </span>
                     <span class="sr-only">Close</span>
                 </button>
                 <span class="alert__start mr-3">
                     <svg class="alert__icon alert__icon--check">
-                        <use href="http://127.0.0.1:8000/svg/sprite.svg#icon-check_circle_outline"></use>
+                        <use href="/svg/sprite.svg#icon-check_circle_outline"></use>
                     </svg>
                 </span>
                 <slot> <strong class="alert__message pr-3">{{ message }}</strong></slot>

@@ -91,7 +91,7 @@
 <script>
 import flatPickr from 'vue-flatpickr-component';
 import 'flatpickr/dist/flatpickr.css';
-import { Errors } from '../error.js'
+import { Errors } from '../scripts/error.js'
 
 export default {
     props:['pto'],
