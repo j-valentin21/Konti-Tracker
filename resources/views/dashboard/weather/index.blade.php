@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('head-extra')
-    <script src="{{asset('js/scripts/skycons.js')}}"></script>
+    <script src="{{ asset('js/skycons.js') }}"></script>
 @endsection
 @section('title', "Weather")
 @section('class', 'dashboard')

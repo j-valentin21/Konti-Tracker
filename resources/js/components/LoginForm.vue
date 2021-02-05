@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import { Errors } from '../error.js'
+import { Errors } from '../scripts/error.js'
 
     export default {
         data() {
@@ -50,10 +50,9 @@ import { Errors } from '../error.js'
         methods: {
             submitForm() {
                 axios.post("/login", this.$data)
-                    .then( response => {
-                       window.location.href = '/dashboard';
-                    })
-                    .catch(error => this.errors.record(error.response.data.errors))
+                .then( response => {
+                   window.location.href = '/dashboard';
+                }).catch(error => this.errors.record(error.response.data.errors))
             }
         }
     }
