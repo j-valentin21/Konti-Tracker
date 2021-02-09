@@ -22,7 +22,7 @@
     }
 
     @include respond(mobile-port) {
-        height: 80%;
+        height: 85%;
     }
 
     @include respond(horizontal-view-sm) {
