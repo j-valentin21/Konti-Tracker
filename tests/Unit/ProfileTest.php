@@ -70,7 +70,7 @@ class ProfileTest extends TestCase
      * Test to check if correct month for charts is returning properly.
      *
      */
-    public function test_sort_months():void
+    public function test_Sort_Months():void
     {
         $user = factory(User::class)->create();
         $profile = factory(Profile::class)->create();
@@ -87,4 +87,37 @@ class ProfileTest extends TestCase
         $this->assertEquals($sorted['July'], $sortedMonths[6]);
         $this->assertEquals($sorted['Dec'], $sortedMonths[11]);
     }
+
+    /**
+     * Test to check if correct month is sorting by month.
+     *
+     */
+    public function test_Sort_Months_By_Month():void
+    {
+        $user = factory(User::class)->create();
+        $profile = factory(Profile::class)->create();
+
+        $unsortedMonths = array(
+            'Jan' => 3,
+            'July' => 5,
+            'Mar' => 1,
+            'Aug' => 3,
+            'Oct' => 3,
+            'June' => 5,
+            'May' => 4,
+            'Sept' => 5,
+            'Apr' => 6,
+            'Nov' => 4,
+            'Feb' => 3,
+            'Dec' => 3,
+        );
+
+        $sorted = $profile->sortMonthsByMonth($unsortedMonths);
+
+        $this->assertEquals($sorted['Jan'], $unsortedMonths['Jan']);
+        $this->assertEquals($sorted['Apr'], $unsortedMonths['Apr']);
+        $this->assertEquals($sorted['July'], $unsortedMonths['July']);
+        $this->assertEquals($sorted['Dec'], $unsortedMonths['Dec']);
+    }
+
 }
