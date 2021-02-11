@@ -14,6 +14,12 @@ use MultipleIterator;
 
 class DashboardPTOPointsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('NotFirstTimeUser');
+    }
+
     /**
      * Show dashboard PTO/points view.
      *

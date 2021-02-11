@@ -19,6 +19,11 @@ use Illuminate\Support\Facades\Redis;
 
 class DashboardController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('NotFirstTimeUser');
+    }
     /**
      * View the dashboard route.
      *

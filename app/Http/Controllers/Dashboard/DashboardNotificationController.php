@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Cache;
 
 class DashboardNotificationController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('NotFirstTimeUser');
+    }
     /**
      * View all notifications.
      *

@@ -15,6 +15,12 @@ use Illuminate\Support\Facades\Storage;
 
 class DashboardProfileController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('NotFirstTimeUser');
+    }
+
     /**
      * Show the dashboard profile view.
      *

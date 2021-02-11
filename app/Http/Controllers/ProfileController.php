@@ -10,6 +10,13 @@ use Illuminate\Support\Facades\Redis;
 
 class ProfileController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('firstTimeUser');
+        $this->middleware('verified');
+    }
+
     /**
      * View build-your-profile page.
      *

@@ -11,6 +11,12 @@ use Illuminate\Http\Request;
 
 class DashboardActivityController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('NotFirstTimeUser');
+    }
+
     /**
      * View all activities.
      *

@@ -2,12 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\Http\Middleware\Authenticate;
-use App\Http\Middleware\NotFirstTimeUser;
-use App\User;
-use Illuminate\Auth\Middleware\EnsureEmailIsVerified;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Support\Facades\Route;
 use Tests\TestCase;
 
 class DashboardTest extends TestCase
@@ -16,7 +11,7 @@ class DashboardTest extends TestCase
 
     public function test_Build_Your_Profile_View_Is_Working_Properly():void
     {
-        $this->withoutMiddleware([NotFirstTimeUser::class, Authenticate::class, EnsureEmailIsVerified::class,]);
+        $this->withoutMiddleware();
 
         $response = $this->get('/dashboard');
 
@@ -26,21 +21,22 @@ class DashboardTest extends TestCase
     public function test_Guest_Cannot_Access_Dashboard():void
     {
         $response = $this->get('/dashboard');
+
         $response->assertRedirect('/');
     }
 
-    public function test_Only_Authenticated_Non_First_Time_User_Can_Access_Dashboard():void
+    public function test_Guest_Cannot_Access_Pto_Chart_Data():void
     {
-        $this->actingAs($user = factory(User::class)->make([
-            'FirstTimeUser' => 0
-        ]));
+        $response = $this->get('/dashboard/pto-chart');
 
-            $this->assertEquals(
-                Route::getRoutes()->getByName('dashboard.index')->gatherMiddleware(),
-                ['web','auth','NotFirstTimeUser', 'verified']
-            );
-            $this->assertEquals('0', $user->FirstTimeUser);
-            $this->assertAuthenticatedAs($user);
+        $response->assertRedirect('/');
+    }
+
+    public function test_Guest_Cannot_Access_Points_Chart_Data():void
+    {
+        $response = $this->get('/dashboard/points-chart');
+
+        $response->assertRedirect('/');
     }
 }
 
