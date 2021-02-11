@@ -1,10 +1,14 @@
 pipeline {
     agent any
 
+    tools {nodejs "nodejs"}
+
     stages {
         stage('Build') {
             steps {
                 sh "composer install"
+                sh "npm install"
+                sh "npm dev production"
             }
         }
         stage('Test') {
@@ -27,7 +31,7 @@ pipeline {
                 php artisan cache:cache; \
                 php artisan view:cache; \
                 php artisan route:cache; \
-                php artisan up"'
+                php artisan up;"'
             }
         }
     }
