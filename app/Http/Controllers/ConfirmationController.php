@@ -9,6 +9,13 @@ use Illuminate\Support\Facades\Redis;
 
 class ConfirmationController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('firstTimeUser');
+        $this->middleware('verified');
+    }
+
     /**
      * Show confirmation view
      *

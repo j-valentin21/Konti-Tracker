@@ -6,9 +6,14 @@ use App\Http\Controllers\Controller;
 use App\Services\NotificationService;
 use Illuminate\Contracts\Support\Renderable;
 
-
 class DashboardWeatherController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('NotFirstTimeUser');
+    }
+
     /**
      * Show dashboard weather view.
      *
