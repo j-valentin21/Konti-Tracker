@@ -9,14 +9,14 @@ class DashboardTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function test_Build_Your_Profile_View_Is_Working_Properly():void
-    {
-        $this->withoutMiddleware();
-
-        $response = $this->get('/dashboard');
-
-        $response->assertStatus(200);
-    }
+//    public function test_Dashboard_View_Is_Working_Properly():void
+//    {
+//        $this->withoutMiddleware();
+//
+//        $response = $this->get('/dashboard');
+//
+//        $response->assertStatus(200);
+//    }
 
     public function test_Guest_Cannot_Access_Dashboard():void
     {
