@@ -87,7 +87,7 @@ export default {
                     },
                     {
                         title  : "Good Friday",
-                        start  : `${this.getYear()}-04-10`,
+                        start  : `${this.getYear()}-04-02`,
                     },
                     {
                         title  : "Memorial Day",
