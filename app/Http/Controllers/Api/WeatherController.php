@@ -10,12 +10,6 @@ use Illuminate\Http\Request;
 
 class WeatherController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-        $this->middleware('NotFirstTimeUser');
-    }
-
     /**
      * Get weather data from API.
      *
