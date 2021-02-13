@@ -28,7 +28,9 @@ pipeline {
                 php artisan migrate --force; \
                 php artisan config:cache; \
                 php artisan view:cache; \
-                php artisan up;"'
+                php artisan up; \
+                exit 0
+                "'
             }
         }
     }
