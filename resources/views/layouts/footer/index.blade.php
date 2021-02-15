@@ -8,11 +8,11 @@
                     <a class="footer__link hover__black" href="#">HOME</a>
                     <a class="footer__link hover__black" href="{{ route('register') }}">REGISTER</a>
                     <a class="footer__link hover__black" data-toggle="modal" data-target="#loginmodal">SIGN IN</a>
-                    <a class="footer__link hover__black" href="#">CONTACT US</a>
+                    <a class="footer__link hover__black" href="{{ route('contact-us') }}">CONTACT US</a>
                 @else
                     <a class="footer__link hover__black" href="#">HOME</a>
                     <a class="footer__link hover__black" href="{{ route('dashboard.index') }}">DASHBOARD</a>
-                    <a class="footer__link hover__black" href="#">CONTACT US</a>
+                    <a class="footer__link hover__black" href="{{ route('contact-us') }}">CONTACT US</a>
                 @endguest
             </div>
             <div class="d-flex justify-content-end">
