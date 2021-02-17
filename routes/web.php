@@ -1,5 +1,6 @@
 <?php
 
+use App\Mail\ContactUsMail;
 use Illuminate\Support\Facades\Route;
 
 /*

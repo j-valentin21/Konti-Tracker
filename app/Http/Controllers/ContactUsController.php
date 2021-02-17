@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ContactUsRequest;
+use App\Mail\ContactUsMail;
 use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Mail;
 
 class ContactUsController extends Controller
 {
@@ -26,10 +28,17 @@ class ContactUsController extends Controller
      * Create email to send to admin.
      *
      * @param ContactUsRequest $request
-     * @return Renderable
+     * @return RedirectResponse
      */
-    public function create(ContactUsRequest $request)
+    public function create(ContactUsRequest $request): RedirectResponse
     {
+        try {
+            $data = $request->validated();
+            Mail::to('jvalentin0221@gmail.com')->send(new ContactUsMail($data));
+            return redirect('/')->with('successMsg', 'Your message has been sent');
 
+        } catch(\Exception $e ) {
+            return redirect()->back()->with('errorMsg', 'An issue occurred trying to sent your message. Please try again at a later time.');
+        }
     }
 }

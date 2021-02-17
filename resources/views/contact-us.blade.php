@@ -5,6 +5,11 @@
     <div class="contact-us">
         <div class="contact-us__container">
             <div class="contact-us__form">
+                @if(session('errorMsg'))
+                    <div class="text-center">
+                        <strong class="font__weight-semibold text-white bg-danger p-1">{{ session('errorMsg') }}</strong>
+                    </div>
+                @endif
                 <form method="POST" action="{{ route('contact-us.create') }}">
                     @csrf
 					<span class="contact-us__title">
