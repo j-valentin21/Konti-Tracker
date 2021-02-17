@@ -24,8 +24,6 @@ pipeline {
                 php artisan cache:clear; \
                 php artisan view:clear; \
                 git pull origin master; \
-                npm install; \
-                npm run production; \
                 composer install --optimize-autoloader --no-dev; \
                 php artisan migrate --force; \
                 php artisan config:cache; \

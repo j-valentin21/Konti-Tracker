@@ -25,7 +25,7 @@
                         </section>
                         <section class="col-sm-8">
                             <h1>Review Profile Details</h1>
-                            <form action="{{ route('confirmation.store') }}" method="POST" >
+                            <form action="{{ route('confirmation.store') }}" method="POST">
                                 @csrf
                                 <table class="table">
                                     <tr>
