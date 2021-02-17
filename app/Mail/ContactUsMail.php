@@ -30,7 +30,7 @@ class ContactUsMail extends Mailable
      */
     public function build(): ContactUsMail
     {
-        $address = $this->data['email'];
+        $address = 'jvalentin0221@hotmail.com';
         $subject = 'Contact Us Message';
         $name = $this->data['name'];
         return $this->markdown('emails.contact-us')
