@@ -9,6 +9,11 @@
     <x-login-modal/>
     <main class="container-fluid">
         <div class="row">
+            @if(session('successMsg'))
+                <x-alert-success>
+                    <strong class="font__weight-semibold">{{ session('successMsg') }}</strong>
+                </x-alert-success>
+            @endif
             <div class="col-12 col-md-11 mx-auto mb-5">
                 <x-carousel/>
                 <section class="jumbotron mt-4 mt-sm-0 pto">
