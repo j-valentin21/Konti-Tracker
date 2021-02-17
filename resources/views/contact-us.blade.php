@@ -12,6 +12,11 @@
                 @endif
                 <form method="POST" action="{{ route('contact-us.create') }}">
                     @csrf
+                    <a href="/">
+                        <svg class="contact-us__arrow">
+                            <use href="{{ asset('svg/sprite.svg#icon-arrow-left') }}"></use>
+                        </svg>
+                    </a>
 					<span class="contact-us__title">
 						Contact Us
 					</span>

@@ -5,6 +5,12 @@
     background-size: cover;
     background-image:  url("/img/road.jpg");
 
+    &__arrow {
+        height: 1.5rem;
+        fill: $color-black;
+        width: 2.5rem;
+    }
+
     &__container {
         width: 100%;
         min-height: 100vh;
@@ -22,7 +28,7 @@
         background: rgba($color-white, .7);
         border-radius: 10px;
         overflow: hidden;
-        padding: 5rem;
+        padding: 3.5rem;
     }
 
     &__title {
