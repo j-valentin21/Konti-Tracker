@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@index')->name('index');
 Route::get('/contact-us', 'ContactUsController@index')->name('contact-us');
+Route::post('/contact-us', 'ContactUsController@create')->name('contact-us.create');
 
 Auth::routes(['verify' => true]);
 
