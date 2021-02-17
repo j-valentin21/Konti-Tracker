@@ -1,5 +1,6 @@
 .alert {
     z-index: 2000;
+
     &::before {
         content: '';
         position: absolute;
@@ -13,6 +14,7 @@
         top: 50%;
         transform: translate(0,-50%);
     }
+
     &__success {
         border: 2px solid rgba(36, 241, 6, .75);
         background-color: rgba(7, 149, 66, .5);
@@ -74,6 +76,7 @@
             animation: pulse_danger 3s infinite both
         }
     }
+
     &__start {
         margin-right: 0;
         min-width: 20px;
