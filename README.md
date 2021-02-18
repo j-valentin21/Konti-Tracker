@@ -36,7 +36,7 @@ To-do list:
 
 ## Inspiration
 https://www.continental-tyres.com.my/car
-I also want to give a shout to all the developers that created all these technologies and made it possible with all their hard work. This couldn't be 
+* I also want to give a shout to all the developers that created all these technologies and made it possible with all their hard work. This couldn't be 
 possible without them.
 
 
