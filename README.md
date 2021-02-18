@@ -11,6 +11,8 @@ to my supervisor or manager for a printout of this data.
 ## Technologies
 * HTML 5
 * CSS 3
+* Bootstrap 4
+* SASS
 * PHP 7.2
 * Laravel 7
 * Vue.js 2
