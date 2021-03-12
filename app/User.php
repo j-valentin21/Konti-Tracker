@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -39,36 +41,36 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * Create relationship between user and profile
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return HasOne
      */
-    public function profile()
+    public function profile(): HasOne
     {
         return $this->hasOne(Profile::class);
     }
     /**
      * Create relationship between user and calendar
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
-    public function calendar()
+    public function calendar(): HasMany
     {
         return $this->hasMany(Calendar::class);
     }
     /**
      * Create relationship between user and requestPTO
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
-    public function p_t_o_request()
+    public function p_t_o_request(): HasMany
     {
         return $this->hasMany(PTORequest::class);
     }
     /**
      * Create relationship between user and requestPTO
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
-    public function activity()
+    public function activity(): HasMany
     {
         return $this->hasMany(Activity::class);
     }
