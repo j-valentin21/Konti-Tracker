@@ -29,7 +29,7 @@ class ProfileRequest extends FormRequest
             'position' => 'max:50',
             'pto' => 'numeric|between:0,40',
             'points' => 'integer|between:0,15',
-            'avatar' => 'max:2000|mimes:jpg,png,jpeg,svg,gif',
+            'avatar' => 'max:10000|image',
             'date_of_employment' => 'date'
         ];
     }

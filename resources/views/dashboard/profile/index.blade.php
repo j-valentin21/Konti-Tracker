@@ -168,7 +168,7 @@
                             <small
                                 id="fileHelp"
                                 class="form-text text-muted form form__wizard__img-text">
-                                Please upload a valid image file. Size of image should not be more than 2MB.
+                                Please upload a valid image file. Size of image should not be more than 10MB.
                             </small>
                         @endif
                         <!-- ========== BUTTON ========== -->
