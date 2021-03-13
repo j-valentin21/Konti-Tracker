@@ -24,7 +24,7 @@ class FormUploadRequest extends FormRequest
     public function rules()
     {
         return [
-            'avatar' => 'max:2000|mimes:jpg,png,jpeg,svg,gif'
+            'avatar' => 'max:10000|image'
         ];
     }
 }
