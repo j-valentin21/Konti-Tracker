@@ -35,6 +35,7 @@ class DashboardController extends Controller
             $profile = Profile::find(auth()->user()->id);
             $notifications = (new NotificationService())->userNotifications(auth()->user()->id);
             $profile->resetMonths();
+            $profile->updateYearCount();
             $message = $redis->get('message_' .  auth()->id());
             $redis->expire('message_' . auth()->id(),5);
 
