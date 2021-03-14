@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->boolean('firstTimeUser')->default(1);
-            $table->integer('year_count')->default(2021);
+            $table->integer('year_count')->default(date('Y'));
             $table->rememberToken();
             $table->timestamps();
         });
