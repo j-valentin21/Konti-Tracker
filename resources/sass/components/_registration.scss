@@ -1,6 +1,4 @@
 .registration {
-    width: 100vw;
-    height: 100%;
     background-image: url("/img/car-garage.jpg");
     background-repeat: no-repeat;
     background-size: cover;
@@ -13,6 +11,7 @@
 
         @include respond(tab-port) {
             width: 100%;
+            height: 800px;
         }
 
         @include respond(horizontal-view-sm) {
