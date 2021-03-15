@@ -33,6 +33,9 @@ class ContactUsController extends Controller
     public function create(ContactUsRequest $request): RedirectResponse
     {
         try {
+            if ($request->botcheck) {
+                return redirect()->back()->withSuccess('Your form has been submitted');
+            }
             $data = $request->validated();
             Mail::to('jvalentin0221@gmail.com')->send(new ContactUsMail($data));
             return redirect('/')->with('successMsg', 'Your message has been sent');

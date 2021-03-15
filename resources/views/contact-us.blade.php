@@ -40,6 +40,11 @@
                             Send Your Message
                         </button>
                     </div>
+                    <div class="form-group" style="display: none;">
+                        <label for="botcheck">Gender
+                            <input type="checkbox" name="botcheck" id="botcheck" />
+                        </label>
+                    </div>
                 </form>
             </div>
         </div>
