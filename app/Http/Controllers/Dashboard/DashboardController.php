@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Activity;
 use App\Events\PtoPointsHasBeenUpdatedEvent;
 use App\Events\RequestPtoTickedHasBeenSubmittedEvent;
 use App\Http\Controllers\Controller;
@@ -12,9 +11,7 @@ use App\Profile;
 use App\PTORequest;
 use App\Services\NotificationService;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Redis;
 
 class DashboardController extends Controller

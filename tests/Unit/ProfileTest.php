@@ -120,4 +120,15 @@ class ProfileTest extends TestCase
         $this->assertEquals($sorted['Dec'], $unsortedMonths['Dec']);
     }
 
+    public function test_If_Year_Count_Can_Update()
+    {
+        $profile = factory(Profile::class)->create();
+        $verify = $profile->user->year_count;
+        $profile->updateYearCount();
+        $result = $profile->user->year_count;
+
+        $this->assertGreaterThan($verify, $result);
+        $this->assertEquals($result, $verify + 1);
+    }
+
 }

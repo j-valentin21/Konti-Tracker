@@ -54,7 +54,7 @@ class Profile extends Model
     }
 
     /**
-     * Update year_count to correct year .
+     * Update year_count to correct year.
      *
      */
     public function updateYearCount():void
