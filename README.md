@@ -24,6 +24,7 @@ to my supervisor or manager for a printout of this data.
 * Amazon S3
 * Sentry (Error-logging)
 * Jenkins
+* PHPUnit
 
 ## Features
 List of features ready and TODOs for future development
