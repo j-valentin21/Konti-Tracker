@@ -26,7 +26,18 @@ class ContactUsRequest extends FormRequest
         return [
             'name' => 'required|string|max:75',
             'email' => 'required|email',
-            'message' => 'required|string'
+            'message' => 'required|string',
+            'g-recaptcha-response' => 'required|captcha'
         ];
+
+    }
+
+    public function messages()
+    {
+        return [
+            'g-recaptcha-response.required' => 'Please verify that you are not a robot.',
+            'g-recaptcha-response.captcha' => 'Captcha error! try again later or contact site admin.',
+        ];
+
     }
 }

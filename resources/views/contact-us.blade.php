@@ -35,11 +35,17 @@
                         <textarea class="contact-us__input contact-us__textarea" name="message" placeholder=""></textarea>
                         <span class="contact-us__focus" data-placeholder="MESSAGE"></span>
                     </div>
+                    <div>
+                    </div>
+                    <strong class="text-danger">{{ $errors->first('g-recaptcha-response') }}</strong>
                     <div class="contact-us__btn-container">
+                        {!! NoCaptcha::renderJs() !!}
+                        {!! NoCaptcha::display() !!}
                         <button class="contact-us__btn">
                             Send Your Message
                         </button>
                     </div>
+
                     <div class="form-group" style="display: none;">
                         <label for="botcheck">Gender
                             <input type="checkbox" name="botcheck" id="botcheck" />
