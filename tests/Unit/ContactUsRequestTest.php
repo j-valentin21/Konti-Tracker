@@ -72,6 +72,7 @@ class ContactUsRequestTest extends TestCase
                     'name' => $faker->name,
                     'email' => $faker->email,
                     'message' => $faker->paragraph(),
+                    'g-recaptcha-response' => '1',
                 ]
             ]
         ];
