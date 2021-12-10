@@ -59,7 +59,7 @@ class Profile extends Model
      */
     public function updateYearCount():void
     {
-        $graph_year = date('Y');
+        $graph_year = (int) date('Y');
 
         if($graph_year >= $this->user->year_count) {
             $this->user->year_count = $graph_year + 1;
@@ -73,7 +73,7 @@ class Profile extends Model
      */
     public function resetMonths():void
     {
-        $graph_year = date('Y');
+        $graph_year = (int) date('Y');
 
         if($graph_year >= $this->user->year_count) {
             $months = array('Jan' => 0, 'Feb' => 0, 'Mar' => 0, 'Apr' => 0, 'May' => 0, 'June' => 0,
