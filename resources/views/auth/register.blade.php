@@ -81,6 +81,9 @@
                 <button type="submit" class="form-submit registration__signup" >
                     {{ __('Sign up') }}
                 </button>
+                <strong class="text-danger">{{ $errors->first('g-recaptcha-response') }}</strong>
+                {!! NoCaptcha::renderJs() !!}
+                {!! NoCaptcha::display() !!}
                 {{--LOGIN LINK--}}
                 <p class="registration__login">
                     Have already an account? <a data-toggle="modal" data-target="#loginmodal" class="text-primary" role="button">Login here</a>
