@@ -57,13 +57,16 @@ class Profile extends Model
      * Update year_count to correct year.
      *
      */
-    public function updateYearCount():void
+    public function updateYearCount():bool
     {
         $graph_year = (int) date('Y');
 
         if($graph_year >= $this->user->year_count) {
             $this->user->year_count = $graph_year + 1;
             $this->user->save();
+            return true;
+        } else {
+            return false;
         }
     }
 
@@ -71,7 +74,7 @@ class Profile extends Model
      * Reset month array at the end of the year.
      *
      */
-    public function resetMonths():void
+    public function resetMonths():bool
     {
         $graph_year = (int) date('Y');
 
@@ -81,6 +84,9 @@ class Profile extends Model
             $this->pto_usage = $months;
             $this->points_usage = $months;
             $this->save();
+            return true;
+        } else {
+            return false;
         }
     }
 
