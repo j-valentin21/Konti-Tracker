@@ -57,18 +57,18 @@ class Profile extends Model
      * Update year_count to correct year.
      *
      */
-    public function updateYearCount():bool
-    {
-        $graph_year = (int) date('Y');
-
-        if($graph_year >= $this->user->year_count) {
-            $this->user->year_count = $graph_year + 1;
-            $this->user->save();
-            return true;
-        } else {
-            return false;
-        }
-    }
+//    public function updateYearCount():bool
+//    {
+//        $graph_year = (int) date('Y');
+//
+//        if($graph_year >= $this->user->year_count) {
+//            $this->user->year_count = $graph_year + 1;
+//            $this->user->save();
+//            return true;
+//        } else {
+//            return false;
+//        }
+//    }
 
     /**
      * Reset month array at the end of the year.
