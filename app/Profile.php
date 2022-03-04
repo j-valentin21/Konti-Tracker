@@ -74,21 +74,21 @@ class Profile extends Model
      * Reset month array at the end of the year.
      *
      */
-    public function resetMonths():bool
-    {
-        $graph_year = (int) date('Y');
-
-        if($graph_year >= $this->user->year_count) {
-            $months = array('Jan' => 0, 'Feb' => 0, 'Mar' => 0, 'Apr' => 0, 'May' => 0, 'June' => 0,
-                'July' => 0, 'Aug' => 0, 'Sept' => 0, 'Oct' => 0, 'Nov' => 0, 'Dec' => 0);
-            $this->pto_usage = $months;
-            $this->points_usage = $months;
-            $this->save();
-            return true;
-        } else {
-            return false;
-        }
-    }
+//    public function resetMonths():bool
+//    {
+//        $graph_year = (int) date('Y');
+//
+//        if($graph_year >= $this->user->year_count) {
+//            $months = array('Jan' => 0, 'Feb' => 0, 'Mar' => 0, 'Apr' => 0, 'May' => 0, 'June' => 0,
+//                'July' => 0, 'Aug' => 0, 'Sept' => 0, 'Oct' => 0, 'Nov' => 0, 'Dec' => 0);
+//            $this->pto_usage = $months;
+//            $this->points_usage = $months;
+//            $this->save();
+//            return true;
+//        } else {
+//            return false;
+//        }
+//    }
 
     /**
      * Sort months based on number of array.
